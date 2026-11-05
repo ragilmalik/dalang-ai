@@ -130,4 +130,4 @@ def run(job: Job) -> None:
 
     urls = {k: storage.publish(job, v) for k, v in vids.items()}
     poster = job.dir / "poster.jpg"
-    job.set(status="done", videos=urls, poster=job.url(poster) if poster.exists() else None)
+    job.set(status="done", videos=urls, poster=job.url(poster) if poster.exists() else None, **cost.final_fields(job.s))

@@ -45,6 +45,13 @@ man = c.get("/manifest.webmanifest")
 step("link preview card + PWA manifest", 'property="og:image"' in r.text and 'name="twitter:card"' in r.text
      and card.status_code == 200 and card.content[:4] == b"\x89PNG" and man.status_code == 200
      and any(i["sizes"] == "512x512" for i in man.json()["icons"]))
+# self-hosted `next start` gzips its JS (next.config.mjs compress: true); the progress stream below must still stream
+import re  # noqa: E402
+
+chunk = re.search(r'src="(/_next/static/chunks/[^"]+\.js)"', r.text)
+js = c.get(chunk.group(1), headers={"Accept-Encoding": "gzip"}) if chunk else None
+step("JS served gzip-compressed by next start", js is not None and js.status_code == 200
+     and js.headers.get("content-encoding") == "gzip", chunk.group(1) if chunk else "no script tag found")
 h = c.get("/api/health").json()
 step("health via Next proxy", h.get("ok") is True, json.dumps(h)[:120])
 
@@ -66,9 +73,12 @@ step("job created from audio upload", bool(jid))
 states = []
 t0 = time.time()
 with c.stream("GET", f"/api/jobs/{jid}/events") as r:
+    sse_headers = r.headers
     for line in r.iter_lines():
         if line.startswith("data: "):
             states.append((round(time.time() - t0, 1), json.loads(line[6:])["status"]))
+step("progress stream is not compressed (no-transform)", "content-encoding" not in sse_headers
+     and "no-transform" in sse_headers.get("cache-control", ""))
 step("SSE streams incrementally through Next", len(states) > 3 and states[-1][1] == "review",
      f"{len(states)} events, first at {states[0][0]}s, last at {states[-1][0]}s")
 j = c.get(f"/api/jobs/{jid}").json()

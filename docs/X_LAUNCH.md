@@ -6,8 +6,8 @@ announce; this plan assumes it runs to Nov 8). None of the numbers, quotes or re
 Fill the `[brackets]` only with things that actually happened.
 
 Rules for every post: only stories told with a parent's permission, and never a child's face, name or school. The
-placeholder-art clips only go out with the "placeholder art" label visible (it's burned into the clips while the art
-comes from the fake API). After `python scripts/go_live.py`, re-render the clips to get real Muse Image art.
+clips in `docs/launch/` were re-rendered on Nov 6 from a film made on the live models, so they carry real Muse Image
+art and no placeholder label. Any clip rendered in test mode (`FAKE_META=1`) still gets the label burned in.
 
 Assets (all in `docs/launch/`, 720x1280, captions burned in, `.srt` next to each):
 | File | Length | Use |

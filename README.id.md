@@ -40,9 +40,9 @@ bawaan (mode uji), dan semua gambarnya diberi label "placeholder art". Kode perm
 yang live. Hasil pemeriksaan per model dengan API asli ada di
 [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 
-Pemeriksaan: <!-- facts:tests -->520<!-- /facts --> tes pytest (<!-- facts:coverage -->96%<!-- /facts --> cakupan
-baris), uji e2e penuh (<!-- facts:e2e -->27/27<!-- /facts --> langkah), ruff, mypy, eslint, tsc, dan `next build`.
-Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
+Pemeriksaan: <!-- facts:tests -->531<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
+baris), uji e2e penuh (<!-- facts:e2e -->29/29<!-- /facts --> langkah), ruff, mypy, eslint, tsc, dan `next build`.
+Video demo: <!-- facts:demo_length -->2:57<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
 
 <p align="center">
   <img src="docs/screenshots/readme/home-phone.png" width="190" alt="Beranda: kelir diterangi lampu dengan film contoh dan satu tombol Ceritakan">
@@ -50,7 +50,7 @@ Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-
   <img src="docs/screenshots/readme/film-done-phone.png" width="190" alt="Film jadi, dengan Baca bersama dan kartu Kelir Live">
   <img src="docs/screenshots/readme/kelir-phone.png" width="190" alt="Kelir Live: wayang dari film siap dimainkan">
 </p>
-<p align="center"><sub>Tangkapan layar ini direkam sebelum go-live, dengan fake Meta API (gambar contohnya berlabel). Saya sedang merekam ulang dengan model live.</sub></p>
+<p align="center"><sub>Semua tangkapan layar ini diambil pada 6 Nov 2026 dari aplikasi yang berjalan di Meta Model API asli. Gambarnya hasil Muse Image, tidak ada yang dipalsukan.</sub></p>
 
 ## Tampilan dan suara baru (2 Nov)
 
@@ -83,7 +83,7 @@ Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-
 * Kalau server lambat menjawab (deploy baru bangun, restart), beranda bilang "belum menjawab, mencoba lagi" dan
   mencoba lagi sekitar 45 detik sebelum bilang servernya tidak jalan.
 * Kalau film gagal, cerita yang diketik tetap ada di kotak cerita, jadi Coba lagi tidak mulai dari halaman kosong.
-  Rekaman suara masih harus direkam ulang.
+  Sejak 6 Nov rekaman suara juga disimpan di perangkat sampai filmnya jadi, jadi bisa dikirim lagi tanpa merekam ulang.
 * Halaman galeri yang masih kosong sekarang dua bahasa seperti halaman lain.
 * Video demo direkam ulang di tampilan sekarang, dan proses encode demo menulis ke disk lokal dulu baru menyalin
   file jadinya, supaya filenya tidak pernah setengah jadi.
@@ -171,8 +171,9 @@ punya model text-to-speech. Muse Spark Open dan Muse Glimmer hanya tersedia lewa
 * Narasi: edge-tts / Kokoro (Meta belum punya model TTS).
 * `assets/sample-story/sample_story_synthetic.mp3`: suara sintetis (edge-tts, id-ID-GadisNeural, nada normal). Bukan
   suara anak dan bukan orang sungguhan.
-* Video demo dan tangkapan layar di `docs/`: direkam sebelum go-live dengan fake Meta API, gambar contohnya berlabel.
-  Sedang direkam ulang dengan model live.
+* Video demo, teaser, klip peluncuran dan tangkapan layar di `docs/`: direkam pada 6 Nov 2026 dengan Meta Model API
+  asli. Narator video demo adalah suara sintetis (Kokoro-82M), dan suara anak di 3 detik pertama adalah pengganti
+  sintetis yang diberi label.
 * Uji coba dengan keluarga dan tinjauan budaya oleh dalang belum dilakukan (`docs/USER_TESTING.md`: "Real sessions:
   0"). Karena itu situs tidak menampilkan testimoni apa pun.
 * Aplikasinya belum di-deploy, jadi belum ada tautan publik atau kode QR di repo. Sampai `PUBLIC_BASE_URL` diisi, QR

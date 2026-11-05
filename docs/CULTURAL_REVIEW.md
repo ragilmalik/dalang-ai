@@ -48,5 +48,5 @@ Reviewer: please tick each line, or write what should change.
 | May we name you as a reviewer? (yes / no) | |
 | Signature | |
 
-Status: **not reviewed yet**. Any reviewer quote in `content/testimonials.json` is a PLACEHOLDER until this form
-is filled in by a real reviewer.
+Status: **not reviewed yet**. The site and the submission quote no reviewer until this form is filled in by a real
+reviewer.

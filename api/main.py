@@ -459,7 +459,7 @@ async def job_events(jid: str, request: Request) -> StreamingResponse:
             await asyncio.sleep(0.4)
 
     return StreamingResponse(stream(), media_type="text/event-stream",
-                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+                             headers={"Cache-Control": "no-cache, no-transform", "X-Accel-Buffering": "no"})
 
 
 @app.get("/api/jobs/{jid}/puppets.pdf", tags=["films"], summary="Printable puppets (A4 PDF)")

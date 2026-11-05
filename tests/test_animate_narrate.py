@@ -112,6 +112,39 @@ def test_plan_scene_falls_back_on_invalid_plan(monkeypatch):
     assert animate.plan_scene(job, s, sc) == animate.fallback_plan(sc)
 
 
+def test_plan_scene_clamps_out_of_range_values_instead_of_dropping_the_plan(monkeypatch):
+    """Live Nov 6: Muse Wonder gave one keyframe an angle past 25 degrees and the whole plan was thrown away. Now
+    out-of-range numbers are pulled to the limit, the model's plan is kept, and the trace says what was clamped."""
+    from api import cost
+
+    s = script()
+    sc = s.scenes[0]
+    job = job_with_still(sc)
+    pid = sc.staging[0].id
+    raw = {"camera": {"zoom_from": 0.8, "zoom_to": 1.9, "pan_x": 0.0, "pan_y": 0.0}, "lamp_flicker": 1.7,
+           "puppets": [{"id": pid, "idle": "bob",
+                        "keyframes": [{"t": 0, "x": 0.2, "angle": 40}, {"t": 1.2, "x": 1.6, "lift": -0.9, "angle": -31}]}]}
+    monkeypatch.setattr(meta_client, "chat_json", lambda *a, **k: raw)
+    decisions: list[str] = []
+    monkeypatch.setattr(cost, "record_decision", lambda text, **k: decisions.append(text))
+    plan = animate.plan_scene(job, s, sc)
+    track = next(p for p in plan["puppets"] if p["id"] == pid)
+    assert track["idle"] == "bob"  # the model's plan, not the fallback
+    k0, k1 = track["keyframes"]
+    assert k0["angle"] == 25 and k1["angle"] == -25 and k1["t"] == 1.0 and k1["x"] == 1.3 and k1["lift"] == -0.4
+    assert plan["camera"]["zoom_from"] == 1.0 and plan["camera"]["zoom_to"] == 1.4 and plan["lamp_flicker"] == 1.0
+    assert any("8 motion value(s)" in d for d in decisions)
+    assert raw["puppets"][0]["keyframes"][0]["angle"] == 40  # the model's reply itself is not modified
+
+
+def test_clamp_motion_leaves_good_plans_and_bad_types_alone():
+    good = {"puppets": [{"id": "a", "keyframes": [{"t": 0.5, "x": 0.5, "angle": 10}]}]}
+    assert animate.clamp_motion(good) == (good, 0)
+    odd = {"puppets": [{"id": "a", "keyframes": [{"t": "soon", "x": True}]}], "camera": None}
+    assert animate.clamp_motion(odd)[1] == 0
+    assert animate.clamp_motion([1, 2]) == ([1, 2], 0)
+
+
 # ---------------------------------------------------------------- animate: run (rendering stubbed)
 @pytest.fixture
 def stubbed_engine(monkeypatch):

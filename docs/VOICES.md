@@ -34,7 +34,7 @@ stand-in recording sounded like a sped-up cartoon. So on Nov 2 I ran a shoot-out
 | Javanese narration | `jv-ID-SitiNeural` -8% (old) | 3.94 | can't judge | |
 | | **`jv-ID-SitiNeural` -4%, +4 Hz** | **3.96** | can't judge | same voice, small tweak |
 | | edge `en-US-AndrewMultilingualNeural` -6% | 4.05 | can't judge | risk of an Indonesian accent |
-| Child stand-in (MOCK) | `id-ID-GadisNeural` +35 Hz (old) | 2.52 | 2.8% | full story: 1.95, WER 10.7% |
+| Sample-story voice (synthetic) | `id-ID-GadisNeural` +35 Hz (old) | 2.52 | 2.8% | full story: 1.95, WER 10.7% |
 | | **edge `en-US-EmmaMultilingualNeural` +40 Hz** | **3.59** | **2.8%** | full story: 3.03, WER 8.9% |
 
 The WER on the demo lines is high for every voice because Whisper doesn't know "wayang kulit", "kelir",
@@ -54,8 +54,9 @@ Brian, Meta MMS-TTS), is in the shoot-out notes I kept outside the repo (`work/t
   around 100% WER), so I had no way to check whether the multilingual voices actually say the words right, and an
   English-Indonesian voice reading Javanese tends to sound Indonesian. The tweak is within noise on UTMOS; I kept
   it because it scored best of the five Siti settings I tried.
-* Child stand-in (`assets/sample-story/sample_story_synthetic.mp3`): edge `en-US-EmmaMultilingualNeural` at +40 Hz.
-  It's still a synthetic voice and still labelled MOCK everywhere.
+* Sample-story recording (`assets/sample-story/sample_story_synthetic.mp3`): I dropped the child-like pitch shift.
+  It is now edge `id-ID-GadisNeural` at its normal pitch, a synthetic sample voice made for this project, and it is
+  labelled that way everywhere (`scripts/make_sample_story.py`).
 * Demo video stand-in narrator (`scripts/make_demo_video.py`): Kokoro `af_heart` at speed 1.0, each sentence
   spoken separately with a 0.25 s pause between them. At 0.92 with a 0.35 s pause the cut came to 3:01, so I took
   the normal speed, which scored the same. With 1.0 and 0.25 s the plan is 2:57.8. `python scripts/make_demo_video.py --plan` prints how long each shot

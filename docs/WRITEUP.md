@@ -32,7 +32,7 @@ Five things make it the child's own:
   screen: drag, tilt, turn, tap the gunungan for the next scene. At the gara-gara a whole class can vote from their
   phones.
 
-> **[TESTIMONIAL SLOT, empty on purpose]** Add one or two REAL quotes here only after a family test or the cultural review (consent ticked, first name + city), i.e. entries in `content/testimonials.json` with `"placeholder": false`. Never paste a placeholder testimonial into a submission answer.
+No family sessions or cultural review have happened yet, so there are no quotes here.
 
 ## How Meta models are used
 See docs/SUBMISSION_FORM.md, Answer 9 (six Meta models plus two open-weight options: Muse Spark Open for
@@ -66,4 +66,4 @@ Real family tests with the kit in docs/USER_TESTING.md and a cultural review by 
 (Sundanese, Balinese) and wayang styles (wayang golek); a male dalang narration voice.
 
 ## Links
-Repo: https://github.com/ragilmalik/dalang-ai (once I create it) · Demo video: (my YouTube link) · Live app: (once it's hosted; the QR in the app points at the placeholder https://dalang-ai.example until then)
+Repo: https://github.com/ragilmalik/dalang-ai · Demo video: (my YouTube link) · Live app: (once it's hosted; until then the QR in the app points at whatever address you opened it on)

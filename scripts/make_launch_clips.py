@@ -1,7 +1,7 @@
 """Render three short 9:16 clips (15-30 s) with captions for the X launch, from the sample film.
 
     python scripts/make_launch_clips.py                      # uses data/demo/dalang_vertical.mp4 (demo_seed.py makes it)
-    python scripts/make_launch_clips.py path/to/vertical.mp4
+    python scripts/make_launch_clips.py path/to/vertical.mp4  # e.g. a live film: FAKE_META=0 ... jobs/<id>/dalang_vertical.mp4
 
 Writes docs/launch/clip1-hook.mp4, clip2-dalang-hands.mp4, clip3-dalang-cilik.mp4 and a matching .srt for each.
 While the film was made on the fake Meta API, every clip carries a small "placeholder art" label so nobody mistakes
@@ -55,8 +55,11 @@ def srt_time(t: float) -> str:
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
 
 
-def placeholder_art() -> bool:
-    meta = ROOT / "data" / "demo" / "job.json"
+def placeholder_art(src: Path | None = None) -> bool:
+    """True when the source film was made on the fake Meta API. For the default demo film this is read from
+    data/demo/job.json; a film passed on the command line (for example a live film's dalang_vertical.mp4 from a data
+    folder) is judged by the job.json beside it if there is one, otherwise by this server's FAKE_META setting."""
+    meta = (src.parent / "job.json") if src is not None else ROOT / "data" / "demo" / "job.json"
     if meta.exists():
         return bool(json.loads(meta.read_text()).get("offline", True))
     from api.config import settings
@@ -95,7 +98,7 @@ def main(argv: list[str]) -> int:
         print(f"{src} not found. Run: python scripts/demo_seed.py   (it makes the sample film)")
         return 1
     OUT.mkdir(parents=True, exist_ok=True)
-    label = placeholder_art()
+    label = placeholder_art(Path(argv[0]) if argv else None)
     for name, start, length, caps in CLIPS:
         out = render(src, name, start, length, caps, label)
         print(f"wrote {out.relative_to(ROOT)} ({probe(out):.1f} s)")

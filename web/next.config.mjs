@@ -45,7 +45,9 @@ const nextConfig = {
   },
   // NEXT_DIST_DIR lets a second build (another API_ORIGIN, e.g. a screenshot server) sit next to the default .next
   distDir: process.env.NEXT_DIST_DIR || ".next",
-  compress: false, // keeps Server-Sent Events streaming through the proxy
+  // gzip pages and JS on a self-hosted `next start`. The progress stream (/api/jobs/<id>/events) still streams: the API
+  // sends it with "Cache-Control: no-transform", which the compression middleware skips.
+  compress: true,
   async rewrites() {
     return [
       { source: "/api/:path*", destination: `${API}/api/:path*` },

@@ -103,8 +103,8 @@ SCRIPT = [
     ("film2", ""),  # the rewritten scenes, film sound only
     ("kelir", "Then the child takes the puppets. In Kelir Live they're on a lamp-lit screen. Drag them, tilt them, "
               "tap the gunungan for the next scene."),
-    ("why", "Wayang is a thousand years old, but most kids around Semarang have never sat in front of a kelir. "
-            "With Dalang AI, every child gets to be the dalang."),
+    ("why", "Wayang kulit is a thousand years old. With Dalang AI, any child can sit behind the kelir "
+            "and be the dalang."),
     ("landing", "Any child can tell a story in Indonesian, Javanese or English. Tap a story starter, or just talk. "
                 "Nothing to type."),
     ("progress", "Six Meta models work as one troupe, and you can watch them on stage. Muse Voice Transcribe listens, "
@@ -608,6 +608,21 @@ def silence(seconds: float, out: Path) -> Path:
     return out
 
 
+def gamelan_bed(seconds: float, out: Path, seed: int = 0) -> Path:
+    """A soft gamelan bed (the app's own procedural gamelan, calm mood) under the app screen shots, so the demo has no
+    dead air where the voice-over pauses (the Kelir Live and close shots run longer than their lines)."""
+    sys.path.insert(0, str(ROOT))
+    from api.pipeline import gamelan
+
+    raw = out.with_suffix(".gamelan.wav")
+    raw.write_bytes(gamelan.wav_bytes(gamelan.render("calm", seconds + 0.5, seed=seed)))
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(raw), "-af",
+                    f"apad,atrim=0:{seconds:.2f},afade=t=in:d=0.4,afade=t=out:st={max(0.0, seconds - 0.6):.2f}:d=0.6",
+                    "-ar", "48000", "-ac", "2", str(out)], check=True)
+    raw.unlink(missing_ok=True)  # scratch file inside the run's own temp folder
+    return out
+
+
 def voice_hook(seconds: float, out_v: Path, out_a: Path, labelled: bool) -> None:
     """0:00-0:03: the child's voice over black with its waveform (the stand-in recording is labelled as such)."""
     label = "Stand-in voice (synthetic sample). A real recording of a child goes here." if labelled else ""
@@ -657,9 +672,12 @@ def end_card() -> Path:
 
     im = Image.open(card).convert("RGB")
     d = ImageDraw.Draw(im)
-    lines = ["Muse Voice Transcribe · Muse Spark 1.2 · Muse Spark 1.3 · Muse Image · SAM 3.1 · Muse Wonder",
-             ("Live app: " + qr.base_url().split("://", 1)[-1]) if not qr.is_placeholder() else
-             "Live app link: added after deploy (PLACEHOLDER)", "MIT licensed · github.com/ragilmalik/dalang-ai (planned)"]
+    # The repo is public (github.com/ragilmalik/dalang-ai). A live-app line appears only once PUBLIC_BASE_URL is a
+    # real deployment; with no deployment the card simply says nothing about one (no placeholder text on screen).
+    lines = ["Muse Voice Transcribe · Muse Spark 1.2 · Muse Spark 1.3 · Muse Image · SAM 3.1 · Muse Wonder"]
+    if not qr.is_placeholder():
+        lines.append("Live app: " + qr.base_url().split("://", 1)[-1])
+    lines.append("Open source, MIT licensed · github.com/ragilmalik/dalang-ai")
     f = font(28)
     for k, text in enumerate(lines):  # below the subtitle (H-455), above the caption area (bottom 290 px)
         w = d.textlength(text, font=f)
@@ -902,7 +920,12 @@ def main() -> None:
             a, b = spans[key]
             cut(rec, a, b, secs, vid)
         real_secs = probe_seconds(vid)  # the clip's real length keeps voice and captions locked to the picture
-        mix(silence(real_secs, bed), vo, real_secs, aud)
+        # quiet gamelan under the app shots (GAMELAN_BED_VOLUME, 0 = silence as before)
+        bed_vol = float(os.environ.get("GAMELAN_BED_VOLUME", "0.28"))
+        if bed_vol > 0:
+            mix(gamelan_bed(real_secs, bed, seed=len(pieces)), vo, real_secs, aud, bed_volume=bed_vol)
+        else:
+            mix(silence(real_secs, bed), vo, real_secs, aud)
         pieces.append((vid, aud, real_secs, line))
 
     # captions (SRT) from the voice-over lines; over the film they sit at the top (the film burns in its own)

@@ -6,7 +6,7 @@ phone (390x844) and a desktop (1280x800) screen; collapsible sections (the agent
 Automated rules find about a third of real accessibility problems; a manual screen-reader pass is still
 worth doing.
 
-Run: 2026-11-04 08:23 WIB
+Run: 2026-11-06 03:20 WIB
 
 | Page | Screen | Rules passed | Critical | Serious | Moderate | Minor |
 |---|---|---|---|---|---|---|

@@ -52,6 +52,8 @@ def test_event_stream_for_a_finished_film_sends_one_state_and_ends():
     job = carved_job("done")
     with client.stream("GET", f"/api/jobs/{job.id}/events") as r:
         assert r.headers["content-type"].startswith("text/event-stream")
+        # no-transform: next start gzips responses (next.config.mjs compress: true) but must leave the stream alone
+        assert "no-transform" in r.headers["cache-control"] and "content-encoding" not in r.headers
         lines = [ln for ln in r.iter_lines() if ln.startswith("data: ")]
     assert len(lines) == 1 and json.loads(lines[0][6:])["status"] == "done"
 

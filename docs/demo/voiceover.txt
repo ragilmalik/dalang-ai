@@ -17,7 +17,7 @@ Then the gara-gara. The show pauses and the whole class votes on their phones fo
 Then the child takes the puppets. In Kelir Live they're on a lamp-lit screen. Drag them, tilt them, tap the gunungan for the next scene.
 
 [why]
-Wayang is a thousand years old, but most kids around Semarang have never sat in front of a kelir. With Dalang AI, every child gets to be the dalang.
+Wayang kulit is a thousand years old. With Dalang AI, any child can sit behind the kelir and be the dalang.
 (Malik, first person: I'm Malik, from Semarang. Wayang is a thousand years old, but the kids around me have never sat in front of a kelir. So I built Dalang AI.)
 
 [landing]

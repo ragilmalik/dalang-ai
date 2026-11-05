@@ -22,9 +22,12 @@ To check, open a terminal (Windows: press Start, type `cmd`, Enter) and type `py
 The first start installs everything and takes 3 to 6 minutes. Later starts take seconds. When you see
 `Ready` and `http://localhost:3000`, open that address in your browser. Keep the black window open while you use the app.
 
-You are now in **demo mode**: the home page says "Mode demo · Demo mode" under the buttons. The whole app works, but the pictures are simple placeholders because no Meta key has been added yet.
+Before you add a Meta key, the home page says "No Meta key on this server yet" under the buttons. The three sample
+films play, but new films can't be made: the server refuses them and says why. To try every screen
+without a key, set `FAKE_META=true` in `.env` and start again. That is test mode: the built-in fake Meta API answers,
+and every picture is simple placeholder art, labelled as such.
 
-## 4. Make a film (demo mode)
+## 4. Make a film (test mode or live)
 
 1. Press **Ceritakan · Tell a story**. Choose the story language: **Bahasa Indonesia**, **Basa Jawa** or **English**.
 2. Press the big gold microphone, allow the microphone, tell a story, press it again to stop. (Or use **Unggah** to upload a recording, **Ketik** to type, or tap one of the story starter cards.)

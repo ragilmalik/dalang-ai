@@ -68,11 +68,14 @@ the response) and, inside a film's worker thread, the film id. Stage ends are lo
 and the code logs ids, stages, models, timings and status codes, not story text or recordings.
 
 A family never sees a stack trace: `api/errors.py` maps failures to a short bilingual message, unhandled errors on a
-request get a 500 with a kind message and the request id, and a film that fails keeps the typed story for a retry.
+request get a 500 with a kind message and the request id, and a film that fails keeps the typed story or the recording for a retry.
 
 ## Storage and privacy
 
 * Recordings are deleted after transcription (or once the film is made, when the child's own voice narrates).
+* The browser keeps its own copy of the recording (IndexedDB, `web/lib/draft.ts`) only until the film is done, at most
+  6 hours, so a film that failed can be sent again without telling the story again. Typed stories stay in the tab the
+  same way (sessionStorage).
 * Films are private until the family shares them. Old private films can be cleaned up (`CLEANUP_DAYS`).
 * `STORAGE_BACKEND=r2` publishes finished MP4s to Cloudflare R2; the default keeps them on local disk.
 * `/media` never serves recordings, JSON or the database.

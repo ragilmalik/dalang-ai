@@ -31,6 +31,8 @@ from api import qr  # noqa: E402
 
 DOCS = ROOT / "docs"
 DEMO_DATA = ROOT / "data" / "demo"
+# the Kancil sample film made with the live Meta models (Nov 5), shipped in the repo; the demo seed is the fallback
+LIVE_SAMPLE = ROOT / "content" / "samples" / "kancil-id"
 
 
 def probe(p: Path) -> float:
@@ -81,7 +83,7 @@ def sample_pdf(out: Path) -> bool:
 UI_SHOTS = ("home-phone", "home-desktop", "film-working-phone", "film-done-phone", "film-gara-phone", "kelir-phone",
             "vote-phone", "pentas-desktop", "watch-phone", "kotak-phone", "judge-desktop")
 # Older captures that show something the full pages don't (the printable puppet PDF, the agent trace opened)
-EARLIER_SHOTS = ("9-puppets-pdf.png", "10-agent-trace.png")
+EARLIER_SHOTS = ("9-puppets-pdf.png", "10-agent-trace.png")  # kept the name; since Nov 6 these are live captures
 WIN_KIT = ROOT.parent / "deliverables" / "win-kit"
 
 
@@ -92,22 +94,22 @@ def readme(mins: str, art_fake: bool, ph: int, size: str = "1920x1080", teasers:
     link = ("Live link: not deployed yet, so there is no QR in this kit (set PUBLIC_BASE_URL and rebuild).\n"
             if qr.is_placeholder() else f"QR / live link: {qr.base_url()} (2-images/qr.png)\n")
     return f"""DALANG AI - SUBMISSION KIT (Meta Global AI Developer Hackathon, Cerebral Valley)
-Deadline: Wed Nov 4, 9:00 PM ET = Thu Nov 5, 09:00 WIB (my target: Wed Nov 4, 18:00 WIB). You submit it yourself.
+Official deadline: Wed Nov 4, 9:00 PM ET = Thu Nov 5, 09:00 WIB (passed). Check Cerebral Valley for what can still change.
 
 {art}{link}
 1-video/          dalang-ai-demo.mp4 ({mins}, {size}, captions burned in, recorded on the current site, Kokoro voice-over) + .srt/.vtt captions, YouTube thumbnail,
                   teasers (16:9 {teasers}): teaser_60s.mp4 and teaser_vertical.mp4, cut from the same render,
                   STORYBOARD.md + storyboard.jpg (one still per shot), voiceover.txt, DEMO_SCRIPT.md, timeline.json.
                   Upload the mp4 to YouTube (unlisted is fine) and paste the link in the form.
-                  The "tell" shot uploads assets/sample-story/sample_story_synthetic.mp3, a SYNTHETIC child-style voice
-                  (not a real child). Swap in a real recording: python scripts/go_live.py --audio real_story.m4a
+                  The "tell" shot uploads assets/sample-story/sample_story_synthetic.mp3, a SYNTHETIC sample voice
+                  (normal pitch; not a child, not a real person). Swap in a real recording: python scripts/go_live.py --audio real_story.m4a
 2-images/         screenshots/top/ = the first screen of each main page on the current site (phone 390 px at 2x, desktop
                   1440 px): home, pipeline theatre, finished film, gara-gara, Kelir Live, classroom vote, watch, Pentas,
                   storyboard and the Penjaga Budaya / receipt panel. Best for the form and for X.
                   screenshots/full-page/ = the same pages as full-length captures (plus Kotak Wayang and judge mode).
-                  screenshots/earlier-design/ = the printable puppet PDF and the agent trace opened (before the Nov 2
-                  redesign; the content is the same). Plus demo.gif, poster.jpg (share card), architecture.png (and qr.png once deployed).
-3-sample-films/   The sample film in 16:9 and 9:16 (the 9:16 one is for X), its poster, and the printable puppets PDF.
+                  screenshots/more/ = the printable puppet PDF and the agent trace opened (live models, Nov 6). Plus demo.gif, poster.jpg (share card), architecture.png (and qr.png once deployed).
+3-sample-films/   The Kancil sample film (a story I wrote for the project, made with the live Meta models on Nov 5) in
+                  16:9 and 9:16 (the 9:16 one is for X), its poster, and the printable puppets PDF.
 4-text/           SUBMISSION_FORM.md = every form field with paste-ready answers. SUBMISSION.md = title, tagline,
                   description. WRITEUP.md = longer write-up. META_MODELS.md = how the Meta models are used. SUBMISSION_CHECKLIST.md and MALIK_CHECKLIST.md = steps.
                   USER_TESTING.md and CULTURAL_REVIEW.md = family-testing and cultural-review kits (no real sessions
@@ -144,7 +146,7 @@ def main(argv: list[str] | None = None) -> int:
     for name in UI_SHOTS:
         copy(shots / "ui" / "after" / f"{name}.png", i / "screenshots" / "full-page" / f"{name}.png", missing)
     for name in EARLIER_SHOTS:
-        copy(shots / name, i / "screenshots" / "earlier-design" / name, missing)
+        copy(shots / name, i / "screenshots" / "more" / name, missing)
     for name in ("demo.gif", "poster.jpg"):
         copy(shots / name, i / name, missing)
     copy(DOCS / "architecture.png", i / "architecture.png", missing)
@@ -152,9 +154,10 @@ def main(argv: list[str] | None = None) -> int:
         qr.save(qr.app_url(), i / "qr.png")
 
     f = out / "3-sample-films"
-    copy(DEMO_DATA / "dalang_landscape.mp4", f / "kancil-16x9.mp4", missing)
-    copy(DEMO_DATA / "dalang_vertical.mp4", f / "kancil-9x16-for-X.mp4", missing)
-    copy(DEMO_DATA / "poster.jpg", f / "kancil-poster.jpg", missing)
+    films = LIVE_SAMPLE if (LIVE_SAMPLE / "dalang_landscape.mp4").exists() else DEMO_DATA
+    copy(films / "dalang_landscape.mp4", f / "kancil-16x9.mp4", missing)
+    copy(films / "dalang_vertical.mp4", f / "kancil-9x16-for-X.mp4", missing)
+    copy(films / "poster.jpg", f / "kancil-poster.jpg", missing)
     if not sample_pdf(f / "kancil-puppets-to-print.pdf"):
         missing.append("printable puppets PDF (run scripts/demo_seed.py first)")
 

@@ -107,7 +107,7 @@ def _back_inner(job: Job) -> None:
     forget_recording(job)  # privacy: the child's own recording is deleted as soon as the film is made
     urls = {k: storage.publish(job, v) for k, v in vids.items()}
     poster = job.dir / "poster.jpg"
-    job.set(status="done", videos=urls, poster=job.url(poster) if poster.exists() else None)
+    job.set(status="done", videos=urls, poster=job.url(poster) if poster.exists() else None, **cost.final_fields(job.s))
 
 
 @_guarded
@@ -295,7 +295,7 @@ def replay_demo(job: Job, reason: str) -> bool:
     if (DEMO_DIR / "poster.jpg").exists():
         shutil.copyfile(DEMO_DIR / "poster.jpg", job.dir / "poster.jpg")
     meta = json.loads((DEMO_DIR / "job.json").read_text()) if (DEMO_DIR / "job.json").exists() else {}
-    job.set(status="done", videos=urls, poster=job.url(job.dir / "poster.jpg"), demo_replay=True,
+    job.set(status="done", videos=urls, poster=job.url(job.dir / "poster.jpg"), demo_replay=True, **cost.final_fields(job.s),
             title=meta.get("title", job.s.get("title")), script=job.s.get("script") or meta.get("script"),
             message=f"{reason} \u00b7 Jadi ini film yang dibuat sebelumnya. \u00b7 So this is a film made earlier.")
     return True

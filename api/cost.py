@@ -209,6 +209,18 @@ def role_of(model: str) -> str:
     return next((v for k, v in ROLES.items() if k in low), "")
 
 
+def final_fields(state: dict[str, Any]) -> dict[str, Any]:
+    """Cost, trace and receipt from the running meter, to be saved in the SAME update that sets status "done", so
+    a client that sees "done" never reads a film without its trace or receipt. Empty when no meter is running."""
+    m = current()
+    if not m:
+        return {}
+    out: dict[str, Any] = {"cost_usd": round(m.spent, 4), "cost_items": {k: round(v, 5) for k, v in m.items.items()},
+                           "trace": list(m.trace), "trace_summary": summary(m.trace, m.items), "tokens": m.tokens}
+    out["receipt"] = receipt({**state, **out})
+    return out
+
+
 def receipt(state: dict[str, Any]) -> dict[str, Any]:
     """The film's "Meta models used" receipt: per model its job, calls, tokens, images and estimated cost.
     Cost is an estimate from the published per-token / per-image prices (PRICES_PER_M etc. above)."""

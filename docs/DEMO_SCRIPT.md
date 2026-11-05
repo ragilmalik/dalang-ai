@@ -1,7 +1,7 @@
 # 3-minute demo video: script and shot list
 
-There's a finished cut already: `docs/demo/dalang-ai-demo.mp4` (<!-- facts:demo_length -->2:58<!-- /facts -->, 1920x1080, voice-over + captions, loudness -16.8 LUFS). I re-recorded it on Nov 4
-on the current site, with the voice-over read by Kokoro-82M `af_heart` (see [VOICES.md](VOICES.md)). It's rendered
+There's a finished cut already: `docs/demo/dalang-ai-demo.mp4` (<!-- facts:demo_length -->2:57<!-- /facts -->, 1920x1080, voice-over + captions, loudness -16.7 LUFS). I re-recorded it on Nov 6
+on the live Meta Model API, with the voice-over read by Kokoro-82M `af_heart` (see [VOICES.md](VOICES.md)). It's rendered
 from a real browser session of the working app by `python scripts/make_demo_video.py <web url>` (in one go on the
 fake API with `bash scripts/demo_local.sh`, or as part of `python scripts/go_live.py`). The shot list with stills is
 `docs/demo/STORYBOARD.md` and the voice-over text is `docs/demo/voiceover.txt`. Two cuts for X come from the same render and open on Kelir Live:
@@ -9,8 +9,9 @@ fake API with `bash scripts/demo_local.sh`, or as part of `python scripts/go_liv
 close card) and `docs/demo/teaser_vertical.mp4` (9:16: Kelir Live recorded on a phone-sized screen, then the vertical
 film and an end card).
 
-It was recorded on the fake Meta API, so the puppets are placeholder art (labelled in the app, the film and the
-teasers). The first 3 s use `assets/sample-story/sample_story_synthetic.mp3`, a synthetic stand-in voice that's labelled
+It was recorded on the live Meta Model API (the art is Muse Image output, the motion plans come from Muse Wonder, the
+cut-outs from SAM 3.1), with a quiet gamelan bed from the app's own procedural gamelan under the app shots. The
+narrator is a synthetic voice, not me. The first 3 s use `assets/sample-story/sample_story_synthetic.mp3`, a synthetic stand-in voice that's labelled
 on screen (not a real child). The three classroom "phones" in the vote shot are API calls made by the recording
 script, not real people.
 
@@ -20,7 +21,7 @@ Live (the child drags a puppet across the lamp-lit screen, turns another, taps t
 side) -> why (Semarang, every child a dalang) -> home hero + one-tap Story Starter -> pipeline theatre (six models as
 a wayang troupe; Dalang Director and gamelan named) -> Penjaga Budaya + receipt + agent trace -> player with
 read-along, share to Pentas, sticker pack + GIF -> print puppets + storybook -> end card (tagline, model list, link
-text; a QR only once a real link exists). To make it fit I cut two shots from v2, the storyboard (parents in control)
+text and the public repo; a QR only once a real link exists). To make it fit I cut two shots from v2, the storyboard (parents in control)
 and the Kotak Wayang moment. The close card now holds 2.5 s with no caption over its lines.
 
 My own footage and voice: put phone clips A-E and per-shot voice-over files in `docs/demo/real/` (file names are in

@@ -13,8 +13,8 @@ night to fix a broken link.
 | 4 | Which problem statement did you build towards? | yes | radio | **Build for Your World** |
 | 5 | If you're competing for the Most Viral Track, please submit your X post link here | no | URL | My X post URL (post it first, see the X section of SUBMISSION.md) |
 | 6 | Project Description | yes | long text | Paste **Answer 6** below |
-| 7 | Public GitHub Repository | yes | URL | `https://github.com/ragilmalik/dalang-ai` (planned name; it only exists once I create and push it) |
-| 8 | 3-Minute Demo Video | yes | URL (not an upload) | YouTube (unlisted is fine) or Loom link to `docs/demo/dalang-ai-demo.mp4` (under 3:00; the current cut was recorded on the fake Meta API with labelled placeholder art and is being re-recorded on the live models) |
+| 7 | Public GitHub Repository | yes | URL | `https://github.com/ragilmalik/dalang-ai` (public, MIT) |
+| 8 | 3-Minute Demo Video | yes | URL (not an upload) | YouTube (unlisted is fine) or Loom link to `docs/demo/dalang-ai-demo.mp4` (under 3:00; recorded on Nov 6 on the live Meta models; the narrator is a synthetic voice) |
 | 9 | Describe your use of Meta products to build the submitted project | yes | long text | Paste **Answer 9** |
 | 10 | Why are Meta's models important to your solution? | yes | long text | Paste **Answer 10** |
 | 11 | Provide feedback from your experience using partner technologies | no | text | Only if I really used Baseten (Muse Spark Open) or Together AI (Muse Glimmer) live. Otherwise leave it empty |
@@ -64,7 +64,7 @@ project, labelled as samples) were made with it on Nov 5: 91 Meta calls, none fa
 narration is Kokoro-82M (English) and edge-tts, picked in a listening test.
 
 Stack: FastAPI + Python pipeline, Pillow/NumPy kelir renderer, ffmpeg, SQLite, SSE; Next.js + Tailwind. MIT
-licensed, <!-- facts:tests -->520<!-- /facts --> automated tests (<!-- facts:coverage -->96%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
+licensed, <!-- facts:tests -->531<!-- /facts --> automated tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
 
 
 ## Answer 9: Describe your use of Meta products
@@ -114,7 +114,7 @@ its own hardware.
 All of it, from an empty repository: the FastAPI backend and nine-stage agent pipeline; the Meta client, SAM
 mask handling, verify (redraw) agent and Muse Wonder motion planner; the kelir animation engine (keyframes, lamp
 flicker, shadows, gunungan transitions, captions, gamelan bed); Gara-gara branching, own-voice narration, Kotak
-Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->520<!-- /facts --> tests and CI; the
+Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->531<!-- /facts --> tests and CI; the
 Next.js app and its design system (recording, live progress, storyboard review, player, Kelir Live, classroom vote,
 share cards, gallery, agent trace); the narrator voice picker; and all the
 docs in English and Bahasa Indonesia. The git history starts Oct 29, 2026 UTC. No code, art or models from before the

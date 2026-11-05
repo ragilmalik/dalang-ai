@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const STEPS: [string, string][] = [
   ["0-10 s", "Watch the film below: a child's story performed as wayang kulit (gunungan, Kocap kacarita opening, captions, gamelan). Turn on Read along."],
-  ["10-25 s", "Open “Penjaga Budaya” and the consistency score: a Muse Spark agent checked every scene against my cultural rules before anything was drawn, and SAM 3.1 cut-outs keep each puppet identical in every scene."],
+  ["10-25 s", "Open “Penjaga Budaya” and the consistency score: a Muse Spark agent checked every scene against the cultural rules built into the app before anything was drawn, and SAM 3.1 cut-outs keep each puppet identical in every scene."],
   ["25-40 s", "Read the Meta models receipt: every model, what it did, calls, tokens and the estimated cost of this one film."],
   ["40-55 s", "Open “Di balik kelir · Behind the screen”: every Meta call and agent decision, including the checker rejecting a picture and the redraw that passed."],
   ["55-60 s", "Make your own: go home, tap a Story Starter (Kancil, Timun Mas…), press Make my wayang. Or try Gara-gara mode."],

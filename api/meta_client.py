@@ -39,6 +39,11 @@ class MetaAPIError(RuntimeError):
     pass
 
 
+class EmptyReplyError(MetaAPIError, ValueError):
+    """A model answered with no content even after the low-reasoning retry. A ValueError too, so the stages that
+    retry or fall back on an unusable reply (lakon, gara-gara, remix) treat it like bad JSON."""
+
+
 _clients: dict[Any, httpx.Client] = {}
 
 
@@ -327,7 +332,7 @@ def chat_json(messages: list[dict[str, Any]], schema: dict[str, Any], schema_nam
             cost.charge_tokens(model, j.get("usage"))
         content = j["choices"][0]["message"].get("content") or ""
     if not content.strip():
-        raise MetaAPIError(f"{model or settings.open_model} returned no content "
+        raise EmptyReplyError(f"{model or settings.open_model} returned no content "
                            f"(finish_reason {j['choices'][0].get('finish_reason')})")
     return _extract_json(content)
 

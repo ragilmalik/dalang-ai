@@ -22,7 +22,7 @@ import Button, { buttonClass } from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 import Gunungan from "@/components/ui/Gunungan";
 import { useToast } from "@/components/ui/Toast";
-import { clearDraft, readDraft } from "@/lib/draft";
+import { clearDraft, readDraft, readRecording } from "@/lib/draft";
 
 const ICON: Record<string, string> = { pending: "○", running: "◐", done: "✓", skipped: "–", failed: "✕" };
 const STAGE_TONE: Record<string, string> = {
@@ -207,11 +207,7 @@ export default function FilmPage({ params }: { params: Promise<{ id: string }> }
           <Icon name="alert" className="mx-auto h-10 w-10 text-err" />
           <p className="t-h3">Maaf, ada masalah · Sorry, something went wrong:</p>
           <p className="text-sm text-muted">{job.error}</p>
-          {readDraft() && (
-            <p className="text-sm">
-              <Bi id="Ceritamu masih tersimpan di kotak cerita" en="Your story is still in the story box" />
-            </p>
-          )}
+          <KeptStory />
           <Link href="/" className={buttonClass("primary", "md", "mt-2")}>
             Coba lagi · Try again
           </Link>
@@ -220,6 +216,29 @@ export default function FilmPage({ params }: { params: Promise<{ id: string }> }
 
       {job.status === "done" && <Player job={job} act={act} busy={busy} />}
     </div>
+  );
+}
+
+/** After a failed film: say the story is still there (typed text in this tab, or the recording on this device). */
+function KeptStory() {
+  const [kept, setKept] = useState<"text" | "recording" | null>(null);
+  useEffect(() => {
+    let stop = false;
+    if (readDraft()) Promise.resolve().then(() => !stop && setKept("text"));
+    else readRecording().then((r) => !stop && r && setKept("recording"));
+    return () => {
+      stop = true;
+    };
+  }, []);
+  if (!kept) return null;
+  return (
+    <p className="text-sm" data-testid="kept-story">
+      {kept === "text" ? (
+        <Bi id="Ceritamu masih tersimpan di kotak cerita" en="Your story is still in the story box" />
+      ) : (
+        <Bi id="Rekamanmu masih tersimpan di perangkat ini, tidak perlu merekam ulang" en="Your recording is still on this device, no need to record it again" />
+      )}
+    </p>
   );
 }
 

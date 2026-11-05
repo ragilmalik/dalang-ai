@@ -73,6 +73,37 @@ Everything I spent on the live API on Nov 5, preflight, checks and films togethe
 * **Rendering**: ffmpeg's MP4 trailer write failed with an Input/output error on my sandbox's network filesystem.
   `ENCODE_DIR` encodes on a local disk and moves the finished file.
 
+## Media re-recorded on the live API (Nov 6, 2026)
+
+The app ran live on my machine (`work/live/RUN_LIVE.sh`: key from the environment only, `MAX_USD_TOTAL=14`) and
+everything judges see was recorded from it, 01:00-03:00 WIB:
+
+| What | Result |
+|---|---|
+| Demo video `docs/demo/dalang-ai-demo.mp4` | 176.6 s (2:57), 1920x1080 H.264 + AAC, -16.7 LUFS, 13 shots, no silent gap longer than 1.5 s. Recorded from a real browser session of the live app; the film in it (`oHb6vrNE`, Kancil, Bahasa Indonesia, gara-gara on) was made by the live models while the camera ran |
+| Teasers | `teaser_60s.mp4` 60.0 s 1920x1080, `teaser_vertical.mp4` 42.0 s 1080x1920 |
+| X launch clips | `docs/launch/clip1-3`, 22.0, 20.0 and 18.0 s, from the same live film, no placeholder label |
+| Thumbnail | `docs/demo/thumbnail.jpg`, 1280x720, a scene still from the live film |
+| Screenshots | 28 full pages (`docs/screenshots/ui/after/`, 390 px phone and 1440 px desktop), the README crops, the agent trace, Kotak Wayang and the printable puppet, all from live films (`oHb6vrNE` done, `zrKl8cwB` at the gara-gara question, `yIJIENvN` at the storyboard, `ffTGxca3` caught while being made) |
+| Spend | $1.387 before, $2.527 after: about $1.14 for four live films (one of them stopped at the storyboard and one at the gara-gara question) |
+
+What the narrator is: a synthetic voice (Kokoro-82M `af_heart`), labelled as a stand-in in the docs. The child's
+voice in the first 3 s is a labelled synthetic stand-in. The three classroom "phones" in the vote shot are API calls
+from the recording script.
+
+What I checked by eye: every 5 s of the demo as a contact sheet, every 4 s of both teasers and all three clips, and
+all 28 screenshots. Two things I fixed on the way:
+- The close card still said "Live app link: added after deploy (PLACEHOLDER)" and "github.com/ragilmalik/dalang-ai
+  (planned)". It now names the public repo, and shows a live-app line only once one exists (new test).
+- The Kelir Live and close shots had up to 9 s of total silence where the voice-over pauses. The app shots now sit on
+  a quiet bed from the app's own procedural gamelan (`GAMELAN_BED_VOLUME`, default 0.28; new test).
+
+A real bug the live trace showed: in film `oHb6vrNE`, Muse Wonder's plan for scene 5 had one keyframe angle just past
+the 25 degree limit, and the strict schema threw the whole plan away for a rule-based glide. `animate.clamp_motion`
+now pulls out-of-range numbers to the nearest allowed value, keeps the model's plan and records how many values it
+clamped in the trace (two new tests). The screenshot of that film's trace still shows the old fallback line, because
+that's what happened when it was made.
+
 ## Request shapes checked against Meta's docs (Oct 30, 2026)
 
 Every endpoint, model id and request field used by `api/meta_client.py` was checked against Meta's

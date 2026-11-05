@@ -4,14 +4,14 @@
 
 | Check | Result |
 |---|---|
-| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->520<!-- /facts --> tests pass, <!-- facts:coverage -->96%<!-- /facts --> line coverage of `api/` |
-| Full-stack e2e (`bash scripts/e2e_local.sh`) | <!-- facts:e2e -->27/27<!-- /facts --> steps |
+| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->531<!-- /facts --> tests pass, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` |
+| Full-stack e2e (`bash scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps |
 | Browser checks of the newest screens (`web/e2e/r5_ui.py`, 390 px phone) | 25/25 |
 | axe-core audit (`bash scripts/a11y_local.sh`) | <!-- facts:a11y -->22<!-- /facts --> page checks, 0 violations ([ACCESSIBILITY.md](ACCESSIBILITY.md)) |
 | Home page largest paint (`web/e2e/r5_perf.py`, local production build) | under the 1.5 s target: 680 ms on Nov 4 (shared machine), 452 ms on Nov 3, 1108 ms on Nov 2 ([WEB_PERF_R5.md](WEB_PERF_R5.md)) |
 | Nov 3 after-checks (headers, titles, noindex, console, mic message, offline page, odd upload, one Sembah) | 21/21 |
 | Nov 4 after-checks (judge page, API docs link, missing film, home retry, kept story, gallery empty state) | 12/12 |
-| Demo video | <!-- facts:demo_length -->2:58<!-- /facts -->, 1920x1080, -16.8 LUFS, re-recorded on Nov 4 on the current site |
+| Demo video | <!-- facts:demo_length -->2:57<!-- /facts -->, 1920x1080, -16.7 LUFS, re-recorded on Nov 6 on the live Meta Model API |
 
 The sections below are the dated runs, oldest first.
 
@@ -210,9 +210,9 @@ slow 3G) and fixed what a family or a judge would hit: raw recordings could be f
 the film id, a forged `X-Forwarded-For: 127.0.0.1` skipped the hourly limit, uploads were read whole before the size
 check, there were no security headers, Sembah could be counted any number of times, the microphone stayed on after
 leaving the page, offline pages showed the browser's error, the film page polled forever, and puppet rods ran through
-the captions. After the fixes: pytest <!-- facts:tests -->520<!-- /facts --> tests (one SSE test timed out waiting
+the captions. After the fixes: pytest <!-- facts:tests -->531<!-- /facts --> tests (one SSE test timed out waiting
 for its server under parallel workers and passes alone; its wait was raised in ad37e64), coverage
-<!-- facts:coverage -->96%<!-- /facts -->, e2e 26/26, the phone browser checks 25/25, axe 0 violations on 22 page
+<!-- facts:coverage -->95%<!-- /facts -->, e2e 26/26, the phone browser checks 25/25, axe 0 violations on 22 page
 checks, and 21/21 after-checks for the fixes themselves. Two findings are left as they are: the hourly limit still
 trusts the first forwarded address (the films-in-progress cap and the spend caps still bound it), and the home page is
 725 KB on first load.
@@ -221,8 +221,8 @@ Later the same day the re-shot screenshots caught a film whose "Painting the sce
 and a server path. Two films with the same story were writing and reading one cached picture at the same moment, and
 one copied it half-written. Cached pictures are now written to a temp file and swapped in, one film at a time per
 cached picture, and a damaged entry is repainted. A failed film now shows a kind bilingual message and never the raw
-error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->520<!-- /facts --> tests, all
-passing, coverage <!-- facts:coverage -->96%<!-- /facts -->, and every page was re-shot.
+error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->531<!-- /facts --> tests, all
+passing, coverage <!-- facts:coverage -->95%<!-- /facts -->, and every page was re-shot.
 
 ## 2026-11-04 (submission day)
 
@@ -237,10 +237,10 @@ After the fixes:
 
 | Check | Result |
 |---|---|
-| pytest (full suite, 2 workers) | <!-- facts:tests -->520<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->96%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
+| pytest (full suite, 2 workers) | <!-- facts:tests -->531<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
 | ruff, mypy (67 files) | 0, 0 |
 | eslint, tsc, `next build` | 0, 0, OK |
-| Full-stack e2e (`scripts/e2e_local.sh`) | <!-- facts:e2e -->27/27<!-- /facts --> steps (new step: the judge page's API docs link works through the website), web checks 25/25 |
+| Full-stack e2e (`scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps (new step: the judge page's API docs link works through the website), web checks 25/25 |
 | axe-core (`scripts/a11y_local.sh`) | <!-- facts:a11y -->22<!-- /facts --> page checks, 0 violations |
 | Nov 4 fixes checked in a browser | 12/12 |
 | `go_live.py --preflight --dry-run` | 6/6 models answer on the fake API, $0 |
@@ -249,6 +249,38 @@ After the fixes:
 The home LCP is higher than Nov 3's 452 ms with the same home bundle. This run shared the machine with the demo video
 encode and other jobs, so I put the difference down to machine load. It's still under the 1.5 s target.
 
-Two small things are left open: a self-hosted `next start` sends JavaScript uncompressed (compression stays off so
-the live progress stream isn't buffered; Vercel compresses at its edge), and a failed voice recording still has to be
-recorded again (a typed story is kept).
+Two small things were left open on Nov 4 and are fixed on Nov 6: a self-hosted `next start` now gzips its JavaScript
+(the progress stream opts out with `Cache-Control: no-transform`, so it still streams), and a recording sent for a
+film that failed stays on the device until a film is done, so the family can send it again without re-recording.
+
+## 2026-11-06 (final checks)
+
+All on the fake Meta API, no live calls.
+
+| Check | Result |
+|---|---|
+| pytest -n 2 with coverage | 527 passed, coverage 95% of `api/` (5,214 statements, 241 missed) |
+| `scripts/e2e_local.sh` | smoke 29/29 (new: JS gzip-compressed by `next start`, progress stream not compressed), browser 26/26 (new: a recording kept after a failed film comes back on the home page) |
+| `scripts/a11y_local.sh` | axe on 22 page checks, 0 violations |
+| Headless click-through, 16 pages at 375 px (dark and light) and 1440 px | no console errors, no failed requests, no horizontal overflow, no broken links or images, no `undefined`/`NaN` text |
+| ruff, mypy (69 files), eslint, tsc, next build | clean |
+
+Coverage is 95% now, down from 96% on Nov 4 (4,989 statements then, 5,214 now). Most missed lines are in
+`api/tts.py` (56), `api/contract.py` (48) and `api/main.py` (37).
+
+## 2026-11-06 (after the live media re-recording)
+
+The demo video, teasers, launch clips and screenshots were re-recorded on the live Meta Model API (details in
+VERIFICATION_REPORT.md). The code changes this round: Muse Wonder plans with an out-of-range number are clamped
+instead of dropped, the demo's close card and gamelan bed, and the launch-clip label check. The checks below ran on
+the fake Meta API afterwards, with no key in the environment.
+
+| Check | Result |
+|---|---|
+| pytest -n 2 with coverage | 531 passed (4 new), coverage 95% of `api/` (5,244 statements, 241 missed) |
+| `scripts/e2e_local.sh` | smoke 29/29, browser 26/26 |
+| `scripts/a11y_local.sh` | axe on 22 page checks, 0 violations |
+| ruff, mypy (69 files), eslint, tsc | clean |
+| `next build` | the same web code built cleanly for the live run (`.next-live`); no web file changed after it |
+| `scripts/facts.py --check` | docs agree with `docs/facts.json` |
+| Demo video by eye | contact sheet every 5 s, teasers and clips every 4 s, all 28 screenshots; -16.7 LUFS, no silence over 1.5 s |

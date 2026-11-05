@@ -12,7 +12,7 @@ and are printed in full in [prompts.md](prompts.md).
 
 ![Under every film: Penjaga Budaya, the consistency score and the Meta models receipt](screenshots/readme/receipt-desktop.png)
 
-![Agent trace panel (captured before the Nov 2 redesign; the content is the same)](screenshots/10-agent-trace.png)
+![Agent trace panel of a film made on the live Meta Model API, Nov 6, 2026](screenshots/10-agent-trace.png)
 
 ## The pipeline as an agent loop
 

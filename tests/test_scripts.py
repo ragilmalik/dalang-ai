@@ -128,7 +128,7 @@ def test_submission_kit_builds_with_structure_and_placeholder_warning(tmp_path: 
     assert (out / "dalang-ai-source.zip").stat().st_size > 10_000
     assert not (out / "2-images" / "qr.png").exists()  # no QR until PUBLIC_BASE_URL is a real deployed link
     readme = (out / "README.txt").read_text(encoding="utf-8")
-    assert "1-video/" in readme and "5-launch/" in readme and "MOCK" in readme
+    assert "1-video/" in readme and "5-launch/" in readme and "SYNTHETIC sample voice" in readme
     zpath = tmp_path / "submission-kit.zip"
     assert zpath.exists() and zpath.stat().st_size > 10_000
     import zipfile

@@ -9,7 +9,8 @@ def test_every_operation_has_a_tag_and_summary():
     for path, m, op in ops:
         assert op.get("tags") and op.get("summary"), f"{m.upper()} {path}"
     assert {t["name"] for t in spec["tags"]} >= {"films", "community", "kotak wayang"}
-    assert "fake Meta API" in spec["info"]["description"]
+    desc = spec["info"]["description"]
+    assert "FAKE_META=1" in desc and "fake API" in desc and "503" in desc  # the three modes are explained
 
 
 def test_create_job_form_fields_are_described():

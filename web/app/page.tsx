@@ -9,7 +9,7 @@ import ShareQR from "@/components/ShareQR";
 import HeroFilm from "@/components/HeroFilm";
 import { TROUPE, WayangFigure } from "@/components/PipelineTheatre";
 import { familyId, getReturning, listKotak, setReturning, type KotakPuppet } from "@/lib/family";
-import { readDraft, saveDraft } from "@/lib/draft";
+import { readDraft, readRecording, saveDraft, saveRecording } from "@/lib/draft";
 import { LANGS, T, modelLabel, sendError, sendForm, type Health, type Job } from "@/lib/api";
 import Bi from "@/components/ui/Bi";
 import Button from "@/components/ui/Button";
@@ -50,6 +50,7 @@ export default function Home() {
   const [busy, setBusy] = useState(false);
   const [sent, setSent] = useState<number | null>(null); // upload progress of a recording, in percent
   const [error, setError] = useState<string | null>(null);
+  const [kept, setKept] = useState(false); // the recording came back from a film that failed (lib/draft.ts)
   const [health, setHealth] = useState<Health | null>(null);
   const composer = useRef<HTMLElement>(null);
 
@@ -70,12 +71,26 @@ export default function Home() {
   useEffect(() => {
     // back from a film that failed or was stopped: the typed story is still here (lib/draft.ts)
     const d = readDraft();
-    if (!d) return;
-    Promise.resolve().then(() => {
-      setText(d.text);
-      setLang(d.lang);
-      setMode("type");
+    if (d) {
+      Promise.resolve().then(() => {
+        setText(d.text);
+        setLang(d.lang);
+        setMode("type");
+      });
+      return;
+    }
+    // or the recording, kept on this device, so it can be sent again without telling the story again
+    let stop = false;
+    readRecording().then((r) => {
+      if (stop || !r) return;
+      setFile(new File([r.blob], r.name, { type: r.blob.type }));
+      setLang(r.lang);
+      setMode("upload");
+      setKept(true);
     });
+    return () => {
+      stop = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -133,6 +148,7 @@ export default function Home() {
 
   function pickFile(f: File | null) {
     setError(null);
+    setKept(false);
     if (f && f.size > MAX_BYTES) {
       setFile(null);
       setError(sendError(413));
@@ -167,6 +183,8 @@ export default function Home() {
     const r = await sendForm("/api/jobs", fd, withAudio ? setSent : undefined);
     if (r.status >= 200 && r.status < 300 && typeof r.data.id === "string") {
       if (mode === "type") saveDraft({ text, lang });
+      else if (mode === "mic" && blob) await saveRecording({ blob, name: blob.type.includes("mp4") ? "story.m4a" : "story.webm", lang });
+      else if (mode === "upload" && file) await saveRecording({ blob: file, name: file.name, lang });
       router.push(`/film/${(r.data as unknown as Job).id}`);
       return;
     }
@@ -318,6 +336,14 @@ export default function Home() {
               <Icon name="sound" className="h-4 w-4 text-gold" /> {file?.name}
             </p>
             <audio src={filePreview} controls className="mx-auto w-full max-w-md" />
+            {kept && (
+              <p className="t-small text-muted" data-testid="kept-recording">
+                <Bi
+                  id="Rekamanmu tadi masih ada di perangkat ini, tinggal tekan Jadikan wayang lagi"
+                  en="Your recording is still on this device: just press Make my wayang again"
+                />
+              </p>
+            )}
           </div>
         )}
         {mode === "type" && (
@@ -450,8 +476,9 @@ export default function Home() {
           </div>
         )}
         <p className="t-tiny text-center text-muted">
-          Rekaman suara dihapus setelah ditranskripsi. Film hanya tampil di galeri jika kamu memilih membagikannya. ·
-          Recordings are deleted after transcription; films go public only if you choose to share.
+          Rekaman suara dihapus dari server setelah ditranskripsi; salinannya hanya tersimpan di perangkat ini sampai filmnya
+          jadi. Film hanya tampil di galeri jika kamu memilih membagikannya. · Recordings are deleted from the server after
+          transcription; a copy stays only on this device until the film is done. Films go public only if you choose to share.
         </p>
       </section>
 

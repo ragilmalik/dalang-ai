@@ -96,7 +96,7 @@ def test_cut_puppet_retries_with_puppet_then_falls_back_to_background(tmp_path, 
 
     monkeypatch.setattr(meta_client, "segment", nothing)
     out = segment.cut_puppet(job, src, "odd phrase", "buaya")
-    assert queries == ["odd phrase", "puppet"]
+    assert queries == ["odd phrase", "phrase", "puppet"]  # the phrase, its head noun, then the bare word
     assert out.exists() and Image.open(out).mode == "RGBA"
 
 

@@ -21,7 +21,7 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [x] Animate: Muse Wonder keyframe motion plan per scene + kelir engine
 - [x] Narrate: a voice per language picked by listening test (Kokoro-82M English when installed, edge-tts Emma Multilingual Indonesian, edge-tts Siti Javanese; see VOICES.md); subtitles-only fallback
 - [x] Final cut: title card, gunungan wipes, subtitles, synthesised gamelan, 16:9 + 9:16
-- [x] Cost guard per film, DEMO_MODE replay, fake Meta API when no key
+- [x] Cost guard per film, DEMO_MODE replay, fake Meta API for test mode (`FAKE_META=1`; no key refuses new films)
 
 ## Quality
 - [x] pytest suite on the fake API (unit, pipeline behaviour, full HTTP end-to-end, real-server SSE); count in TEST_REPORT.md
@@ -31,14 +31,14 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [!] Phone test on a public https URL (needs my machine + cloudflared, or a host)
 
 ## Repo, CI and deploy readiness
-- [x] git repository with dated commits (not pushed)
+- [x] git repository with dated commits; public release at https://github.com/ragilmalik/dalang-ai
 - [x] GitHub Actions CI: ruff, mypy, pytest, key self-test; web eslint/tsc/build; Docker build + smoke test
 - [x] render.yaml (backend, Docker, disk, /api/health) + web/vercel.json + click-by-click guide
 - [!] Docker image built and smoke-tested locally: docker is not available in the sandbox; the CI docker job does it on first push
 
 ## Publishing (my call; see MALIK_CHECKLIST.md)
 - [!] Public GitHub repo
-- [x] Demo video generated from the working app (`docs/demo/dalang-ai-demo.mp4`, fake-API art)
+- [x] Demo video generated from the working app (`docs/demo/dalang-ai-demo.mp4`, re-recorded Nov 6 on the live models)
 - [!] Re-render demo video with real art: `python scripts/go_live.py` (needs key); Cerebral Valley submission, X post
 
 ## Performance
@@ -46,15 +46,15 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 
 ## Ten upgrades (2026-10-31)
 - [x] `scripts/go_live.py`: key check -> demo film -> clips -> screenshots -> demo video -> storyboard -> kit; `--dry-run` on the fake API
-- [x] MOCK sample story recording (`assets/sample-story/sample_story_synthetic.mp3`, synthetic voice) + `--audio` everywhere
+- [x] Synthetic sample story recording (`assets/sample-story/sample_story_synthetic.mp3`, synthetic voice) + `--audio` everywhere
 - [!] Real child's recording swapped in (with consent): `python scripts/go_live.py --audio story.m4a`
-- [x] Live link + QR (`PUBLIC_BASE_URL`; labelled placeholder `https://dalang-ai.example` until deployed)
+- [x] QR from `PUBLIC_BASE_URL`, or the visitor's own address until it's deployed (no made-up link)
 - [x] Gara-gara interactive branching (pause, question, voice/tap answer, validated rewrite, re-render only new scenes)
 - [x] Child's own voice as narrator (turn timestamps, recording kept only until the film is made, TTS fallback)
 - [x] Muse Glimmer (open weights): documented Together AI route, safety screen + title/moral polish; [!] needs a Together key or GPU server to run live
 - [x] Kotak Wayang puppet box (anonymous family id, reuse cut-outs)
 - [x] Family testing kit (feedback widget, USER_TESTING.md, CULTURAL_REVIEW.md); [!] real sessions and review, mine to do
-- [!] Replace the 10 PLACEHOLDER testimonials in `content/testimonials.json` with real ones (placeholder=false)
+- [!] Real family sessions or a cultural review (with consent) before any quote goes on the site or in the submission; the placeholder testimonials feature was removed
 - [x] Printable puppets PDF
 - [x] X launch kit (plan Nov 1-8, posts, #DalangCilik, alt text, 3 clips); [!] posting is mine to do
 - [x] Submission kit script + rebuilt kit, demo video re-cut with the new features

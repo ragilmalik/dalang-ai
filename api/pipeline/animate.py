@@ -40,6 +40,45 @@ def fallback_plan(scene: Scene) -> dict:
     return plan
 
 
+# Bounds of the motion-plan numbers (same as api/schemas.py). A live Muse Wonder reply once had one keyframe angle just
+# past the limit, and the strict schema threw the whole scene's plan away; clamping keeps the model's choreography.
+_KEYFRAME_BOUNDS = {"t": (0.0, 1.0), "x": (-0.3, 1.3), "lift": (-0.4, 0.4), "angle": (-25.0, 25.0)}
+_CAMERA_BOUNDS = {"zoom_from": (1.0, 1.4), "zoom_to": (1.0, 1.4), "pan_x": (-1.0, 1.0), "pan_y": (-1.0, 1.0)}
+
+
+def _clamp(d: dict, bounds: dict[str, tuple[float, float]]) -> int:
+    """Clamp the numeric fields of `d` into their bounds in place; returns how many values were changed."""
+    changed = 0
+    for k, (lo, hi) in bounds.items():
+        v = d.get(k)
+        if isinstance(v, (int, float)) and not isinstance(v, bool) and not lo <= v <= hi:
+            d[k] = min(hi, max(lo, float(v)))
+            changed += 1
+    return changed
+
+
+def clamp_motion(raw: dict) -> tuple[dict, int]:
+    """A copy of a model motion plan with out-of-range numbers pulled to the nearest allowed value. Anything else
+    that is wrong (missing keyframes, a bad type) still fails validation and falls back to rule-based motion."""
+    import copy
+
+    plan = copy.deepcopy(raw) if isinstance(raw, dict) else raw
+    if not isinstance(plan, dict):
+        return plan, 0
+    n = 0
+    if isinstance(plan.get("camera"), dict):
+        n += _clamp(plan["camera"], _CAMERA_BOUNDS)
+    lf = plan.get("lamp_flicker")
+    if isinstance(lf, (int, float)) and not isinstance(lf, bool) and not 0.0 <= lf <= 1.0:
+        plan["lamp_flicker"] = min(1.0, max(0.0, float(lf)))
+        n += 1
+    for tr in plan.get("puppets") or []:
+        for kf in (tr.get("keyframes") or []) if isinstance(tr, dict) else []:
+            if isinstance(kf, dict):
+                n += _clamp(kf, _KEYFRAME_BOUNDS)
+    return plan, n
+
+
 def plan_scene(job: Job, script: Script, scene: Scene) -> dict:
     """Muse Wonder looks at the scene's still and returns a keyframe motion plan (enter, sway, bow...) for each puppet; any puppet it leaves out gets a glide-in, and an unusable plan falls back to rule-based motion."""
     cast = ", ".join(f"{st.id} (starts at x={st.position:.2f}, facing {st.facing})" for st in scene.staging) or "none"
@@ -54,6 +93,10 @@ def plan_scene(job: Job, script: Script, scene: Scene) -> dict:
             raw = meta_client.chat_json(
                 [{"role": "system", "content": prompts.ANIMATE_SYSTEM}, {"role": "user", "content": content}],
                 prompts.ANIMATE_SCHEMA, "motion_plan", model=settings.animate_model, reasoning_effort="medium")
+        raw, clamped = clamp_motion(raw)
+        if clamped:
+            cost.record_decision(f"scene {scene.n}: {clamped} motion value(s) outside the stage limits were clamped",
+                                 agent="animate")
         plan = MotionPlan(**raw)
         ids = {st.id for st in scene.staging}
         plan.puppets = [p for p in plan.puppets if p.id in ids]

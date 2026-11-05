@@ -22,11 +22,11 @@
   },
   {
    "key": "kelir",
-   "seconds": 18.0
+   "seconds": 18.03
   },
   {
    "key": "why",
-   "seconds": 11.4
+   "seconds": 10.0
   },
   {
    "key": "landing",
@@ -34,11 +34,11 @@
   },
   {
    "key": "progress",
-   "seconds": 30.1
+   "seconds": 30.13
   },
   {
    "key": "trace",
-   "seconds": 14.03
+   "seconds": 14.07
   },
   {
    "key": "share",
@@ -53,9 +53,9 @@
    "seconds": 12.1
   }
  ],
- "total_seconds": 177.86,
+ "total_seconds": 176.56,
  "size": "1920x1080",
  "real_footage": {},
- "recorded_in_fake_mode": true,
+ "recorded_in_fake_mode": false,
  "browser_recording": true
 }

@@ -3,6 +3,24 @@
 Dates are WIB (UTC+7). The project was built during the Meta Global AI Developer Hackathon, Oct 26 to Nov 4, 2026;
 Nov 5 is the go-live on the real Meta Model API.
 
+## 2026-11-06: media on the live API, final checks
+
+Recorded on the live Meta Model API
+* Demo video (2:57), both teasers, the three X launch clips, the YouTube thumbnail and all 28 page screenshots, the
+  README crops, the agent trace, Kotak Wayang and the printable puppet. Nothing judge-facing comes from the fake API
+  any more.
+* The demo's close card names the public repo; it no longer shows a placeholder line for an undeployed app.
+* The demo's app shots sit on a quiet procedural gamelan bed instead of silence (`GAMELAN_BED_VOLUME`).
+* The "why" line in the demo no longer makes a claim about kids in Semarang that I haven't measured.
+
+Fixed
+* Muse Wonder motion plans with an out-of-range number (a keyframe angle past 25 degrees, seen live) were thrown away
+  for a rule-based glide. They're clamped and kept now, and the trace says how many values were clamped.
+* `make_launch_clips.py` judges a film passed on the command line by that film (or `FAKE_META`), not by the old
+  `data/demo/job.json`, so live clips don't get a "placeholder art" label.
+* From the final checks: `next start` gzips JS while the progress stream stays unbuffered; a recording for a film
+  that failed stays on the device so it can be sent again; the judge page wording; tutorial and doc fixes.
+
 ## 2026-11-05: live on the Meta Model API
 
 First runs against the real API (api.meta.ai) with a real key. Results per model: [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).

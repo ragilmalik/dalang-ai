@@ -109,7 +109,7 @@ All in `web/components/ui/`, plus CSS classes in `globals.css` for plain links.
   a warm tint, never a full gold fill, so a screen has one gold button at most.
 - Card: `card` class. `panel` for a quieter inset box.
 - Badge: `sample`, `placeholder`, `warn`, `ok`, `quiet`. The sample and placeholder labels must stay visible on
-  every film made with placeholder art, and so must the PLACEHOLDER labels on testimonials and the QR link.
+  every film made with placeholder art.
 - Sheet: bottom sheet on phones, dialog on desktop, built on `<dialog>` so focus is trapped and Escape closes it.
   The phone menu uses it.
 - Progress: slim gold bar with `role="progressbar"`. The pipeline theatre uses it. Below 480 px the six theatre

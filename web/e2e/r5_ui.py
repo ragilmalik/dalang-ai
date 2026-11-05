@@ -54,7 +54,7 @@ def home_and_theatre_tests(page, jid: str | None) -> None:
     tag = "A child tells a story out loud. Six Meta models perform it as a Javanese shadow-puppet film."
     step("home hero: sample film loop, tagline, sample label",
          page.locator("figure video source[src='/hero/sample-loop.mp4']").count() == 1
-         and tag in page.locator("h1").inner_text() and page.get_by_text("Contoh · Sample film").count() == 1)
+         and tag in page.locator("h1").inner_text() and page.get_by_text("Contoh cerita · Sample story, live Meta models").count() == 1)
     page.get_by_test_id("hero-tell").click()
     page.wait_for_timeout(1200)
     top = page.evaluate("document.getElementById('cerita').getBoundingClientRect().top")
@@ -67,6 +67,32 @@ def home_and_theatre_tests(page, jid: str | None) -> None:
         n = page.locator("[data-testid=pipeline-theatre] [data-player]").count()
         step("pipeline theatre: six troupe members, one lit by the live trace/stage", n == 6,
              page.locator("[data-testid=pipeline-theatre] [data-active='1'] p.font-serif").first.inner_text())
+
+
+def kept_recording_tests(page) -> None:
+    """G10: a recording sent for a film that then failed comes back on the home page, ready to send again."""
+    page.goto(f"{BASE}/", wait_until="networkidle")
+    page.evaluate("""() => new Promise((res, rej) => {
+      const req = indexedDB.open('dalang', 1);
+      req.onupgradeneeded = () => req.result.createObjectStore('draft');
+      req.onsuccess = () => {
+        const tx = req.result.transaction('draft', 'readwrite');
+        tx.objectStore('draft').put({blob: new Blob([new Uint8Array(4000)], {type: 'audio/webm'}),
+                                     name: 'story.webm', lang: 'jv', saved: Date.now()}, 'recording');
+        tx.oncomplete = () => { req.result.close(); res(true); };
+        tx.onerror = () => rej(tx.error);
+      };
+      req.onerror = () => rej(req.error);
+    })""")
+    page.reload(wait_until="networkidle")
+    page.wait_for_selector("[data-testid=kept-recording]", timeout=10000)
+    step("home: a recording kept after a failed film is back, ready to send again (no re-recording)",
+         page.get_by_text("story.webm").count() >= 1 and page.locator("button:has-text('Jadikan wayang')").is_enabled())
+    page.evaluate("""() => new Promise((res) => {
+      const req = indexedDB.open('dalang', 1);
+      req.onsuccess = () => { const tx = req.result.transaction('draft', 'readwrite');
+        tx.objectStore('draft').delete('recording'); tx.oncomplete = () => { req.result.close(); res(true); }; };
+    })""")
 
 
 def kelir_tests(page, jid: str) -> None:
@@ -244,6 +270,7 @@ def main() -> int:
         errors: list[str] = []
         page.on("pageerror", lambda e: errors.append(str(e)))
         home_and_theatre_tests(page, None if os.environ.get("R5_FILM") else jid)
+        kept_recording_tests(page)
         done = wait_status(jid, {"done"})
         api.post(f"/api/jobs/{jid}/share", json={"public": True})
         step("film for the browser checks", done["status"] == "done", jid)

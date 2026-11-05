@@ -29,10 +29,10 @@ kids to see their own stories on the kelir.
 > http://localhost:8000/docs, and `make help` lists every command. What I checked against the real API, per model:
 > [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 >
-> Checks: <!-- facts:tests -->520<!-- /facts --> pytest tests (<!-- facts:coverage -->96%<!-- /facts --> line coverage), a full-stack e2e smoke test
-> (<!-- facts:e2e -->27/27<!-- /facts --> steps), 25 browser checks of the newest screens on a 390 px phone (`web/e2e/r5_ui.py`: Kelir Live drag/tilt/gunungan/keyboard, classroom vote, remix, stickers, /pentas, PWA offline), ruff, mypy, eslint, tsc and `next build`. `make check` runs them all
+> Checks: <!-- facts:tests -->531<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
+> (<!-- facts:e2e -->29/29<!-- /facts --> steps), 25 browser checks of the newest screens on a 390 px phone (`web/e2e/r5_ui.py`: Kelir Live drag/tilt/gunungan/keyboard, classroom vote, remix, stickers, /pentas, PWA offline), ruff, mypy, eslint, tsc and `next build`. `make check` runs them all
 > ([docs/TEST_REPORT.md](docs/TEST_REPORT.md)). There's also an axe-core accessibility audit (<!-- facts:a11y -->22<!-- /facts --> page checks incl. /kelir, /vote and /pentas, phone and desktop, 0 violations,
-> [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:58<!-- /facts -->.
+> [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:57<!-- /facts -->.
 >
 > How the six Meta models fit together (structured output, the verify -> redraw agent loop, SAM reuse, Muse Wonder
 > keyframes, open weights, a real agent trace): [docs/META_MODELS.md](docs/META_MODELS.md).
@@ -53,11 +53,11 @@ kids to see their own stories on the kelir.
 <p align="center"><img src="docs/screenshots/readme/home-desktop.png" width="640" alt="Home on a desktop: night-indigo page, Fraunces headline, the sample film on a lit kelir"></p>
 <p align="center"><img src="docs/screenshots/readme/receipt-desktop.png" width="640" alt="Under the storyboard: the Penjaga Budaya review, the character-consistency score and the Meta models receipt"></p>
 <p align="center"><img src="docs/screenshots/10-agent-trace.png" width="640" alt="Agent trace: every Meta model call and agent decision behind a film, including a vision checker rejecting a backdrop and the redraw passing"></p>
-<p align="center"><sub>The Kotak Wayang, printable puppet and agent trace shots are from before the Nov 2 redesign; the rest are the current site.</sub></p>
+<p align="center"><sub>Every screenshot here was taken on Nov 6, 2026 from the app running on the live Meta Model API. The art is Muse Image output; nothing is mocked.</sub></p>
 <p align="center"><b>Demo video (under 3:00, voice-over and captions):</b> <a href="docs/demo/dalang-ai-demo.mp4">docs/demo/dalang-ai-demo.mp4</a></p>
-<p align="center"><sub>The clip above is from the Kancil sample film, made with the live Meta models. The demo video and the UI
-screenshots were recorded before go-live, on the fake Meta API, so they show labelled placeholder art; I'm
-re-recording them on the live models.</sub></p>
+<p align="center"><sub>The clip above is from the Kancil sample film, made with the live Meta models. The demo video, its
+teasers and the UI screenshots were recorded on Nov 6, 2026 on the live Meta Model API too. The narrator in the demo
+is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds is a labelled synthetic stand-in.</sub></p>
 
 ![architecture](docs/architecture.png)
 
@@ -154,7 +154,7 @@ re-recording them on the live models.</sub></p>
   Javanese stays on Siti with a small rate and pitch tweak. The scores, how to switch and the licences are in
   [docs/VOICES.md](docs/VOICES.md).
 * **The demo video was re-recorded** on the new site with the Kokoro voice-over
-  (<!-- facts:demo_length -->2:58<!-- /facts -->), with 60 s and 42 s teasers. I re-recorded it again on Nov 4
+  (<!-- facts:demo_length -->2:57<!-- /facts -->), with 60 s and 42 s teasers. I re-recorded it again on Nov 4
   (see below).
 
 ## Added Nov 3: for cheap phones and weak signal
@@ -179,11 +179,28 @@ re-recording them on the live models.</sub></p>
 * A film page for a mistyped or deleted film stops asking the server once it gets the 404.
 * If the server is slow to answer (a deploy waking up, a restart), the home page says "not answering yet, trying
   again" and retries for about 45 seconds before it says the server isn't running.
-* When a film fails, the typed story stays in the story box, so Try again doesn't start from an empty page. A
-  recording still has to be made again.
+* When a film fails, the typed story stays in the story box, so Try again doesn't start from an empty page. Since
+  Nov 6 a recording is kept on the device too, until the film is done, so it can be sent again without re-recording.
 * The gallery's empty state is bilingual like the rest of the site.
 * The demo video was re-recorded on the current site, and the demo encoder now writes to a local disk first and
   copies the finished file over, so the file can't end up half-written.
+
+## Added Nov 6: final checks
+
+* A recording sent for a film that then failed stays in the browser (IndexedDB) until a film is done, for at most
+  6 hours, so the family can press Make my wayang again without telling the story again.
+* A self-hosted `next start` now gzips its pages and JavaScript. The progress stream opts out with
+  `Cache-Control: no-transform`, so it still arrives step by step (the e2e run checks both).
+* The judge page says the checker uses "the cultural rules built into the app". The docs no longer point at the
+  removed testimonials file or a made-up link, and the tutorial says what really happens without a key.
+* A headless browser went through every page at 375 px and 1440 px on the fake API: no console errors, failed requests,
+  overflow or broken links.
+* The demo video (2:57), both teasers, the three X launch clips, the YouTube thumbnail and every screenshot were
+  re-recorded on the live Meta Model API. The demo has a quiet gamelan bed under the app shots now, so there's no dead
+  air, and its close card names the public repo instead of a "planned" line.
+* Muse Wonder once returned a keyframe angle just past the stage limit, and the whole scene's motion plan was thrown
+  away for a rule-based glide. Out-of-range numbers are now clamped to the limit, the model's plan is kept, and the
+  trace says how many values were clamped.
 
 ## Why
 
@@ -229,7 +246,7 @@ Where it differs from what you might expect (checked against Meta's docs on 2026
   (`BUNDLED_SAMPLES=false` skips them). New films are refused with a plain message until a key is set.
 * **`META_API_KEY` set:** every film is made by the live Meta models.
 * **`FAKE_META=1`** (or `make demo`): the built-in fake Meta API (`api/fake_meta.py`) answers every call with
-  recorded fixtures and labelled placeholder art. Tests run this way. It is never switched on by a missing key.
+  canned replies and labelled placeholder art. Tests run this way. It is never switched on by a missing key.
 
 You need **Python 3.10+**, **Node.js 20+**, and internet for the narration voice. The nicer English voice
 (Kokoro) is optional: `pip install -r requirements-tts.txt` (about 1 GB), or put it in its own venv and set
@@ -269,7 +286,7 @@ set `PUBLIC_BASE_URL` (Render, Vercel and `.env`) and run `python scripts/make_q
 | The 3 sample films in the gallery, the home page loop, share images, `docs/screenshots/demo.gif` | Live Meta Model API, Nov 5, 2026. Stories written by me for this project, labelled "contoh cerita / a sample story" |
 | Narration in every film | edge-tts / Kokoro voices (Meta has no text-to-speech model) |
 | `assets/sample-story/sample_story_synthetic.mp3` | A synthetic voice (edge-tts, id-ID-GadisNeural, normal pitch). Not a child, not a real person |
-| Demo video and UI screenshots in `docs/` | Recorded on the fake Meta API before go-live; placeholder art is labelled in them. Being re-recorded on live |
+| Demo video, teasers, launch clips and UI screenshots in `docs/` | Live Meta Model API, Nov 6, 2026. The demo's narrator is a synthetic voice (Kokoro-82M) and its opening child's voice is a labelled synthetic stand-in. The three classroom "phones" in the vote shot are API calls from the recording script |
 | Anything made with `FAKE_META=1` or `make demo` | Fake Meta API, labelled "placeholder art" |
 | Family testing, cultural review | Not done yet: `docs/USER_TESTING.md` says "Real sessions: 0", `docs/CULTURAL_REVIEW.md` says "not reviewed yet" |
 
@@ -279,7 +296,7 @@ set `PUBLIC_BASE_URL` (Render, Vercel and `.env`) and run `python scripts/make_q
 api/                 FastAPI backend
   main.py            HTTP routes + Server-Sent Events
   meta_client.py     the only module that calls Meta (and Baseten / Together AI for open weights)
-  fake_meta.py       fake Meta API used when no key is set
+  fake_meta.py       fake Meta API for test mode (FAKE_META=1)
   schemas.py         Pydantic models for the script, checks and motion plans
   prompts.py         all prompts and JSON schemas (also in docs/prompts.md)
   kotak.py           Kotak Wayang (family puppet box)
@@ -323,6 +340,8 @@ Results are in [docs/TEST_REPORT.md](docs/TEST_REPORT.md), and the API verificat
 * Recordings are deleted right after transcription. With "my own voice" the recording stays only until the film is
   made (or the job fails). A storyboard left unapproved keeps it for at most `RECORDING_TTL_HOURS` (6 h), then a
   sweep deletes it. I don't collect names, schools or faces, and the feedback widget asks for none.
+* The browser keeps its own copy of a recording until the film is done (at most 6 hours), only so a failed film can be
+  sent again. It never leaves the device except when the family sends it.
 * The Kotak Wayang stores only generated puppet pictures and their descriptions, under a random id that lives in the
   family's browser.
 * Stories are screened. Violent, sexual, political, war or medical stories get a kind no.

@@ -1,10 +1,11 @@
 # My checklist (things only I can do)
 
-Status on Nov 5, 2026, 23:30 WIB. The app runs on the live Meta Model API (preflight 6/6 PASS, per-model results in
-`docs/VERIFICATION_REPORT.md`). The three sample films in the gallery, the home page loop, the share poster and the
-README gif were made with the live models. What is still not real, and why:
-- the demo video, launch clips and UI screenshots: recorded on the fake Meta API before go-live, placeholder art
-  labelled. Re-recording on the live models is the next step (`work/live/RUN_LIVE.sh` starts the live servers for it)
+Status on Nov 6, 2026, 03:00 WIB. The app runs on the live Meta Model API (preflight 6/6 PASS, per-model results in
+`docs/VERIFICATION_REPORT.md`). The three sample films in the gallery, the home page loop, the share poster, the
+README gif, the demo video, its teasers, the launch clips, the thumbnail and every screenshot were made with the live
+models. What is still not real, and why:
+- the demo's narrator: a synthetic voice (Kokoro-82M `af_heart`), not me. My own voice-over can replace it any time
+  (`docs/demo/real/README.md`)
 - the story recording in the demo (`assets/sample-story/sample_story_synthetic.mp3`): a synthetic voice, labelled
   as one -> step 4 if I get a real recording with a parent's consent
 - no live link or QR yet: the app isn't deployed -> deploying, below
@@ -48,12 +49,10 @@ Free alternative (no accounts, no cost): run `start.bat` on your laptop and `clo
 The original form deadline was Thu Nov 5, 09:00 WIB. Everything below is about the repo and the links being right;
 check the Cerebral Valley page for what can still be changed on the submission.
 
-1. **Re-record the demo video and screenshots on the live models.** `bash work/live/RUN_LIVE.sh` starts the API
-   (live, key from the environment only) on port 8000 and the website on 3011; then `python scripts/make_demo_video.py
-   http://127.0.0.1:3011` and `python web/e2e/ui_shots.py`. Watch the result once before replacing
-   `docs/demo/dalang-ai-demo.mp4`.
-2. **Push the repo** (`ragilmalik/dalang-ai`, public, MIT). Check `.env` isn't in it (`git ls-files | grep -x .env`
-   prints nothing) and that the repo opens in a private window.
+1. [x] Demo video and screenshots re-recorded on the live models (Nov 6). Watch `docs/demo/dalang-ai-demo.mp4`
+   once yourself before you upload it.
+2. [x] Repo pushed to https://github.com/ragilmalik/dalang-ai (public, MIT, no `.env`). Open it once in a private
+   window to be sure.
 3. **Upload the new demo video to YouTube as unlisted** with `docs/demo/dalang-ai-demo.srt` as captions, and check
    the link while logged out.
 4. **Only with a parent's consent: a real child's recording** (no names spoken), up to 90 seconds:

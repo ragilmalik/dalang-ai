@@ -30,4 +30,66 @@ export function clearDraft(): void {
   } catch {
     /* nothing kept */
   }
+  void clearRecording();
+}
+
+// A recording (mic or upload) is kept the same way, but in IndexedDB on this device, since a recording is too big for
+// sessionStorage. It is only there so a family whose film failed can press "Make my wayang" again without telling the
+// story again. It is removed as soon as a film is done, and ignored (and removed) after RECORDING_TTL_MS.
+const DB = "dalang";
+const STORE = "draft";
+const REC_KEY = "recording";
+export const RECORDING_TTL_MS = 6 * 60 * 60 * 1000;
+
+export interface SavedRecording {
+  blob: Blob;
+  name: string;
+  lang: "id" | "jv" | "en";
+  saved: number;
+}
+
+function openDb(): Promise<IDBDatabase | null> {
+  return new Promise((resolve) => {
+    try {
+      if (typeof indexedDB === "undefined") return resolve(null);
+      const req = indexedDB.open(DB, 1);
+      req.onupgradeneeded = () => req.result.createObjectStore(STORE);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => resolve(null);
+    } catch {
+      resolve(null);
+    }
+  });
+}
+
+async function withStore<T>(mode: IDBTransactionMode, fn: (s: IDBObjectStore) => IDBRequest<T>): Promise<T | null> {
+  const db = await openDb();
+  if (!db) return null;
+  return new Promise((resolve) => {
+    try {
+      const req = fn(db.transaction(STORE, mode).objectStore(STORE));
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => resolve(null);
+    } catch {
+      resolve(null);
+    }
+  }).finally(() => db.close()) as Promise<T | null>;
+}
+
+export async function saveRecording(r: Omit<SavedRecording, "saved">): Promise<void> {
+  await withStore("readwrite", (s) => s.put({ ...r, saved: Date.now() }, REC_KEY));
+}
+
+export async function readRecording(now: number = Date.now()): Promise<SavedRecording | null> {
+  const r = (await withStore("readonly", (s) => s.get(REC_KEY))) as SavedRecording | null | undefined;
+  if (!r || !(r.blob instanceof Blob) || !["id", "jv", "en"].includes(r.lang)) return null;
+  if (now - r.saved > RECORDING_TTL_MS) {
+    await clearRecording();
+    return null;
+  }
+  return r;
+}
+
+export async function clearRecording(): Promise<void> {
+  await withStore("readwrite", (s) => s.delete(REC_KEY));
 }

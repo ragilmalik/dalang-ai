@@ -154,3 +154,19 @@ def test_empty_model_reply_retries_with_less_reasoning(monkeypatch):
     monkeypatch.setattr(meta_client, "_post", lambda url, **kw: (calls.append(1), R(None))[1])
     with pytest.raises(meta_client.MetaAPIError):
         meta_client.chat_json([{"role": "user", "content": "x"}], {"type": "object"}, "t", model="muse-spark-1.3")
+
+
+def test_done_is_saved_with_its_trace_and_receipt():
+    """A client that sees status "done" must also see the trace and receipt (they used to be written a moment later)."""
+    from api import cost
+
+    m = cost.Meter(1.0)
+    m.charge("muse-image-1.0", 0.01)
+    m.record({"kind": "call", "model": "muse-image-1.0", "endpoint": "/v1/images/generations", "ok": True, "ms": 5})
+    cost.use(m)
+    try:
+        f = cost.final_fields({"status": "rendering"})
+    finally:
+        cost.use(None)
+    assert f["cost_usd"] == 0.01 and len(f["trace"]) == 1 and f["receipt"]["models"]
+    assert cost.final_fields({}) == {}  # no meter running: nothing to add
