@@ -1,0 +1,1713 @@
+{
+ "id": "lczoo1wr",
+ "created": 1793894162.2652378,
+ "status": "done",
+ "language": "en",
+ "style": "classic",
+ "review": false,
+ "public": true,
+ "title": "The Golden Snail Princess",
+ "transcript": "Once there was a princess who was turned into a golden snail. A kind old woman found the snail in the river and took it home. Every morning her house was clean and there was food on the table. One day she hid and saw the princess step out of the shell. The spell broke and the princess and the old woman became a family.",
+ "script": {
+  "title": "The Golden Snail Princess",
+  "language": "en",
+  "moral": "Kindness breaks every spell and makes a family.",
+  "opening": "So the story is told, of a golden snail and a kind heart.",
+  "characters": [
+   {
+    "id": "putri",
+    "name": "Golden Snail Princess",
+    "role": "hero",
+    "wayang_archetype": "alus",
+    "visual_description": "Slender golden-skinned princess puppet with tall golden crown, long black hair, green kebaya, golden snail shell on back.",
+    "kind": "creature",
+    "sam_phrase": "golden snail princess",
+    "cultural_note": "Wayang alus princesses are gentle and graceful, moving slowly to show a kind heart."
+   },
+   {
+    "id": "mbok",
+    "name": "Kind Grandma",
+    "role": "elder",
+    "wayang_archetype": "punakawan",
+    "visual_description": "Short bent old woman puppet with grey hair bun, brown batik sarong, cream kebaya, wooden walking stick.",
+    "kind": "human",
+    "sam_phrase": "kind grandma puppet",
+    "cultural_note": "In Keong Mas a kind old village grandmother finds the golden snail and cares for the princess like family."
+   }
+  ],
+  "scenes": [
+   {
+    "n": 1,
+    "setting": "A bright river in Java in the morning",
+    "characters": [
+     "putri"
+    ],
+    "action": "A golden snail floats down the river, hiding a princess inside.",
+    "narration": "Once a kind princess lived inside a small golden snail shell, floating alone down the bright river.",
+    "image_prompt": "Wide calm river at sunrise, smooth river stones, bamboo trees on bank, soft golden morning light, gentle ripples, carved wayang gunungan kayon at the side opening the story",
+    "motion_prompt": "small golden puppet glides slowly from left to right, bobbing gently",
+    "duration_s": 10.0,
+    "mood": "calm",
+    "staging": [
+     {
+      "id": "putri",
+      "position": 0.5,
+      "facing": "right"
+     }
+    ]
+   },
+   {
+    "n": 2,
+    "setting": "Riverbank near a small village path",
+    "characters": [
+     "putri",
+     "mbok"
+    ],
+    "action": "The kind old woman finds the snail and takes it home with care.",
+    "narration": "A kind old woman found the shining snail and gently carried it home in her basket.",
+    "image_prompt": "Empty riverbank path with bamboo basket on stone, green leaves, warm daylight, clay pot nearby",
+    "motion_prompt": "old woman puppet enters from right, bends down, lifts small puppet gently and they exit right together",
+    "duration_s": 11.0,
+    "mood": "happy",
+    "staging": [
+     {
+      "id": "putri",
+      "position": 0.3,
+      "facing": "right"
+     },
+     {
+      "id": "mbok",
+      "position": 0.7,
+      "facing": "left"
+     }
+    ]
+   },
+   {
+    "n": 3,
+    "setting": "The old woman's simple wooden house at dawn",
+    "characters": [
+     "putri",
+     "mbok"
+    ],
+    "action": "Every morning the house is magically clean with food waiting on the table.",
+    "narration": "Each morning the house was clean and warm food waited on the table, a sweet surprise.",
+    "image_prompt": "Empty wooden house interior at dawn, low wooden table with bowls of rice and side dishes, broom by door, soft morning light",
+    "motion_prompt": "old woman puppet looks around in surprise, small puppet sways softly in place, light shimmers",
+    "duration_s": 11.0,
+    "mood": "magical",
+    "staging": [
+     {
+      "id": "mbok",
+      "position": 0.3,
+      "facing": "right"
+     },
+     {
+      "id": "putri",
+      "position": 0.7,
+      "facing": "left"
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "setting": "The same house in quiet morning light",
+    "characters": [
+     "putri",
+     "mbok"
+    ],
+    "action": "The old woman hides and sees the princess step out of the shell.",
+    "narration": "One morning she hid quietly and watched the princess step out of the golden shell.",
+    "image_prompt": "Quiet wooden house interior, curtain corner, sunbeam through window, empty table, sparkling dust in light",
+    "motion_prompt": "old woman puppet crouches to the side and peeks, small puppet rises and unfolds into tall princess spinning softly",
+    "duration_s": 12.0,
+    "mood": "magical",
+    "staging": [
+     {
+      "id": "mbok",
+      "position": 0.25,
+      "facing": "right"
+     },
+     {
+      "id": "putri",
+      "position": 0.65,
+      "facing": "left"
+     }
+    ]
+   },
+   {
+    "n": 5,
+    "setting": "The house yard in warm sunset",
+    "characters": [
+     "putri",
+     "mbok"
+    ],
+    "action": "The spell is gone and the princess and old woman embrace as family.",
+    "narration": "The spell broke forever, and the princess and the old woman lived as a happy family.",
+    "image_prompt": "Small house yard at sunset, banana trees, blooming flowers, wooden bench, warm orange sky, lantern glow, carved wayang gunungan kayon at the side closing the story",
+    "motion_prompt": "both puppets move to center, bow to each other, then sway together happily",
+    "duration_s": 12.0,
+    "mood": "triumphant",
+    "staging": [
+     {
+      "id": "putri",
+      "position": 0.4,
+      "facing": "right"
+     },
+     {
+      "id": "mbok",
+      "position": 0.6,
+      "facing": "left"
+     }
+    ]
+   }
+  ]
+ },
+ "stages": [
+  {
+   "key": "listen",
+   "label": "Listening",
+   "status": "done",
+   "detail": "“Once there was a princess who was turned into a golden snail. A kind old woman found the snail in the river and took it home. Every morning ...”",
+   "thumbs": [],
+   "started": 1793894162.2686281,
+   "seconds": 3.8
+  },
+  {
+   "key": "lakon",
+   "label": "Writing the lakon",
+   "status": "done",
+   "detail": "“The Golden Snail Princess” · 5 scenes · Golden Snail Princess, Kind Grandma · Penjaga Budaya: 3/5 scenes passed first time, 3 fixed",
+   "thumbs": [],
+   "started": 1793894166.1189837,
+   "seconds": 48.0
+  },
+  {
+   "key": "casting",
+   "label": "Casting the puppets",
+   "status": "done",
+   "detail": "2 puppets carved, cut out with SAM 3.1",
+   "thumbs": [
+    "/media/lczoo1wr/puppets/putri.png?v=1793894261",
+    "/media/lczoo1wr/puppets/mbok.png?v=1793894320"
+   ],
+   "started": 1793894233.8497381,
+   "seconds": 96.0
+  },
+  {
+   "key": "scenes",
+   "label": "Painting the scenes",
+   "status": "done",
+   "detail": "5 scenes painted and checked",
+   "thumbs": [
+    "/media/lczoo1wr/still_2.jpg?v=1793894349",
+    "/media/lczoo1wr/still_1.jpg?v=1793894360",
+    "/media/lczoo1wr/still_3.jpg?v=1793894361",
+    "/media/lczoo1wr/still_4.jpg?v=1793894384",
+    "/media/lczoo1wr/still_5.jpg?v=1793894398"
+   ],
+   "started": 1793894329.8675864,
+   "seconds": 69.1
+  },
+  {
+   "key": "animate",
+   "label": "Bringing them to life",
+   "status": "done",
+   "detail": "0 scenes choreographed, 5 reused",
+   "thumbs": [
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "started": 1793895444.4935517,
+   "seconds": 0.1
+  },
+  {
+   "key": "narrate",
+   "label": "Narrating",
+   "status": "done",
+   "detail": "Narrated in af_heart (kokoro)",
+   "thumbs": [],
+   "started": 1793895444.551106,
+   "seconds": 0.1
+  },
+  {
+   "key": "cut",
+   "label": "Final cut",
+   "status": "done",
+   "detail": "54 second film ready",
+   "thumbs": [],
+   "started": 1793895444.67042,
+   "seconds": 60.2
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "narration": "Once a kind princess lived inside a small golden snail shell, floating alone down the bright river.",
+   "setting": "A bright river in Java in the morning",
+   "still": "/media/lczoo1wr/still_1.jpg?v=1793894360",
+   "backdrop": "/media/lczoo1wr/bg_1.webp?v=1793894360",
+   "attempts": 1,
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "n": 2,
+   "narration": "A kind old woman found the shining snail and gently carried it home in her basket.",
+   "setting": "Riverbank near a small village path",
+   "still": "/media/lczoo1wr/still_2.jpg?v=1793894349",
+   "backdrop": "/media/lczoo1wr/bg_2.webp?v=1793894349",
+   "attempts": 1,
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "n": 3,
+   "narration": "Each morning the house was clean and warm food waited on the table, a sweet surprise.",
+   "setting": "The old woman's simple wooden house at dawn",
+   "still": "/media/lczoo1wr/still_3.jpg?v=1793894361",
+   "backdrop": "/media/lczoo1wr/bg_3.webp?v=1793894361",
+   "attempts": 1,
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "n": 4,
+   "narration": "One morning she hid quietly and watched the princess step out of the golden shell.",
+   "setting": "The same house in quiet morning light",
+   "still": "/media/lczoo1wr/still_4.jpg?v=1793894384",
+   "backdrop": "/media/lczoo1wr/bg_4.webp?v=1793894384",
+   "attempts": 1,
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "n": 5,
+   "narration": "The spell broke forever, and the princess and the old woman lived as a happy family.",
+   "setting": "The house yard in warm sunset",
+   "still": "/media/lczoo1wr/still_5.jpg?v=1793894398",
+   "backdrop": "/media/lczoo1wr/bg_5.webp?v=1793894398",
+   "attempts": 1,
+   "rejections": [],
+   "placeholder": false
+  }
+ ],
+ "cast": [
+  {
+   "id": "putri",
+   "name": "Golden Snail Princess",
+   "sheet": "/media/lczoo1wr/sheets/putri.webp?v=1793894261",
+   "cutout": "/media/lczoo1wr/puppets/putri.png?v=1793895301",
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "id": "mbok",
+   "name": "Kind Grandma",
+   "sheet": "/media/lczoo1wr/sheets/mbok.webp?v=1793894320",
+   "cutout": "/media/lczoo1wr/puppets/mbok.png?v=1793894320",
+   "rejections": [],
+   "placeholder": false
+  }
+ ],
+ "videos": {
+  "landscape": "/media/lczoo1wr/dalang_landscape.mp4?v=1793895504",
+  "vertical": "/media/lczoo1wr/dalang_vertical.mp4?v=1793895504"
+ },
+ "poster": "/media/lczoo1wr/poster.jpg?v=1793895504",
+ "cost_usd": 0.3179,
+ "error": null,
+ "message": null,
+ "demo_replay": false,
+ "models": [
+  "muse-spark-1.3",
+  "muse-image-1.0",
+  "sam-3.1",
+  "muse-wonder-1.0"
+ ],
+ "offline": false,
+ "gara_gara": {
+  "enabled": false,
+  "status": "off"
+ },
+ "part1": null,
+ "narration_voice": "tts",
+ "sample": true,
+ "sample_key": "golden-snail-en",
+ "updated": 1793895531.9941647,
+ "trace": [
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "safety screen of the story",
+   "ms": 3838,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894166.11,
+   "stage": "listen"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "write the lakon (json_schema script)",
+   "ms": 47978,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894214.1,
+   "stage": "lakon"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "Penjaga Budaya: check the lakon against the cultural rules · Penjaga Budaya",
+   "ms": 19709,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894233.83,
+   "stage": "lakon"
+  },
+  {
+   "kind": "decision",
+   "agent": "penjaga",
+   "text": "scene 1 broke gunungan-respect (Opening lacks gunungan to open story.); fixed image_prompt before drawing",
+   "t": 1793894233.84,
+   "stage": "lakon"
+  },
+  {
+   "kind": "decision",
+   "agent": "penjaga",
+   "text": "scene 5 broke gunungan-respect (Closing lacks gunungan to close story.); fixed image_prompt before drawing",
+   "t": 1793894233.84,
+   "stage": "lakon"
+  },
+  {
+   "kind": "decision",
+   "agent": "penjaga",
+   "text": "Kind Grandma broke canon (Grandma is not Semar; note misidentifies her canon.); fixed cultural_note before drawing",
+   "t": 1793894233.84,
+   "stage": "lakon"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · Golden Snail Princess",
+   "ms": 13891,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894247.75,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · Golden Snail Princess",
+   "ms": 5103,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894253.0,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"golden snail princess\" (streamed masks)",
+   "ms": 3625,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894256.64,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"golden snail princess\"; trying a plainer phrase",
+   "t": 1793894256.65,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"puppet\" (streamed masks)",
+   "ms": 3693,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894260.35,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "no SAM mask for putri; cut out by the plain background instead",
+   "t": 1793894260.35,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · Kind Grandma",
+   "ms": 39820,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894301.7,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · Kind Grandma",
+   "ms": 6703,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894308.58,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"kind grandma puppet\" (streamed masks)",
+   "ms": 2712,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894311.32,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"kind grandma puppet\"; trying a plainer phrase",
+   "t": 1793894311.32,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"kind grandma\" (streamed masks)",
+   "ms": 1680,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894313.01,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"kind grandma\"; trying a plainer phrase",
+   "t": 1793894313.02,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"puppet\" (streamed masks)",
+   "ms": 1574,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894314.6,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cache",
+   "text": "gunungan: same prompt painted before, reused from the image cache",
+   "t": 1793894320.69,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"gunungan puppet\" (streamed masks)",
+   "ms": 2182,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894322.92,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"gunungan puppet\"; trying a plainer phrase",
+   "t": 1793894322.92,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"gunungan\" (streamed masks)",
+   "ms": 2908,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894325.84,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"gunungan\"; trying a plainer phrase",
+   "t": 1793894325.84,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"puppet\" (streamed masks)",
+   "ms": 3356,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894329.2,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "no SAM mask for gunungan; cut out by the plain background instead",
+   "t": 1793894329.21,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "consistency",
+   "text": "character consistency 91/100 after casting: 1/2 puppets from SAM 3.1 masks, same cut-out pixels across 9 scene appearances",
+   "t": 1793894329.87,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 2",
+   "ms": 12522,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894342.4,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 2",
+   "ms": 6141,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894348.71,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 1",
+   "ms": 25902,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894355.78,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 3",
+   "ms": 27058,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894356.93,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 1",
+   "ms": 3546,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894359.83,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 3",
+   "ms": 4361,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894361.53,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 4",
+   "ms": 27527,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894376.67,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 4",
+   "ms": 6756,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894383.72,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 5",
+   "ms": 33485,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894393.71,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 5",
+   "ms": 4754,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894398.63,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "Dalang Director: plan camera, entrances, transitions and gamelan cues · whole film",
+   "ms": 24207,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894423.19,
+   "stage": null
+  },
+  {
+   "kind": "decision",
+   "agent": "director",
+   "text": "planned 5 shots: 10 entrances/exits, 5 gamelan cues, 9 sound effects",
+   "t": 1793894423.2,
+   "stage": null
+  },
+  {
+   "kind": "call",
+   "model": "muse-wonder-1.0",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "choreograph the scene as keyframes · scene 1",
+   "ms": 7954,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894431.23,
+   "stage": "animate"
+  },
+  {
+   "kind": "call",
+   "model": "muse-wonder-1.0",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "choreograph the scene as keyframes · scene 2",
+   "ms": 11584,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894443.81,
+   "stage": "animate"
+  },
+  {
+   "kind": "call",
+   "model": "muse-wonder-1.0",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "choreograph the scene as keyframes · scene 3",
+   "ms": 10808,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894456.38,
+   "stage": "animate"
+  },
+  {
+   "kind": "call",
+   "model": "muse-wonder-1.0",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "choreograph the scene as keyframes · scene 4",
+   "ms": 9408,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894466.78,
+   "stage": "animate"
+  },
+  {
+   "kind": "call",
+   "model": "muse-wonder-1.0",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "choreograph the scene as keyframes · scene 5",
+   "ms": 10485,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793894478.29,
+   "stage": "animate"
+  },
+  {
+   "kind": "decision",
+   "agent": "consistency",
+   "text": "character consistency 91/100 in the final film: 1/2 puppets from SAM 3.1 masks, same cut-out pixels across 9 scene appearances",
+   "t": 1793894583.31,
+   "stage": null
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "t": 1793895301.1492796,
+   "stage": "casting",
+   "text": "putri re-cut after the first render: SAM 3.1 found her as 'person' (kind noun fallback added 2026-11-05); the plain-background cut-out left a box around her, so the film was re-rendered with the SAM mask"
+  },
+  {
+   "kind": "decision",
+   "agent": "consistency",
+   "t": 1793895531.994148,
+   "stage": null,
+   "text": "character consistency 100/100 in the re-rendered film: 2/2 puppets from SAM 3.1 masks, same cut-out pixels across 9 scene appearances"
+  }
+ ],
+ "cultural_review": {
+  "model": "muse-spark-1.3",
+  "rules": [
+   "gentle-conflict",
+   "no-politics",
+   "no-gore",
+   "respect-figures",
+   "kid-friendly-pictures",
+   "canon",
+   "no-invented-ritual",
+   "gunungan-respect"
+  ],
+  "rules_status": "Curated by the Dalang AI team from public descriptions of wayang kulit and Nusantara folk tales. NOT yet reviewed by a dalang or sanggar: see docs/CULTURAL_REVIEW.md.",
+  "scenes": [
+   {
+    "n": 1,
+    "passed_first": false,
+    "rules": [
+     "gunungan-respect"
+    ],
+    "passed_after": true
+   },
+   {
+    "n": 2,
+    "passed_first": true,
+    "rules": [],
+    "passed_after": true
+   },
+   {
+    "n": 3,
+    "passed_first": true,
+    "rules": [],
+    "passed_after": true
+   },
+   {
+    "n": 4,
+    "passed_first": true,
+    "rules": [],
+    "passed_after": true
+   },
+   {
+    "n": 5,
+    "passed_first": false,
+    "rules": [
+     "gunungan-respect"
+    ],
+    "passed_after": true
+   }
+  ],
+  "characters": [
+   {
+    "id": "putri",
+    "name": "Golden Snail Princess",
+    "passed_first": true,
+    "rules": []
+   },
+   {
+    "id": "mbok",
+    "name": "Kind Grandma",
+    "passed_first": false,
+    "rules": [
+     "canon"
+    ]
+   }
+  ],
+  "fixes": 3,
+  "pass_rate_first": 0.6,
+  "pass_rate_after": 1.0,
+  "note": "Kept plot and gentle tone; added gunungan to open and close, fixed grandma note to keep Semar canon."
+ },
+ "voice_scene_total": 5,
+ "cutouts": {
+  "putri": "sam",
+  "mbok": "sam",
+  "gunungan": "background"
+ },
+ "consistency": {
+  "score": 100,
+  "puppets": [
+   {
+    "id": "putri",
+    "name": "Golden Snail Princess",
+    "source": "sam",
+    "fill": 0.315,
+    "soft_edges": 0.039,
+    "checker_redraws": 0,
+    "sha": "c330f84328289e11",
+    "same_pixels": true,
+    "scenes": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "score": 100
+   },
+   {
+    "id": "mbok",
+    "name": "Kind Grandma",
+    "source": "sam",
+    "fill": 0.301,
+    "soft_edges": 0.036,
+    "checker_redraws": 0,
+    "sha": "2fa1b8f920c05934",
+    "same_pixels": true,
+    "scenes": [
+     2,
+     3,
+     4,
+     5
+    ],
+    "score": 100
+   }
+  ],
+  "appearances": 9,
+  "method": "SAM 3.1 mask source + mask quality + checker agent + same cut-out pixels in every scene"
+ },
+ "director": {
+  "source": "muse-spark-1.3",
+  "shots": [
+   {
+    "n": 1,
+    "camera": "pan_right",
+    "enter": [
+     {
+      "id": "putri",
+      "from": "left"
+     }
+    ],
+    "exit": [
+     {
+      "id": "putri",
+      "to": "right"
+     }
+    ],
+    "transition": "gunungan_sweep",
+    "gamelan": "gong",
+    "sfx": [
+     {
+      "t": 0.2,
+      "kind": "water"
+     },
+     {
+      "t": 0.6,
+      "kind": "birds"
+     }
+    ],
+    "note": "Gentle opening journey following the golden snail down the river."
+   },
+   {
+    "n": 2,
+    "camera": "still",
+    "enter": [
+     {
+      "id": "putri",
+      "from": "left"
+     },
+     {
+      "id": "mbok",
+      "from": "right"
+     }
+    ],
+    "exit": [
+     {
+      "id": "putri",
+      "to": "right"
+     },
+     {
+      "id": "mbok",
+      "to": "right"
+     }
+    ],
+    "transition": "gunungan_sweep",
+    "gamelan": "bonang_run",
+    "sfx": [
+     {
+      "t": 0.2,
+      "kind": "water"
+     },
+     {
+      "t": 0.5,
+      "kind": "birds"
+     }
+    ],
+    "note": "Kind meeting on the riverbank as grandma gently lifts the snail."
+   },
+   {
+    "n": 3,
+    "camera": "pull_out",
+    "enter": [
+     {
+      "id": "mbok",
+      "from": "left"
+     },
+     {
+      "id": "putri",
+      "from": "right"
+     }
+    ],
+    "exit": [],
+    "transition": "gunungan_sweep",
+    "gamelan": "kempul",
+    "sfx": [
+     {
+      "t": 0.3,
+      "kind": "birds"
+     }
+    ],
+    "note": "Soft reveal of the magically clean house at dawn."
+   },
+   {
+    "n": 4,
+    "camera": "push_in",
+    "enter": [],
+    "exit": [],
+    "transition": "gunungan_rise",
+    "gamelan": "gong",
+    "sfx": [
+     {
+      "t": 0.6,
+      "kind": "keprak"
+     },
+     {
+      "t": 0.3,
+      "kind": "birds"
+     }
+    ],
+    "note": "Close quiet moment as grandma peeks and the princess appears."
+   },
+   {
+    "n": 5,
+    "camera": "pull_out",
+    "enter": [
+     {
+      "id": "putri",
+      "from": "left"
+     },
+     {
+      "id": "mbok",
+      "from": "right"
+     }
+    ],
+    "exit": [],
+    "transition": "fade",
+    "gamelan": "suwuk",
+    "sfx": [
+     {
+      "t": 0.4,
+      "kind": "birds"
+     },
+     {
+      "t": 0.8,
+      "kind": "gong"
+     }
+    ],
+    "note": "Warm family tableau in the sunset yard to close with kindness."
+   }
+  ]
+ },
+ "score": {
+  "scale": "slendro",
+  "pathet": "manyura",
+  "tempo_bpm": 66,
+  "pattern": "ladrang irama tanggung (kendang kalih, gentle)",
+  "moods": [
+   "calm",
+   "happy",
+   "magical",
+   "magical",
+   "triumphant"
+  ],
+  "procedural": true,
+  "styles": {
+   "calm": {
+    "scale": "slendro",
+    "pathet": "manyura",
+    "tempo_bpm": 66,
+    "balungan": [
+     3,
+     2,
+     3,
+     1,
+     3,
+     2,
+     1,
+     6,
+     2,
+     1,
+     2,
+     6,
+     3,
+     5,
+     3,
+     2
+    ],
+    "kendang": "D...t...D.t.D...",
+    "pattern": "ladrang irama tanggung (kendang kalih, gentle)",
+    "bonang": true
+   },
+   "happy": {
+    "scale": "pelog",
+    "pathet": "barang",
+    "tempo_bpm": 96,
+    "balungan": [
+     2,
+     3,
+     2,
+     7,
+     2,
+     3,
+     5,
+     6,
+     5,
+     3,
+     2,
+     3,
+     5,
+     6,
+     7,
+     6
+    ],
+    "kendang": "D.t.D.tkD.t.DttD",
+    "pattern": "lancaran (kendang ciblon, lively)",
+    "bonang": true
+   },
+   "magical": {
+    "scale": "pelog",
+    "pathet": "lima",
+    "tempo_bpm": 72,
+    "balungan": [
+     1,
+     2,
+     4,
+     5,
+     4,
+     2,
+     1,
+     2,
+     5,
+     4,
+     2,
+     1,
+     2,
+     4,
+     5,
+     1
+    ],
+    "kendang": "D...k...D.k.t...",
+    "pattern": "ayak-ayakan (floating)",
+    "bonang": true
+   },
+   "triumphant": {
+    "scale": "slendro",
+    "pathet": "manyura",
+    "tempo_bpm": 104,
+    "balungan": [
+     6,
+     5,
+     3,
+     2,
+     6,
+     5,
+     3,
+     2,
+     3,
+     5,
+     6,
+     1,
+     6,
+     5,
+     3,
+     2
+    ],
+    "kendang": "DtD.DtD.DtDkDDtD",
+    "pattern": "lancaran (kendang bem, triumphant)",
+    "bonang": true
+   }
+  }
+ },
+ "motion": [
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.06,
+    "pan_x": 0.04,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.12,
+   "puppets": [
+    {
+     "id": "putri",
+     "idle": "bob",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.5,
+       "lift": 0.03,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.55,
+       "lift": 0.055,
+       "angle": 2.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.5,
+       "x": 0.6,
+       "lift": 0.03,
+       "angle": -2.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.65,
+       "lift": 0.055,
+       "angle": 2.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.7,
+       "lift": 0.04,
+       "angle": 0.0,
+       "facing": "right"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.08,
+    "pan_x": 0.03,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.18,
+   "puppets": [
+    {
+     "id": "putri",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.3,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.3,
+       "x": 0.31,
+       "lift": 0.01,
+       "angle": 4.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.55,
+       "x": 0.33,
+       "lift": 0.0,
+       "angle": -3.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.52,
+       "lift": 0.13,
+       "angle": 6.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 1.08,
+       "lift": 0.14,
+       "angle": 3.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "mbok",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.7,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.3,
+       "x": 0.5,
+       "lift": 0.02,
+       "angle": 5.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.55,
+       "x": 0.43,
+       "lift": 0.0,
+       "angle": 18.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.75,
+       "x": 0.6,
+       "lift": 0.03,
+       "angle": -5.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 1.16,
+       "lift": 0.02,
+       "angle": -3.0,
+       "facing": "right"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.06,
+    "pan_x": 0.0,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.7,
+   "puppets": [
+    {
+     "id": "mbok",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.3,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.32,
+       "lift": 0.015,
+       "angle": -5.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.5,
+       "x": 0.36,
+       "lift": 0.03,
+       "angle": 4.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.38,
+       "lift": 0.005,
+       "angle": -4.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.36,
+       "lift": 0.01,
+       "angle": 2.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "putri",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.7,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.25,
+       "x": 0.69,
+       "lift": 0.01,
+       "angle": 3.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.5,
+       "x": 0.7,
+       "lift": 0.015,
+       "angle": -3.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.75,
+       "x": 0.71,
+       "lift": 0.01,
+       "angle": 3.0,
+       "facing": "left"
+      },
+      {
+       "t": 1.0,
+       "x": 0.7,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.1,
+    "pan_x": 0.0,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.35,
+   "puppets": [
+    {
+     "id": "mbok",
+     "idle": "tremble",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.25,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.18,
+       "lift": 0.0,
+       "angle": 10.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.5,
+       "x": 0.16,
+       "lift": 0.01,
+       "angle": -7.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.19,
+       "lift": 0.02,
+       "angle": -4.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.2,
+       "lift": 0.0,
+       "angle": -6.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "putri",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.65,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.3,
+       "x": 0.65,
+       "lift": 0.03,
+       "angle": -5.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.55,
+       "x": 0.63,
+       "lift": 0.07,
+       "angle": 5.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.8,
+       "x": 0.6,
+       "lift": 0.09,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.58,
+       "lift": 0.05,
+       "angle": 0.0,
+       "facing": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.1,
+    "pan_x": 0.0,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.25,
+   "puppets": [
+    {
+     "id": "putri",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.4,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.45,
+       "lift": 0.02,
+       "angle": -2.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.5,
+       "x": 0.46,
+       "lift": 0.0,
+       "angle": -18.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.47,
+       "lift": 0.04,
+       "angle": 8.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.47,
+       "lift": 0.02,
+       "angle": -6.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "mbok",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.6,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.25,
+       "x": 0.55,
+       "lift": 0.02,
+       "angle": 2.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.5,
+       "x": 0.54,
+       "lift": 0.0,
+       "angle": 18.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.75,
+       "x": 0.53,
+       "lift": 0.04,
+       "angle": 8.0,
+       "facing": "left"
+      },
+      {
+       "t": 1.0,
+       "x": 0.53,
+       "lift": 0.02,
+       "angle": -6.0,
+       "facing": "left"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "title_aksara": "ꦛꦼ ꦒꦺꦴꦭ꧀ꦢꦼꦤ꧀ ꦱ꧀ꦤꦲꦶꦭ꧀ ꦥꦿꦶꦤ꧀ꦕꦼꦱ꧀ꦱ꧀",
+ "duration_s": 54.9,
+ "captions": "/media/lczoo1wr/captions.vtt?v=1793895504",
+ "cost_items": {
+  "muse-spark-1.3": 0.06644,
+  "muse-image-1.0": 0.07,
+  "sam-3.1": 0.02,
+  "muse-wonder-1.0": 0.16142
+ },
+ "trace_summary": {
+  "models": [
+   {
+    "model": "muse-spark-1.3",
+    "calls": 11,
+    "failed": 0,
+    "retries": 0,
+    "ms": 133096,
+    "usd": 0.0664
+   },
+   {
+    "model": "sam-3.1",
+    "calls": 8,
+    "failed": 0,
+    "retries": 0,
+    "ms": 21730,
+    "usd": 0.02
+   },
+   {
+    "model": "muse-image-1.0",
+    "calls": 7,
+    "failed": 0,
+    "retries": 0,
+    "ms": 180205,
+    "usd": 0.07
+   },
+   {
+    "model": "muse-wonder-1.0",
+    "calls": 5,
+    "failed": 0,
+    "retries": 0,
+    "ms": 50239,
+    "usd": 0.1614
+   }
+  ],
+  "calls": 31,
+  "decisions": 14
+ },
+ "tokens": {
+  "muse-spark-1.3": [
+   9894,
+   12723
+  ],
+  "muse-wonder-1.0": [
+   3776,
+   7316
+  ]
+ },
+ "receipt": {
+  "models": [
+   {
+    "model": "muse-spark-1.3",
+    "role": "writes the lakon, safety screen, Penjaga Budaya cultural review, picture checker",
+    "calls": 11,
+    "tokens_in": 9894,
+    "tokens_out": 12723,
+    "images": 0,
+    "usd": 0.0664,
+    "open_weights": false
+   },
+   {
+    "model": "sam-3.1",
+    "role": "cuts each puppet out (one reusable mask)",
+    "calls": 8,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "images": 0,
+    "usd": 0.02,
+    "open_weights": false
+   },
+   {
+    "model": "muse-image-1.0",
+    "role": "draws every puppet and backdrop",
+    "calls": 7,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "images": 7,
+    "usd": 0.07,
+    "open_weights": false
+   },
+   {
+    "model": "muse-wonder-1.0",
+    "role": "choreographs each scene as keyframes",
+    "calls": 5,
+    "tokens_in": 3776,
+    "tokens_out": 7316,
+    "images": 0,
+    "usd": 0.1614,
+    "open_weights": false
+   }
+  ],
+  "calls": 31,
+  "tokens_in": 13670,
+  "tokens_out": 20039,
+  "usd": 0.3179,
+  "decisions": 14,
+  "estimate": true,
+  "pricing": "https://dev.meta.ai/docs/pricing-rate-limits",
+  "fake": false,
+  "note": "Estimated from Meta's published prices; open-weight hosts bill separately."
+ },
+ "bundled": true,
+ "sample_note": "Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks and motion by Muse Spark and Muse Wonder, all on the live Meta Model API (2026-11-05). Narration: edge-tts."
+}

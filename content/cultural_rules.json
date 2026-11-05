@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "status": "Curated by the Dalang AI team from public descriptions of wayang kulit and Nusantara folk tales. NOT yet reviewed by a dalang or sanggar: see docs/CULTURAL_REVIEW.md.",
+  "rules": [
+    {
+      "id": "gentle-conflict",
+      "title": {"id": "Konflik lembut, bukan perang", "en": "Gentle conflict, no war framing"},
+      "guidance": "Conflict stays a trick, a chase, a race, a storm or something lost. No war, armies, battles, weapons used to hurt, or killing. Wayang has war epics (Bharatayudha); a children's lakon must not frame its story as one.",
+      "fields": ["narration", "action", "image_prompt"],
+      "replace": {
+        "perang": "lomba", "pertempuran": "perlombaan", "berperang": "berlomba", "pasukan": "rombongan", "tentara": "rombongan",
+        "senjata": "tongkat", "pedang": "tongkat", "membunuh": "mengalahkan", "dibunuh": "dikalahkan", "bunuh": "kalahkan",
+        "gelut": "lomba", "pateni": "kalahke", "dipateni": "dikalahke",
+        "war": "contest", "battle": "contest", "army": "group", "armies": "groups", "soldiers": "friends", "soldier": "friend",
+        "weapons": "sticks", "weapon": "stick", "swords": "sticks", "sword": "stick", "kill": "stop", "kills": "stops", "killed": "stopped", "killing": "stopping"
+      }
+    },
+    {
+      "id": "no-politics",
+      "title": {"id": "Tanpa politik", "en": "No politics"},
+      "guidance": "No elections, parties, politicians, campaigns or real-world political symbols. Kings and queens of the story world are fine.",
+      "fields": ["narration", "action", "image_prompt"],
+      "replace": {
+        "pemilu": "pesta desa", "kampanye": "pengumuman", "politik": "musyawarah", "presiden": "raja", "partai": "kelompok",
+        "election": "village fair", "elections": "village fairs", "campaign": "announcement", "politics": "village meeting", "president": "king", "politician": "village elder"
+      }
+    },
+    {
+      "id": "no-gore",
+      "title": {"id": "Tanpa darah dan luka", "en": "No blood or injury"},
+      "guidance": "No blood, wounds, gore or bodily harm in words or pictures.",
+      "fields": ["narration", "action", "image_prompt"],
+      "replace": {
+        "darah": "debu", "berdarah": "berdebu", "luka": "lelah", "getih": "bledug",
+        "blood": "dust", "bloody": "dusty", "gore": "mess", "wound": "scratch", "wounded": "tired"
+      }
+    },
+    {
+      "id": "respect-figures",
+      "title": {"id": "Hormati tokoh wayang", "en": "Respect wayang figures"},
+      "guidance": "Punakawan (Semar, Gareng, Petruk, Bagong) are funny but wise; Semar is a revered elder and must never be called stupid, evil or ugly. Dewa (gods) and court figures are never mocked. Villains (raksasa, buta) are gentle and can change, never humiliated for their looks.",
+      "fields": ["narration", "action", "visual_description"],
+      "replace": {
+        "bodoh": "lucu", "jelek": "besar", "buruk rupa": "bertubuh besar", "elek": "gedhe", "goblok": "lucu",
+        "stupid": "funny", "ugly": "huge", "idiot": "clown", "dumb": "funny"
+      }
+    },
+    {
+      "id": "kid-friendly-pictures",
+      "title": {"id": "Gambar ramah anak", "en": "Child-friendly pictures"},
+      "guidance": "Pictures for ages 5-12: villains look grumpy or silly, not frightening; no bared teeth close-ups, no realistic weapons, a keris only sheathed; nothing sacred (offerings, temple rites) used as a prop.",
+      "fields": ["image_prompt", "visual_description"],
+      "replace": {
+        "terrifying": "grumpy", "scary": "grumpy", "horror": "mystery", "menakutkan": "cemberut", "seram": "cemberut"
+      }
+    },
+    {
+      "id": "canon",
+      "title": {"id": "Tokoh sesuai pakem", "en": "Characters true to the tale"},
+      "guidance": "A known character keeps its canon traits (see canon list). A child may change the plot; the character's nature stays recognisable.",
+      "fields": ["visual_description", "cultural_note", "narration"],
+      "replace": {}
+    },
+    {
+      "id": "no-invented-ritual",
+      "title": {"id": "Tanpa ritual karangan", "en": "No invented sacred meaning"},
+      "guidance": "Cultural notes state only well-known facts (archetype, role in the tale). They never invent a sacred meaning, ritual rule, or a claim about a real religion.",
+      "fields": ["cultural_note"],
+      "replace": {}
+    },
+    {
+      "id": "gunungan-respect",
+      "title": {"id": "Gunungan dihormati", "en": "The gunungan is respected"},
+      "guidance": "The gunungan (kayon) opens and closes the story and marks scene changes. It is never a weapon, a toy fought over, or a joke.",
+      "fields": ["narration", "action"],
+      "replace": {}
+    }
+  ],
+  "canon": [
+    {"name": "Kancil", "match": ["kancil", "mouse deer", "pelanduk"], "keep": "a small clever mouse deer who wins by wits, not strength", "avoid": ["antlers", "tanduk", "kejam", "cruel"]},
+    {"name": "Semar", "match": ["semar"], "keep": "the wise, kind elder of the punakawan; round, humble and deeply respected", "avoid": ["bodoh", "stupid", "jahat", "evil", "jelek", "ugly"]},
+    {"name": "Buto Ijo", "match": ["buto ijo", "buta ijo", "green giant"], "keep": "a big green giant (raksasa); in children's tellings a gentle, greedy villain who is outwitted", "avoid": ["darah", "blood", "dimakan hidup", "eaten alive"]},
+    {"name": "Timun Mas", "match": ["timun mas", "golden cucumber"], "keep": "a brave girl born from a golden cucumber who escapes the giant with magic gifts", "avoid": ["dimakan", "eaten"]},
+    {"name": "Malin Kundang", "match": ["malin kundang"], "keep": "a son who forgets his mother and becomes stone; told as a lesson about kindness to parents", "avoid": ["disiksa", "tortured"]},
+    {"name": "Bawang Putih", "match": ["bawang putih"], "keep": "a kind, patient girl; Bawang Merah is unkind but can learn", "avoid": ["disiksa", "tortured"]},
+    {"name": "Sangkuriang", "match": ["sangkuriang"], "keep": "a strong young man who tries to build a lake and a boat in one night (Tangkuban Perahu)", "avoid": []},
+    {"name": "Roro Jonggrang", "match": ["roro jonggrang", "rara jonggrang"], "keep": "a clever princess and the thousand temples of Prambanan", "avoid": []},
+    {"name": "Lutung Kasarung", "match": ["lutung kasarung"], "keep": "a heavenly prince in the form of a black langur who helps kind Purbasari", "avoid": []},
+    {"name": "Keong Mas", "match": ["keong mas", "golden snail"], "keep": "a princess (Candra Kirana) turned into a golden snail, kind to the old woman who finds her", "avoid": []},
+    {"name": "Arjuna", "match": ["arjuna", "harjuna"], "keep": "a refined (alus) ksatria: calm, polite, skilled; never a brute", "avoid": ["kasar", "brute", "bodoh", "stupid"]},
+    {"name": "Hanoman", "match": ["hanoman", "hanuman", "anoman"], "keep": "a loyal, brave white monkey", "avoid": ["jahat", "evil"]}
+  ]
+}

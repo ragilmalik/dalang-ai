@@ -1,0 +1,61 @@
+{
+ "segments": [
+  {
+   "key": "voice",
+   "seconds": 3.2
+  },
+  {
+   "key": "opening",
+   "seconds": 7.0
+  },
+  {
+   "key": "film1",
+   "seconds": 19.0
+  },
+  {
+   "key": "garagara",
+   "seconds": 13.03
+  },
+  {
+   "key": "film2",
+   "seconds": 15.0
+  },
+  {
+   "key": "kelir",
+   "seconds": 18.0
+  },
+  {
+   "key": "why",
+   "seconds": 11.4
+  },
+  {
+   "key": "landing",
+   "seconds": 11.0
+  },
+  {
+   "key": "progress",
+   "seconds": 30.1
+  },
+  {
+   "key": "trace",
+   "seconds": 14.03
+  },
+  {
+   "key": "share",
+   "seconds": 16.0
+  },
+  {
+   "key": "print",
+   "seconds": 8.0
+  },
+  {
+   "key": "close",
+   "seconds": 12.1
+  }
+ ],
+ "total_seconds": 177.86,
+ "size": "1920x1080",
+ "real_footage": {},
+ "recorded_in_fake_mode": true,
+ "browser_recording": true
+}

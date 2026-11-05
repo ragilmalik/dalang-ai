@@ -1,0 +1,37 @@
+# Render Blueprint for the Dalang AI backend (FastAPI + ffmpeg).
+# Render dashboard -> New -> Blueprint -> pick the GitHub repo. Nothing is created until you confirm there.
+# Note: a persistent disk needs a paid instance (Starter or higher). Without a disk, films vanish on redeploy.
+services:
+  - type: web
+    name: dalang-ai-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile.api
+    plan: starter
+    region: singapore
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: dalang-data
+      mountPath: /data
+      sizeGB: 5
+    envVars:
+      - key: DATA_DIR
+        value: /data
+      - key: META_API_KEY
+        sync: false        # paste in the Render dashboard; never commit it
+      - key: BASETEN_API_KEY
+        sync: false
+      - key: GLIMMER_API_KEY      # optional: Together AI key for Muse Glimmer (open weights)
+        sync: false
+      - key: USE_OPEN_WEIGHTS
+        value: "false"
+      - key: DEMO_MODE
+        value: "true"
+      - key: JOB_BUDGET_USD
+        value: "1.50"
+      - key: CLEANUP_DAYS         # private films nobody shared are deleted after 30 days (keeps the 5 GB disk free)
+        value: "30"
+      - key: PUBLIC_BASE_URL
+        sync: false        # the Vercel website address, e.g. https://dalang-ai.vercel.app
+      - key: CORS_ORIGINS
+        value: "*"

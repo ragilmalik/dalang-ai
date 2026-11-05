@@ -1,0 +1,25 @@
+[project]
+name = "dalang-ai"
+version = "1.0.0"
+description = "Tell a story out loud, get back an animated Javanese wayang kulit short film."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+extend-exclude = ["web", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "B008"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+check_untyped_defs = true
+warn_unused_ignores = true
+exclude = ["web/", "data/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

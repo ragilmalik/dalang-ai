@@ -1,0 +1,445 @@
+{
+ "totals": {
+  "stories": 6,
+  "completed": 6,
+  "scene_count_ok": 1.0,
+  "narration_in_bounds": 1.0,
+  "read_aloud_ok": 1.0,
+  "language_match": 1.0,
+  "cultural_pass_first": 0.933,
+  "cultural_pass_after": 1.0,
+  "consistency": 100.0
+ },
+ "stories": [
+  {
+   "id": "id-kancil-buaya",
+   "lang": "id",
+   "status": "review",
+   "seconds": 3.8,
+   "job": "qDxgDY5Q",
+   "scenes": 5,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 28.3,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "id",
+   "language_ok": true,
+   "cultural_first": 0.8,
+   "cultural_after": 1.0,
+   "cultural_fixes": 1,
+   "consistency": 100,
+   "calls": 23,
+   "cost_usd": 0.1272,
+   "title": "Kancil dan Barisan Buaya"
+  },
+  {
+   "id": "id-kancil-teman",
+   "lang": "id",
+   "status": "review",
+   "seconds": 2.9,
+   "job": "SFkonoRJ",
+   "scenes": 5,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 28.3,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "id",
+   "language_ok": true,
+   "cultural_first": 0.8,
+   "cultural_after": 1.0,
+   "cultural_fixes": 1,
+   "consistency": 100,
+   "calls": 14,
+   "cost_usd": 0.0372,
+   "title": "Kancil dan Barisan Buaya"
+  },
+  {
+   "id": "jv-timun-mas",
+   "lang": "jv",
+   "status": "review",
+   "seconds": 6.9,
+   "job": "UwEKSVBQ",
+   "scenes": 5,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 23.9,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "jv",
+   "language_ok": true,
+   "cultural_first": 1.0,
+   "cultural_after": 1.0,
+   "cultural_fixes": 0,
+   "consistency": 100,
+   "calls": 23,
+   "cost_usd": 0.1197,
+   "title": "Timun Mas lan Buto Ijo"
+  },
+  {
+   "id": "jv-buto-ijo",
+   "lang": "jv",
+   "status": "review",
+   "seconds": 5.7,
+   "job": "26bfXEbF",
+   "scenes": 5,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 23.9,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "jv",
+   "language_ok": true,
+   "cultural_first": 1.0,
+   "cultural_after": 1.0,
+   "cultural_fixes": 0,
+   "consistency": 100,
+   "calls": 15,
+   "cost_usd": 0.0397,
+   "title": "Timun Mas lan Buto Ijo"
+  },
+  {
+   "id": "en-golden-snail",
+   "lang": "en",
+   "status": "review",
+   "seconds": 5.6,
+   "job": "nUFG7b9O",
+   "scenes": 4,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 27.8,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "en",
+   "language_ok": true,
+   "cultural_first": 1.0,
+   "cultural_after": 1.0,
+   "cultural_fixes": 0,
+   "consistency": 100,
+   "calls": 18,
+   "cost_usd": 0.0918,
+   "title": "The Golden Snail"
+  },
+  {
+   "id": "en-keong-mas",
+   "lang": "en",
+   "status": "review",
+   "seconds": 3.7,
+   "job": "Zc2MoRSW",
+   "scenes": 4,
+   "scene_ok": true,
+   "narration_in_bounds": 1.0,
+   "read_aloud_s": 27.8,
+   "read_ok": true,
+   "language_field_ok": true,
+   "detected": "en",
+   "language_ok": true,
+   "cultural_first": 1.0,
+   "cultural_after": 1.0,
+   "cultural_fixes": 0,
+   "consistency": 100,
+   "calls": 12,
+   "cost_usd": 0.0318,
+   "title": "The Golden Snail"
+  }
+ ],
+ "round5": {
+  "director": {
+   "films": 6,
+   "valid": 1.0,
+   "cues_per_film": 4.7,
+   "moves_per_film": 3.3,
+   "sfx_per_film": 7.0
+  },
+  "gamelan": {
+   "renders": 14,
+   "ok": 1.0,
+   "slendro_equal_steps": true,
+   "pelog_tones": 7,
+   "mean_render_s_per_8s": 0.04
+  },
+  "remix": {
+   "remixes": [
+    {
+     "remix": "en/original",
+     "status": "done",
+     "calls": 2,
+     "models": [
+      "muse-spark-1.3"
+     ],
+     "words_only": true,
+     "same_scenes": true,
+     "usd": 0.0054,
+     "source_usd": 0.0959
+    },
+    {
+     "remix": "jv/original",
+     "status": "done",
+     "calls": 2,
+     "models": [
+      "muse-spark-1.3"
+     ],
+     "words_only": true,
+     "same_scenes": true,
+     "usd": 0.0054,
+     "source_usd": 0.0959
+    },
+    {
+     "remix": "id/villain",
+     "status": "done",
+     "calls": 2,
+     "models": [
+      "muse-spark-1.3"
+     ],
+     "words_only": true,
+     "same_scenes": true,
+     "usd": 0.0054,
+     "source_usd": 0.0959
+    }
+   ],
+   "pass": 1.0,
+   "cost_ratio": 0.056
+  },
+  "vote": {
+   "voters": 7,
+   "tally": [
+    4,
+    3
+   ],
+   "winner": 0,
+   "applied": true,
+   "film": "done"
+  },
+  "robustness": {
+   "rows": [
+    {
+     "stage": "moderation",
+     "what": "safety screen (Muse Spark)",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "moderation",
+     "what": "safety screen (Muse Spark)",
+     "mode": "always",
+     "status": "failed",
+     "completed": false,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": "503 from https://api.meta.ai/v1/chat/completions: {\"error\":{\"message\":\"injected failure fo"
+    },
+    {
+     "stage": "lakon",
+     "what": "lakon writer (Muse Spark)",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "lakon",
+     "what": "lakon writer (Muse Spark)",
+     "mode": "always",
+     "status": "failed",
+     "completed": false,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": "503 from https://api.meta.ai/v1/chat/completions: {\"error\":{\"message\":\"injected failure fo"
+    },
+    {
+     "stage": "cultural_review",
+     "what": "Penjaga Budaya (Muse Spark)",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "cultural_review",
+     "what": "Penjaga Budaya (Muse Spark)",
+     "mode": "always",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "images",
+     "what": "Muse Image (puppets, backdrops, gunungan)",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "images",
+     "what": "Muse Image (puppets, backdrops, gunungan)",
+     "mode": "always",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 8,
+     "retried": 6,
+     "error": ""
+    },
+    {
+     "stage": "verdict",
+     "what": "picture checker (Muse Spark vision)",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "verdict",
+     "what": "picture checker (Muse Spark vision)",
+     "mode": "always",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 7,
+     "retried": 5,
+     "error": ""
+    },
+    {
+     "stage": "sam-3.1",
+     "what": "SAM 3.1 cut-out",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "sam-3.1",
+     "what": "SAM 3.1 cut-out",
+     "mode": "always",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 4,
+     "error": ""
+    },
+    {
+     "stage": "motion_plan",
+     "what": "Muse Wonder motion plans",
+     "mode": "once",
+     "status": "done",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "motion_plan",
+     "what": "Muse Wonder motion plans",
+     "mode": "always",
+     "status": "done",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 4,
+     "error": ""
+    },
+    {
+     "stage": "director",
+     "what": "Dalang Director (Muse Spark)",
+     "mode": "once",
+     "status": "done",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "director",
+     "what": "Dalang Director (Muse Spark)",
+     "mode": "always",
+     "status": "done",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "asr",
+     "what": "Muse Voice Transcribe",
+     "mode": "once",
+     "status": "review",
+     "completed": true,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": ""
+    },
+    {
+     "stage": "asr",
+     "what": "Muse Voice Transcribe",
+     "mode": "always",
+     "status": "failed",
+     "completed": false,
+     "graceful": true,
+     "fallbacks": 0,
+     "retried": 1,
+     "error": "503 from https://api.meta.ai/v1/asr/transcribe?sessionId=dalang-5c01283d6e85: {\"error\":{\"m"
+    }
+   ],
+   "once_completed": 1.0,
+   "always_completed": 0.667,
+   "graceful": 1.0
+  },
+  "open": {
+   "fake_mode": true,
+   "rows": [
+    {
+     "setup": "Meta Muse Spark 1.3",
+     "calls": 2,
+     "models": [
+      "muse-spark-1.3"
+     ],
+     "meta_billed_usd": 0.0054,
+     "valid_script": true,
+     "routed_open": []
+    },
+    {
+     "setup": "Muse Spark Open (lakon+director)",
+     "calls": 2,
+     "models": [
+      "meta-models/muse-spark-open"
+     ],
+     "meta_billed_usd": 0.0,
+     "valid_script": true,
+     "routed_open": []
+    }
+   ]
+  }
+ }
+}

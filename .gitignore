@@ -1,0 +1,35 @@
+# secrets
+.env
+.env.*
+!.env.example
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+# app data (films, sqlite, caches)
+data/
+# web
+web/node_modules/
+web/.next/
+web/next-env.d.ts
+web/*.tsbuildinfo
+# os
+.DS_Store
+Thumbs.db
+.coverage
+coverage.json
+htmlcov/
+# keys and certificates (never commit)
+*.key
+*.pem
+# extra Next.js build folders (parallel builds on other ports)
+.next*/
+web/.next-*/
+# generated work outputs (recordings, re-renders, scratch)
+/fixtures/
+*.log
+/work/
