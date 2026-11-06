@@ -88,6 +88,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   Built for the Meta Global AI Developer Hackathon · Muse Voice Transcribe · Muse Spark · Muse Image · SAM
                   3.1 · Muse Wonder
                 </p>
+                <p className="t-tiny text-muted">
+                  Gamelan in the films: court musicians of the Kraton Ngayogyakarta, recorded by{" "}
+                  <a
+                    href="https://freesound.org/people/RTB45/sounds/255544/"
+                    className="underline decoration-gold/40 underline-offset-2 hover:text-fg"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    RTB45
+                  </a>
+                  ,{" "}
+                  <a
+                    href="https://creativecommons.org/licenses/by/4.0/"
+                    className="underline decoration-gold/40 underline-offset-2 hover:text-fg"
+                    rel="noopener noreferrer license"
+                    target="_blank"
+                  >
+                    CC BY 4.0
+                  </a>
+                  . Narration voices are synthetic.
+                </p>
               </div>
               <div className="flex flex-col items-start gap-4 md:items-end">
                 <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">

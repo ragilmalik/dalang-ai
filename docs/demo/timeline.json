@@ -14,7 +14,7 @@
   },
   {
    "key": "garagara",
-   "seconds": 13.03
+   "seconds": 13.0
   },
   {
    "key": "film2",
@@ -22,7 +22,7 @@
   },
   {
    "key": "kelir",
-   "seconds": 18.03
+   "seconds": 18.0
   },
   {
    "key": "why",
@@ -34,15 +34,15 @@
   },
   {
    "key": "progress",
-   "seconds": 30.13
+   "seconds": 31.53
   },
   {
    "key": "trace",
-   "seconds": 14.07
+   "seconds": 14.03
   },
   {
    "key": "share",
-   "seconds": 16.0
+   "seconds": 16.03
   },
   {
    "key": "print",
@@ -50,10 +50,10 @@
   },
   {
    "key": "close",
-   "seconds": 12.1
+   "seconds": 12.37
   }
  ],
- "total_seconds": 176.56,
+ "total_seconds": 178.16,
  "size": "1920x1080",
  "real_footage": {},
  "recorded_in_fake_mode": false,

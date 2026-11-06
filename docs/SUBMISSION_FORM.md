@@ -71,7 +71,7 @@ project, labelled as samples) were made with it on Nov 5: 91 Meta calls, none fa
 narration is Kokoro-82M (English) and edge-tts, picked in a listening test.
 
 Stack: FastAPI + Python pipeline, Pillow/NumPy kelir renderer, ffmpeg, SQLite, SSE; Next.js + Tailwind. MIT
-licensed, <!-- facts:tests -->546<!-- /facts --> automated tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
+licensed, <!-- facts:tests -->557<!-- /facts --> automated tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
 
 
 ## Answer 9: Describe your use of Meta products
@@ -121,7 +121,7 @@ its own hardware.
 All of it, from an empty repository: the FastAPI backend and nine-stage agent pipeline; the Meta client, SAM
 mask handling, verify (redraw) agent and Muse Wonder motion planner; the kelir animation engine (keyframes, lamp
 flicker, shadows, gunungan transitions, captions, gamelan bed); Gara-gara branching, own-voice narration, Kotak
-Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->546<!-- /facts --> tests and CI; the
+Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->557<!-- /facts --> tests and CI; the
 Next.js app and its design system (recording, live progress, storyboard review, player, Kelir Live, classroom vote,
 share cards, gallery, agent trace); the narrator voice picker; and all the
 docs in English and Bahasa Indonesia. The git history starts Oct 29, 2026 UTC. No code, art or models from before the

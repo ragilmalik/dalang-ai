@@ -1,52 +1,62 @@
 {
- "id": "uy8YcVRk",
- "created": 1793893315.338075,
+ "id": "jAmnC1Mv",
+ "created": 1793943456.172658,
  "status": "done",
  "language": "id",
  "style": "classic",
  "review": false,
  "public": true,
- "title": "Kancil yang Cerdik dan Buaya Sungai",
+ "title": "Kancil dan Jembatan Buaya",
  "transcript": "Dulu ada kancil yang pintar. Dia lapar dan mau makan mentimun di seberang sungai. Tapi di sungai banyak buaya yang lapar juga. Kancil bilang raja mau menghitung semua buaya. Buaya-buaya berbaris, kancil melompat di punggung mereka sambil menghitung satu dua tiga. Sampai di seberang kancil tertawa dan berterima kasih. Buaya malu, lalu mereka jadi teman.",
  "script": {
-  "title": "Kancil yang Cerdik dan Buaya Sungai",
+  "title": "Kancil dan Jembatan Buaya",
   "language": "id",
-  "moral": "Kecerdikan harus dipakai dengan jujur dan baik, agar lawan bisa menjadi teman.",
-  "opening": "Kocap kacarita, di tepi sungai hiduplah Kancil yang cerdik dan lapar.",
+  "moral": "Dengan akal yang baik dan hati yang ramah, masalah bisa selesai dan musuh bisa jadi teman.",
+  "opening": "Kocap kacarita, di pinggir sungai hiduplah Kancil yang cerdik.",
   "characters": [
    {
     "id": "kancil",
     "name": "Kancil",
     "role": "hero",
-    "wayang_archetype": "kancil",
-    "visual_description": "small reddish-brown mouse-deer shadow puppet with slender legs, long neck, golden batik headcloth, delicate carved edge",
+    "wayang_archetype": "wayang-kulit animal (kancil)",
+    "visual_description": "Small slender light-brown mouse-deer leather puppet with intricate gold carving, long thin legs, upright pointed ears, red beaded collar, kind eyes.",
     "kind": "animal",
     "sam_phrase": "mouse deer puppet",
-    "cultural_note": "Kancil adalah mouse-deer cerdik dalam dongeng Jawa yang menang dengan akal."
+    "cultural_note": "Kancil adalah kancil cerdik dalam dongeng Jawa yang menang dengan akal, bukan kekuatan."
    },
    {
     "id": "baya",
     "name": "Baya",
     "role": "villain",
-    "wayang_archetype": "buaya",
-    "visual_description": "large dark-green crocodile shadow puppet with long jaw, bumpy back, gold eyes, bold carved scales",
+    "wayang_archetype": "wayang-kulit animal (buaya)",
+    "visual_description": "Large dark-green crocodile leather puppet with yellow carved scales, blunt rounded snout, sturdy curled tail, round friendly eyes.",
     "kind": "animal",
     "sam_phrase": "crocodile puppet",
-    "cultural_note": "Buaya muncul dalam lakon wayang sebagai penjaga sungai yang kuat dan gagah."
+    "cultural_note": "Buaya adalah hewan sungai dalam lakon anak ini yang kuat tetapi bisa diajak berteman."
+   },
+   {
+    "id": "boyo",
+    "name": "Boyo",
+    "role": "helper",
+    "wayang_archetype": "wayang-kulit animal (buaya)",
+    "visual_description": "Medium olive-green crocodile leather puppet with light yellow belly carving, shorter snout, small dorsal spikes, cheerful round eyes, smaller size than Baya.",
+    "kind": "animal",
+    "sam_phrase": "young crocodile puppet",
+    "cultural_note": "Boyo melambangkan buaya sungai dalam lakon anak yang kuat tetapi bisa diajak berteman."
    }
   ],
   "scenes": [
    {
     "n": 1,
-    "setting": "Sunny riverbank in the morning",
+    "setting": "Forest riverbank in the morning, cucumber garden across the river",
     "characters": [
      "kancil"
     ],
-    "action": "Hungry Kancil arrives at the riverbank and sees fresh cucumbers on the far side but cannot cross.",
-    "narration": "Kancil yang lapar melihat mentimun segar di seberang sungai, tapi airnya dalam dan berbahaya.",
-    "image_prompt": "lush riverbank at sunrise, wide calm river, cucumber vines on far bank, banana trees, soft golden light",
-    "motion_prompt": "kancil puppet hops in from the left, stops and gazes across the river",
-    "duration_s": 10.0,
+    "action": "Hungry clever Kancil appears on the forest riverbank and sees fresh cucumbers across the wide river.",
+    "narration": "Di tepi hutan hiduplah Kancil yang pintar dan baik hati. Perutnya lapar, ia melihat kebun mentimun segar di seberang sungai.",
+    "image_prompt": "Empty lush green riverbank at morning, wide calm blue river, distant cucumber field and banana trees, soft sunlight and light mist",
+    "motion_prompt": "kancil hops in from the left, stops at river edge, looks longingly across, tilts head",
+    "duration_s": 9.0,
     "mood": "calm",
     "staging": [
      {
@@ -58,16 +68,17 @@
    },
    {
     "n": 2,
-    "setting": "Middle of the wide river",
+    "setting": "Wide calm river with crocodiles gathering",
     "characters": [
      "kancil",
-     "baya"
+     "baya",
+     "boyo"
     ],
-    "action": "Hungry crocodiles appear from the water and Kancil cleverly says the King wants to count them.",
-    "narration": "Dari air muncul Buaya yang lapar. Kancil tersenyum dan berkata ada titah Raja untuk menghitung mereka.",
-    "image_prompt": "wide river water surface at midday, gentle ripples and lotus leaves, misty distant banks, bright daylight",
-    "motion_prompt": "crocodile puppet rises swaying from below, kancil leans forward gesturing cleverly",
-    "duration_s": 11.0,
+    "action": "Kancil greets the hungry crocodiles gathered in the river and tells them the king wants to count them all.",
+    "narration": "Di sungai yang tenang, Buaya-buaya lapar berkumpul. Kancil tersenyum dan berseru, Raja hutan ingin menghitung kalian semua!",
+    "image_prompt": "Empty wide river surface with gentle ripples, sandy banks on both sides, midday light, drifting leaves on water",
+    "motion_prompt": "baya and boyo sway up from below, kancil leans forward speaking, crocodiles nod curiously",
+    "duration_s": 10.0,
     "mood": "tense",
     "staging": [
      {
@@ -77,49 +88,60 @@
      },
      {
       "id": "baya",
-      "position": 0.75,
+      "position": 0.65,
+      "facing": "left"
+     },
+     {
+      "id": "boyo",
+      "position": 0.85,
       "facing": "left"
      }
     ]
    },
    {
     "n": 3,
-    "setting": "Crocodile bridge across the river",
+    "setting": "Crocodile bridge lined up across the river",
     "characters": [
      "kancil",
-     "baya"
+     "baya",
+     "boyo"
     ],
-    "action": "The crocodiles line up across the river and Kancil jumps on their backs counting one two three.",
-    "narration": "Buaya-buaya lalu berbaris rapi. Kancil melompat riang di punggung mereka sambil berhitung satu, dua, tiga!",
-    "image_prompt": "river crossing in afternoon light, line of flat stones across blue water, soft clouds, sparkling reflections",
-    "motion_prompt": "crocodile puppet bobs up and down in a line, kancil hops quickly left to right over backs",
-    "duration_s": 12.0,
+    "action": "The crocodiles line up neatly across the river while Kancil jumps from back to back counting one, two, three.",
+    "narration": "Buaya-buaya senang dan berbaris rapi dari tepi ke tepi. Kancil melompat di punggung mereka sambil menghitung satu, dua, tiga!",
+    "image_prompt": "Empty river forming a straight path between banks, sparkling afternoon light, rows of ripples and stones, far cucumber field visible",
+    "motion_prompt": "baya and boyo stretch into a line, kancil hops quickly from one to the next, bobbing up and down",
+    "duration_s": 11.0,
     "mood": "happy",
     "staging": [
      {
-      "id": "kancil",
-      "position": 0.5,
+      "id": "baya",
+      "position": 0.3,
       "facing": "right"
      },
      {
-      "id": "baya",
-      "position": 0.7,
-      "facing": "left"
+      "id": "boyo",
+      "position": 0.6,
+      "facing": "right"
+     },
+     {
+      "id": "kancil",
+      "position": 0.45,
+      "facing": "right"
      }
     ]
    },
    {
     "n": 4,
-    "setting": "Cucumber garden across the river",
+    "setting": "Cucumber garden on the far side of the river",
     "characters": [
      "kancil",
      "baya"
     ],
-    "action": "Kancil reaches the far bank safely, laughs kindly and thanks the crocodiles for their help.",
-    "narration": "Sampai di seberang, Kancil tertawa senang dan berterima kasih kepada para Buaya yang membantunya.",
-    "image_prompt": "lush cucumber garden on riverbank, green vines with cucumbers, warm sunset light, empty soil path",
-    "motion_prompt": "kancil jumps off to the right, turns back and bows gratefully, crocodile nods shyly",
-    "duration_s": 10.0,
+    "action": "Kancil reaches the far bank safely, laughs kindly and thanks the crocodiles with a respectful bow.",
+    "narration": "Sampai di seberang, Kancil tertawa riang. Terima kasih teman-teman, katanya sambil membungkuk hormat.",
+    "image_prompt": "Empty sunny cucumber garden on riverbank, green vines and ripe cucumbers, warm golden light, river edge behind",
+    "motion_prompt": "kancil jumps to land and bows deeply, baya lifts head and blinks in surprise",
+    "duration_s": 9.0,
     "mood": "happy",
     "staging": [
      {
@@ -136,26 +158,32 @@
    },
    {
     "n": 5,
-    "setting": "Riverbank at dusk together",
+    "setting": "Riverbank at sunset, friends together",
     "characters": [
      "kancil",
-     "baya"
+     "baya",
+     "boyo"
     ],
-    "action": "The embarrassed crocodiles forgive Kancil, share cucumbers together and become good friends.",
-    "narration": "Buaya malu, lalu memaafkan. Mereka berbagi mentimun dan menjadi teman baik selamanya.",
-    "image_prompt": "peaceful riverbank at dusk, calm water reflecting orange sky, palm tree silhouettes, soft firefly glow",
-    "motion_prompt": "kancil and crocodile move close together center, bow to each other warmly swaying",
+    "action": "The crocodiles feel shy at first, then laugh together and promise to be good friends with Kancil forever.",
+    "narration": "Buaya-buaya malu, lalu tertawa bersama dengan gembira. Sejak hari itu mereka berjanji menjadi teman baik selamanya.",
+    "image_prompt": "Empty peaceful riverbank at sunset, cucumber garden and calm river together, orange sky, fireflies beginning to glow",
+    "motion_prompt": "all puppets sway gently together, bow to each other, kancil dances happily between the two",
     "duration_s": 10.0,
     "mood": "triumphant",
     "staging": [
      {
       "id": "kancil",
-      "position": 0.4,
+      "position": 0.5,
       "facing": "right"
      },
      {
       "id": "baya",
-      "position": 0.6,
+      "position": 0.25,
+      "facing": "right"
+     },
+     {
+      "id": "boyo",
+      "position": 0.75,
       "facing": "left"
      }
     ]
@@ -169,44 +197,45 @@
    "status": "done",
    "detail": "“Dulu ada kancil yang pintar. Dia lapar dan mau makan mentimun di seberang sungai. Tapi di sungai banyak buaya yang lapar juga. Kancil bilang...”",
    "thumbs": [],
-   "started": 1793893315.3421352,
-   "seconds": 3.3
+   "started": 1793943456.1931694,
+   "seconds": 3.1
   },
   {
    "key": "lakon",
    "label": "Writing the lakon",
    "status": "done",
-   "detail": "“Kancil yang Cerdik dan Buaya Sungai” · 5 scenes · Kancil, Baya · Penjaga Budaya: 5/5 scenes passed first time, 0 fixed",
+   "detail": "“Kancil dan Jembatan Buaya” · 5 scenes · Kancil, Baya, Boyo · Penjaga Budaya: 5/5 scenes passed first time, 1 fixed",
    "thumbs": [],
-   "started": 1793893318.6474724,
-   "seconds": 0.0
+   "started": 1793943459.289813,
+   "seconds": 34.4
   },
   {
    "key": "casting",
    "label": "Casting the puppets",
    "status": "done",
-   "detail": "2 puppets carved, cut out with SAM 3.1",
+   "detail": "3 puppets carved, cut out with SAM 3.1",
    "thumbs": [
-    "/media/uy8YcVRk/puppets/kancil.png?v=1793893379",
-    "/media/uy8YcVRk/puppets/baya.png?v=1793893393"
+    "/media/jAmnC1Mv/puppets/kancil.png?v=1793943579",
+    "/media/jAmnC1Mv/puppets/baya.png?v=1793943633",
+    "/media/jAmnC1Mv/puppets/boyo.png?v=1793943680"
    ],
-   "started": 1793893330.684194,
-   "seconds": 75.4
+   "started": 1793943507.9688897,
+   "seconds": 218.2
   },
   {
    "key": "scenes",
    "label": "Painting the scenes",
    "status": "done",
-   "detail": "5 scenes painted and checked · checker asked for 1 redraw",
+   "detail": "5 scenes painted and checked",
    "thumbs": [
-    "/media/uy8YcVRk/still_1.jpg?v=1793893411",
-    "/media/uy8YcVRk/still_2.jpg?v=1793893412",
-    "/media/uy8YcVRk/still_5.jpg?v=1793893417",
-    "/media/uy8YcVRk/still_4.jpg?v=1793893417",
-    "/media/uy8YcVRk/still_3.jpg?v=1793893438"
+    "/media/jAmnC1Mv/still_1.jpg?v=1793943741",
+    "/media/jAmnC1Mv/still_2.jpg?v=1793943752",
+    "/media/jAmnC1Mv/still_3.jpg?v=1793943753",
+    "/media/jAmnC1Mv/still_4.jpg?v=1793943772",
+    "/media/jAmnC1Mv/still_5.jpg?v=1793943776"
    ],
-   "started": 1793893406.1226094,
-   "seconds": 32.4
+   "started": 1793943726.200379,
+   "seconds": 49.9
   },
   {
    "key": "animate",
@@ -220,8 +249,8 @@
     "",
     ""
    ],
-   "started": 1793895304.6113603,
-   "seconds": 0.0
+   "started": 1793946410.157829,
+   "seconds": 0.3
   },
   {
    "key": "narrate",
@@ -229,71 +258,66 @@
    "status": "done",
    "detail": "Narrated in en-US-EmmaMultilingualNeural",
    "thumbs": [],
-   "started": 1793895304.6364706,
-   "seconds": 0.0
+   "started": 1793946410.429006,
+   "seconds": 0.1
   },
   {
    "key": "cut",
    "label": "Final cut",
    "status": "done",
-   "detail": "55 second film ready",
+   "detail": "63 second film ready",
    "thumbs": [],
-   "started": 1793895019.9870865,
-   "seconds": 350.1
+   "started": 1793946410.5784218,
+   "seconds": 93.8
   }
  ],
  "scenes": [
   {
    "n": 1,
-   "narration": "Kancil yang lapar melihat mentimun segar di seberang sungai, tapi airnya dalam dan berbahaya.",
-   "setting": "Sunny riverbank in the morning",
-   "still": "/media/uy8YcVRk/still_1.jpg?v=1793893411",
-   "backdrop": "/media/uy8YcVRk/bg_1.webp?v=1793893411",
+   "narration": "Di tepi hutan hiduplah Kancil yang pintar dan baik hati. Perutnya lapar, ia melihat kebun mentimun segar di seberang sungai.",
+   "setting": "Forest riverbank in the morning, cucumber garden across the river",
+   "still": "/media/jAmnC1Mv/still_1.jpg?v=1793943741",
+   "backdrop": "/media/jAmnC1Mv/bg_1.webp?v=1793943741",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 2,
-   "narration": "Dari air muncul Buaya yang lapar. Kancil tersenyum dan berkata ada titah Raja untuk menghitung mereka.",
-   "setting": "Middle of the wide river",
-   "still": "/media/uy8YcVRk/still_2.jpg?v=1793893412",
-   "backdrop": "/media/uy8YcVRk/bg_2.webp?v=1793893412",
+   "narration": "Di sungai yang tenang, Buaya-buaya lapar berkumpul. Kancil tersenyum dan berseru, Raja hutan ingin menghitung kalian semua!",
+   "setting": "Wide calm river with crocodiles gathering",
+   "still": "/media/jAmnC1Mv/still_2.jpg?v=1793943752",
+   "backdrop": "/media/jAmnC1Mv/bg_2.webp?v=1793943752",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 3,
-   "narration": "Buaya-buaya lalu berbaris rapi. Kancil melompat riang di punggung mereka sambil berhitung satu, dua, tiga!",
-   "setting": "Crocodile bridge across the river",
-   "still": "/media/uy8YcVRk/still_3.jpg?v=1793893438",
-   "backdrop": "/media/uy8YcVRk/bg_3.webp?v=1793893438",
-   "attempts": 2,
-   "rejections": [
-    {
-     "rejected": "/media/uy8YcVRk/bg_3_rejected1.webp?v=1793893421",
-     "issue": "Backdrop must be EMPTY with no people, animals or puppets, but image shows a row of crocodile backs / animal shapes forming a bridge across the river"
-    }
-   ],
+   "narration": "Buaya-buaya senang dan berbaris rapi dari tepi ke tepi. Kancil melompat di punggung mereka sambil menghitung satu, dua, tiga!",
+   "setting": "Crocodile bridge lined up across the river",
+   "still": "/media/jAmnC1Mv/still_3.jpg?v=1793943753",
+   "backdrop": "/media/jAmnC1Mv/bg_3.webp?v=1793943753",
+   "attempts": 1,
+   "rejections": [],
    "placeholder": false
   },
   {
    "n": 4,
-   "narration": "Sampai di seberang, Kancil tertawa senang dan berterima kasih kepada para Buaya yang membantunya.",
-   "setting": "Cucumber garden across the river",
-   "still": "/media/uy8YcVRk/still_4.jpg?v=1793893417",
-   "backdrop": "/media/uy8YcVRk/bg_4.webp?v=1793893417",
+   "narration": "Sampai di seberang, Kancil tertawa riang. Terima kasih teman-teman, katanya sambil membungkuk hormat.",
+   "setting": "Cucumber garden on the far side of the river",
+   "still": "/media/jAmnC1Mv/still_4.jpg?v=1793943772",
+   "backdrop": "/media/jAmnC1Mv/bg_4.webp?v=1793943772",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 5,
-   "narration": "Buaya malu, lalu memaafkan. Mereka berbagi mentimun dan menjadi teman baik selamanya.",
-   "setting": "Riverbank at dusk together",
-   "still": "/media/uy8YcVRk/still_5.jpg?v=1793893417",
-   "backdrop": "/media/uy8YcVRk/bg_5.webp?v=1793893417",
+   "narration": "Buaya-buaya malu, lalu tertawa bersama dengan gembira. Sejak hari itu mereka berjanji menjadi teman baik selamanya.",
+   "setting": "Riverbank at sunset, friends together",
+   "still": "/media/jAmnC1Mv/still_5.jpg?v=1793943776",
+   "backdrop": "/media/jAmnC1Mv/bg_5.webp?v=1793943776",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
@@ -303,31 +327,34 @@
   {
    "id": "kancil",
    "name": "Kancil",
-   "sheet": "/media/uy8YcVRk/sheets/kancil.webp?v=1793893379",
-   "cutout": "/media/uy8YcVRk/puppets/kancil.png?v=1793893379",
-   "rejections": [
-    {
-     "rejected": "/media/uy8YcVRk/sheets/kancil_rejected1.webp?v=1793893339",
-     "issue": "figure cut off: tip of tail is cropped at left edge, not complete full-body"
-    }
-   ],
+   "sheet": "/media/jAmnC1Mv/sheets/kancil.webp?v=1793943579",
+   "cutout": "/media/jAmnC1Mv/puppets/kancil.png?v=1793943579",
+   "rejections": [],
    "placeholder": false
   },
   {
    "id": "baya",
    "name": "Baya",
-   "sheet": "/media/uy8YcVRk/sheets/baya.webp?v=1793893393",
-   "cutout": "/media/uy8YcVRk/puppets/baya.png?v=1793893393",
+   "sheet": "/media/jAmnC1Mv/sheets/baya.webp?v=1793943633",
+   "cutout": "/media/jAmnC1Mv/puppets/baya.png?v=1793943633",
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "id": "boyo",
+   "name": "Boyo",
+   "sheet": "/media/jAmnC1Mv/sheets/boyo.webp?v=1793943680",
+   "cutout": "/media/jAmnC1Mv/puppets/boyo.png?v=1793943680",
    "rejections": [],
    "placeholder": false
   }
  ],
  "videos": {
-  "landscape": "/media/uy8YcVRk/dalang_landscape.mp4?v=1793895370",
-  "vertical": "/media/uy8YcVRk/dalang_vertical.mp4?v=1793895370"
+  "landscape": "/media/jAmnC1Mv/dalang_landscape.mp4?v=1793946504",
+  "vertical": "/media/jAmnC1Mv/dalang_vertical.mp4?v=1793946504"
  },
- "poster": "/media/uy8YcVRk/poster.jpg?v=1793895370",
- "cost_usd": 0.2595,
+ "poster": "/media/jAmnC1Mv/poster.jpg?v=1793946504",
+ "cost_usd": 0.4127,
  "error": null,
  "message": null,
  "demo_replay": false,
@@ -346,24 +373,28 @@
  "narration_voice": "tts",
  "sample": true,
  "sample_key": "kancil-id",
- "updated": 1793895370.2107244,
+ "updated": 1793946504.9716954,
  "trace": [
   {
    "kind": "call",
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "safety screen of the story",
-   "ms": 3294,
+   "ms": 3064,
    "attempts": 1,
    "ok": true,
-   "t": 1793893318.64,
+   "t": 1793943459.27,
    "stage": "listen"
   },
   {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "same story told before: script reused from the transcript-hash cache",
-   "t": 1793893318.68,
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "write the lakon (json_schema script)",
+   "ms": 34322,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943493.63,
    "stage": "lakon"
   },
   {
@@ -371,53 +402,28 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "Penjaga Budaya: check the lakon against the cultural rules · Penjaga Budaya",
-   "ms": 11970,
+   "ms": 14097,
    "attempts": 1,
    "ok": true,
-   "t": 1793893330.67,
+   "t": 1793943507.84,
    "stage": "lakon"
   },
   {
    "kind": "decision",
    "agent": "penjaga",
-   "text": "all 5 scenes and 2 puppets pass the 8 cultural rules",
-   "t": 1793893330.68,
+   "text": "Baya broke kid-friendly-pictures, no-invented-ritual (Gigi menonjol bisa menakuti anak; klaim penjaga sungai yang dihormati mengada-ada.); fixed visual_description, cultural_note before drawing",
+   "t": 1793943507.86,
    "stage": "lakon"
-  },
-  {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "Kancil: same prompt painted before, reused from the image cache",
-   "t": 1793893330.7,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · Kancil",
-   "ms": 8560,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893339.45,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "Kancil: checker rejected attempt 1 (figure cut off: tip of tail is cropped at left edge, not complete full-body); redrawing with its fix_prompt",
-   "t": 1793893339.46,
-   "stage": "casting"
   },
   {
    "kind": "call",
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · Kancil",
-   "ms": 27759,
+   "ms": 37743,
    "attempts": 1,
    "ok": true,
-   "t": 1793893367.23,
+   "t": 1793943545.74,
    "stage": "casting"
   },
   {
@@ -425,17 +431,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · Kancil",
-   "ms": 3241,
+   "ms": 4680,
    "attempts": 1,
    "ok": true,
-   "t": 1793893370.76,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "Kancil: redraw 1 passed the check",
-   "t": 1793893370.77,
+   "t": 1793943550.95,
    "stage": "casting"
   },
   {
@@ -443,17 +442,57 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"mouse deer puppet\" (streamed masks)",
-   "ms": 1991,
+   "ms": 2019,
    "attempts": 1,
    "ok": true,
-   "t": 1793893372.77,
+   "t": 1793943553.05,
    "stage": "casting"
   },
   {
    "kind": "decision",
-   "agent": "cache",
-   "text": "Baya: same prompt painted before, reused from the image cache",
-   "t": 1793893379.25,
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"mouse deer puppet\"; trying a plainer phrase",
+   "t": 1793943553.57,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"mouse deer\" (streamed masks)",
+   "ms": 2210,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943555.8,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"mouse deer\"; trying a plainer phrase",
+   "t": 1793943555.81,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"deer\" (streamed masks)",
+   "ms": 2638,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943558.48,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · Baya",
+   "ms": 30019,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943609.79,
    "stage": "casting"
   },
   {
@@ -461,10 +500,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · Baya",
-   "ms": 6822,
+   "ms": 7258,
    "attempts": 1,
    "ok": true,
-   "t": 1793893386.17,
+   "t": 1793943617.64,
    "stage": "casting"
   },
   {
@@ -472,17 +511,54 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"crocodile puppet\" (streamed masks)",
-   "ms": 1607,
+   "ms": 2344,
    "attempts": 1,
    "ok": true,
-   "t": 1793893387.8,
+   "t": 1793943620.05,
    "stage": "casting"
   },
   {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "gunungan: same prompt painted before, reused from the image cache",
-   "t": 1793893393.44,
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · Boyo",
+   "ms": 28995,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943662.9,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · Boyo",
+   "ms": 4561,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943667.81,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"young crocodile puppet\" (streamed masks)",
+   "ms": 4077,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943671.94,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · gunungan",
+   "ms": 32179,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943712.62,
    "stage": "casting"
   },
   {
@@ -490,17 +566,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"gunungan puppet\" (streamed masks)",
-   "ms": 2168,
+   "ms": 2453,
    "attempts": 1,
    "ok": true,
-   "t": 1793893395.63,
+   "t": 1793943715.42,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"gunungan puppet\"; trying a plainer phrase",
-   "t": 1793893395.64,
+   "t": 1793943715.43,
    "stage": "casting"
   },
   {
@@ -508,17 +584,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"gunungan\" (streamed masks)",
-   "ms": 4206,
+   "ms": 4025,
    "attempts": 1,
    "ok": true,
-   "t": 1793893399.85,
+   "t": 1793943719.47,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"gunungan\"; trying a plainer phrase",
-   "t": 1793893399.85,
+   "t": 1793943719.48,
    "stage": "casting"
   },
   {
@@ -526,45 +602,35 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"puppet\" (streamed masks)",
-   "ms": 5548,
+   "ms": 3620,
    "attempts": 1,
    "ok": true,
-   "t": 1793893405.41,
+   "t": 1793943723.12,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "no SAM mask for gunungan; cut out by the plain background instead",
-   "t": 1793893405.51,
+   "t": 1793943723.13,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "consistency",
-   "text": "character consistency 98/100 after casting: 2/2 puppets from SAM 3.1 masks, same cut-out pixels across 9 scene appearances",
-   "t": 1793893406.12,
+   "text": "character consistency 100/100 after casting: 3/3 puppets from SAM 3.1 masks, same cut-out pixels across 12 scene appearances",
+   "t": 1793943726.19,
    "stage": "casting"
   },
   {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "scene 3: same prompt painted before, reused from the image cache",
-   "t": 1793893406.14,
-   "stage": "scenes"
-  },
-  {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "scene 1: same prompt painted before, reused from the image cache",
-   "t": 1793893406.14,
-   "stage": "scenes"
-  },
-  {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "scene 2: same prompt painted before, reused from the image cache",
-   "t": 1793893406.14,
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 1",
+   "ms": 10815,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943737.04,
    "stage": "scenes"
   },
   {
@@ -572,75 +638,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 1",
-   "ms": 4699,
+   "ms": 3182,
    "attempts": 1,
    "ok": true,
-   "t": 1793893411.12,
-   "stage": "scenes"
-  },
-  {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "scene 4: same prompt painted before, reused from the image cache",
-   "t": 1793893411.43,
-   "stage": "scenes"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · scene 2",
-   "ms": 5878,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893412.24,
-   "stage": "scenes"
-  },
-  {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "scene 5: same prompt painted before, reused from the image cache",
-   "t": 1793893412.54,
-   "stage": "scenes"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · scene 5",
-   "ms": 4750,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893417.42,
-   "stage": "scenes"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · scene 4",
-   "ms": 6128,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893417.68,
-   "stage": "scenes"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · scene 3",
-   "ms": 14799,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893421.23,
-   "stage": "scenes"
-  },
-  {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "scene 3: checker rejected attempt 1 (Backdrop must be EMPTY with no people, animals or puppets, but image shows a row of crocodile backs / animal shapes forming a bridge across the river); redrawing with its fix_prompt",
-   "t": 1793893421.25,
+   "t": 1793943740.7,
    "stage": "scenes"
   },
   {
@@ -648,10 +649,32 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 3",
-   "ms": 10919,
+   "ms": 19241,
    "attempts": 1,
    "ok": true,
-   "t": 1793893432.17,
+   "t": 1793943745.48,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 2",
+   "ms": 20151,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943746.39,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 2",
+   "ms": 4757,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943751.7,
    "stage": "scenes"
   },
   {
@@ -659,17 +682,54 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 3",
-   "ms": 5898,
+   "ms": 6706,
    "attempts": 1,
    "ok": true,
-   "t": 1793893438.26,
+   "t": 1793943752.56,
    "stage": "scenes"
   },
   {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "scene 3: redraw 1 passed the check",
-   "t": 1793893438.26,
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 4",
+   "ms": 25043,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943766.61,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 4",
+   "ms": 4200,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943771.37,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · scene 5",
+   "ms": 19130,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943771.62,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 5",
+   "ms": 3021,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793943775.31,
    "stage": "scenes"
   },
   {
@@ -677,17 +737,17 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "Dalang Director: plan camera, entrances, transitions and gamelan cues · whole film",
-   "ms": 13413,
+   "ms": 12294,
    "attempts": 1,
    "ok": true,
-   "t": 1793893451.95,
+   "t": 1793943788.43,
    "stage": null
   },
   {
    "kind": "decision",
    "agent": "director",
-   "text": "planned 5 shots: 2 entrances/exits, 5 gamelan cues, 10 sound effects",
-   "t": 1793893451.97,
+   "text": "planned 5 shots: 5 entrances/exits, 5 gamelan cues, 9 sound effects",
+   "t": 1793943788.44,
    "stage": null
   },
   {
@@ -695,10 +755,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 1",
-   "ms": 11810,
+   "ms": 23792,
    "attempts": 1,
    "ok": true,
-   "t": 1793893463.84,
+   "t": 1793943812.34,
    "stage": "animate"
   },
   {
@@ -706,10 +766,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 2",
-   "ms": 10758,
+   "ms": 21563,
    "attempts": 1,
    "ok": true,
-   "t": 1793893475.36,
+   "t": 1793943835.93,
    "stage": "animate"
   },
   {
@@ -717,10 +777,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 3",
-   "ms": 16174,
+   "ms": 38604,
    "attempts": 1,
    "ok": true,
-   "t": 1793893492.28,
+   "t": 1793943876.91,
    "stage": "animate"
   },
   {
@@ -728,10 +788,17 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 4",
-   "ms": 10307,
+   "ms": 20426,
    "attempts": 1,
    "ok": true,
-   "t": 1793893503.33,
+   "t": 1793943899.32,
+   "stage": "animate"
+  },
+  {
+   "kind": "decision",
+   "agent": "animate",
+   "text": "scene 4: 1 motion value(s) outside the stage limits were clamped",
+   "t": 1793943899.33,
    "stage": "animate"
   },
   {
@@ -739,17 +806,17 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 5",
-   "ms": 9483,
+   "ms": 15183,
    "attempts": 1,
    "ok": true,
-   "t": 1793893513.6,
+   "t": 1793943916.59,
    "stage": "animate"
   },
   {
    "kind": "decision",
    "agent": "consistency",
-   "text": "character consistency 98/100 in the final film: 2/2 puppets from SAM 3.1 masks, same cut-out pixels across 9 scene appearances",
-   "t": 1793893631.85,
+   "text": "character consistency 100/100 in the final film: 3/3 puppets from SAM 3.1 masks, same cut-out pixels across 12 scene appearances",
+   "t": 1793944098.15,
    "stage": null
   }
  ],
@@ -808,32 +875,42 @@
    {
     "id": "baya",
     "name": "Baya",
+    "passed_first": false,
+    "rules": [
+     "kid-friendly-pictures",
+     "no-invented-ritual"
+    ]
+   },
+   {
+    "id": "boyo",
+    "name": "Boyo",
     "passed_first": true,
     "rules": []
    }
   ],
-  "fixes": 0,
+  "fixes": 1,
   "pass_rate_first": 1.0,
   "pass_rate_after": 1.0,
-  "note": "Cerita Kancil dan Buaya ini sudah sesuai aturan wayang anak: konflik hanya tipu muslihat yang cerdik, tanpa kekerasan, dan semua tokoh tetap ramah anak."
+  "note": "Lakon trick yang lembut dan ramah anak dipertahankan; hanya deskripsi visual dan catatan budaya Baya yang diperbaiki."
  },
  "voice_scene_total": 5,
  "cutouts": {
   "kancil": "sam",
   "baya": "sam",
+  "boyo": "sam",
   "gunungan": "background"
  },
  "consistency": {
-  "score": 98,
+  "score": 100,
   "puppets": [
    {
     "id": "kancil",
     "name": "Kancil",
     "source": "sam",
-    "fill": 0.244,
-    "soft_edges": 0.048,
-    "checker_redraws": 1,
-    "sha": "f9de33c3e33c4805",
+    "fill": 0.269,
+    "soft_edges": 0.037,
+    "checker_redraws": 0,
+    "sha": "3c1afaaf0341a9a9",
     "same_pixels": true,
     "scenes": [
      1,
@@ -842,16 +919,16 @@
      4,
      5
     ],
-    "score": 96
+    "score": 100
    },
    {
     "id": "baya",
     "name": "Baya",
     "source": "sam",
-    "fill": 0.366,
-    "soft_edges": 0.048,
+    "fill": 0.367,
+    "soft_edges": 0.027,
     "checker_redraws": 0,
-    "sha": "cc17192171875cc2",
+    "sha": "ddd11e3edb8631a5",
     "same_pixels": true,
     "scenes": [
      2,
@@ -860,9 +937,25 @@
      5
     ],
     "score": 100
+   },
+   {
+    "id": "boyo",
+    "name": "Boyo",
+    "source": "sam",
+    "fill": 0.36,
+    "soft_edges": 0.041,
+    "checker_redraws": 0,
+    "sha": "59b4c705c7c66be2",
+    "same_pixels": true,
+    "scenes": [
+     2,
+     3,
+     5
+    ],
+    "score": 100
    }
   ],
-  "appearances": 9,
+  "appearances": 12,
   "method": "SAM 3.1 mask source + mask quality + checker agent + same cut-out pixels in every scene"
  },
  "director": {
@@ -887,34 +980,38 @@
      },
      {
       "t": 0.5,
-      "kind": "wind"
+      "kind": "water"
      }
     ],
-    "note": "Gentle opening reveals hungry Kancil gazing across the wide river."
+    "note": "Reveal calm morning riverbank as Kancil looks across."
    },
    {
     "n": 2,
-    "camera": "push_in",
+    "camera": "still",
     "enter": [
      {
       "id": "baya",
+      "from": "below"
+     },
+     {
+      "id": "boyo",
       "from": "below"
      }
     ],
     "exit": [],
     "transition": "gunungan_sweep",
-    "gamelan": "kendang_rush",
+    "gamelan": "kempul",
     "sfx": [
      {
-      "t": 0.2,
+      "t": 0.3,
       "kind": "water"
      },
      {
-      "t": 0.6,
-      "kind": "keprak"
+      "t": 0.7,
+      "kind": "cempala"
      }
     ],
-    "note": "Tension rises as Baya emerges and Kancil tricks with clever words."
+    "note": "Still for gentle dialogue as crocodiles rise to listen."
    },
    {
     "n": 3,
@@ -925,7 +1022,7 @@
     "gamelan": "bonang_run",
     "sfx": [
      {
-      "t": 0.3,
+      "t": 0.4,
       "kind": "water"
      },
      {
@@ -933,31 +1030,37 @@
       "kind": "keprak"
      }
     ],
-    "note": "Joyful journey follows Kancil hopping and counting across the backs."
+    "note": "Follow joyful journey hopping across the bridge."
    },
    {
     "n": 4,
-    "camera": "still",
+    "camera": "push_in",
     "enter": [],
-    "exit": [],
+    "exit": [
+     {
+      "id": "boyo",
+      "to": "below"
+     }
+    ],
     "transition": "gunungan_rise",
     "gamelan": "kempul",
     "sfx": [
      {
-      "t": 0.4,
+      "t": 0.5,
       "kind": "birds"
-     },
-     {
-      "t": 0.7,
-      "kind": "cempala"
      }
     ],
-    "note": "Kind thank-you moment safely in the cucumber garden."
+    "note": "Close kind moment of thanks on the far bank."
    },
    {
     "n": 5,
     "camera": "pull_out",
-    "enter": [],
+    "enter": [
+     {
+      "id": "boyo",
+      "from": "below"
+     }
+    ],
     "exit": [],
     "transition": "fade",
     "gamelan": "suwuk",
@@ -967,11 +1070,11 @@
       "kind": "water"
      },
      {
-      "t": 0.7,
+      "t": 0.6,
       "kind": "birds"
      }
     ],
-    "note": "Warm closing as rivals forgive, share, and become true friends."
+    "note": "Reveal all friends together at sunset for happy ending."
    }
   ]
  },
@@ -1100,14 +1203,14 @@
    "camera": {
     "zoom_from": 1.0,
     "zoom_to": 1.08,
-    "pan_x": 0.0,
+    "pan_x": 0.03,
     "pan_y": 0.0
    },
    "lamp_flicker": 0.12,
    "puppets": [
     {
      "id": "kancil",
-     "idle": "sway",
+     "idle": "bob",
      "keyframes": [
       {
        "t": 0.0,
@@ -1117,31 +1220,31 @@
        "facing": "right"
       },
       {
-       "t": 0.28,
-       "x": 0.37,
-       "lift": 0.07,
-       "angle": -6.0,
+       "t": 0.3,
+       "x": 0.36,
+       "lift": 0.09,
+       "angle": 6.0,
        "facing": "right"
       },
       {
-       "t": 0.48,
-       "x": 0.43,
+       "t": 0.52,
+       "x": 0.41,
        "lift": 0.0,
-       "angle": 0.0,
+       "angle": -2.0,
        "facing": "right"
       },
       {
-       "t": 0.72,
-       "x": 0.45,
-       "lift": 0.02,
-       "angle": 4.0,
+       "t": 0.75,
+       "x": 0.42,
+       "lift": 0.015,
+       "angle": 5.0,
        "facing": "right"
       },
       {
        "t": 1.0,
-       "x": 0.45,
+       "x": 0.42,
        "lift": 0.0,
-       "angle": -2.0,
+       "angle": -9.0,
        "facing": "right"
       }
      ]
@@ -1152,10 +1255,10 @@
    "camera": {
     "zoom_from": 1.0,
     "zoom_to": 1.08,
-    "pan_x": 0.0,
+    "pan_x": 0.02,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.6,
+   "lamp_flicker": 0.45,
    "puppets": [
     {
      "id": "kancil",
@@ -1164,77 +1267,118 @@
       {
        "t": 0.0,
        "x": 0.25,
-       "lift": 0.0,
+       "lift": 0.02,
        "angle": 0.0,
        "facing": "right"
       },
       {
-       "t": 0.3,
-       "x": 0.28,
+       "t": 0.25,
+       "x": 0.27,
        "lift": 0.02,
-       "angle": -8.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.55,
-       "x": 0.31,
-       "lift": 0.01,
-       "angle": -14.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.78,
-       "x": 0.3,
-       "lift": 0.04,
        "angle": -6.0,
        "facing": "right"
       },
       {
+       "t": 0.5,
+       "x": 0.29,
+       "lift": 0.04,
+       "angle": -11.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.28,
+       "lift": 0.02,
+       "angle": -4.0,
+       "facing": "right"
+      },
+      {
        "t": 1.0,
-       "x": 0.32,
-       "lift": 0.0,
-       "angle": -10.0,
+       "x": 0.28,
+       "lift": 0.03,
+       "angle": -8.0,
        "facing": "right"
       }
      ]
     },
     {
      "id": "baya",
-     "idle": "sway",
+     "idle": "tremble",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.75,
-       "lift": -0.18,
-       "angle": 4.0,
+       "x": 0.65,
+       "lift": 0.0,
+       "angle": 0.0,
        "facing": "left"
       },
       {
        "t": 0.3,
-       "x": 0.73,
-       "lift": -0.06,
-       "angle": -5.0,
+       "x": 0.63,
+       "lift": 0.04,
+       "angle": 5.0,
        "facing": "left"
       },
       {
        "t": 0.55,
-       "x": 0.76,
+       "x": 0.65,
+       "lift": 0.08,
+       "angle": -4.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.8,
+       "x": 0.63,
+       "lift": 0.07,
+       "angle": 8.0,
+       "facing": "left"
+      },
+      {
+       "t": 1.0,
+       "x": 0.63,
+       "lift": 0.06,
+       "angle": 6.0,
+       "facing": "left"
+      }
+     ]
+    },
+    {
+     "id": "boyo",
+     "idle": "tremble",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.85,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.3,
+       "x": 0.86,
        "lift": 0.03,
+       "angle": -4.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.55,
+       "x": 0.84,
+       "lift": 0.07,
        "angle": 5.0,
        "facing": "left"
       },
       {
        "t": 0.8,
-       "x": 0.72,
-       "lift": 0.04,
-       "angle": -4.0,
+       "x": 0.85,
+       "lift": 0.06,
+       "angle": -3.0,
        "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.74,
-       "lift": 0.02,
-       "angle": 2.0,
+       "x": 0.84,
+       "lift": 0.05,
+       "angle": 7.0,
        "facing": "left"
       }
      ]
@@ -1244,91 +1388,118 @@
   {
    "camera": {
     "zoom_from": 1.0,
-    "zoom_to": 1.06,
+    "zoom_to": 1.08,
     "pan_x": 0.08,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.25,
+   "lamp_flicker": 0.22,
    "puppets": [
+    {
+     "id": "baya",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.3,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.3,
+       "x": 0.23,
+       "lift": 0.01,
+       "angle": -3.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.55,
+       "x": 0.23,
+       "lift": 0.0,
+       "angle": 3.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.25,
+       "lift": 0.02,
+       "angle": -2.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "boyo",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.6,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.3,
+       "x": 0.71,
+       "lift": 0.01,
+       "angle": 3.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.7,
+       "x": 0.71,
+       "lift": 0.0,
+       "angle": -4.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.69,
+       "lift": 0.02,
+       "angle": 2.0,
+       "facing": "right"
+      }
+     ]
+    },
     {
      "id": "kancil",
      "idle": "bob",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.5,
-       "lift": 0.14,
+       "x": 0.45,
+       "lift": 0.05,
        "angle": 0.0,
        "facing": "right"
       },
       {
-       "t": 0.28,
-       "x": 0.62,
-       "lift": 0.32,
+       "t": 0.25,
+       "x": 0.29,
+       "lift": 0.18,
+       "angle": -12.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.45,
+       "x": 0.52,
+       "lift": 0.2,
        "angle": -10.0,
        "facing": "right"
       },
       {
-       "t": 0.5,
-       "x": 0.74,
-       "lift": 0.15,
+       "t": 0.7,
+       "x": 0.7,
+       "lift": 0.07,
        "angle": 6.0,
        "facing": "right"
       },
       {
-       "t": 0.72,
+       "t": 1.0,
        "x": 0.82,
-       "lift": 0.3,
-       "angle": -10.0,
+       "lift": 0.14,
+       "angle": -6.0,
        "facing": "right"
-      },
-      {
-       "t": 1.0,
-       "x": 0.88,
-       "lift": 0.16,
-       "angle": 0.0,
-       "facing": "right"
-      }
-     ]
-    },
-    {
-     "id": "baya",
-     "idle": "sway",
-     "keyframes": [
-      {
-       "t": 0.0,
-       "x": 0.7,
-       "lift": 0.08,
-       "angle": 0.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.25,
-       "x": 0.62,
-       "lift": 0.02,
-       "angle": 2.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.5,
-       "x": 0.58,
-       "lift": 0.09,
-       "angle": -2.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.75,
-       "x": 0.6,
-       "lift": 0.02,
-       "angle": 2.0,
-       "facing": "left"
-      },
-      {
-       "t": 1.0,
-       "x": 0.62,
-       "lift": 0.08,
-       "angle": 0.0,
-       "facing": "left"
       }
      ]
     }
@@ -1337,9 +1508,9 @@
   {
    "camera": {
     "zoom_from": 1.0,
-    "zoom_to": 1.06,
+    "zoom_to": 1.1,
     "pan_x": 0.02,
-    "pan_y": 0.0
+    "pan_y": 0.01
    },
    "lamp_flicker": 0.18,
    "puppets": [
@@ -1350,36 +1521,36 @@
       {
        "t": 0.0,
        "x": 0.7,
-       "lift": 0.0,
-       "angle": 0.0,
+       "lift": 0.12,
+       "angle": -6.0,
        "facing": "left"
       },
       {
-       "t": 0.28,
-       "x": 0.8,
-       "lift": 0.16,
-       "angle": -8.0,
-       "facing": "right"
+       "t": 0.25,
+       "x": 0.76,
+       "lift": 0.0,
+       "angle": 4.0,
+       "facing": "left"
       },
       {
-       "t": 0.48,
-       "x": 0.87,
-       "lift": 0.0,
-       "angle": 3.0,
-       "facing": "right"
+       "t": 0.5,
+       "x": 0.77,
+       "lift": 0.06,
+       "angle": -5.0,
+       "facing": "left"
       },
       {
-       "t": 0.7,
-       "x": 0.85,
-       "lift": 0.0,
-       "angle": 18.0,
+       "t": 0.75,
+       "x": 0.76,
+       "lift": 0.01,
+       "angle": 16.0,
        "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.84,
-       "lift": 0.04,
-       "angle": -4.0,
+       "x": 0.76,
+       "lift": 0.0,
+       "angle": 25.0,
        "facing": "left"
       }
      ]
@@ -1396,24 +1567,31 @@
        "facing": "right"
       },
       {
-       "t": 0.45,
-       "x": 0.34,
+       "t": 0.25,
+       "x": 0.3,
        "lift": 0.02,
-       "angle": -4.0,
+       "angle": 6.0,
        "facing": "right"
       },
       {
-       "t": 0.72,
-       "x": 0.33,
-       "lift": 0.0,
-       "angle": -14.0,
+       "t": 0.5,
+       "x": 0.28,
+       "lift": 0.06,
+       "angle": 14.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.29,
+       "lift": 0.04,
+       "angle": 10.0,
        "facing": "right"
       },
       {
        "t": 1.0,
-       "x": 0.32,
-       "lift": 0.01,
-       "angle": 0.0,
+       "x": 0.3,
+       "lift": 0.02,
+       "angle": 5.0,
        "facing": "right"
       }
      ]
@@ -1427,86 +1605,127 @@
     "pan_x": 0.0,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.25,
+   "lamp_flicker": 0.2,
    "puppets": [
     {
      "id": "kancil",
-     "idle": "bob",
+     "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.4,
+       "x": 0.5,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "right"
       },
       {
        "t": 0.25,
-       "x": 0.45,
+       "x": 0.5,
        "lift": 0.01,
        "angle": -6.0,
        "facing": "right"
       },
       {
-       "t": 0.5,
-       "x": 0.47,
-       "lift": 0.0,
-       "angle": -14.0,
-       "facing": "right"
+       "t": 0.45,
+       "x": 0.38,
+       "lift": 0.06,
+       "angle": 8.0,
+       "facing": "left"
       },
       {
-       "t": 0.75,
-       "x": 0.46,
-       "lift": 0.03,
-       "angle": 4.0,
+       "t": 0.68,
+       "x": 0.62,
+       "lift": 0.07,
+       "angle": -8.0,
        "facing": "right"
       },
       {
        "t": 1.0,
-       "x": 0.45,
-       "lift": 0.01,
-       "angle": -6.0,
+       "x": 0.5,
+       "lift": 0.03,
+       "angle": 0.0,
        "facing": "right"
       }
      ]
     },
     {
      "id": "baya",
-     "idle": "bob",
+     "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.6,
+       "x": 0.25,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.23,
+       "lift": 0.0,
+       "angle": -14.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.5,
+       "x": 0.26,
+       "lift": 0.04,
+       "angle": 6.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.75,
+       "x": 0.27,
+       "lift": 0.02,
+       "angle": -5.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.3,
+       "lift": 0.01,
+       "angle": -10.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "boyo",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.75,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "left"
       },
       {
        "t": 0.25,
-       "x": 0.55,
-       "lift": 0.01,
-       "angle": 6.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.5,
-       "x": 0.53,
+       "x": 0.77,
        "lift": 0.0,
        "angle": 14.0,
        "facing": "left"
       },
       {
+       "t": 0.5,
+       "x": 0.74,
+       "lift": 0.04,
+       "angle": -6.0,
+       "facing": "left"
+      },
+      {
        "t": 0.75,
-       "x": 0.54,
+       "x": 0.73,
        "lift": 0.02,
-       "angle": -4.0,
+       "angle": 5.0,
        "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.55,
+       "x": 0.7,
        "lift": 0.01,
-       "angle": 6.0,
+       "angle": 10.0,
        "facing": "left"
       }
      ]
@@ -1514,14 +1733,14 @@
    ]
   }
  ],
- "title_aksara": "ꦏꦤ꧀ꦕꦶꦭ꧀ ꦪꦁ ꦕꦼꦂꦢꦶꦏ꧀ ꦢꦤ꧀ ꦧꦸꦮꦪ ꦱꦸꦔꦲꦶ",
- "duration_s": 55.2,
- "captions": "/media/uy8YcVRk/captions.vtt?v=1793895370",
+ "title_aksara": "ꦏꦤ꧀ꦕꦶꦭ꧀ ꦢꦤ꧀ ꦗꦼꦩ꧀ꦧꦠꦤ꧀ ꦧꦸꦮꦪ",
+ "duration_s": 63.5,
+ "captions": "/media/jAmnC1Mv/captions.vtt?v=1793946504",
  "cost_items": {
-  "muse-spark-1.3": 0.05009,
-  "muse-image-1.0": 0.02,
-  "sam-3.1": 0.0125,
-  "muse-wonder-1.0": 0.17687
+  "muse-spark-1.3": 0.07213,
+  "muse-image-1.0": 0.09,
+  "sam-3.1": 0.02,
+  "muse-wonder-1.0": 0.23059
  },
  "trace_summary": {
   "models": [
@@ -1530,45 +1749,45 @@
     "calls": 12,
     "failed": 0,
     "retries": 0,
-    "ms": 89452,
-    "usd": 0.0501
+    "ms": 102142,
+    "usd": 0.0721
+   },
+   {
+    "model": "muse-image-1.0",
+    "calls": 9,
+    "failed": 0,
+    "retries": 0,
+    "ms": 223316,
+    "usd": 0.09
    },
    {
     "model": "sam-3.1",
-    "calls": 5,
+    "calls": 8,
     "failed": 0,
     "retries": 0,
-    "ms": 15520,
-    "usd": 0.0125
+    "ms": 23386,
+    "usd": 0.02
    },
    {
     "model": "muse-wonder-1.0",
     "calls": 5,
     "failed": 0,
     "retries": 0,
-    "ms": 58532,
-    "usd": 0.1769
-   },
-   {
-    "model": "muse-image-1.0",
-    "calls": 2,
-    "failed": 0,
-    "retries": 0,
-    "ms": 38678,
-    "usd": 0.02
+    "ms": 119568,
+    "usd": 0.2306
    }
   ],
-  "calls": 24,
-  "decisions": 20
+  "calls": 34,
+  "decisions": 10
  },
  "tokens": {
   "muse-spark-1.3": [
-   10453,
-   8711
+   11527,
+   13581
   ],
   "muse-wonder-1.0": [
-   3907,
-   8062
+   3983,
+   10733
   ]
  },
  "receipt": {
@@ -1577,53 +1796,53 @@
     "model": "muse-spark-1.3",
     "role": "writes the lakon, safety screen, Penjaga Budaya cultural review, picture checker",
     "calls": 12,
-    "tokens_in": 10453,
-    "tokens_out": 8711,
+    "tokens_in": 11527,
+    "tokens_out": 13581,
     "images": 0,
-    "usd": 0.0501,
+    "usd": 0.0721,
+    "open_weights": false
+   },
+   {
+    "model": "muse-image-1.0",
+    "role": "draws every puppet and backdrop",
+    "calls": 9,
+    "tokens_in": 0,
+    "tokens_out": 0,
+    "images": 9,
+    "usd": 0.09,
     "open_weights": false
    },
    {
     "model": "sam-3.1",
     "role": "cuts each puppet out (one reusable mask)",
-    "calls": 5,
+    "calls": 8,
     "tokens_in": 0,
     "tokens_out": 0,
     "images": 0,
-    "usd": 0.0125,
+    "usd": 0.02,
     "open_weights": false
    },
    {
     "model": "muse-wonder-1.0",
     "role": "choreographs each scene as keyframes",
     "calls": 5,
-    "tokens_in": 3907,
-    "tokens_out": 8062,
+    "tokens_in": 3983,
+    "tokens_out": 10733,
     "images": 0,
-    "usd": 0.1769,
-    "open_weights": false
-   },
-   {
-    "model": "muse-image-1.0",
-    "role": "draws every puppet and backdrop",
-    "calls": 2,
-    "tokens_in": 0,
-    "tokens_out": 0,
-    "images": 2,
-    "usd": 0.02,
+    "usd": 0.2306,
     "open_weights": false
    }
   ],
-  "calls": 24,
-  "tokens_in": 14360,
-  "tokens_out": 16773,
-  "usd": 0.2595,
-  "decisions": 20,
+  "calls": 34,
+  "tokens_in": 15510,
+  "tokens_out": 24314,
+  "usd": 0.4127,
+  "decisions": 10,
   "estimate": true,
   "pricing": "https://dev.meta.ai/docs/pricing-rate-limits",
   "fake": false,
   "note": "Estimated from Meta's published prices; open-weight hosts bill separately."
  },
  "bundled": true,
- "sample_note": "Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks and motion by Muse Spark and Muse Wonder, all on the live Meta Model API (2026-11-05). Narration: edge-tts."
+ "sample_note": "Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks and motion by Muse Spark and Muse Wonder, all on the live Meta Model API (2026-11-05). Narration: synthetic voices (Kokoro-82M for English, edge-tts for Indonesian and Javanese). Gamelan: court musicians of the Kraton Ngayogyakarta, recorded by RTB45, CC BY 4.0."
 }

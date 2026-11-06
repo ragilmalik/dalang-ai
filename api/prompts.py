@@ -4,16 +4,19 @@ from __future__ import annotations
 LANG_NAMES = {"id": "Bahasa Indonesia", "jv": "Javanese (Basa Jawa ngoko, gentle)", "en": "English"}
 ASR_BIAS = {"id": ["Indonesian", "English"], "en": ["English", "Indonesian"]}  # Javanese uses Muse Spark audio
 
+# Nov 6: the art should look like a real hand-made puppet photographed on stage, not a flat drawing. The puppet
+# keeps classic wayang proportions; only the material, light and texture become true to life.
 WAYANG = (
-    "Javanese wayang kulit shadow puppet: flat side-profile buffalo-leather puppet, intricate perforated "
-    "tatahan patterns, sunggingan painting in gold leaf with deep red and indigo, long thin jointed arms "
-    "with control rods (cempurit), elegant stylised wayang proportions"
+    "real hand-carved Javanese wayang kulit shadow puppet, photographed in sharp detail: flat side-profile "
+    "puppet cut from translucent buffalo rawhide, hundreds of tiny chiselled tatahan holes, hand-painted "
+    "sunggingan in real gold leaf, deep red and indigo with slight wear and brush marks, visible leather grain, "
+    "long thin jointed arms on dark buffalo-horn control rods (cempurit), elegant stylised wayang proportions"
 )
 STYLES = {
-    "classic": "Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen.",
-    "colorful": "Colourful palette: bright saturated sunggingan colours (turquoise, magenta, saffron, emerald) with gold leaf, cheerful for children.",
+    "classic": "Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen. True-to-life materials and soft natural light, like a museum photograph.",
+    "colorful": "Colourful palette: bright saturated sunggingan colours (turquoise, magenta, saffron, emerald) with gold leaf, cheerful for children. True-to-life painted leather, like a museum photograph.",
 }
-NEGATIVE = "Not a 3D render, not anime, not photorealistic, no text, no letters, no watermark, no modern objects."
+NEGATIVE = "Not a 3D render, not a cartoon, not anime, not a flat vector drawing, no text, no letters, no watermark, no modern objects."
 
 LAKON_SYSTEM = """You are Ki Dalang, a warm Javanese puppet master. You turn a child's spoken story into a short
 wayang kulit film ("lakon") for children aged 5-12.
@@ -128,14 +131,16 @@ def backdrop_prompt(image_prompt: str, mood: str, style: str) -> str:
     light = {"night": "deep indigo night, moonlight", "tense": "stormy dusk, orange and violet",
              "magical": "glowing golden mist", "triumphant": "bright golden sunrise",
              "happy": "warm sunny daylight"}.get(mood, "soft warm lamplight")
-    return (f"Wide backdrop for a wayang kulit stage, seen through a backlit cotton kelir screen with warm "
-            f"blencong oil-lamp glow: {image_prompt}. {light}. Javanese wayang and batik painting style, gold "
-            f"ornament, layered flat shapes, mega mendung clouds. {STYLES.get(style, STYLES['classic'])} "
+    return (f"Wide backdrop for a wayang kulit stage, photographed from the audience side of a real backlit cotton "
+            f"kelir screen at night, the painted cloth filling the whole frame edge to edge (no screen border, no frame, no dark surroundings), warm blencong oil-lamp hotspot fading softly, faint cloth weave visible: "
+            f"{image_prompt}. {light}. Hand-painted on the cloth in Javanese wayang and batik style, gold "
+            f"ornament, layered shapes, mega mendung clouds, rich depth. {STYLES.get(style, STYLES['classic'])} "
             "Keep the lower middle open as a stage. Absolutely no people, no animals, no puppets, no characters. " + NEGATIVE)
 
 
-GUNUNGAN_PROMPT = ("A single gunungan (kayon) wayang kulit puppet: the tall leaf-shaped tree-of-life mountain puppet, "
-                   "intricately perforated, gold, deep red and indigo, with its central rod, front view, centred, on a "
+GUNUNGAN_PROMPT = ("A single real hand-carved gunungan (kayon) wayang kulit puppet, photographed in sharp detail: the tall "
+                   "leaf-shaped tree-of-life mountain puppet cut from translucent buffalo rawhide, finely perforated, "
+                   "real gold leaf, deep red and indigo paint, with its buffalo-horn central rod, front view, centred, on a "
                    "perfectly plain flat warm-cream background with nothing else. " + NEGATIVE)
 
 
@@ -143,7 +148,7 @@ VERIFY_SYSTEM = """You are the quality checker for a children's wayang kulit fil
 what it must show, and (for scenes) the script line. Fail it only for real problems: wrong subject; required
 puppet missing or extra figures; people/animals/puppets inside a backdrop that must be empty; visible text,
 letters or watermark; figure cut off; scary, violent or inappropriate content; or clearly not wayang style
-(3D, anime, photo). If it fails, write fix_prompt: a complete improved prompt for a redraw."""
+(3D render, anime, cartoon, or real people instead of puppet art; a photo-like puppet or painted screen is fine). If it fails, write fix_prompt: a complete improved prompt for a redraw."""
 
 VERIFY_SCHEMA = {
     "type": "object",

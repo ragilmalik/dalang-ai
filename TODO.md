@@ -4,6 +4,18 @@ What is open right now. The long product checklist (every feature, done or not) 
 
 Status legend: [x] done · [ ] open · [!] waiting on me (Malik)
 
+## Media remake (2026-11-06, afternoon)
+- [x] Read launch-video, TTS and music-licence guides; two marketing specialties kept outside the repo
+- [x] True-to-life puppet and backdrop prompts; 3 sample films re-made on the live API and bundled
+- [x] Real Kraton Ngayogyakarta gamelan (CC BY 4.0) under the films, credit in footer and docs; procedural switch kept
+- [x] Pocket TTS engine; demo narrator `pocket:caro_davy` after a UTMOS + Whisper shoot-out (docs/VOICES.md)
+- [x] Demo video, teasers, launch clips, thumbnail, home loop and share poster made again
+- [x] Four labelled AI-generated B-roll scenes with real screenshots inside (docs/demo/broll)
+- [x] Every page re-shot on the live app (28 shots, phone + desktop), README crops, trace/kotak/PDF stills
+- [x] pytest 557 passed (95% of `api/`), e2e 29/29 + browser 30/30, axe 33/0, ruff, mypy, tsc, eslint clean; facts.json
+- [x] Docs, commit, secret sweep, push, clean source zip, Drive
+- [!] My own voice-over and a real child recording would beat the synthetic ones (docs/demo/real/)
+
 ## Polish and weak spots (2026-11-06, second pass)
 - [x] Audit every page at 375 and 1440 px (a one-off Playwright script I keep outside the repo): console errors, failed requests,
       overflow, tap targets under 44 px, images without size, bytes, LCP, layout shift (CLS)
@@ -25,7 +37,7 @@ Status legend: [x] done · [ ] open · [!] waiting on me (Malik)
       `tests/test_voice_check.py` keeps it that way
 - [x] e2e smoke 29/29 and browser 30/30, pytest 546 (95% of `api/`), facts.json updated
 - [x] Docs, commit, secret sweep, push to GitHub
-- [ ] Refresh the private Drive folder with this release
+- [x] Refresh the private Drive folder with this release (clean source zip, no `.env`)
 
 ## Smoother site (2026-11-06, first pass)
 - [x] Research: Next.js 16.4 view transitions guide, web.dev motion and reduced-motion, Google "Building for kids",

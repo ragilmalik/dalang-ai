@@ -1,4 +1,11 @@
-"""Procedural gamelan, rendered offline with numpy (no samples, no music licence).
+"""Gamelan for the films: a real court gamelan recording by default, or procedural gamelan made in code.
+
+Since Nov 6 the bed under the scenes is a real recording of the court musicians of the Kraton Ngayogyakarta
+Hadiningrat (Yogyakarta), recorded by RTB45 on 2014-11-06, CC BY 4.0 (assets/music/README.md has the credit and
+links). Calm and night scenes use excerpt 1, lively scenes excerpt 2. GAMELAN_SOURCE=procedural switches back to
+the code-made ensemble below, which needs no audio files and no licence.
+
+Procedural gamelan, rendered offline with numpy (no samples, no music licence).
 
 A small Javanese ensemble in code: saron (balungan), bonang (kettle gongs), kenong, kempul, kethuk, gong ageng and
 kendang (dhung / tak / ket strokes), on the two Javanese tunings:
@@ -14,7 +21,11 @@ ladrang skeleton. The Dalang Director's cues (gong, kempul, kendang_rush, bonang
 from __future__ import annotations
 
 import math
+import os
+import subprocess
 from dataclasses import asdict, dataclass
+from functools import lru_cache
+from pathlib import Path
 
 import numpy as np
 
@@ -237,11 +248,59 @@ def render(mood: str, seconds: float, scale: str | None = None, seed: int = 0) -
     return (out * min(1.0, 0.5 / peak)).astype(np.float32)
 
 
+# --------------------------------------------------------------------------- real recordings
+MUSIC_DIR = Path(__file__).resolve().parents[2] / "assets" / "music"
+RECORDINGS = {"calm": "kraton-yogyakarta-1.ogg", "lively": "kraton-yogyakarta-2.ogg"}
+LIVELY_MOODS = {"tense", "happy", "triumphant"}
+RECORDING_CREDIT = ("Gamelan: court musicians of the Kraton Ngayogyakarta Hadiningrat, recorded by RTB45 "
+                    "(freesound.org/people/RTB45/sounds/255544), CC BY 4.0")
+# 0.6 x RMS 0.075 lands close to the code-made ensemble's level (about RMS 0.05), so swapping sources keeps the mix.
+RECORDING_GAIN = 0.6
+
+
+def recording_for(mood: str) -> Path:
+    return MUSIC_DIR / RECORDINGS["lively" if mood in LIVELY_MOODS else "calm"]
+
+
+def source() -> str:
+    """'recording' when the bundled recordings are there and GAMELAN_SOURCE isn't 'procedural', else 'procedural'."""
+    if os.getenv("GAMELAN_SOURCE", "recording").strip().lower() == "procedural":
+        return "procedural"
+    return "recording" if all((MUSIC_DIR / f).exists() for f in RECORDINGS.values()) else "procedural"
+
+
+@lru_cache(maxsize=4)
+def _decode(path: str) -> np.ndarray:
+    """The whole recording as mono float32 at SR, levelled to the same loudness (RMS 0.075, peak at most 0.95)
+    so both excerpts sit alike under the voice (ffmpeg is already needed for the films)."""
+    raw = subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", path, "-ac", "1", "-ar", str(SR),
+                          "-f", "f32le", "-"], check=True, capture_output=True).stdout
+    x = np.frombuffer(raw, np.float32).copy()
+    if not len(x):
+        raise ValueError(f"no audio decoded from {path}")
+    rms = float(np.sqrt(np.mean(x ** 2))) or 1.0
+    peak = float(np.max(np.abs(x))) or 1.0
+    return (x * min(0.075 / rms, 0.95 / peak)).astype(np.float32)
+
+
+def recorded(mood: str, seconds: float, offset: float = 0.0) -> np.ndarray:
+    """`seconds` of the mood's recording starting `offset` seconds in, looping when the excerpt runs out."""
+    x = _decode(str(recording_for(mood)))
+    n = int(SR * seconds)
+    start = int(SR * offset) % len(x)
+    reps = (start + n) // len(x) + 1
+    return (np.tile(x, reps)[start:start + n] * RECORDING_GAIN).astype(np.float32)
+
+
 def summary(moods: list[str], scale: str | None = None) -> dict:
     """What the film's score is, for the job state (`score`)."""
     main = style_for(moods[0] if moods else "calm", scale)
-    return {"scale": main.scale, "pathet": main.pathet, "tempo_bpm": main.tempo_bpm, "pattern": main.pattern,
-            "moods": moods, "procedural": True, "styles": {m: asdict(style_for(m, scale)) for m in dict.fromkeys(moods)}}
+    out = {"scale": main.scale, "pathet": main.pathet, "tempo_bpm": main.tempo_bpm, "pattern": main.pattern,
+           "moods": moods, "procedural": source() == "procedural",
+           "styles": {m: asdict(style_for(m, scale)) for m in dict.fromkeys(moods)}}
+    if source() == "recording":
+        out["recording"] = RECORDING_CREDIT
+    return out
 
 
 def wav_bytes(samples: np.ndarray) -> bytes:

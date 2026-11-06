@@ -1,5 +1,6 @@
 """Dalang Director (Muse Spark shot plan -> engine) and the procedural gamelan score."""
 import json
+import subprocess
 
 import numpy as np
 import pytest
@@ -91,7 +92,9 @@ def test_film_has_director_and_score_and_endpoint():
     assert job.s["status"] == "done", job.s.get("error")
     d = client.get(f"/api/jobs/{job.id}/director").json()
     assert d["shots"] and d == job.s["director"]
-    assert job.s["score"]["procedural"] and job.s["score"]["scale"] in {"slendro", "pelog"}
+    score = job.s["score"]
+    assert score["scale"] in {"slendro", "pelog"}
+    assert score["procedural"] is False and "CC BY 4.0" in score["recording"]  # the bundled Kraton recording
     other = Job.create("id", "classic", True)
     assert client.get(f"/api/jobs/{other.id}/director").status_code == 404
 
@@ -148,3 +151,38 @@ def test_transitions_draw_differently():
 
     sweep, rise, fade, cut = (frame(k) for k in ("gunungan_sweep", "gunungan_rise", "fade", "cut"))
     assert not np.array_equal(sweep, cut) and not np.array_equal(rise, cut) and fade.mean() < cut.mean()
+
+
+# --- real recording bed (assets/music, CC BY 4.0) --------------------------------------------------------------
+def test_recording_is_the_default_and_procedural_switch_works(monkeypatch):
+    assert gamelan.source() == "recording"
+    monkeypatch.setenv("GAMELAN_SOURCE", "procedural")
+    assert gamelan.source() == "procedural"
+    assert gamelan.summary(["calm"])["procedural"] is True and "recording" not in gamelan.summary(["calm"])
+
+
+def test_missing_recordings_fall_back_to_procedural(monkeypatch, tmp_path):
+    monkeypatch.setattr(gamelan, "MUSIC_DIR", tmp_path)
+    assert gamelan.source() == "procedural"
+
+
+@pytest.mark.parametrize("mood,name", [("calm", "kraton-yogyakarta-1.ogg"), ("night", "kraton-yogyakarta-1.ogg"),
+                                       ("tense", "kraton-yogyakarta-2.ogg"), ("triumphant", "kraton-yogyakarta-2.ogg")])
+def test_mood_picks_the_excerpt(mood, name):
+    assert gamelan.recording_for(mood).name == name
+
+
+def test_recorded_bed_is_exact_length_bounded_and_loops():
+    x = gamelan.recorded("calm", 3.0, offset=10.0)
+    assert len(x) == int(gamelan.SR * 3.0) and x.dtype == np.float32
+    assert 0.005 < float(np.sqrt(np.mean(x ** 2))) < 0.2 and float(np.max(np.abs(x))) <= 0.95
+    full = len(gamelan._decode(str(gamelan.recording_for("calm")))) / gamelan.SR
+    y = gamelan.recorded("calm", 5.0, offset=full - 1.0)  # runs past the end: wraps to the start
+    assert len(y) == int(gamelan.SR * 5.0) and float(np.max(np.abs(y[-gamelan.SR:]))) > 0
+
+
+def test_decode_rejects_an_empty_file(tmp_path):
+    bad = tmp_path / "empty.ogg"
+    bad.write_bytes(b"")
+    with pytest.raises((subprocess.CalledProcessError, ValueError)):
+        gamelan._decode(str(bad))

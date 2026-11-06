@@ -1,7 +1,10 @@
 # 3-minute demo video: script and shot list
 
-There's a finished cut already: `docs/demo/dalang-ai-demo.mp4` (<!-- facts:demo_length -->2:57<!-- /facts -->, 1920x1080, voice-over + captions, loudness -16.7 LUFS). I re-recorded it on Nov 6
-on the live Meta Model API, with the voice-over read by Kokoro-82M `af_heart` (see [VOICES.md](VOICES.md)). It's rendered
+There's a finished cut already: `docs/demo/dalang-ai-demo.mp4` (<!-- facts:demo_length -->2:58<!-- /facts -->, 1920x1080, voice-over + captions, loudness -16.8 LUFS). I re-recorded it on Nov 6
+on the live Meta Model API (again in the afternoon, with the new art), with the voice-over read by Pocket TTS
+`caro_davy` (see [VOICES.md](VOICES.md)). Four photo-style scenes of the people it's for open the hook, the
+"every child" shot, the class vote and the print shot; they are AI-generated, labelled on screen, and any app screen
+inside them is a real screenshot ([demo/broll/README.md](demo/broll/README.md)). It's rendered
 from a real browser session of the working app by `python scripts/make_demo_video.py <web url>` (in one go on the
 fake API with `bash scripts/demo_local.sh`, or as part of `python scripts/go_live.py`). The shot list with stills is
 `docs/demo/STORYBOARD.md` and the voice-over text is `docs/demo/voiceover.txt`. Two cuts for X come from the same render and open on Kelir Live:
@@ -10,10 +13,10 @@ close card) and `docs/demo/teaser_vertical.mp4` (9:16: Kelir Live recorded on a 
 film and an end card).
 
 It was recorded on the live Meta Model API (the art is Muse Image output, the motion plans come from Muse Wonder, the
-cut-outs from SAM 3.1), with a quiet gamelan bed from the app's own procedural gamelan under the app shots. The
+cut-outs from SAM 3.1), with a quiet bed from the real Kraton Ngayogyakarta gamelan recording (CC BY 4.0) under the app shots. The
 narrator is a synthetic voice, not me. The first 3 s use `assets/sample-story/sample_story_synthetic.mp3`, a synthetic stand-in voice that's labelled
 on screen (not a real child). The three classroom "phones" in the vote shot are API calls made by the recording
-script, not real people.
+script, not real people. The families, children and teacher in the B-roll are AI-generated, not real people either.
 
 Shot order (the current cut keeps the v3 order): the child's voice over black (0:00-0:03) -> the film's opening (gong, gunungan, "Kocap kacarita")
 -> film part 1 -> Gara-gara classroom vote (QR, three votes arrive, the teacher closes it) -> film part 2 -> Kelir

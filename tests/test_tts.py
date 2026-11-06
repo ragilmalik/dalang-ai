@@ -31,7 +31,7 @@ def engines(monkeypatch, tmp_path):
             return _tone(out.with_name(out.stem + f".{name}.wav"))
         return fn
 
-    monkeypatch.setattr(tts, "SYNTH", {k: make(k) for k in ("edge", "kokoro", "mms")})
+    monkeypatch.setattr(tts, "SYNTH", {k: make(k) for k in ("edge", "kokoro", "pocket", "mms")})
     for k in ("TTS_ENGINE", "TTS_VOICE_ID", "TTS_VOICE_JV", "TTS_VOICE_EN"):
         monkeypatch.delenv(k, raising=False)
     return calls, broken
@@ -226,3 +226,51 @@ def test_film_prefetches_every_line_before_the_opening_is_spoken(monkeypatch):
     assert order[0] == f"prefetch:{len(s.scenes) + (1 if s.opening else 0)}"
     if s.opening:
         assert order[1] == "opening.wav"
+
+
+# --- Pocket TTS (Kyutai, MIT): the demo narrator since Nov 6 ----------------------------------------------------
+def test_pocket_voice_parses_and_is_english_only(engines, monkeypatch):
+    assert tts.parse_voice("pocket:alba") == tts.Voice("pocket", "alba")
+    monkeypatch.setenv("TTS_ENGINE", "pocket")
+    assert tts.pick("en").engine == "pocket"
+    assert tts.pick("id") == tts.AUTO["id"]  # Pocket TTS speaks no Indonesian
+
+
+def test_pocket_engine_uses_the_package_when_it_is_installed(monkeypatch, tmp_path):
+    import sys
+    import types
+
+    loads: list[str] = []
+
+    class FakeModel:
+        sample_rate = 24000
+
+        @classmethod
+        def load_model(cls):
+            loads.append("model")
+            return cls()
+
+        def get_state_for_audio_prompt(self, voice):
+            loads.append(voice)
+            return {"voice": voice}
+
+        def generate_audio(self, state, text):
+            class T:
+                def numpy(self_inner):
+                    return (0.05 * np.sin(np.arange(2400) / 4)).astype(np.float32)
+            return T()
+
+    monkeypatch.setitem(sys.modules, "pocket_tts", types.SimpleNamespace(TTSModel=FakeModel))
+    monkeypatch.setattr(tts, "_models", {})
+    raw = tts._pocket("Hello.", tts.Voice("pocket", "alba"), tmp_path / "a.wav")
+    raw2 = tts._pocket("Again.", tts.Voice("pocket", "alba"), tmp_path / "b.wav")
+    assert raw.exists() and raw2.exists() and loads == ["model", "alba"]  # model and voice load once
+
+
+def test_pocket_without_the_package_goes_to_tts_python(monkeypatch, tmp_path):
+    import sys
+
+    monkeypatch.setitem(sys.modules, "pocket_tts", None)  # import fails
+    monkeypatch.delenv("TTS_PYTHON", raising=False)
+    with pytest.raises(ModuleNotFoundError):
+        tts._pocket("Hello.", tts.Voice("pocket", "alba"), tmp_path / "a.wav")

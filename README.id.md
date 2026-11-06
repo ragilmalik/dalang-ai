@@ -40,9 +40,9 @@ bawaan (mode uji), dan semua gambarnya diberi label "placeholder art". Kode perm
 yang live. Hasil pemeriksaan per model dengan API asli ada di
 [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 
-Pemeriksaan: <!-- facts:tests -->546<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
+Pemeriksaan: <!-- facts:tests -->557<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
 baris), uji e2e penuh (<!-- facts:e2e -->29/29<!-- /facts --> langkah), ruff, mypy, eslint, tsc, dan `next build`.
-Video demo: <!-- facts:demo_length -->2:57<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
+Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
 
 <p align="center">
   <img src="docs/screenshots/readme/home-phone.png" width="190" alt="Beranda: kelir diterangi lampu dengan film contoh dan satu tombol Ceritakan">
@@ -172,7 +172,7 @@ punya model text-to-speech. Muse Spark Open dan Muse Glimmer hanya tersedia lewa
 * `assets/sample-story/sample_story_synthetic.mp3`: suara sintetis (edge-tts, id-ID-GadisNeural, nada normal). Bukan
   suara anak dan bukan orang sungguhan.
 * Video demo, teaser, klip peluncuran dan tangkapan layar di `docs/`: direkam pada 6 Nov 2026 dengan Meta Model API
-  asli. Narator video demo adalah suara sintetis (Kokoro-82M), dan suara anak di 3 detik pertama adalah pengganti
+  asli. Narator video demo adalah suara sintetis (Pocket TTS), empat adegan foto keluarga dan kelas dibuat AI dan diberi label di layar, dan suara anak di 3 detik pertama adalah pengganti
   sintetis yang diberi label.
 * Uji coba dengan keluarga dan tinjauan budaya oleh dalang belum dilakukan (`docs/USER_TESTING.md`: "Real sessions:
   0"). Karena itu situs tidak menampilkan testimoni apa pun.

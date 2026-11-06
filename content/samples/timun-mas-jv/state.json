@@ -1,6 +1,6 @@
 {
- "id": "H4XW9r4Q",
- "created": 1793893631.8657827,
+ "id": "F3yrfyl5",
+ "created": 1793944098.207123,
  "status": "done",
  "language": "jv",
  "style": "colorful",
@@ -11,62 +11,62 @@
  "script": {
   "title": "Timun Mas lan Buto Ijo",
   "language": "jv",
-  "moral": "Anak sing wani, pinter, lan ora nyerah bakal slamet lan gawe bungah wong tuwa.",
-  "opening": "Kocap kacarita, biyen ana crita Timun Mas sing wani.",
+  "moral": "Anak sing pinter lan wani, lan sayange ibu, bakal slamet lan urip bahagia.",
+  "opening": "Kocap kacarita, biyen ana crita Timun Mas ing desa Jawa.",
   "characters": [
    {
-    "id": "mbok",
-    "name": "Mbok Rondho",
-    "role": "elder",
-    "wayang_archetype": "alus",
-    "visual_description": "elderly Javanese woman puppet, dark tan skin, grey hair in small bun, simple green kebaya with brown batik sarong, slender carved shape",
-    "kind": "human",
-    "sam_phrase": "old woman puppet",
-    "cultural_note": "Mbok Rondho kaya paraga wong desa ing wayang, urip prasaja lan nrima."
-   },
-   {
-    "id": "timun",
+    "id": "timunmas",
     "name": "Timun Mas",
     "role": "hero",
     "wayang_archetype": "alus",
-    "visual_description": "young girl puppet, light tan skin, long black hair with golden cucumber flower crown, yellow-green dress with gold trim, small slender shape",
+    "visual_description": "Slender young Javanese princess puppet with warm brown skin, black sanggul with golden jasmine, green-yellow dress with cucumber motif.",
     "kind": "human",
     "sam_phrase": "golden girl puppet",
-    "cultural_note": "Timun Mas saka dongeng Jawa, bocah wadon kang wani lan pinter ngapusi buto."
+    "cultural_note": "Timun Mas iku dongeng Jawa kang kondhang bab bocah wadon pinter lan wani."
    },
    {
-    "id": "buto",
+    "id": "mbokrondho",
+    "name": "Mbok Rondho",
+    "role": "elder",
+    "wayang_archetype": "alus",
+    "visual_description": "Small elderly Javanese widow puppet with tan wrinkled face, grey bun, dark brown kebaya and batik sarong, wooden stick.",
+    "kind": "human",
+    "sam_phrase": "old widow puppet",
+    "cultural_note": "Mbok Rondho iku lambang ibu ing dongeng Jawa kang sabar lan tresna anak."
+   },
+   {
+    "id": "butoijo",
     "name": "Buto Ijo",
     "role": "villain",
     "wayang_archetype": "raksasa/buta",
-    "visual_description": "big stocky green ogre puppet, round friendly face with grumpy-silly expression, no fangs, black curly hair, red vest with gold trim, large soft hands",
+    "visual_description": "Large green giant puppet with round grumpy but silly face, big nose, black curly hair, red-black cloth and gold bracelets.",
     "kind": "creature",
     "sam_phrase": "green ogre puppet",
-    "cultural_note": "Buto ing wayang iku raksasa gedhe, nanging ing crita bocah bisa kalah karo akal."
+    "cultural_note": "Buto Ijo iku raksasa ing wayang, digambarake gedhe lan galak nanging bisa dikalahake."
    }
   ],
   "scenes": [
    {
     "n": 1,
-    "setting": "Mbok Rondho's small bamboo house garden in the morning",
+    "setting": "small bamboo hut yard at dawn",
     "characters": [
-     "mbok",
-     "buto"
+     "mbokrondho",
+     "butoijo"
     ],
-    "action": "Mbok Rondho wishes for a child; Buto Ijo arrives and gives her magic cucumber seeds.",
-    "narration": "Biyen ana Mbok Rondho sing urip dhewe, dheweke kepengin banget duwe anak wadon.",
-    "image_prompt": "empty Javanese village garden at sunrise, small bamboo hut porch, earthen pots and cucumber vines on fence, carved gunungan kayon standing at side marking the opening, warm morning light, no characters",
-    "motion_prompt": "old woman puppet kneels and bows hopefully, green ogre puppet stomps in from the right and hands a small seed pouch",
+    "action": "Lonely Mbok Rondho wishes for a child and Buto Ijo arrives offering a magic cucumber seed.",
+    "narration": "Mbok Rondho kepengin banget duwe anak. Buto Ijo teka nggawa wiji timun ajaib.",
+    "image_prompt": "empty small Javanese bamboo hut yard at dawn, banana trees, earthen pots, soft misty light, no people",
+    "motion_prompt": "mbok rondho bows hopefully, buto ijo stomps in from the right and hands over seeds",
     "duration_s": 11.0,
     "mood": "calm",
     "staging": [
      {
-      "id": "mbok",
+      "id": "mbokrondho",
       "position": 0.3,
       "facing": "right"
      },
      {
-      "id": "buto",
+      "id": "butoijo",
       "position": 0.7,
       "facing": "left"
      }
@@ -74,77 +74,83 @@
    },
    {
     "n": 2,
-    "setting": "Inside Mbok Rondho's warm wooden house",
+    "setting": "inside Mbok Rondho's warm hut at midday",
     "characters": [
-     "mbok",
-     "timun"
+     "mbokrondho",
+     "timunmas"
     ],
-    "action": "A lovely girl Timun Mas has grown from the cucumber; Mbok Rondho raises her with love.",
-    "narration": "Buto Ijo menehi wiji timun ajaib, banjur tuwuh dadi bocah ayu jenenge Timun Mas.",
-    "image_prompt": "empty cozy Javanese wooden house interior, woven mat, clay pots, sunny window with green plants outside, no characters",
-    "motion_prompt": "old woman puppet gently sways, young girl puppet spins joyfully and bows to her",
-    "duration_s": 10.0,
+    "action": "A beautiful baby girl comes out of the big cucumber and Mbok Rondho raises her with love.",
+    "narration": "Saka timun gedhe metu bocah wadon ayu, jenenge Timun Mas. Mbok Rondho nresnani lan ngopeni saben dina.",
+    "image_prompt": "empty cozy Javanese hut interior with woven mat, wooden tray with large green cucumbers, sunny garden seen through door, no people",
+    "motion_prompt": "timunmas rises gently from below, mbok rondho rocks and strokes her lovingly",
+    "duration_s": 11.0,
     "mood": "happy",
     "staging": [
      {
-      "id": "mbok",
-      "position": 0.3,
-      "facing": "right"
-     },
-     {
-      "id": "timun",
-      "position": 0.6,
-      "facing": "left"
-     }
-    ]
-   },
-   {
-    "n": 3,
-    "setting": "Village path at the edge of the forest",
-    "characters": [
-     "timun",
-     "buto"
-    ],
-    "action": "Buto Ijo comes to take Timun Mas back as promised; scared Timun Mas decides to run.",
-    "narration": "Nalika Timun Mas wis gedhe, Buto Ijo teka njaluk janji, Timun Mas wedi banjur mlayu.",
-    "image_prompt": "empty Javanese village path leading to forest edge, afternoon light, banana trees and big stones, no characters",
-    "motion_prompt": "green ogre puppet lumbers in demanding, girl puppet trembles then turns to run",
-    "duration_s": 11.0,
-    "mood": "tense",
-    "staging": [
-     {
-      "id": "timun",
+      "id": "mbokrondho",
       "position": 0.35,
       "facing": "right"
      },
      {
-      "id": "buto",
+      "id": "timunmas",
       "position": 0.65,
       "facing": "left"
      }
     ]
    },
    {
-    "n": 4,
-    "setting": "Magical forest and salty sea blocking the way",
+    "n": 3,
+    "setting": "village path at sunset",
     "characters": [
-     "timun",
-     "buto"
+     "mbokrondho",
+     "timunmas",
+     "butoijo"
     ],
-    "action": "Timun Mas throws cucumber seeds, needles and salt that become a garden, thorn field and sea to block Buto Ijo.",
-    "narration": "Timun Mas nyebar wiji timun, jarum, lan uyah, dadi kebon, eri, lan segara kanggo ngalang-alangi buto.",
-    "image_prompt": "empty magical landscape with lush cucumber field, sharp thorny thicket and sparkling blue sea under cloudy sky, no characters",
-    "motion_prompt": "girl puppet runs and throws pouches behind her, ogre puppet chases clumsily and gets stuck and splashes",
+    "action": "Buto Ijo returns to claim Timun Mas and Mbok Rondho gives her magic bundles to run away.",
+    "narration": "Buto Ijo bali nagih janji njaluk Timun Mas. Mbok Rondho nangis, Timun Mas tetep wani mlayu.",
+    "image_prompt": "empty Javanese village path at sunset with bamboo fence and long shadows, orange sky, no people",
+    "motion_prompt": "buto ijo sways angrily, mbok rondho trembles and gives pouches, timunmas bows then steps back",
+    "duration_s": 11.0,
+    "mood": "tense",
+    "staging": [
+     {
+      "id": "mbokrondho",
+      "position": 0.25,
+      "facing": "right"
+     },
+     {
+      "id": "timunmas",
+      "position": 0.45,
+      "facing": "right"
+     },
+     {
+      "id": "butoijo",
+      "position": 0.75,
+      "facing": "left"
+     }
+    ]
+   },
+   {
+    "n": 4,
+    "setting": "magical forest turning into sea and mud",
+    "characters": [
+     "timunmas",
+     "butoijo"
+    ],
+    "action": "Timun Mas is chased and throws cucumber seeds, needles, salt and shrimp paste that become magical barriers.",
+    "narration": "Timun Mas mlayu lan nyebar wiji timun, jarum, uyah, lan terasi. Dadi alas, eri, segara, lan lendhut alus.",
+    "image_prompt": "empty magical Javanese landscape changing from cucumber vines to thorny bamboo to white salty waves to dark mud field, misty light, no people",
+    "motion_prompt": "timunmas hops in from the left throwing pouches behind, buto ijo chases clumsily and gets stuck",
     "duration_s": 12.0,
     "mood": "magical",
     "staging": [
      {
-      "id": "buto",
+      "id": "timunmas",
       "position": 0.3,
       "facing": "right"
      },
      {
-      "id": "timun",
+      "id": "butoijo",
       "position": 0.7,
       "facing": "left"
      }
@@ -152,32 +158,32 @@
    },
    {
     "n": 5,
-    "setting": "Muddy sea shore near home at sunset",
+    "setting": "peaceful hut yard in bright morning",
     "characters": [
-     "timun",
-     "mbok",
-     "buto"
+     "timunmas",
+     "mbokrondho",
+     "butoijo"
     ],
-    "action": "Timun Mas throws shrimp paste that becomes a sticky mud pond; Buto Ijo gets stuck, gives up the chase, and Timun Mas safely returns to Mbok Rondho.",
-    "narration": "Pungkasan Timun Mas nyebar terasi dadi segara lendhut, Buto Ijo kejebak lan nyerah, Timun Mas bali slamet.",
-    "image_prompt": "empty soft mud pond at golden sunset, smooth brown mud ripples, distant small hut silhouette, carved gunungan kayon standing at side marking the closing, warm glow, no characters, not grumpy",
-    "motion_prompt": "girl puppet throws last pouch, ogre puppet wobbles and slowly sinks down, girl puppet runs into old woman puppet embrace",
+    "action": "Buto Ijo gets stuck in the mud, stops chasing and promises to be kind, and Timun Mas safely returns to hug Mbok Rondho.",
+    "narration": "Buto Ijo kecemplung ing lendhut lan mandheg ngoyak. Timun Mas slamet bali ngrangkul Mbok Rondho, Buto Ijo janji dadi grapyak.",
+    "image_prompt": "empty peaceful Javanese hut yard in bright morning, mud pond far away, blooming flowers, warm sunlight, no people",
+    "motion_prompt": "buto ijo sinks slowly to the right, timunmas runs to mbok rondho and they bow together happily",
     "duration_s": 11.0,
     "mood": "triumphant",
     "staging": [
      {
-      "id": "buto",
-      "position": 0.15,
+      "id": "mbokrondho",
+      "position": 0.25,
       "facing": "right"
      },
      {
-      "id": "timun",
-      "position": 0.4,
-      "facing": "right"
+      "id": "timunmas",
+      "position": 0.45,
+      "facing": "left"
      },
      {
-      "id": "mbok",
-      "position": 0.7,
+      "id": "butoijo",
+      "position": 0.85,
       "facing": "left"
      }
     ]
@@ -191,17 +197,17 @@
    "status": "done",
    "detail": "“Biyen ana mbok rondho sing kepengin duwe anak. Buto ijo menehi wiji timun, banjur metu bocah wadon jenenge Timun Mas. Buto ijo njaluk Timun ...”",
    "thumbs": [],
-   "started": 1793893631.8728573,
-   "seconds": 3.6
+   "started": 1793944098.2328467,
+   "seconds": 4.4
   },
   {
    "key": "lakon",
    "label": "Writing the lakon",
    "status": "done",
-   "detail": "“Timun Mas lan Buto Ijo” · 5 scenes · Mbok Rondho, Timun Mas, Buto Ijo · Penjaga Budaya: 3/5 scenes passed first time, 4 fixed",
+   "detail": "“Timun Mas lan Buto Ijo” · 5 scenes · Timun Mas, Mbok Rondho, Buto Ijo · Penjaga Budaya: 3/5 scenes passed first time, 3 fixed",
    "thumbs": [],
-   "started": 1793893635.4547977,
-   "seconds": 0.0
+   "started": 1793944102.6534045,
+   "seconds": 33.5
   },
   {
    "key": "casting",
@@ -209,12 +215,12 @@
    "status": "done",
    "detail": "3 puppets carved, cut out with SAM 3.1",
    "thumbs": [
-    "/media/H4XW9r4Q/puppets/mbok.png?v=1793893727",
-    "/media/H4XW9r4Q/puppets/timun.png?v=1793893793",
-    "/media/H4XW9r4Q/puppets/buto.png?v=1793893883"
+    "/media/F3yrfyl5/puppets/timunmas.png?v=1793944211",
+    "/media/F3yrfyl5/puppets/mbokrondho.png?v=1793944265",
+    "/media/F3yrfyl5/puppets/butoijo.png?v=1793944299"
    ],
-   "started": 1793893658.390276,
-   "seconds": 233.5
+   "started": 1793944162.747998,
+   "seconds": 148.0
   },
   {
    "key": "scenes",
@@ -222,14 +228,14 @@
    "status": "done",
    "detail": "5 scenes painted and checked",
    "thumbs": [
-    "/media/H4XW9r4Q/still_1.jpg?v=1793893918",
-    "/media/H4XW9r4Q/still_2.jpg?v=1793893920",
-    "/media/H4XW9r4Q/still_3.jpg?v=1793893925",
-    "/media/H4XW9r4Q/still_4.jpg?v=1793893937",
-    "/media/H4XW9r4Q/still_5.jpg?v=1793893960"
+    "/media/F3yrfyl5/still_1.jpg?v=1793944339",
+    "/media/F3yrfyl5/still_2.jpg?v=1793944344",
+    "/media/F3yrfyl5/still_3.jpg?v=1793944347",
+    "/media/F3yrfyl5/still_4.jpg?v=1793944364",
+    "/media/F3yrfyl5/still_5.jpg?v=1793944376"
    ],
-   "started": 1793893891.9414647,
-   "seconds": 68.8
+   "started": 1793944310.7444057,
+   "seconds": 66.3
   },
   {
    "key": "animate",
@@ -243,8 +249,8 @@
     "",
     ""
    ],
-   "started": 1793895370.2221863,
-   "seconds": 0.0
+   "started": 1793944708.3583438,
+   "seconds": 0.3
   },
   {
    "key": "narrate",
@@ -252,66 +258,66 @@
    "status": "done",
    "detail": "Narrated in jv-ID-SitiNeural",
    "thumbs": [],
-   "started": 1793895370.2573814,
-   "seconds": 0.1
+   "started": 1793944708.6267843,
+   "seconds": 0.2
   },
   {
    "key": "cut",
    "label": "Final cut",
    "status": "done",
-   "detail": "56 second film ready",
+   "detail": "63 second film ready",
    "thumbs": [],
-   "started": 1793895370.4043648,
-   "seconds": 73.9
+   "started": 1793944503.6010535,
+   "seconds": 394.2
   }
  ],
  "scenes": [
   {
    "n": 1,
-   "narration": "Biyen ana Mbok Rondho sing urip dhewe, dheweke kepengin banget duwe anak wadon.",
-   "setting": "Mbok Rondho's small bamboo house garden in the morning",
-   "still": "/media/H4XW9r4Q/still_1.jpg?v=1793893918",
-   "backdrop": "/media/H4XW9r4Q/bg_1.webp?v=1793893918",
+   "narration": "Mbok Rondho kepengin banget duwe anak. Buto Ijo teka nggawa wiji timun ajaib.",
+   "setting": "small bamboo hut yard at dawn",
+   "still": "/media/F3yrfyl5/still_1.jpg?v=1793944339",
+   "backdrop": "/media/F3yrfyl5/bg_1.webp?v=1793944339",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 2,
-   "narration": "Buto Ijo menehi wiji timun ajaib, banjur tuwuh dadi bocah ayu jenenge Timun Mas.",
-   "setting": "Inside Mbok Rondho's warm wooden house",
-   "still": "/media/H4XW9r4Q/still_2.jpg?v=1793893920",
-   "backdrop": "/media/H4XW9r4Q/bg_2.webp?v=1793893920",
+   "narration": "Saka timun gedhe metu bocah wadon ayu, jenenge Timun Mas. Mbok Rondho nresnani lan ngopeni saben dina.",
+   "setting": "inside Mbok Rondho's warm hut at midday",
+   "still": "/media/F3yrfyl5/still_2.jpg?v=1793944344",
+   "backdrop": "/media/F3yrfyl5/bg_2.webp?v=1793944344",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 3,
-   "narration": "Nalika Timun Mas wis gedhe, Buto Ijo teka njaluk janji, Timun Mas wedi banjur mlayu.",
-   "setting": "Village path at the edge of the forest",
-   "still": "/media/H4XW9r4Q/still_3.jpg?v=1793893925",
-   "backdrop": "/media/H4XW9r4Q/bg_3.webp?v=1793893925",
+   "narration": "Buto Ijo bali nagih janji njaluk Timun Mas. Mbok Rondho nangis, Timun Mas tetep wani mlayu.",
+   "setting": "village path at sunset",
+   "still": "/media/F3yrfyl5/still_3.jpg?v=1793944347",
+   "backdrop": "/media/F3yrfyl5/bg_3.webp?v=1793944347",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 4,
-   "narration": "Timun Mas nyebar wiji timun, jarum, lan uyah, dadi kebon, eri, lan segara kanggo ngalang-alangi buto.",
-   "setting": "Magical forest and salty sea blocking the way",
-   "still": "/media/H4XW9r4Q/still_4.jpg?v=1793893937",
-   "backdrop": "/media/H4XW9r4Q/bg_4.webp?v=1793893937",
+   "narration": "Timun Mas mlayu lan nyebar wiji timun, jarum, uyah, lan terasi. Dadi alas, eri, segara, lan lendhut alus.",
+   "setting": "magical forest turning into sea and mud",
+   "still": "/media/F3yrfyl5/still_4.jpg?v=1793944364",
+   "backdrop": "/media/F3yrfyl5/bg_4.webp?v=1793944364",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
   },
   {
    "n": 5,
-   "narration": "Pungkasan Timun Mas nyebar terasi dadi segara lendhut, Buto Ijo kejebak lan nyerah, Timun Mas bali slamet.",
-   "setting": "Muddy sea shore near home at sunset",
-   "still": "/media/H4XW9r4Q/still_5.jpg?v=1793893960",
-   "backdrop": "/media/H4XW9r4Q/bg_5.webp?v=1793893960",
+   "narration": "Buto Ijo kecemplung ing lendhut lan mandheg ngoyak. Timun Mas slamet bali ngrangkul Mbok Rondho, Buto Ijo janji dadi grapyak.",
+   "setting": "peaceful hut yard in bright morning",
+   "still": "/media/F3yrfyl5/still_5.jpg?v=1793944376",
+   "backdrop": "/media/F3yrfyl5/bg_5.webp?v=1793944376",
    "attempts": 1,
    "rejections": [],
    "placeholder": false
@@ -319,41 +325,36 @@
  ],
  "cast": [
   {
-   "id": "mbok",
-   "name": "Mbok Rondho",
-   "sheet": "/media/H4XW9r4Q/sheets/mbok.webp?v=1793893727",
-   "cutout": "/media/H4XW9r4Q/puppets/mbok.png?v=1793893727",
-   "rejections": [],
-   "placeholder": false
-  },
-  {
-   "id": "timun",
+   "id": "timunmas",
    "name": "Timun Mas",
-   "sheet": "/media/H4XW9r4Q/sheets/timun.webp?v=1793893793",
-   "cutout": "/media/H4XW9r4Q/puppets/timun.png?v=1793893793",
+   "sheet": "/media/F3yrfyl5/sheets/timunmas.webp?v=1793944211",
+   "cutout": "/media/F3yrfyl5/puppets/timunmas.png?v=1793944211",
    "rejections": [],
    "placeholder": false
   },
   {
-   "id": "buto",
+   "id": "mbokrondho",
+   "name": "Mbok Rondho",
+   "sheet": "/media/F3yrfyl5/sheets/mbokrondho.webp?v=1793944265",
+   "cutout": "/media/F3yrfyl5/puppets/mbokrondho.png?v=1793944265",
+   "rejections": [],
+   "placeholder": false
+  },
+  {
+   "id": "butoijo",
    "name": "Buto Ijo",
-   "sheet": "/media/H4XW9r4Q/sheets/buto.webp?v=1793893883",
-   "cutout": "/media/H4XW9r4Q/puppets/buto.png?v=1793893883",
-   "rejections": [
-    {
-     "rejected": "/media/H4XW9r4Q/sheets/buto_rejected1.webp?v=1793893845",
-     "issue": "Wrong character design: figure is tall slender traditional ogre with thin limbs and round belly, not big stocky chubby ogre; Face is long narrow with sharp poin"
-    }
-   ],
+   "sheet": "/media/F3yrfyl5/sheets/butoijo.webp?v=1793944299",
+   "cutout": "/media/F3yrfyl5/puppets/butoijo.png?v=1793944299",
+   "rejections": [],
    "placeholder": false
   }
  ],
  "videos": {
-  "landscape": "/media/H4XW9r4Q/dalang_landscape.mp4?v=1793895444",
-  "vertical": "/media/H4XW9r4Q/dalang_vertical.mp4?v=1793895444"
+  "landscape": "/media/F3yrfyl5/dalang_landscape.mp4?v=1793944897",
+  "vertical": "/media/F3yrfyl5/dalang_vertical.mp4?v=1793944897"
  },
- "poster": "/media/H4XW9r4Q/poster.jpg?v=1793895444",
- "cost_usd": 0.3562,
+ "poster": "/media/F3yrfyl5/poster.jpg?v=1793944897",
+ "cost_usd": 0.0,
  "error": null,
  "message": null,
  "demo_replay": false,
@@ -372,24 +373,28 @@
  "narration_voice": "tts",
  "sample": true,
  "sample_key": "timun-mas-jv",
- "updated": 1793895444.4884143,
+ "updated": 1793944900.7282677,
  "trace": [
   {
    "kind": "call",
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "safety screen of the story",
-   "ms": 3569,
+   "ms": 4374,
    "attempts": 1,
    "ok": true,
-   "t": 1793893635.45,
+   "t": 1793944102.63,
    "stage": "listen"
   },
   {
-   "kind": "decision",
-   "agent": "cache",
-   "text": "same story told before: script reused from the transcript-hash cache",
-   "t": 1793893635.49,
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "write the lakon (json_schema script)",
+   "ms": 33470,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944136.13,
    "stage": "lakon"
   },
   {
@@ -397,118 +402,42 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "Penjaga Budaya: check the lakon against the cultural rules · Penjaga Budaya",
-   "ms": 22878,
+   "ms": 26507,
    "attempts": 1,
    "ok": true,
-   "t": 1793893658.37,
+   "t": 1793944162.7,
    "stage": "lakon"
   },
   {
    "kind": "decision",
    "agent": "penjaga",
-   "text": "scene 1 broke gunungan-respect (Opening must show gunungan to open the story.); fixed image_prompt before drawing",
-   "t": 1793893658.38,
+   "text": "scene 4 broke no-gore (Hot mud implies burn harm; canon barriers should be tricks, not hurting.); fixed narration before drawing",
+   "t": 1793944162.7,
    "stage": "lakon"
   },
   {
    "kind": "decision",
    "agent": "penjaga",
-   "text": "scene 5 broke gentle-conflict, respect-figures, gunungan-respect (Sinks implies killing; ending must stay a gentle chase with villain giving up. Closing must show gun); fixed narration, action, image_prompt before drawing",
-   "t": 1793893658.38,
+   "text": "scene 5 broke gentle-conflict, respect-figures (Leaves giant trapped to die; children's villain must stay gentle and able to change, conflict only c); fixed narration, action before drawing",
+   "t": 1793944162.7,
    "stage": "lakon"
   },
   {
    "kind": "decision",
    "agent": "penjaga",
-   "text": "Buto Ijo broke kid-friendly-pictures (Fangs and wide round eyes look frightening for ages 5-12; villain must look grumpy/silly, not scary.); fixed visual_description before drawing",
-   "t": 1793893658.38,
+   "text": "Buto Ijo broke kid-friendly-pictures (Fangs and bulging eyes look frightening for ages 5-12; soften to grumpy-silly.); fixed visual_description before drawing",
+   "t": 1793944162.7,
    "stage": "lakon"
-  },
-  {
-   "kind": "decision",
-   "agent": "penjaga",
-   "text": "word scan still found scary; replaced with the rules file's gentle words",
-   "t": 1793893658.38,
-   "stage": "lakon"
-  },
-  {
-   "kind": "call",
-   "model": "muse-image-1.0",
-   "endpoint": "/v1/images/generations",
-   "purpose": "generate picture · Mbok Rondho",
-   "ms": 49771,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893708.17,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · Mbok Rondho",
-   "ms": 6183,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893714.47,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "sam-3.1",
-   "endpoint": "/v1/responses",
-   "purpose": "cut out \"old woman puppet\" (streamed masks)",
-   "ms": 2346,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893716.83,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "cutout",
-   "text": "SAM found no usable mask for \"old woman puppet\"; trying a plainer phrase",
-   "t": 1793893716.83,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "sam-3.1",
-   "endpoint": "/v1/responses",
-   "purpose": "cut out \"old woman\" (streamed masks)",
-   "ms": 3582,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893720.42,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "cutout",
-   "text": "SAM found no usable mask for \"old woman\"; trying a plainer phrase",
-   "t": 1793893720.43,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "sam-3.1",
-   "endpoint": "/v1/responses",
-   "purpose": "cut out \"puppet\" (streamed masks)",
-   "ms": 2536,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893722.97,
-   "stage": "casting"
   },
   {
    "kind": "call",
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · Timun Mas",
-   "ms": 44725,
+   "ms": 25459,
    "attempts": 1,
    "ok": true,
-   "t": 1793893772.38,
+   "t": 1793944188.23,
    "stage": "casting"
   },
   {
@@ -516,10 +445,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · Timun Mas",
-   "ms": 6059,
+   "ms": 3924,
    "attempts": 1,
    "ok": true,
-   "t": 1793893778.57,
+   "t": 1793944192.45,
    "stage": "casting"
   },
   {
@@ -527,17 +456,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"golden girl puppet\" (streamed masks)",
-   "ms": 1879,
+   "ms": 1752,
    "attempts": 1,
    "ok": true,
-   "t": 1793893780.46,
+   "t": 1793944194.25,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"golden girl puppet\"; trying a plainer phrase",
-   "t": 1793893780.46,
+   "t": 1793944194.25,
    "stage": "casting"
   },
   {
@@ -545,28 +474,79 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"golden girl\" (streamed masks)",
-   "ms": 4539,
+   "ms": 2534,
    "attempts": 1,
    "ok": true,
-   "t": 1793893785.0,
+   "t": 1793944196.8,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"golden girl\"; trying a plainer phrase",
-   "t": 1793893785.01,
+   "t": 1793944196.82,
    "stage": "casting"
   },
   {
    "kind": "call",
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
-   "purpose": "cut out \"puppet\" (streamed masks)",
-   "ms": 2457,
+   "purpose": "cut out \"girl\" (streamed masks)",
+   "ms": 2590,
    "attempts": 1,
    "ok": true,
-   "t": 1793893787.47,
+   "t": 1793944199.43,
+   "stage": "casting"
+  },
+  {
+   "kind": "decision",
+   "agent": "cutout",
+   "text": "SAM found no usable mask for \"girl\"; trying a plainer phrase",
+   "t": 1793944199.44,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"person\" (streamed masks)",
+   "ms": 2606,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944202.07,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-image-1.0",
+   "endpoint": "/v1/images/generations",
+   "purpose": "generate picture · Mbok Rondho",
+   "ms": 37918,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944249.13,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · Mbok Rondho",
+   "ms": 3414,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944252.85,
+   "stage": "casting"
+  },
+  {
+   "kind": "call",
+   "model": "sam-3.1",
+   "endpoint": "/v1/responses",
+   "purpose": "cut out \"old widow puppet\" (streamed masks)",
+   "ms": 2641,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944255.57,
    "stage": "casting"
   },
   {
@@ -574,10 +554,10 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · Buto Ijo",
-   "ms": 37473,
+   "ms": 17106,
    "attempts": 1,
    "ok": true,
-   "t": 1793893830.52,
+   "t": 1793944282.21,
    "stage": "casting"
   },
   {
@@ -585,46 +565,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · Buto Ijo",
-   "ms": 14501,
+   "ms": 5039,
    "attempts": 1,
    "ok": true,
-   "t": 1793893845.16,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "Buto Ijo: checker rejected attempt 1 (Wrong character design: figure is tall slender traditional ogre with thin limbs and round belly, not big stocky chubby ogre; Face is long narrow with sharp poin); redrawing with its fix_prompt",
-   "t": 1793893845.2,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "muse-image-1.0",
-   "endpoint": "/v1/images/generations",
-   "purpose": "generate picture · Buto Ijo",
-   "ms": 28228,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893873.45,
-   "stage": "casting"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · Buto Ijo",
-   "ms": 3446,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893877.03,
-   "stage": "casting"
-  },
-  {
-   "kind": "decision",
-   "agent": "verify",
-   "text": "Buto Ijo: redraw 1 passed the check",
-   "t": 1793893877.03,
+   "t": 1793944287.66,
    "stage": "casting"
   },
   {
@@ -632,17 +576,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"green ogre puppet\" (streamed masks)",
-   "ms": 1734,
+   "ms": 2369,
    "attempts": 1,
    "ok": true,
-   "t": 1793893878.77,
+   "t": 1793944290.17,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cache",
    "text": "gunungan: same prompt painted before, reused from the image cache",
-   "t": 1793893883.27,
+   "t": 1793944299.6,
    "stage": "casting"
   },
   {
@@ -650,17 +594,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"gunungan puppet\" (streamed masks)",
-   "ms": 3595,
+   "ms": 2973,
    "attempts": 1,
    "ok": true,
-   "t": 1793893886.89,
+   "t": 1793944302.69,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"gunungan puppet\"; trying a plainer phrase",
-   "t": 1793893886.89,
+   "t": 1793944302.69,
    "stage": "casting"
   },
   {
@@ -668,17 +612,17 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"gunungan\" (streamed masks)",
-   "ms": 2304,
+   "ms": 2263,
    "attempts": 1,
    "ok": true,
-   "t": 1793893889.2,
+   "t": 1793944304.98,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "SAM found no usable mask for \"gunungan\"; trying a plainer phrase",
-   "t": 1793893889.2,
+   "t": 1793944304.99,
    "stage": "casting"
   },
   {
@@ -686,24 +630,24 @@
    "model": "sam-3.1",
    "endpoint": "/v1/responses",
    "purpose": "cut out \"puppet\" (streamed masks)",
-   "ms": 1969,
+   "ms": 2122,
    "attempts": 1,
    "ok": true,
-   "t": 1793893891.18,
+   "t": 1793944307.12,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "cutout",
    "text": "no SAM mask for gunungan; cut out by the plain background instead",
-   "t": 1793893891.18,
+   "t": 1793944307.12,
    "stage": "casting"
   },
   {
    "kind": "decision",
    "agent": "consistency",
-   "text": "character consistency 99/100 after casting: 3/3 puppets from SAM 3.1 masks, same cut-out pixels across 11 scene appearances",
-   "t": 1793893891.94,
+   "text": "character consistency 100/100 after casting: 3/3 puppets from SAM 3.1 masks, same cut-out pixels across 12 scene appearances",
+   "t": 1793944310.73,
    "stage": "casting"
   },
   {
@@ -711,10 +655,10 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 1",
-   "ms": 21840,
+   "ms": 23183,
    "attempts": 1,
    "ok": true,
-   "t": 1793893913.79,
+   "t": 1793944333.95,
    "stage": "scenes"
   },
   {
@@ -722,10 +666,10 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 2",
-   "ms": 24311,
+   "ms": 26970,
    "attempts": 1,
    "ok": true,
-   "t": 1793893916.26,
+   "t": 1793944337.74,
    "stage": "scenes"
   },
   {
@@ -733,21 +677,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 1",
-   "ms": 4193,
+   "ms": 3759,
    "attempts": 1,
    "ok": true,
-   "t": 1793893918.22,
-   "stage": "scenes"
-  },
-  {
-   "kind": "call",
-   "model": "muse-spark-1.3",
-   "endpoint": "/v1/chat/completions",
-   "purpose": "vision check against the script · scene 2",
-   "ms": 4172,
-   "attempts": 1,
-   "ok": true,
-   "t": 1793893920.61,
+   "t": 1793944338.69,
    "stage": "scenes"
   },
   {
@@ -755,10 +688,21 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 3",
-   "ms": 29137,
+   "ms": 31139,
    "attempts": 1,
    "ok": true,
-   "t": 1793893921.09,
+   "t": 1793944341.91,
+   "stage": "scenes"
+  },
+  {
+   "kind": "call",
+   "model": "muse-spark-1.3",
+   "endpoint": "/v1/chat/completions",
+   "purpose": "vision check against the script · scene 2",
+   "ms": 5444,
+   "attempts": 1,
+   "ok": true,
+   "t": 1793944343.65,
    "stage": "scenes"
   },
   {
@@ -766,10 +710,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 3",
-   "ms": 4348,
+   "ms": 4109,
    "attempts": 1,
    "ok": true,
-   "t": 1793893925.62,
+   "t": 1793944346.47,
    "stage": "scenes"
   },
   {
@@ -777,10 +721,10 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 4",
-   "ms": 14125,
+   "ms": 20009,
    "attempts": 1,
    "ok": true,
-   "t": 1793893932.67,
+   "t": 1793944359.3,
    "stage": "scenes"
   },
   {
@@ -788,10 +732,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 4",
-   "ms": 4272,
+   "ms": 4284,
    "attempts": 1,
    "ok": true,
-   "t": 1793893937.14,
+   "t": 1793944364.03,
    "stage": "scenes"
   },
   {
@@ -799,10 +743,10 @@
    "model": "muse-image-1.0",
    "endpoint": "/v1/images/generations",
    "purpose": "generate picture · scene 5",
-   "ms": 31666,
+   "ms": 27608,
    "attempts": 1,
    "ok": true,
-   "t": 1793893952.61,
+   "t": 1793944372.01,
    "stage": "scenes"
   },
   {
@@ -810,10 +754,10 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "vision check against the script · scene 5",
-   "ms": 7549,
+   "ms": 3803,
    "attempts": 1,
    "ok": true,
-   "t": 1793893960.33,
+   "t": 1793944376.28,
    "stage": "scenes"
   },
   {
@@ -821,17 +765,17 @@
    "model": "muse-spark-1.3",
    "endpoint": "/v1/chat/completions",
    "purpose": "Dalang Director: plan camera, entrances, transitions and gamelan cues · whole film",
-   "ms": 25879,
+   "ms": 20995,
    "attempts": 1,
    "ok": true,
-   "t": 1793893986.64,
+   "t": 1793944398.02,
    "stage": null
   },
   {
    "kind": "decision",
    "agent": "director",
-   "text": "planned 5 shots: 8 entrances/exits, 5 gamelan cues, 8 sound effects",
-   "t": 1793893986.65,
+   "text": "planned 5 shots: 9 entrances/exits, 5 gamelan cues, 10 sound effects",
+   "t": 1793944398.03,
    "stage": null
   },
   {
@@ -839,10 +783,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 1",
-   "ms": 11007,
+   "ms": 14012,
    "attempts": 1,
    "ok": true,
-   "t": 1793893997.69,
+   "t": 1793944412.18,
    "stage": "animate"
   },
   {
@@ -850,10 +794,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 2",
-   "ms": 8228,
+   "ms": 12170,
    "attempts": 1,
    "ok": true,
-   "t": 1793894006.77,
+   "t": 1793944426.84,
    "stage": "animate"
   },
   {
@@ -861,10 +805,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 3",
-   "ms": 14254,
+   "ms": 11719,
    "attempts": 1,
    "ok": true,
-   "t": 1793894021.88,
+   "t": 1793944440.37,
    "stage": "animate"
   },
   {
@@ -872,10 +816,10 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 4",
-   "ms": 9743,
+   "ms": 13984,
    "attempts": 1,
    "ok": true,
-   "t": 1793894032.68,
+   "t": 1793944456.59,
    "stage": "animate"
   },
   {
@@ -883,18 +827,11 @@
    "model": "muse-wonder-1.0",
    "endpoint": "/v1/chat/completions",
    "purpose": "choreograph the scene as keyframes · scene 5",
-   "ms": 12124,
+   "ms": 13390,
    "attempts": 1,
    "ok": true,
-   "t": 1793894046.11,
+   "t": 1793944472.48,
    "stage": "animate"
-  },
-  {
-   "kind": "decision",
-   "agent": "consistency",
-   "text": "character consistency 99/100 in the final film: 3/3 puppets from SAM 3.1 masks, same cut-out pixels across 11 scene appearances",
-   "t": 1793894162.25,
-   "stage": null
   }
  ],
  "cultural_review": {
@@ -913,10 +850,8 @@
   "scenes": [
    {
     "n": 1,
-    "passed_first": false,
-    "rules": [
-     "gunungan-respect"
-    ],
+    "passed_first": true,
+    "rules": [],
     "passed_after": true
    },
    {
@@ -933,8 +868,10 @@
    },
    {
     "n": 4,
-    "passed_first": true,
-    "rules": [],
+    "passed_first": false,
+    "rules": [
+     "no-gore"
+    ],
     "passed_after": true
    },
    {
@@ -942,7 +879,6 @@
     "passed_first": false,
     "rules": [
      "gentle-conflict",
-     "gunungan-respect",
      "respect-figures"
     ],
     "passed_after": true
@@ -950,19 +886,19 @@
   ],
   "characters": [
    {
-    "id": "mbok",
-    "name": "Mbok Rondho",
-    "passed_first": true,
-    "rules": []
-   },
-   {
-    "id": "timun",
+    "id": "timunmas",
     "name": "Timun Mas",
     "passed_first": true,
     "rules": []
    },
    {
-    "id": "buto",
+    "id": "mbokrondho",
+    "name": "Mbok Rondho",
+    "passed_first": true,
+    "rules": []
+   },
+   {
+    "id": "butoijo",
     "name": "Buto Ijo",
     "passed_first": false,
     "rules": [
@@ -970,45 +906,29 @@
     ]
    }
   ],
-  "fixes": 4,
+  "fixes": 3,
   "pass_rate_first": 0.6,
   "pass_rate_after": 1.0,
-  "note": "Kept chase-and-trick plot; softened ending so Buto is stuck and gives up, and added gunungan to open and close."
+  "note": "Fixed hot mud to avoid harm, gave Buto Ijo a gentle give-up ending where he can change, and softened his look to grumpy-silly. Plot and Javanese language kept."
  },
  "voice_scene_total": 5,
  "cutouts": {
-  "mbok": "sam",
-  "timun": "sam",
-  "buto": "sam",
+  "timunmas": "sam",
+  "mbokrondho": "sam",
+  "butoijo": "sam",
   "gunungan": "background"
  },
  "consistency": {
-  "score": 99,
+  "score": 100,
   "puppets": [
    {
-    "id": "mbok",
-    "name": "Mbok Rondho",
-    "source": "sam",
-    "fill": 0.311,
-    "soft_edges": 0.033,
-    "checker_redraws": 0,
-    "sha": "a26c9a107fb6d870",
-    "same_pixels": true,
-    "scenes": [
-     1,
-     2,
-     5
-    ],
-    "score": 100
-   },
-   {
-    "id": "timun",
+    "id": "timunmas",
     "name": "Timun Mas",
     "source": "sam",
-    "fill": 0.342,
-    "soft_edges": 0.04,
+    "fill": 0.375,
+    "soft_edges": 0.035,
     "checker_redraws": 0,
-    "sha": "4b1d074ee5b4eff3",
+    "sha": "a6218e025f1d02c5",
     "same_pixels": true,
     "scenes": [
      2,
@@ -1019,13 +939,30 @@
     "score": 100
    },
    {
-    "id": "buto",
+    "id": "mbokrondho",
+    "name": "Mbok Rondho",
+    "source": "sam",
+    "fill": 0.345,
+    "soft_edges": 0.038,
+    "checker_redraws": 0,
+    "sha": "bff8c8c59d100e7e",
+    "same_pixels": true,
+    "scenes": [
+     1,
+     2,
+     3,
+     5
+    ],
+    "score": 100
+   },
+   {
+    "id": "butoijo",
     "name": "Buto Ijo",
     "source": "sam",
-    "fill": 0.666,
-    "soft_edges": 0.012,
-    "checker_redraws": 1,
-    "sha": "008229da1bb772f1",
+    "fill": 0.357,
+    "soft_edges": 0.047,
+    "checker_redraws": 0,
+    "sha": "0f40e55678ab3418",
     "same_pixels": true,
     "scenes": [
      1,
@@ -1033,10 +970,10 @@
      4,
      5
     ],
-    "score": 96
+    "score": 100
    }
   ],
-  "appearances": 11,
+  "appearances": 12,
   "method": "SAM 3.1 mask source + mask quality + checker agent + same cut-out pixels in every scene"
  },
  "director": {
@@ -1047,43 +984,42 @@
     "camera": "pull_out",
     "enter": [
      {
-      "id": "mbok",
+      "id": "mbokrondho",
       "from": "left"
      },
      {
-      "id": "buto",
+      "id": "butoijo",
       "from": "right"
      }
     ],
-    "exit": [
-     {
-      "id": "buto",
-      "to": "right"
-     }
-    ],
+    "exit": [],
     "transition": "gunungan_sweep",
     "gamelan": "gong",
     "sfx": [
      {
       "t": 0.2,
       "kind": "birds"
+     },
+     {
+      "t": 0.5,
+      "kind": "wind"
      }
     ],
-    "note": "Gentle opening reveal of Mbok's wish and magic seeds gift."
+    "note": "Lonely dawn wish opens gently, ogre brings magic seed."
    },
    {
     "n": 2,
     "camera": "still",
     "enter": [
      {
-      "id": "timun",
-      "from": "right"
+      "id": "timunmas",
+      "from": "below"
      }
     ],
     "exit": [
      {
-      "id": "mbok",
-      "to": "below"
+      "id": "butoijo",
+      "to": "right"
      }
     ],
     "transition": "gunungan_sweep",
@@ -1092,81 +1028,94 @@
      {
       "t": 0.3,
       "kind": "birds"
+     },
+     {
+      "t": 0.7,
+      "kind": "cempala"
      }
     ],
-    "note": "Warm still moment for Timun Mas growing with love."
+    "note": "Joyful birth from cucumber, mother's love in warm hut."
    },
    {
     "n": 3,
     "camera": "push_in",
     "enter": [
      {
-      "id": "buto",
+      "id": "butoijo",
       "from": "right"
      }
     ],
     "exit": [],
     "transition": "gunungan_rise",
-    "gamelan": "kendang_rush",
+    "gamelan": "gong",
     "sfx": [
      {
       "t": 0.4,
       "kind": "keprak"
      },
      {
-      "t": 0.6,
-      "kind": "wind"
+      "t": 0.7,
+      "kind": "cempala"
      }
     ],
-    "note": "Push in for tension as Buto demands and Timun decides to run."
+    "note": "Promise claimed at sunset, brave girl given bundles to run."
    },
    {
     "n": 4,
     "camera": "pan_right",
-    "enter": [],
-    "exit": [],
-    "transition": "gunungan_sweep",
+    "enter": [
+     {
+      "id": "timunmas",
+      "from": "left"
+     },
+     {
+      "id": "butoijo",
+      "from": "right"
+     }
+    ],
+    "exit": [
+     {
+      "id": "mbokrondho",
+      "to": "below"
+     }
+    ],
+    "transition": "gunungan_rise",
     "gamelan": "kendang_rush",
     "sfx": [
      {
       "t": 0.3,
-      "kind": "keprak"
+      "kind": "wind"
      },
      {
       "t": 0.7,
       "kind": "water"
      }
     ],
-    "note": "Pan follows playful chase through magic garden and sea."
+    "note": "Playful chase follows magic barriers growing behind her."
    },
    {
     "n": 5,
     "camera": "pull_out",
     "enter": [
      {
-      "id": "mbok",
-      "from": "right"
+      "id": "mbokrondho",
+      "from": "left"
      }
     ],
-    "exit": [
-     {
-      "id": "buto",
-      "to": "below"
-     }
-    ],
+    "exit": [],
     "transition": "fade",
     "gamelan": "suwuk",
     "sfx": [
      {
-      "t": 0.4,
-      "kind": "water"
+      "t": 0.2,
+      "kind": "birds"
      },
      {
       "t": 0.8,
       "kind": "gong"
      }
     ],
-    "note": "Pull out to sunset reunion, Buto sinks softly and gives up."
+    "note": "Kind ending in bright yard, hug shows love wins."
    }
   ]
  },
@@ -1320,14 +1269,14 @@
   {
    "camera": {
     "zoom_from": 1.0,
-    "zoom_to": 1.1,
-    "pan_x": 0.0,
-    "pan_y": 0.0
+    "zoom_to": 1.08,
+    "pan_x": 0.5,
+    "pan_y": 0.5
    },
-   "lamp_flicker": 0.18,
+   "lamp_flicker": 0.15,
    "puppets": [
     {
-     "id": "mbok",
+     "id": "mbokrondho",
      "idle": "sway",
      "keyframes": [
       {
@@ -1338,37 +1287,37 @@
        "facing": "right"
       },
       {
-       "t": 0.28,
+       "t": 0.3,
        "x": 0.3,
        "lift": 0.0,
-       "angle": -16.0,
+       "angle": -14.0,
        "facing": "right"
       },
       {
        "t": 0.5,
-       "x": 0.31,
+       "x": 0.32,
        "lift": 0.0,
-       "angle": -20.0,
+       "angle": -18.0,
        "facing": "right"
       },
       {
        "t": 0.75,
-       "x": 0.33,
-       "lift": 0.015,
-       "angle": -6.0,
+       "x": 0.35,
+       "lift": 0.02,
+       "angle": 4.0,
        "facing": "right"
       },
       {
        "t": 1.0,
-       "x": 0.34,
-       "lift": 0.02,
-       "angle": 4.0,
+       "x": 0.38,
+       "lift": 0.0,
+       "angle": -10.0,
        "facing": "right"
       }
      ]
     },
     {
-     "id": "buto",
+     "id": "butoijo",
      "idle": "sway",
      "keyframes": [
       {
@@ -1380,30 +1329,30 @@
       },
       {
        "t": 0.25,
-       "x": 0.65,
-       "lift": 0.045,
-       "angle": -3.0,
+       "x": 0.66,
+       "lift": 0.06,
+       "angle": 6.0,
        "facing": "left"
       },
       {
-       "t": 0.48,
-       "x": 0.6,
+       "t": 0.45,
+       "x": 0.62,
        "lift": 0.0,
-       "angle": 3.0,
+       "angle": -4.0,
        "facing": "left"
       },
       {
-       "t": 0.72,
-       "x": 0.55,
-       "lift": 0.02,
+       "t": 0.65,
+       "x": 0.58,
+       "lift": 0.05,
        "angle": 6.0,
        "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.55,
+       "x": 0.56,
        "lift": 0.01,
-       "angle": 8.0,
+       "angle": 9.0,
        "facing": "left"
       }
      ]
@@ -1414,80 +1363,221 @@
    "camera": {
     "zoom_from": 1.0,
     "zoom_to": 1.1,
-    "pan_x": 0.0,
+    "pan_x": 0.02,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.25,
+   "lamp_flicker": 0.14,
    "puppets": [
     {
-     "id": "mbok",
+     "id": "mbokrondho",
      "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.3,
+       "x": 0.35,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "right"
       },
       {
-       "t": 0.33,
-       "x": 0.32,
-       "lift": 0.015,
+       "t": 0.3,
+       "x": 0.41,
+       "lift": 0.01,
        "angle": 3.0,
        "facing": "right"
       },
       {
-       "t": 0.66,
-       "x": 0.29,
-       "lift": 0.0,
+       "t": 0.55,
+       "x": 0.46,
+       "lift": 0.02,
        "angle": -3.0,
        "facing": "right"
       },
       {
-       "t": 1.0,
-       "x": 0.31,
+       "t": 0.8,
+       "x": 0.48,
        "lift": 0.01,
-       "angle": 2.0,
+       "angle": 3.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.47,
+       "lift": 0.015,
+       "angle": -2.0,
        "facing": "right"
       }
      ]
     },
     {
-     "id": "timun",
-     "idle": "bob",
+     "id": "timunmas",
+     "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.6,
+       "x": 0.65,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "left"
       },
       {
        "t": 0.3,
-       "x": 0.58,
+       "x": 0.64,
+       "lift": 0.04,
+       "angle": -2.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.55,
+       "x": 0.62,
        "lift": 0.08,
-       "angle": 10.0,
+       "angle": 2.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.8,
+       "x": 0.61,
+       "lift": 0.11,
+       "angle": -2.0,
+       "facing": "left"
+      },
+      {
+       "t": 1.0,
+       "x": 0.61,
+       "lift": 0.1,
+       "angle": 1.0,
+       "facing": "left"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "camera": {
+    "zoom_from": 1.0,
+    "zoom_to": 1.08,
+    "pan_x": 0.0,
+    "pan_y": 0.0
+   },
+   "lamp_flicker": 0.65,
+   "puppets": [
+    {
+     "id": "mbokrondho",
+     "idle": "tremble",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.25,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.25,
+       "x": 0.26,
+       "lift": 0.01,
+       "angle": -3.0,
        "facing": "right"
       },
       {
        "t": 0.5,
-       "x": 0.56,
+       "x": 0.28,
+       "lift": 0.0,
+       "angle": 4.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.7,
+       "x": 0.31,
+       "lift": 0.01,
+       "angle": -4.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.27,
+       "lift": 0.0,
+       "angle": 2.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "timunmas",
+     "idle": "tremble",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.45,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.3,
+       "x": 0.45,
+       "lift": 0.0,
+       "angle": -18.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.55,
+       "x": 0.46,
+       "lift": 0.02,
+       "angle": 0.0,
+       "facing": "right"
+      },
+      {
+       "t": 0.8,
+       "x": 0.4,
+       "lift": 0.01,
+       "angle": 6.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.38,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "butoijo",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.75,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "left"
       },
       {
+       "t": 0.25,
+       "x": 0.72,
+       "lift": 0.03,
+       "angle": -8.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.5,
+       "x": 0.77,
+       "lift": 0.0,
+       "angle": 8.0,
+       "facing": "left"
+      },
+      {
        "t": 0.75,
-       "x": 0.52,
-       "lift": 0.02,
-       "angle": 18.0,
+       "x": 0.71,
+       "lift": 0.04,
+       "angle": -10.0,
        "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.53,
+       "x": 0.73,
        "lift": 0.0,
        "angle": 5.0,
        "facing": "left"
@@ -1499,108 +1589,15 @@
   {
    "camera": {
     "zoom_from": 1.0,
-    "zoom_to": 1.1,
-    "pan_x": 0.0,
+    "zoom_to": 1.08,
+    "pan_x": -0.06,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.65,
+   "lamp_flicker": 0.55,
    "puppets": [
     {
-     "id": "timun",
+     "id": "timunmas",
      "idle": "tremble",
-     "keyframes": [
-      {
-       "t": 0.0,
-       "x": 0.35,
-       "lift": 0.0,
-       "angle": 0.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.3,
-       "x": 0.33,
-       "lift": 0.01,
-       "angle": -3.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.5,
-       "x": 0.36,
-       "lift": 0.0,
-       "angle": 3.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.65,
-       "x": 0.34,
-       "lift": 0.02,
-       "angle": 0.0,
-       "facing": "left"
-      },
-      {
-       "t": 1.0,
-       "x": -0.06,
-       "lift": 0.04,
-       "angle": -5.0,
-       "facing": "left"
-      }
-     ]
-    },
-    {
-     "id": "buto",
-     "idle": "sway",
-     "keyframes": [
-      {
-       "t": 0.0,
-       "x": 0.65,
-       "lift": 0.0,
-       "angle": 0.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.25,
-       "x": 0.6,
-       "lift": 0.04,
-       "angle": -4.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.45,
-       "x": 0.56,
-       "lift": 0.0,
-       "angle": 3.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.7,
-       "x": 0.53,
-       "lift": 0.02,
-       "angle": -3.0,
-       "facing": "left"
-      },
-      {
-       "t": 1.0,
-       "x": 0.47,
-       "lift": 0.03,
-       "angle": -5.0,
-       "facing": "left"
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "camera": {
-    "zoom_from": 1.0,
-    "zoom_to": 1.06,
-    "pan_x": 0.02,
-    "pan_y": 0.0
-   },
-   "lamp_flicker": 0.35,
-   "puppets": [
-    {
-     "id": "buto",
-     "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
@@ -1610,37 +1607,37 @@
        "facing": "right"
       },
       {
-       "t": 0.3,
-       "x": 0.45,
-       "lift": 0.05,
-       "angle": -10.0,
-       "facing": "right"
+       "t": 0.22,
+       "x": 0.24,
+       "lift": 0.09,
+       "angle": 8.0,
+       "facing": "left"
       },
       {
-       "t": 0.56,
-       "x": 0.57,
+       "t": 0.45,
+       "x": 0.18,
        "lift": 0.02,
-       "angle": 9.0,
-       "facing": "right"
+       "angle": -6.0,
+       "facing": "left"
       },
       {
-       "t": 0.8,
-       "x": 0.51,
-       "lift": 0.07,
-       "angle": -13.0,
-       "facing": "right"
+       "t": 0.7,
+       "x": 0.14,
+       "lift": 0.1,
+       "angle": 6.0,
+       "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.44,
-       "lift": 0.0,
-       "angle": 6.0,
+       "x": 0.19,
+       "lift": 0.03,
+       "angle": 0.0,
        "facing": "right"
       }
      ]
     },
     {
-     "id": "timun",
+     "id": "butoijo",
      "idle": "sway",
      "keyframes": [
       {
@@ -1651,31 +1648,31 @@
        "facing": "left"
       },
       {
-       "t": 0.24,
-       "x": 0.78,
+       "t": 0.25,
+       "x": 0.61,
        "lift": 0.06,
-       "angle": -8.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.5,
-       "x": 0.85,
-       "lift": 0.03,
-       "angle": 12.0,
+       "angle": -7.0,
        "facing": "left"
       },
       {
-       "t": 0.76,
-       "x": 0.83,
-       "lift": 0.08,
-       "angle": -6.0,
-       "facing": "right"
+       "t": 0.5,
+       "x": 0.52,
+       "lift": 0.02,
+       "angle": 7.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.75,
+       "x": 0.48,
+       "lift": 0.0,
+       "angle": -9.0,
+       "facing": "left"
       },
       {
        "t": 1.0,
-       "x": 0.88,
-       "lift": 0.0,
-       "angle": 0.0,
+       "x": 0.47,
+       "lift": 0.01,
+       "angle": 5.0,
        "facing": "left"
       }
      ]
@@ -1684,125 +1681,132 @@
   },
   {
    "camera": {
-    "zoom_from": 1.0,
-    "zoom_to": 1.08,
-    "pan_x": 0.04,
+    "zoom_from": 1.05,
+    "zoom_to": 1.0,
+    "pan_x": 0.0,
     "pan_y": 0.0
    },
-   "lamp_flicker": 0.15,
+   "lamp_flicker": 0.2,
    "puppets": [
     {
-     "id": "buto",
+     "id": "mbokrondho",
      "idle": "sway",
      "keyframes": [
       {
        "t": 0.0,
-       "x": 0.15,
+       "x": 0.25,
        "lift": 0.0,
        "angle": 0.0,
        "facing": "right"
       },
       {
-       "t": 0.3,
-       "x": 0.22,
+       "t": 0.45,
+       "x": 0.26,
        "lift": 0.02,
        "angle": -4.0,
        "facing": "right"
       },
       {
-       "t": 0.55,
-       "x": 0.24,
-       "lift": -0.04,
-       "angle": 6.0,
+       "t": 0.62,
+       "x": 0.27,
+       "lift": 0.0,
+       "angle": -5.0,
        "facing": "right"
+      },
+      {
+       "t": 0.82,
+       "x": 0.27,
+       "lift": 0.0,
+       "angle": -15.0,
+       "facing": "right"
+      },
+      {
+       "t": 1.0,
+       "x": 0.27,
+       "lift": 0.04,
+       "angle": -3.0,
+       "facing": "right"
+      }
+     ]
+    },
+    {
+     "id": "timunmas",
+     "idle": "sway",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.45,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.28,
+       "x": 0.38,
+       "lift": 0.07,
+       "angle": 10.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.5,
+       "x": 0.33,
+       "lift": 0.01,
+       "angle": 6.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.82,
+       "x": 0.33,
+       "lift": 0.0,
+       "angle": 15.0,
+       "facing": "left"
+      },
+      {
+       "t": 1.0,
+       "x": 0.33,
+       "lift": 0.05,
+       "angle": 4.0,
+       "facing": "left"
+      }
+     ]
+    },
+    {
+     "id": "butoijo",
+     "idle": "tremble",
+     "keyframes": [
+      {
+       "t": 0.0,
+       "x": 0.85,
+       "lift": 0.0,
+       "angle": 0.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.3,
+       "x": 0.87,
+       "lift": -0.03,
+       "angle": -6.0,
+       "facing": "left"
+      },
+      {
+       "t": 0.55,
+       "x": 0.89,
+       "lift": -0.06,
+       "angle": 6.0,
+       "facing": "left"
       },
       {
        "t": 0.8,
-       "x": 0.24,
-       "lift": -0.1,
-       "angle": -7.0,
-       "facing": "right"
-      },
-      {
-       "t": 1.0,
-       "x": 0.23,
-       "lift": -0.17,
-       "angle": -10.0,
-       "facing": "right"
-      }
-     ]
-    },
-    {
-     "id": "timun",
-     "idle": "sway",
-     "keyframes": [
-      {
-       "t": 0.0,
-       "x": 0.4,
-       "lift": 0.0,
-       "angle": 0.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.2,
-       "x": 0.42,
-       "lift": 0.05,
-       "angle": -8.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.45,
-       "x": 0.52,
-       "lift": 0.07,
-       "angle": 6.0,
-       "facing": "right"
-      },
-      {
-       "t": 0.75,
-       "x": 0.58,
-       "lift": 0.03,
-       "angle": 4.0,
-       "facing": "right"
-      },
-      {
-       "t": 1.0,
-       "x": 0.61,
-       "lift": 0.0,
-       "angle": -2.0,
-       "facing": "right"
-      }
-     ]
-    },
-    {
-     "id": "mbok",
-     "idle": "sway",
-     "keyframes": [
-      {
-       "t": 0.0,
-       "x": 0.7,
-       "lift": 0.0,
-       "angle": 0.0,
-       "facing": "left"
-      },
-      {
-       "t": 0.4,
-       "x": 0.7,
-       "lift": 0.0,
+       "x": 0.9,
+       "lift": -0.09,
        "angle": 3.0,
        "facing": "left"
       },
       {
-       "t": 0.7,
-       "x": 0.68,
-       "lift": 0.02,
-       "angle": -3.0,
-       "facing": "left"
-      },
-      {
        "t": 1.0,
-       "x": 0.67,
-       "lift": 0.0,
-       "angle": 2.0,
+       "x": 0.91,
+       "lift": -0.11,
+       "angle": 14.0,
        "facing": "left"
       }
      ]
@@ -1811,115 +1815,8 @@
   }
  ],
  "title_aksara": "ꦠꦶꦩꦸꦤ꧀ ꦩꦱ꧀ ꦭꦤ꧀ ꦧꦸꦠꦺꦴ ꦲꦶꦗꦺꦴ",
- "duration_s": 56.0,
- "captions": "/media/H4XW9r4Q/captions.vtt?v=1793895444",
- "cost_items": {
-  "muse-spark-1.3": 0.05719,
-  "muse-image-1.0": 0.09,
-  "sam-3.1": 0.025,
-  "muse-wonder-1.0": 0.18405
- },
- "trace_summary": {
-  "models": [
-   {
-    "model": "muse-spark-1.3",
-    "calls": 12,
-    "failed": 0,
-    "retries": 0,
-    "ms": 107049,
-    "usd": 0.0572
-   },
-   {
-    "model": "sam-3.1",
-    "calls": 10,
-    "failed": 0,
-    "retries": 0,
-    "ms": 26941,
-    "usd": 0.025
-   },
-   {
-    "model": "muse-image-1.0",
-    "calls": 9,
-    "failed": 0,
-    "retries": 0,
-    "ms": 281276,
-    "usd": 0.09
-   },
-   {
-    "model": "muse-wonder-1.0",
-    "calls": 5,
-    "failed": 0,
-    "retries": 0,
-    "ms": 55356,
-    "usd": 0.1841
-   }
-  ],
-  "calls": 36,
-  "decisions": 18
- },
- "tokens": {
-  "muse-spark-1.3": [
-   10975,
-   10228
-  ],
-  "muse-wonder-1.0": [
-   3968,
-   8409
-  ]
- },
- "receipt": {
-  "models": [
-   {
-    "model": "muse-spark-1.3",
-    "role": "writes the lakon, safety screen, Penjaga Budaya cultural review, picture checker",
-    "calls": 12,
-    "tokens_in": 10975,
-    "tokens_out": 10228,
-    "images": 0,
-    "usd": 0.0572,
-    "open_weights": false
-   },
-   {
-    "model": "sam-3.1",
-    "role": "cuts each puppet out (one reusable mask)",
-    "calls": 10,
-    "tokens_in": 0,
-    "tokens_out": 0,
-    "images": 0,
-    "usd": 0.025,
-    "open_weights": false
-   },
-   {
-    "model": "muse-image-1.0",
-    "role": "draws every puppet and backdrop",
-    "calls": 9,
-    "tokens_in": 0,
-    "tokens_out": 0,
-    "images": 9,
-    "usd": 0.09,
-    "open_weights": false
-   },
-   {
-    "model": "muse-wonder-1.0",
-    "role": "choreographs each scene as keyframes",
-    "calls": 5,
-    "tokens_in": 3968,
-    "tokens_out": 8409,
-    "images": 0,
-    "usd": 0.1841,
-    "open_weights": false
-   }
-  ],
-  "calls": 36,
-  "tokens_in": 14943,
-  "tokens_out": 18637,
-  "usd": 0.3562,
-  "decisions": 18,
-  "estimate": true,
-  "pricing": "https://dev.meta.ai/docs/pricing-rate-limits",
-  "fake": false,
-  "note": "Estimated from Meta's published prices; open-weight hosts bill separately."
- },
+ "duration_s": 63.0,
+ "captions": "/media/F3yrfyl5/captions.vtt?v=1793944897",
  "bundled": true,
- "sample_note": "Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks and motion by Muse Spark and Muse Wonder, all on the live Meta Model API (2026-11-05). Narration: edge-tts."
+ "sample_note": "Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks and motion by Muse Spark and Muse Wonder, all on the live Meta Model API (2026-11-05). Narration: synthetic voices (Kokoro-82M for English, edge-tts for Indonesian and Javanese). Gamelan: court musicians of the Kraton Ngayogyakarta, recorded by RTB45, CC BY 4.0."
 }

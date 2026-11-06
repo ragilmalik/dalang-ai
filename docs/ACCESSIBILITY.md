@@ -7,43 +7,43 @@ phone (390x844) and a desktop (1280x800) screen in the night theme, then on the 
 Automated rules find about a third of real accessibility problems; a manual screen-reader pass is still
 worth doing.
 
-Run: 2026-11-06 09:07 WIB
+Run: 2026-11-06 14:46 WIB
 
 | Page | Screen | Rules passed | Critical | Serious | Moderate | Minor |
 |---|---|---|---|---|---|---|
-| Home (`/`) | phone | 28 | 0 | 0 | 0 | 0 |
+| Home (`/`) | phone | 29 | 0 | 0 | 0 | 0 |
 | Film (`film`) | phone | 30 | 0 | 0 | 0 | 0 |
-| Watch (`watch`) | phone | 26 | 0 | 0 | 0 | 0 |
-| Gallery (`gallery`) | phone | 25 | 0 | 0 | 0 | 0 |
-| Kotak Wayang (`kotak`) | phone | 24 | 0 | 0 | 0 | 0 |
-| Judge mode (`judge`) | phone | 29 | 0 | 0 | 0 | 0 |
-| Teachers (`guru`) | phone | 24 | 0 | 0 | 0 | 0 |
-| Pentas (`pentas`) | phone | 25 | 0 | 0 | 0 | 0 |
-| Kelir Live (`kelir`) | phone | 27 | 0 | 0 | 0 | 0 |
-| Vote (phone) (`vote`) | phone | 24 | 0 | 0 | 0 | 0 |
-| Not found (`tidak-ada`) | phone | 24 | 0 | 0 | 0 | 0 |
-| Home (`/`) | desktop | 28 | 0 | 0 | 0 | 0 |
+| Watch (`watch`) | phone | 27 | 0 | 0 | 0 | 0 |
+| Gallery (`gallery`) | phone | 26 | 0 | 0 | 0 | 0 |
+| Kotak Wayang (`kotak`) | phone | 25 | 0 | 0 | 0 | 0 |
+| Judge mode (`judge`) | phone | 26 | 0 | 0 | 0 | 0 |
+| Teachers (`guru`) | phone | 25 | 0 | 0 | 0 | 0 |
+| Pentas (`pentas`) | phone | 26 | 0 | 0 | 0 | 0 |
+| Kelir Live (`kelir`) | phone | 28 | 0 | 0 | 0 | 0 |
+| Vote (phone) (`vote`) | phone | 25 | 0 | 0 | 0 | 0 |
+| Not found (`tidak-ada`) | phone | 25 | 0 | 0 | 0 | 0 |
+| Home (`/`) | desktop | 29 | 0 | 0 | 0 | 0 |
 | Film (`film`) | desktop | 30 | 0 | 0 | 0 | 0 |
-| Watch (`watch`) | desktop | 26 | 0 | 0 | 0 | 0 |
-| Gallery (`gallery`) | desktop | 25 | 0 | 0 | 0 | 0 |
-| Kotak Wayang (`kotak`) | desktop | 24 | 0 | 0 | 0 | 0 |
-| Judge mode (`judge`) | desktop | 29 | 0 | 0 | 0 | 0 |
-| Teachers (`guru`) | desktop | 24 | 0 | 0 | 0 | 0 |
-| Pentas (`pentas`) | desktop | 25 | 0 | 0 | 0 | 0 |
-| Kelir Live (`kelir`) | desktop | 27 | 0 | 0 | 0 | 0 |
-| Vote (phone) (`vote`) | desktop | 24 | 0 | 0 | 0 | 0 |
-| Not found (`tidak-ada`) | desktop | 24 | 0 | 0 | 0 | 0 |
-| Home (`/`) | phone, day mode | 28 | 0 | 0 | 0 | 0 |
+| Watch (`watch`) | desktop | 27 | 0 | 0 | 0 | 0 |
+| Gallery (`gallery`) | desktop | 26 | 0 | 0 | 0 | 0 |
+| Kotak Wayang (`kotak`) | desktop | 25 | 0 | 0 | 0 | 0 |
+| Judge mode (`judge`) | desktop | 26 | 0 | 0 | 0 | 0 |
+| Teachers (`guru`) | desktop | 25 | 0 | 0 | 0 | 0 |
+| Pentas (`pentas`) | desktop | 26 | 0 | 0 | 0 | 0 |
+| Kelir Live (`kelir`) | desktop | 28 | 0 | 0 | 0 | 0 |
+| Vote (phone) (`vote`) | desktop | 25 | 0 | 0 | 0 | 0 |
+| Not found (`tidak-ada`) | desktop | 25 | 0 | 0 | 0 | 0 |
+| Home (`/`) | phone, day mode | 29 | 0 | 0 | 0 | 0 |
 | Film (`film`) | phone, day mode | 30 | 0 | 0 | 0 | 0 |
-| Watch (`watch`) | phone, day mode | 26 | 0 | 0 | 0 | 0 |
-| Gallery (`gallery`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
-| Kotak Wayang (`kotak`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
-| Judge mode (`judge`) | phone, day mode | 29 | 0 | 0 | 0 | 0 |
-| Teachers (`guru`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
-| Pentas (`pentas`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
-| Kelir Live (`kelir`) | phone, day mode | 27 | 0 | 0 | 0 | 0 |
-| Vote (phone) (`vote`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
-| Not found (`tidak-ada`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
+| Watch (`watch`) | phone, day mode | 27 | 0 | 0 | 0 | 0 |
+| Gallery (`gallery`) | phone, day mode | 26 | 0 | 0 | 0 | 0 |
+| Kotak Wayang (`kotak`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
+| Judge mode (`judge`) | phone, day mode | 26 | 0 | 0 | 0 | 0 |
+| Teachers (`guru`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
+| Pentas (`pentas`) | phone, day mode | 26 | 0 | 0 | 0 | 0 |
+| Kelir Live (`kelir`) | phone, day mode | 28 | 0 | 0 | 0 | 0 |
+| Vote (phone) (`vote`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
+| Not found (`tidak-ada`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
 
 ## Findings
 

@@ -24,7 +24,9 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "content" / "samples"
 NOTE = ("Sample story written for this project. Pictures by Muse Image, puppets cut out by SAM 3.1, script, checks "
-        "and motion by Muse Spark and Muse Wonder, all on the live Meta Model API ({date}). Narration: edge-tts.")
+        "and motion by Muse Spark and Muse Wonder, all on the live Meta Model API ({date}). Narration: synthetic voices "
+        "(Kokoro-82M for English, edge-tts for Indonesian and Javanese). Gamelan: court musicians of the Kraton "
+        "Ngayogyakarta, recorded by RTB45, CC BY 4.0.")
 
 
 def ffmpeg(*args: str) -> None:

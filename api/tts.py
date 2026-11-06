@@ -5,6 +5,8 @@ Meta Model API has no text-to-speech model, so the narrator's voice comes from h
 * ``edge``: the edge-tts client for Microsoft Edge's read-aloud voices (free, online, no weights). Always there.
 * ``kokoro``: Kokoro-82M (hexgrad, Apache-2.0), an open model that runs on a laptop CPU. English only.
   Optional: ``pip install -r requirements-tts.txt`` (adds torch + kokoro, about 1 GB with the weights).
+* ``pocket``: Pocket TTS (Kyutai, MIT), a 100M-parameter open model that runs faster than real time on two CPU
+  cores. English only. Optional: ``pip install pocket-tts`` (it uses the same torch as Kokoro).
 * ``mms``: Meta's MMS-TTS open models (facebook/mms-tts-ind / mms-tts-jav, CC-BY-NC-4.0, so non-commercial
   use only). Optional, same requirements file. Never the default.
 
@@ -35,11 +37,11 @@ TARGET_LUFS = -16.0
 
 @dataclass(frozen=True)
 class Voice:
-    engine: str  # edge | kokoro | mms
-    voice: str  # edge voice name, kokoro voice id, or MMS repo id
+    engine: str  # edge | kokoro | pocket | mms
+    voice: str  # edge voice name, kokoro voice id, pocket voice name, or MMS repo id
     rate: str = "+0%"  # edge only
     pitch: str = "+0Hz"  # edge only
-    speed: float = 1.0  # kokoro / mms
+    speed: float = 1.0  # kokoro / mms (pocket has no speed control: 1.0 only)
 
     def label(self) -> str:
         return self.voice if self.engine == "edge" else f"{self.voice} ({self.engine})"
@@ -58,8 +60,9 @@ EDGE = {
 AUTO = {**EDGE, "en": Voice("kokoro", "af_heart", speed=0.92)}
 # What each optional engine can speak when it is forced with TTS_ENGINE.
 KOKORO = {"en": Voice("kokoro", "af_heart", speed=0.92)}
+POCKET = {"en": Voice("pocket", "alba")}
 MMS = {"id": Voice("mms", "facebook/mms-tts-ind"), "jv": Voice("mms", "facebook/mms-tts-jav")}
-ENGINES = {"edge": EDGE, "kokoro": KOKORO, "mms": MMS}
+ENGINES = {"edge": EDGE, "kokoro": KOKORO, "pocket": POCKET, "mms": MMS}
 
 
 def parse_voice(spec: str) -> Voice | None:
@@ -173,7 +176,30 @@ def _mms(text: str, v: Voice, out: Path) -> Path:
     return raw
 
 
-SYNTH = {"edge": _edge, "kokoro": _kokoro, "mms": _mms}
+def _pocket(text: str, v: Voice, out: Path) -> Path:
+    try:
+        from pocket_tts import TTSModel  # optional: pip install pocket-tts
+    except ImportError:
+        return _other_python(text, v, out)
+
+    with _lock:
+        model = _models.get("pocket")
+        if model is None:
+            model = _models["pocket"] = TTSModel.load_model()
+        state = _models.get(f"pocket:{v.voice}")
+        if state is None:
+            state = _models[f"pocket:{v.voice}"] = model.get_state_for_audio_prompt(v.voice)
+        wav = model.generate_audio(state, text).numpy()
+    if not len(wav):
+        raise RuntimeError("pocket-tts returned no audio")
+    from api.pipeline import media
+
+    raw = out.with_name(out.stem + ".raw.wav")
+    media.write_wav(raw, np.asarray(wav, dtype=np.float32), model.sample_rate)
+    return raw
+
+
+SYNTH = {"edge": _edge, "kokoro": _kokoro, "pocket": _pocket, "mms": _mms}
 
 
 def loudnorm_filter(lufs: float = TARGET_LUFS) -> str:
@@ -246,7 +272,8 @@ def synth(text: str, language: str, out_wav: Path, sr: int = 24000) -> tuple[Pat
 def _importable(engine: str) -> bool:
     import importlib.util
 
-    need = {"kokoro": ("kokoro", "soundfile"), "mms": ("transformers", "torch", "soundfile")}.get(engine, ())
+    need = {"kokoro": ("kokoro", "soundfile"), "pocket": ("pocket_tts",),
+            "mms": ("transformers", "torch", "soundfile")}.get(engine, ())
     return all(importlib.util.find_spec(m) is not None for m in need)
 
 

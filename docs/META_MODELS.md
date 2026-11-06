@@ -233,7 +233,9 @@ live (no Baseten key yet). The eval's open-weights table only covers fake-mode p
 
 ## Parts that aren't Meta models
 
-* The **gamelan score** is procedural code ([`api/pipeline/gamelan.py`](../api/pipeline/gamelan.py)): slendro and
+* The **gamelan under the films** is a real recording by default: court musicians of the Kraton Ngayogyakarta,
+  recorded by RTB45, CC BY 4.0 ([assets/music/README.md](../assets/music/README.md)). With
+  `GAMELAN_SOURCE=procedural` it is procedural code ([`api/pipeline/gamelan.py`](../api/pipeline/gamelan.py)): slendro and
   pelog tunings (textbook approximations; real sets differ), a balungan line per mood on saron, bonang, colotomic
   kenong/kempul/kethuk/gong and kendang patterns, rendered with numpy. `GET /api/gamelan/{mood}.wav` previews it.
 * The **aksara Jawa title** is a rule-based Latin -> Hanacaraka transliterator ([`api/aksara.py`](../api/aksara.py))

@@ -20,7 +20,7 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [x] Verify agent: Muse Spark vision, redraw up to 2x with corrected prompt
 - [x] Animate: Muse Wonder keyframe motion plan per scene + kelir engine
 - [x] Narrate: a voice per language picked by listening test (Kokoro-82M English when installed, edge-tts Emma Multilingual Indonesian, edge-tts Siti Javanese; see VOICES.md); subtitles-only fallback
-- [x] Final cut: title card, gunungan wipes, subtitles, synthesised gamelan, 16:9 + 9:16
+- [x] Final cut: title card, gunungan wipes, subtitles, gamelan bed (real Kraton recording, or procedural), 16:9 + 9:16
 - [x] Cost guard per film, DEMO_MODE replay, fake Meta API for test mode (`FAKE_META=1`; no key refuses new films)
 
 ## Quality

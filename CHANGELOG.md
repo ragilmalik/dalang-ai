@@ -3,6 +3,26 @@
 Dates are WIB (UTC+7). The project was built during the Meta Global AI Developer Hackathon, Oct 26 to Nov 4, 2026;
 Nov 5 is the go-live on the real Meta Model API.
 
+## 2026-11-06 (afternoon): media remake (art, music, voice, video, screenshots)
+
+* The art looks like real puppets now. The Muse Image prompts ask for a hand-carved buffalo-rawhide puppet with
+  chiselled holes, real gold leaf and horn rods, photographed in sharp detail, and for backdrops photographed through
+  a lamp-lit cotton screen that fills the frame (`api/prompts.py`). The quality checker accepts photo-like puppets
+  and still rejects 3D, cartoons and real people.
+* The three sample films were made again on the live Meta Model API with those prompts (`content/samples/`), and the
+  home page loop and share poster come from the new Kancil film.
+* Real gamelan: every film now plays a recording of the court musicians of the Kraton Ngayogyakarta (RTB45,
+  CC BY 4.0, `assets/music/`) under its scenes, a calm excerpt for calm and night scenes and a lively one for the
+  rest, ducked under the narration. `GAMELAN_SOURCE=procedural` brings back the gamelan made in code. The credit is
+  in the site footer, the film end card of the demo and `assets/music/README.md`.
+* New narrator engine: Pocket TTS (Kyutai, MIT). The demo voice-over is `pocket:caro_davy` (a CC0 LibriVox voice):
+  UTMOS 4.43 against Kokoro's 4.54, but 9.8% word errors against 16.3%. Scores in `docs/VOICES.md`.
+* The demo video was recorded again (2:58, -16.8 LUFS) with four AI-generated photo-style scenes of a child, a
+  family, a classroom and a backyard shadow play. Each is labelled "AI-generated scene" while it is on screen, and
+  the app screens inside them are real screenshots (`docs/demo/broll/README.md`). New thumbnail, teasers and launch
+  clips from the same run.
+* Every page re-shot on the live app, phone and desktop (`docs/screenshots/ui/after`, README crops).
+
 ## 2026-11-06: polish pass (layout shift, page weight, tap targets, day mode, wording)
 
 * Pages no longer jump while they fill in. The footer used to slide down once a film page loaded (layout shift

@@ -124,3 +124,32 @@ Deploying with Kokoro: [GO_LIVE.md](GO_LIVE.md#narrator-voice-when-deployed-opti
   something like "dalling". For the demo the real fix is my own voice-over (`docs/demo/real/`).
 * UTMOS is an English-trained score, so the Indonesian and Javanese numbers are a rough guide. The old-vs-new
   pairs in `deliverables/voice-samples/` are there so a person can check by ear.
+
+## Nov 6: a more human demo narrator (Pocket TTS)
+
+The demo video's narrator still sounded like a read-aloud voice to me, so I tried Kyutai's Pocket TTS (MIT, about
+100M parameters, January 2026). It runs faster than real time on two CPU cores here, and its voices are cloned from
+real recordings, so the rhythm is closer to a person telling a story. Same scoring as before: UTMOS22 for
+naturalness and Whisper small for word errors, on the 6 demo lines.
+
+| Voice | Where it comes from | UTMOS | WER |
+|---|---|---|---|
+| Kokoro-82M `af_heart` @1.0 (old demo voice) | Kokoro's own voice | 4.54 | 16.3% |
+| Pocket `cosette` | Expresso dataset, CC BY-NC (can't use: non-commercial) | 4.45 | 20.6% |
+| **Pocket `caro_davy`** | **LibriVox reader via Voice-Zero, CC0** | **4.43** | **9.8%** |
+| Pocket `vera` | VCTK, CC BY 4.0 (4 of 6 lines scored) | 4.41 | 12.1% |
+| Pocket `bill_boerst` | Voice-Zero, CC0 | 4.37 | 14.4% |
+| Pocket `alba` | Alba MacKenna, CC BY 4.0 | 4.35 | 14.2% |
+| Pocket `peter_yearsley` | Voice-Zero, CC0 | 4.33 | 11.0% |
+| Pocket `jean` | EARS dataset, CC BY-NC (can't use) | 4.26 | 19.4% |
+| Pocket `stuart_bell` | Voice-Zero, CC0 | 3.95 | 11.3% |
+| Pocket `javert` | voice donation, CC0 | 3.32 | 12.6% |
+| Pocket `marius` | voice donation, CC0 | 3.09 | 16.9% |
+
+Kokoro still has the top UTMOS by a little. I picked `caro_davy` for the demo anyway: it's 0.11 behind, Whisper
+got 40% fewer words wrong, and it is a real storyteller's voice under a CC0 licence. The demo plan comes to 2:57.9
+with it, still under three minutes. `DEMO_VOICE=kokoro:af_heart@1.0` brings the old narrator back.
+
+In the app, `pocket` is now a fourth engine (`TTS_ENGINE=pocket` or `TTS_VOICE_EN=pocket:caro_davy`). English
+films keep Kokoro by default, because the scores say it is a little more natural, and Pocket TTS speaks no
+Indonesian or Javanese. Licences of the voices: https://huggingface.co/kyutai/tts-voices.

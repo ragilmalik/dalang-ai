@@ -85,7 +85,10 @@ RW, RH = 1280, 720  # browser viewport and recording size (the UI is laid out fo
 REAL = Path(_A.real)
 # The stand-in narrator (until I record my own lines): engine:voice[@speed], see api/tts.py and docs/VOICES.md.
 # Needs the optional local engine (requirements-tts.txt, or TTS_PYTHON=<venv python>); falls back to edge-tts.
-VOICE = os.environ.get("DEMO_VOICE", "kokoro:af_heart@1.0")  # 1.0 scored the same as 0.92 and keeps the cut under 3:00
+# Nov 6: Pocket TTS with the CC0 caro_davy voice (a LibriVox reader via Voice-Zero). It scored UTMOS 4.43 against
+# Kokoro af_heart's 4.54, but Whisper misheard it far less (WER 9.8% vs 16.3%) and it reads like a person telling a
+# story, which is what I wanted for the film. DEMO_VOICE=kokoro:af_heart@1.0 brings the old narrator back.
+VOICE = os.environ.get("DEMO_VOICE", "pocket:caro_davy")
 VOICE_FALLBACK = "edge:en-US-AndrewNeural@4"
 SENTENCE_GAP = float(os.environ.get("DEMO_SENTENCE_GAP", "0.25"))  # seconds of quiet between sentences
 STORY = ("Dulu ada kancil yang pintar. Dia lapar dan mau makan mentimun di seberang sungai. Tapi di sungai banyak "
@@ -128,6 +131,14 @@ REAL_LINES = {
 # My phone clips (DEMO_VIDEO_REVIEW §3): file stem -> the shot it replaces. Any of .mp4 .mov .m4v .webm.
 REAL_CLIPS = {"A_child_tells": "voice", "C_garagara_answer": "garagara", "B_family_watching": "why",
               "E_tap_record": "landing", "D_shadow_play": "print"}
+# AI-generated photo-style scenes of the people the app is for (docs/demo/broll/, prompts in docs/demo/broll/README.md).
+# Every one carries an "AI-generated scene" label while it is on screen; app screens composited into them are real
+# screenshots. key -> (file, seconds at the start of the shot, or None for the whole shot). A real phone clip for the
+# same shot (REAL_CLIPS) always wins over B-roll. DEMO_BROLL=0 turns B-roll off.
+BROLL_DIR = ROOT / "docs" / "demo" / "broll"
+BROLL = {"voice": ("child-tells-story.jpg", None), "why": ("family-watching.jpg", None),
+         "garagara": ("classroom-vote.jpg", 3.6), "print": ("shadow-play.jpg", 3.8)}
+BROLL_LABEL = "AI-generated scene"
 VOICE_SECONDS = 3.2
 OPENING_SECONDS = 7.0
 FILM1_SECONDS = 19.0
@@ -552,6 +563,53 @@ def image_clip(img: Path, seconds: float, out: Path) -> Path:
     return out
 
 
+def broll_file(key: str) -> Path | None:
+    if os.environ.get("DEMO_BROLL", "1") == "0" or key not in BROLL:
+        return None
+    p = BROLL_DIR / BROLL[key][0]
+    return p if p.is_file() else None
+
+
+def label_png(text: str, out: Path) -> Path:
+    """The small 'AI-generated scene' pill: white 85% text on a 45% black rounded box, 26 px at 1080p."""
+    f = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26) \
+        if Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf").exists() else font(26)
+    probe = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    w = int(probe.textlength(text, font=f)) + 36
+    im = Image.new("RGBA", (w, 48), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle((0, 0, w - 1, 47), radius=24, fill=(0, 0, 0, 115))
+    d.text((18, 9), text, font=f, fill=(255, 255, 255, 217))
+    im.save(out)
+    return out
+
+
+def broll_clip(img: Path, seconds: float, out: Path, label: str = BROLL_LABEL, push: float = 0.05) -> Path:
+    """A still scene with a slow push-in (Ken Burns, `push` = 5%) and the label pinned top-left (it does not zoom)."""
+    tag = label_png(label, out.with_suffix(".label.png"))
+    frames = max(1, int(round(seconds * 30)))
+    zoom = f"min(1+{push}*on/{frames},1+{push})"
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-loop", "1", "-framerate", "30", "-t", f"{seconds:.2f}",
+                    "-i", str(img), "-i", str(tag), "-filter_complex",
+                    f"[0:v]scale={W * 2}:{H * 2}:force_original_aspect_ratio=increase:flags=lanczos,crop={W * 2}:{H * 2},"
+                    f"zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s={W}x{H}:fps=30[bg];"
+                    "[bg][1:v]overlay=40:36,setsar=1,format=yuv420p[v]", "-map", "[v]", "-t", f"{seconds:.2f}",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", str(out)], check=True)
+    return out
+
+
+def join_clips(parts: list[Path], out: Path) -> Path:
+    """Glue clips that share size and frame rate (re-encoded, so the cut is frame-exact)."""
+    ins: list[str] = []
+    for part in parts:
+        ins += ["-i", str(part)]
+    norm = "".join(f"[{i}:v]scale={W}:{H},setsar=1,fps=30,format=yuv420p[n{i}];" for i in range(len(parts)))
+    chain = norm + "".join(f"[n{i}]" for i in range(len(parts))) + f"concat=n={len(parts)}:v=1:a=0[v]"
+    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", *ins, "-filter_complex", chain, "-map", "[v]",
+                    "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", str(out)], check=True)
+    return out
+
+
 def srt_time(t: float) -> str:
     ms = int(round(t * 1000))
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}"
@@ -609,13 +667,18 @@ def silence(seconds: float, out: Path) -> Path:
 
 
 def gamelan_bed(seconds: float, out: Path, seed: int = 0) -> Path:
-    """A soft gamelan bed (the app's own procedural gamelan, calm mood) under the app screen shots, so the demo has no
-    dead air where the voice-over pauses (the Kelir Live and close shots run longer than their lines)."""
+    """A soft gamelan bed under the app screen shots, so the demo has no dead air where the voice-over pauses: the
+    Kraton recording the films use (assets/music), or the app's procedural gamelan with GAMELAN_SOURCE=procedural."""
     sys.path.insert(0, str(ROOT))
     from api.pipeline import gamelan
 
     raw = out.with_suffix(".gamelan.wav")
-    raw.write_bytes(gamelan.wav_bytes(gamelan.render("calm", seconds + 0.5, seed=seed)))
+    # the real Kraton recording when it is bundled (assets/music, CC BY 4.0), running on from shot to shot
+    if gamelan.source() == "recording":
+        samples = gamelan.recorded("calm" if seed % 2 == 0 else "happy", seconds + 0.5, offset=seed * 11.0)
+    else:
+        samples = gamelan.render("calm", seconds + 0.5, seed=seed)
+    raw.write_bytes(gamelan.wav_bytes(samples))
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(raw), "-af",
                     f"apad,atrim=0:{seconds:.2f},afade=t=in:d=0.4,afade=t=out:st={max(0.0, seconds - 0.6):.2f}:d=0.6",
                     "-ar", "48000", "-ac", "2", str(out)], check=True)
@@ -623,16 +686,29 @@ def gamelan_bed(seconds: float, out: Path, seed: int = 0) -> Path:
     return out
 
 
-def voice_hook(seconds: float, out_v: Path, out_a: Path, labelled: bool) -> None:
-    """0:00-0:03: the child's voice over black with its waveform (the stand-in recording is labelled as such)."""
+def voice_hook(seconds: float, out_v: Path, out_a: Path, labelled: bool, scene: Path | None = None) -> None:
+    """0:00-0:03: the child's voice with its waveform, over black or over the B-roll scene of a child telling a story
+    (the stand-in recording is labelled as such, and so is the generated photo scene)."""
     label = "Stand-in voice (synthetic sample). A real recording of a child goes here." if labelled else ""
+    if scene is not None:
+        label = "AI-generated scene · stand-in voice (synthetic sample)" if labelled else BROLL_LABEL
     draw = (f",drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='{label}':fontcolor=0xFFB08C:"
-            f"fontsize=30:x=(w-text_w)/2:y=h*0.18") if label and Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf").exists() else ""
-    subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-t", f"{seconds:.2f}", "-i", str(AUDIO), "-filter_complex",
-                    f"[0:a]aformat=channel_layouts=mono,showwaves=s={W}x{H // 3}:mode=cline:colors=0xE3B14F:rate=30[w];"
-                    f"color=c=black:s={W}x{H}:r=30:d={seconds:.2f}[bg];[bg][w]overlay=0:(H-h)/2{draw},format=yuv420p[v]",
-                    "-map", "[v]", "-t", f"{seconds:.2f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
-                    str(out_v)], check=True)
+            f"fontsize=30:x=(w-text_w)/2:y=h*0.18") if label and scene is None and \
+        Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf").exists() else ""
+    if scene is not None:
+        bg = broll_clip(scene, seconds, out_v.with_suffix(".scene.mp4"), label=label, push=0.04)
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(bg), "-t", f"{seconds:.2f}", "-i", str(AUDIO),
+                        "-filter_complex",
+                        f"[1:a]aformat=channel_layouts=mono,showwaves=s={W}x{H // 5}:mode=cline:colors=0xE3B14F:rate=30,"
+                        "colorkey=black:0.1:0.0[w];[0:v][w]overlay=0:H-h-60,format=yuv420p[v]",
+                        "-map", "[v]", "-t", f"{seconds:.2f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                        str(out_v)], check=True)
+    else:
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-t", f"{seconds:.2f}", "-i", str(AUDIO), "-filter_complex",
+                        f"[0:a]aformat=channel_layouts=mono,showwaves=s={W}x{H // 3}:mode=cline:colors=0xE3B14F:rate=30[w];"
+                        f"color=c=black:s={W}x{H}:r=30:d={seconds:.2f}[bg];[bg][w]overlay=0:(H-h)/2{draw},format=yuv420p[v]",
+                        "-map", "[v]", "-t", f"{seconds:.2f}", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                        str(out_v)], check=True)
     subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-t", f"{seconds:.2f}", "-i", str(AUDIO), "-af",
                     f"apad,atrim=0:{seconds:.2f}", "-ar", "48000", "-ac", "2", str(out_a)], check=True)
 
@@ -678,10 +754,13 @@ def end_card() -> Path:
     if not qr.is_placeholder():
         lines.append("Live app: " + qr.base_url().split("://", 1)[-1])
     lines.append("Open source, MIT licensed · github.com/ragilmalik/dalang-ai")
+    lines.append("Gamelan: Kraton Ngayogyakarta court musicians, rec. RTB45, CC BY 4.0 · synthetic narrator · AI-generated scenes labelled")
     f = font(28)
+    small = font(20)
     for k, text in enumerate(lines):  # below the subtitle (H-455), above the caption area (bottom 290 px)
-        w = d.textlength(text, font=f)
-        d.text(((W - w) / 2, H - 395 + k * 40), text, font=f, fill=(251, 239, 213))
+        ff = small if text.startswith("Gamelan:") else f
+        w = d.textlength(text, font=ff)
+        d.text(((W - w) / 2, H - 395 + k * 36), text, font=ff, fill=(251, 239, 213))
     im.save(card)
     if not qr.is_placeholder():  # a real QR only; never a placeholder one
         add_qr(card)
@@ -886,7 +965,7 @@ def main() -> None:
                 real_used["A_child_tells"] = clip.name
                 pieces.append((vid, aud, probe_seconds(vid), ""))
             else:
-                voice_hook(VOICE_SECONDS, vid, aud, labelled=True)
+                voice_hook(VOICE_SECONDS, vid, aud, labelled=True, scene=broll_file("voice"))
                 pieces.append((vid, aud, probe_seconds(vid), "(stand-in voice) Dulu ada kancil yang pintar..."))
             continue
         if key in ("opening", "film1", "film2"):
@@ -904,7 +983,11 @@ def main() -> None:
             mix(bed, vo, probe_seconds(vid), aud, bed_volume=0.5 if vo else 1.0)
             pieces.append((vid, aud, probe_seconds(vid), line))
             continue
-        if key == "close":
+        scene = broll_file(key)
+        lead = BROLL[key][1] if scene else None
+        if scene and lead is None:  # the whole shot is the scene
+            broll_clip(scene, secs, vid)
+        elif key == "close":
             image_clip(end_card(), secs, vid)
         elif key == "why":
             poster = TMP / "poster.jpg"
@@ -919,6 +1002,13 @@ def main() -> None:
         else:
             a, b = spans[key]
             cut(rec, a, b, secs, vid)
+        if scene and lead:  # the scene opens the shot, then the real app picture takes over
+            lead = min(lead, secs * 0.6)
+            rest = TMP / f"rest_{key}.mp4"
+            shutil.move(str(vid), str(rest))
+            body = TMP / f"body_{key}.mp4"
+            cut(rest, 0.0, probe_seconds(rest), max(0.5, secs - lead), body)
+            join_clips([broll_clip(scene, lead, TMP / f"lead_{key}.mp4"), body], vid)
         real_secs = probe_seconds(vid)  # the clip's real length keeps voice and captions locked to the picture
         # quiet gamelan under the app shots (GAMELAN_BED_VOLUME, 0 = silence as before)
         bed_vol = float(os.environ.get("GAMELAN_BED_VOLUME", "0.28"))

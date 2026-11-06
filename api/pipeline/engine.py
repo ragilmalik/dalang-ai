@@ -476,15 +476,19 @@ def soundtrack(film: Film, out_wav: Path) -> Path:
 
 
 def music_bed(film: Film, voice: np.ndarray, beat: float = 0.72, level: float = 1.0, ducked: float = 0.3) -> np.ndarray:
-    """Procedural gamelan under the scenes (api/pipeline/gamelan.py): each scene gets its mood's tuning, irama and
-    kendang pattern, cross-faded at the cuts and ducked while the dalang speaks (made in code: no licence)."""
+    """Gamelan under the scenes (api/pipeline/gamelan.py), cross-faded at the cuts and ducked while the dalang
+    speaks. By default a real Kraton recording (calm or lively excerpt per scene mood, CC BY 4.0); with
+    GAMELAN_SOURCE=procedural each scene gets its mood's code-made tuning, irama and kendang pattern."""
     sr = media.SR
     bed = np.zeros_like(voice)
     start, end = film.title_len, film.total - film.end_len
     t = start
     xf = int(0.6 * sr)
     for i, sh in enumerate(film.shots):
-        seg = gamelan.render(sh.mood, sh.duration + 0.6, scale=film.scale, seed=i)
+        if gamelan.source() == "recording":
+            seg = gamelan.recorded(sh.mood, sh.duration + 0.6, offset=t)
+        else:
+            seg = gamelan.render(sh.mood, sh.duration + 0.6, scale=film.scale, seed=i)
         env = np.ones(len(seg), np.float32)
         r = min(xf, len(seg) // 2)
         env[:r] = np.linspace(0, 1, r)

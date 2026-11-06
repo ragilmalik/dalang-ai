@@ -237,19 +237,19 @@ kind sentence in the story's language asking them to tell a different story. If 
 ## Puppet sheet (Muse Image, example)
 
 ```text
-A single full-body Javanese wayang kulit shadow puppet: flat side-profile buffalo-leather puppet, intricate perforated tatahan patterns, sunggingan painting in gold leaf with deep red and indigo, long thin jointed arms with control rods (cempurit), elegant stylised wayang proportions of Si Kancil (wayang animal (kancil)): small golden-brown mouse deer, red and gold collar. Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen. Exactly one puppet, the whole figure from headdress to feet plus its rods, centred, in side profile FACING RIGHT, on a perfectly plain flat warm-cream background with nothing else. Not a 3D render, not anime, not photorealistic, no text, no letters, no watermark, no modern objects.
+A single full-body real hand-carved Javanese wayang kulit shadow puppet, photographed in sharp detail: flat side-profile puppet cut from translucent buffalo rawhide, hundreds of tiny chiselled tatahan holes, hand-painted sunggingan in real gold leaf, deep red and indigo with slight wear and brush marks, visible leather grain, long thin jointed arms on dark buffalo-horn control rods (cempurit), elegant stylised wayang proportions of Si Kancil (wayang animal (kancil)): small golden-brown mouse deer, red and gold collar. Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen. True-to-life materials and soft natural light, like a museum photograph. Exactly one puppet, the whole figure from headdress to feet plus its rods, centred, in side profile FACING RIGHT, on a perfectly plain flat warm-cream background with nothing else. Not a 3D render, not a cartoon, not anime, not a flat vector drawing, no text, no letters, no watermark, no modern objects.
 ```
 
 ## Backdrop (Muse Image, example)
 
 ```text
-Wide backdrop for a wayang kulit stage, seen through a backlit cotton kelir screen with warm blencong oil-lamp glow: jungle edge by a wide river. warm sunny daylight. Javanese wayang and batik painting style, gold ornament, layered flat shapes, mega mendung clouds. Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen. Keep the lower middle open as a stage. Absolutely no people, no animals, no puppets, no characters. Not a 3D render, not anime, not photorealistic, no text, no letters, no watermark, no modern objects.
+Wide backdrop for a wayang kulit stage, photographed from the audience side of a real backlit cotton kelir screen at night, the painted cloth filling the whole frame edge to edge (no screen border, no frame, no dark surroundings), warm blencong oil-lamp hotspot fading softly, faint cloth weave visible: jungle edge by a wide river. warm sunny daylight. Hand-painted on the cloth in Javanese wayang and batik style, gold ornament, layered shapes, mega mendung clouds, rich depth. Classic palette: aged leather browns, gold leaf, deep red and indigo, warm oil-lamp light on a cotton kelir screen. True-to-life materials and soft natural light, like a museum photograph. Keep the lower middle open as a stage. Absolutely no people, no animals, no puppets, no characters. Not a 3D render, not a cartoon, not anime, not a flat vector drawing, no text, no letters, no watermark, no modern objects.
 ```
 
 ## Gunungan (Muse Image)
 
 ```text
-A single gunungan (kayon) wayang kulit puppet: the tall leaf-shaped tree-of-life mountain puppet, intricately perforated, gold, deep red and indigo, with its central rod, front view, centred, on a perfectly plain flat warm-cream background with nothing else. Not a 3D render, not anime, not photorealistic, no text, no letters, no watermark, no modern objects.
+A single real hand-carved gunungan (kayon) wayang kulit puppet, photographed in sharp detail: the tall leaf-shaped tree-of-life mountain puppet cut from translucent buffalo rawhide, finely perforated, real gold leaf, deep red and indigo paint, with its buffalo-horn central rod, front view, centred, on a perfectly plain flat warm-cream background with nothing else. Not a 3D render, not a cartoon, not anime, not a flat vector drawing, no text, no letters, no watermark, no modern objects.
 ```
 
 ## Verify agent (Muse Spark vision)
@@ -259,7 +259,7 @@ You are the quality checker for a children's wayang kulit film. You get one gene
 what it must show, and (for scenes) the script line. Fail it only for real problems: wrong subject; required
 puppet missing or extra figures; people/animals/puppets inside a backdrop that must be empty; visible text,
 letters or watermark; figure cut off; scary, violent or inappropriate content; or clearly not wayang style
-(3D, anime, photo). If it fails, write fix_prompt: a complete improved prompt for a redraw.
+(3D render, anime, cartoon, or real people instead of puppet art; a photo-like puppet or painted screen is fine). If it fails, write fix_prompt: a complete improved prompt for a redraw.
 ```
 
 ## Verify JSON schema

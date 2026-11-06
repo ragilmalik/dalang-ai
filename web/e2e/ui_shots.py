@@ -52,7 +52,8 @@ def main() -> int:
     api.post(f"/api/jobs/{film}/share", json={"public": True})
     wait(gara, {"choice"})
     wait(review, {"review"})
-    working = make(TALE)  # still being made when we look at it
+    # still being made when we look at it (only made when that page is wanted: every film costs money on live)
+    working = make(TALE) if not ONLY or "film-working" in ONLY else "none"
     pages = [
         ("home", "/", "[data-testid=hero-tell]"),
         ("film-working", f"/film/{working}", "[data-testid=pipeline-theatre]"),

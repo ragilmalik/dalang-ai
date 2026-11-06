@@ -29,10 +29,10 @@ kids to see their own stories on the kelir.
 > http://localhost:8000/docs, and `make help` lists every command. What I checked against the real API, per model:
 > [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 >
-> Checks: <!-- facts:tests -->546<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
+> Checks: <!-- facts:tests -->557<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
 > (<!-- facts:e2e -->29/29<!-- /facts --> steps), 25 browser checks of the newest screens on a 390 px phone (`web/e2e/r5_ui.py`: Kelir Live drag/tilt/gunungan/keyboard, classroom vote, remix, stickers, /pentas, PWA offline), ruff, mypy, eslint, tsc and `next build`. `make check` runs them all
 > ([docs/TEST_REPORT.md](docs/TEST_REPORT.md)). There's also an axe-core accessibility audit (<!-- facts:a11y -->33<!-- /facts --> page checks incl. /kelir, /vote and /pentas, phone and desktop, 0 violations,
-> [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:57<!-- /facts -->.
+> [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:58<!-- /facts -->.
 >
 > How the six Meta models fit together (structured output, the verify -> redraw agent loop, SAM reuse, Muse Wonder
 > keyframes, open weights, a real agent trace): [docs/META_MODELS.md](docs/META_MODELS.md).
@@ -57,7 +57,8 @@ kids to see their own stories on the kelir.
 <p align="center"><b>Demo video (under 3:00, voice-over and captions):</b> <a href="docs/demo/dalang-ai-demo.mp4">docs/demo/dalang-ai-demo.mp4</a></p>
 <p align="center"><sub>The clip above is from the Kancil sample film, made with the live Meta models. The demo video, its
 teasers and the UI screenshots were recorded on Nov 6, 2026 on the live Meta Model API too. The narrator in the demo
-is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds is a labelled synthetic stand-in.</sub></p>
+is a synthetic voice (Pocket TTS), the child's voice in its first 3 seconds is a labelled synthetic stand-in, and the
+four photo-style scenes of families and a classroom are AI-generated and labelled on screen.</sub></p>
 
 ![architecture](docs/architecture.png)
 
@@ -121,7 +122,9 @@ is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds 
 * **Dalang Director** (Muse Spark 1.3) directs the whole film shot by shot: camera moves, entrances and exits,
   gunungan transitions, gamelan cues, sound effects. The plan is validated and repaired, with a rule-based fallback if
   the call fails.
-* **Gamelan score**: procedural slendro/pelog music per mood (my code, no Meta model involved), plus the title in
+* **Gamelan score**: a real gamelan recording under every film (court musicians of the Kraton Ngayogyakarta, recorded
+  by RTB45, CC BY 4.0, calm or lively excerpt per scene mood), or procedural slendro/pelog music per mood in my own
+  code with `GAMELAN_SOURCE=procedural` (no Meta model involved either way), plus the title in
   aksara Jawa (Noto Sans Javanese).
 * **Classroom vote**: at the gara-gara the class screen shows big A/B buttons and a QR. Every phone casts one vote
   (`/vote/{id}`), the bars grow live, and the teacher closes the vote so the film carries on with the winner.
@@ -154,7 +157,7 @@ is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds 
   Javanese stays on Siti with a small rate and pitch tweak. The scores, how to switch and the licences are in
   [docs/VOICES.md](docs/VOICES.md).
 * **The demo video was re-recorded** on the new site with the Kokoro voice-over
-  (<!-- facts:demo_length -->2:57<!-- /facts -->), with 60 s and 42 s teasers. I re-recorded it again on Nov 4
+  (<!-- facts:demo_length -->2:58<!-- /facts -->), with 60 s and 42 s teasers. I re-recorded it again on Nov 4
   (see below).
 
 ## Added Nov 3: for cheap phones and weak signal
@@ -241,7 +244,7 @@ a moral at the end, and share it with family. It's a creative tool. You don't ch
 | 8 | (verify, agentic) | Every puppet sheet and backdrop is checked against the script. Failures are redrawn with the checker's corrected prompt, up to 2 times. | **Muse Spark 1.3** vision |
 | 6 | Bringing them to life | The dalang's hands: looks at each storyboard frame and returns a keyframe motion plan (glide in, hop, bow, tremble, camera move, lamp flicker). The kelir engine performs it. | **Muse Wonder** (`muse-wonder-1.0`) |
 | 7 | Narrating | A narrator voice per language, picked in a listening test ([docs/VOICES.md](docs/VOICES.md)). | Kokoro-82M for English when installed, `edge-tts` for the rest (Meta's Model API has no text-to-speech model) |
-| 9 | Final cut | Title card, gunungan wipes between scenes, subtitles, a synthesised gamelan bed that ducks under the narration, 16:9 and 9:16 MP4, and a 1200x630 share poster. | ffmpeg |
+| 9 | Final cut | Title card, gunungan wipes between scenes, subtitles, a gamelan bed (a real Kraton recording, CC BY 4.0) that ducks under the narration, 16:9 and 9:16 MP4, and a 1200x630 share poster. | ffmpeg |
 
 Where it differs from what you might expect (checked against Meta's docs on 2026-10-30):
 * **Muse Wonder outputs text, not video.** Meta's Model API has no video model, so Muse Wonder plans the motion
@@ -306,7 +309,7 @@ set `PUBLIC_BASE_URL` (Render, Vercel and `.env`) and run `python scripts/make_q
 | The 3 sample films in the gallery, the home page loop, share images, `docs/screenshots/demo.gif` | Live Meta Model API, Nov 5, 2026. Stories written by me for this project, labelled "contoh cerita / a sample story" |
 | Narration in every film | edge-tts / Kokoro voices (Meta has no text-to-speech model) |
 | `assets/sample-story/sample_story_synthetic.mp3` | A synthetic voice (edge-tts, id-ID-GadisNeural, normal pitch). Not a child, not a real person |
-| Demo video, teasers, launch clips and UI screenshots in `docs/` | Live Meta Model API, Nov 6, 2026. The demo's narrator is a synthetic voice (Kokoro-82M) and its opening child's voice is a labelled synthetic stand-in. The three classroom "phones" in the vote shot are API calls from the recording script |
+| Demo video, teasers, launch clips and UI screenshots in `docs/` | Live Meta Model API, Nov 6, 2026. The demo's narrator is a synthetic voice (Pocket TTS, `caro_davy`), its opening child's voice is a labelled synthetic stand-in, and its four photo-style scenes of people are AI-generated and labelled "AI-generated scene" ([docs/demo/broll](docs/demo/broll/README.md)). The three classroom "phones" in the vote shot are API calls from the recording script |
 | Anything made with `FAKE_META=1` or `make demo` | Fake Meta API, labelled "placeholder art" |
 | Family testing, cultural review | Not done yet: `docs/USER_TESTING.md` says "Real sessions: 0", `docs/CULTURAL_REVIEW.md` says "not reviewed yet" |
 

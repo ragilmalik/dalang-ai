@@ -11,8 +11,8 @@ Legend: [x] ready in the repo · [!] needs me (account, key, money or a public p
 - [x] Working app: FastAPI backend + Next.js web, live with `META_API_KEY` (preflight 6/6 PASS on Nov 5), test mode on the fake Meta API (`FAKE_META=1`)
 - [x] Three sample films made with the live Meta models, shipped in `content/samples/` and loaded on first start
       (stories written for the project, labelled "contoh cerita / a sample story"); per-model results in `docs/VERIFICATION_REPORT.md`
-- [x] Demo video, under 3:00 (<!-- facts:demo_length -->2:57<!-- /facts -->; exact length in `docs/demo/timeline.json`), 1920x1080 H.264/AAC, voice-over + burned-in
-      captions: `docs/demo/dalang-ai-demo.mp4`, re-recorded on Nov 6 on the live Meta Model API with a Kokoro-82M voice-over (synthetic, not me), -16.7 LUFS.
+- [x] Demo video, under 3:00 (<!-- facts:demo_length -->2:58<!-- /facts -->; exact length in `docs/demo/timeline.json`), 1920x1080 H.264/AAC, voice-over + burned-in
+      captions: `docs/demo/dalang-ai-demo.mp4`, re-recorded on Nov 6 on the live Meta Model API with a Pocket TTS voice-over (synthetic, not me), -16.8 LUFS.
       Shows the voice (a synthetic sample voice, labelled), the film, the classroom vote at the gara-gara, Kelir Live, the home
       page and story starters, the pipeline theatre, Penjaga Budaya + receipt + trace, read-along, Pentas, stickers,
       printable puppets and storybook. Teasers: `teaser_60s.mp4` (16:9) and `teaser_vertical.mp4` (9:16).
