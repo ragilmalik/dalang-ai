@@ -30,8 +30,8 @@ export function Tally({ v, big = false }: { v: VoteState; big?: boolean }) {
             </div>
             <div className={`${big ? "h-4" : "h-3"} overflow-hidden rounded-full bg-fg/10`}>
               <div
-                className={`h-full rounded-full transition-[width] duration-gong ease-sabet ${i === 0 ? "bg-prada" : "bg-kembang"}`}
-                style={{ width: `${pct}%` }}
+                className={`h-full w-full origin-left rounded-full transition-transform duration-gong ease-sabet ${i === 0 ? "bg-prada" : "bg-kembang"}`}
+                style={{ transform: `scaleX(${pct / 100})` }} /* compositor-only: smooth as votes arrive */
               />
             </div>
           </div>

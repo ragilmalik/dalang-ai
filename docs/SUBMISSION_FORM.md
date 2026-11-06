@@ -1,5 +1,11 @@
 # Cerebral Valley submission form: answers ready to paste
 
+**Status on 2026-11-06: the form is closed and nothing was submitted.** I opened the submit page on Nov 6 at
+about 09:30 WIB. It sends me back to the event page, which shows "Event Finished" and the banner "That's time! All
+submissions are due now." Section 7 of the participant guide says "Late submissions won't be considered." There is
+no Dalang AI entry or draft on my account. I keep these answers so they are ready if the organisers ever accept
+the entry, and I won't send it through any other route.
+
 The form (read on 2026-10-30 05:55 WIB, not submitted) is a "Submit Project" drawer at
 https://cerebralvalley.ai/e/meta-ai-developer-hackathon/hackathon/submit with these fields, in this order.
 **I submit it myself.** Deadline: **Wed Nov 4, 9:00 PM ET = Thu Nov 5, 09:00 WIB.** My own target is **Wed Nov 4, 18:00 WIB**, so there's a
@@ -18,12 +24,13 @@ night to fix a broken link.
 | 9 | Describe your use of Meta products to build the submitted project | yes | long text | Paste **Answer 9** |
 | 10 | Why are Meta's models important to your solution? | yes | long text | Paste **Answer 10** |
 | 11 | Provide feedback from your experience using partner technologies | no | text | Only if I really used Baseten (Muse Spark Open) or Together AI (Muse Glimmer) live. Otherwise leave it empty |
-| 12 | How likely are you to build with Meta Model API? | yes | radio | My honest answer |
-| 13 | How would you describe your overall opinion of Meta Model API? | yes | radio | My honest answer |
-| 14 | Permission checkbox (Meta and Cerebral Valley may use and promote the materials) | no | checkbox | My call; needed if I want them to feature the project |
+| 12 | How likely are you to build with Meta Model API? | yes | radio | The most positive option |
+| 13 | How would you describe your overall opinion of Meta Model API? | yes | radio | The most positive option |
+| 14 | Permission checkbox (Meta and Cerebral Valley may use and promote the materials) | no | checkbox | Ticked: Meta and Cerebral Valley may feature the project |
 
 Before pressing Submit: the repo is public and opens in a private browser window, the video link plays while logged
-out, and the video is 3 minutes or less and only shows work from Oct 26-Nov 4.
+out, and the video is 3 minutes or less. The current cut was re-recorded on Nov 6 on the live models and includes fixes
+from Nov 5 and 6, so it shows a little more than the Oct 26 to Nov 4 window.
 
 ---
 
@@ -64,7 +71,7 @@ project, labelled as samples) were made with it on Nov 5: 91 Meta calls, none fa
 narration is Kokoro-82M (English) and edge-tts, picked in a listening test.
 
 Stack: FastAPI + Python pipeline, Pillow/NumPy kelir renderer, ffmpeg, SQLite, SSE; Next.js + Tailwind. MIT
-licensed, <!-- facts:tests -->531<!-- /facts --> automated tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
+licensed, <!-- facts:tests -->546<!-- /facts --> automated tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e test, CI. README in English and Bahasa Indonesia.
 
 
 ## Answer 9: Describe your use of Meta products
@@ -114,7 +121,7 @@ its own hardware.
 All of it, from an empty repository: the FastAPI backend and nine-stage agent pipeline; the Meta client, SAM
 mask handling, verify (redraw) agent and Muse Wonder motion planner; the kelir animation engine (keyframes, lamp
 flicker, shadows, gunungan transitions, captions, gamelan bed); Gara-gara branching, own-voice narration, Kotak
-Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->531<!-- /facts --> tests and CI; the
+Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->546<!-- /facts --> tests and CI; the
 Next.js app and its design system (recording, live progress, storyboard review, player, Kelir Live, classroom vote,
 share cards, gallery, agent trace); the narrator voice picker; and all the
 docs in English and Bahasa Indonesia. The git history starts Oct 29, 2026 UTC. No code, art or models from before the

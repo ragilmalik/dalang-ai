@@ -196,7 +196,7 @@ export default function Home() {
   return (
     <div>
       {/* ---------- hero: the lamp lights the screen; one thing to press ---------- */}
-      <header className="grid items-center gap-8 pb-10 pt-6 sm:pt-10 lg:grid-cols-[1fr_1.1fr] lg:gap-14 lg:pb-16 lg:pt-16">
+      <header className="grid items-center gap-8 pb-10 pt-6 sm:pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14 lg:pb-16 lg:pt-16">
         <div className="space-y-6 lg:order-2">
           <HeroFilm />
         </div>

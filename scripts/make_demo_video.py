@@ -22,12 +22,12 @@ Shot order (v3, 2:50-2:58): the child's voice in the first 3 s, the film, the ga
 phone votes arrive as API calls), the rest of the film, Kelir Live (the child performs it), why, the home hero and a
 Story Starter, the pipeline theatre, the trace + receipt, share (read-along, Pentas, stickers + GIF), print, close.
 
-Malik's own footage and voice (--real docs/demo/real, see docs/demo/real/README.md): any clip or voice-over file
+My own footage and voice (--real docs/demo/real, see docs/demo/real/README.md): any clip or voice-over file
 found there replaces that shot's screen recording / still and its synthetic voice-over line. Missing files fall back to the
 recording, so a half-filled folder still renders.
 
 The synthetic voice-over is a stand-in narrator (DEMO_VOICE, default Kokoro-82M af_heart, picked in docs/VOICES.md),
-not Malik. With only the app's own venv it falls back to edge-tts; set TTS_PYTHON to a venv with requirements-tts.txt.
+not me. With only the app's own venv it falls back to edge-tts; set TTS_PYTHON to a venv with requirements-tts.txt.
 """
 from __future__ import annotations
 
@@ -59,7 +59,7 @@ def _args() -> argparse.Namespace:
     ap.add_argument("--reuse", default="")
     # The story recording uploaded in the "tell" shot. Default: the MOCK synthetic sample; pass a real one.
     ap.add_argument("--audio", default=str(DEFAULT_AUDIO))
-    # --real=docs/demo/real: Malik's phone clips (A-E) and recorded voice-over, used instead of the recording/synthetic VO
+    # --real=docs/demo/real: my phone clips (A-E) and recorded voice-over, used instead of the recording/synthetic VO
     ap.add_argument("--real", default=str(Path(__file__).resolve().parents[1] / "docs" / "demo" / "real"))
     # --plan: speak the voice-over lines only and print each shot's length and the total (no app, no recording)
     ap.add_argument("--plan", action="store_true")
@@ -83,7 +83,7 @@ W, H = 1920, 1080  # output size (DEMO_VIDEO_REVIEW: 1080p)
 PHONE_VW, PHONE_VH = 432, 768  # the phone-sized Kelir Live recording for the vertical teaser
 RW, RH = 1280, 720  # browser viewport and recording size (the UI is laid out for this), scaled up to W x H
 REAL = Path(_A.real)
-# The stand-in narrator (until Malik records his own lines): engine:voice[@speed], see api/tts.py and docs/VOICES.md.
+# The stand-in narrator (until I record my own lines): engine:voice[@speed], see api/tts.py and docs/VOICES.md.
 # Needs the optional local engine (requirements-tts.txt, or TTS_PYTHON=<venv python>); falls back to edge-tts.
 VOICE = os.environ.get("DEMO_VOICE", "kokoro:af_heart@1.0")  # 1.0 scored the same as 0.92 and keeps the cut under 3:00
 VOICE_FALLBACK = "edge:en-US-AndrewNeural@4"
@@ -93,8 +93,8 @@ STORY = ("Dulu ada kancil yang pintar. Dia lapar dan mau makan mentimun di seber
          "kancil melompat di punggung mereka. Sampai di seberang, kancil minta maaf dan mereka jadi teman.")
 
 # (key, voice-over). Each recorded segment is stretched or trimmed to fit its line. Order and lines follow the
-# 2:50 shot list in deliverables/win-kit/DEMO_VIDEO_REVIEW.md. With the synthetic voice nobody claims to be Malik:
-# his first-person lines are used only when his own recording (real/vo_<key>.wav) is present.
+# 2:50 shot list in deliverables/win-kit/DEMO_VIDEO_REVIEW.md. With the synthetic voice nobody claims to be me:
+# my first-person lines are used only when my own recording (real/vo_<key>.wav) is present.
 SCRIPT = [
     ("voice", ""),  # 0:00-0:03 the child's voice over black (real clip A, or the labelled stand-in recording)
     ("opening", ""),  # gong, gunungan, title, "Kocap kacarita" (film sound only)
@@ -119,13 +119,13 @@ SCRIPT = [
     ("print", "Print the puppets and the storybook, grab a torch, and the show moves off the screen."),
     ("close", "Dalang AI. A child tells a story out loud, and six Meta models perform it. Every child can be a dalang."),
 ]
-# Malik's first-person versions, used ONLY with his own recorded voice-over file for that shot (real/vo_<key>.wav)
+# My first-person versions, used only with my own recorded voice-over file for that shot (real/vo_<key>.wav)
 REAL_LINES = {
     "why": "I'm Malik, from Semarang. Wayang is a thousand years old, but the kids around me have never sat in front "
            "of a kelir. So I built Dalang AI.",
     "close": "Built solo this week with Meta's models. Dalang AI: every child can be a dalang. Matur nuwun.",
 }
-# Malik's phone clips (DEMO_VIDEO_REVIEW §3): file stem -> the shot it replaces. Any of .mp4 .mov .m4v .webm.
+# My phone clips (DEMO_VIDEO_REVIEW §3): file stem -> the shot it replaces. Any of .mp4 .mov .m4v .webm.
 REAL_CLIPS = {"A_child_tells": "voice", "C_garagara_answer": "garagara", "B_family_watching": "why",
               "E_tap_record": "landing", "D_shadow_play": "print"}
 VOICE_SECONDS = 3.2
@@ -571,7 +571,7 @@ def record_or_stills() -> tuple[Path | None, dict[str, tuple[float, float]], dic
 
 
 def real_file(stem: str, exts: tuple[str, ...]) -> Path | None:
-    """Malik's own file for a shot in --real (docs/demo/real), if he dropped one there."""
+    """My own file for a shot in --real (docs/demo/real), if I dropped one there."""
     for ext in exts:
         p = REAL / f"{stem}{ext}"
         if p.is_file():
@@ -870,7 +870,7 @@ def main() -> None:
         own_vo = real_file(f"vo_{key}", VO_EXTS)
         clip = real_clip(key)
         vo: Path | None = None
-        if own_vo:  # Malik's own voice for this shot; captions use his first-person line when there is one
+        if own_vo:  # my own voice for this shot; captions use the first-person line when there is one
             vo = TMP / f"vo_{key}.wav"
             subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(own_vo), "-ar", "48000", "-ac", "2", str(vo)], check=True)
             line = REAL_LINES.get(key, line)

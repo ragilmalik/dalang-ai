@@ -66,7 +66,7 @@ export default async function Watch({ params }: { params: Promise<{ id: string }
           <p className="mx-auto max-w-prose font-display text-lg italic text-gold">“{job.script.opening}”</p>
         )}
       </header>
-      <FilmVideo src={job.videos.landscape} poster={job.poster || undefined} captions={job.captions} lang={job.language} />
+      <FilmVideo id={job.id} src={job.videos.landscape} poster={job.poster || undefined} captions={job.captions} lang={job.language} />
       {job.script?.moral && <p className="mx-auto max-w-prose text-center text-lg text-muted">{job.script.moral}</p>}
       <div className="flex justify-center">
         <MadeWithMuse />

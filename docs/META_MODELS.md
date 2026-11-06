@@ -251,5 +251,5 @@ Budaya agent on Muse Spark 1.3, each on its own lit kelir); it makes no extra ca
 
 All measured on the fake API, so they test my code, not Meta's model quality: Director plans
 valid for 6/6 films, gamelan 14/14 renders, Remix 3/3 done at a mean 6% of the original film's estimated cost,
-audience vote applied, robustness 100% completed when one stage fails once, 67% when it fails always, 100% handled
+audience vote applied, failure tests 100% completed when one stage fails once, 67% when it fails always, 100% handled
 gracefully; `make preflight-dry` 6/6 PASS ([EVAL_REPORT.md](EVAL_REPORT.md), [GO_LIVE.md](GO_LIVE.md)).

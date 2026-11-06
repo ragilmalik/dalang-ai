@@ -1,7 +1,8 @@
 {
- "a11y": 22,
+ "a11y": 33,
  "coverage": 95,
  "demo_seconds": 176.6,
  "e2e": "29/29",
- "tests": 531
+ "e2e_ui": "30/30",
+ "tests": 546
 }

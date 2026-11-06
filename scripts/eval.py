@@ -1,17 +1,17 @@
-"""Evaluation harness: 6 golden stories (2 per language) through the pipeline up to the storyboard, scored on
+"""Evaluation script: 6 golden stories (2 per language) through the pipeline up to the storyboard, scored on
 scene count, narration length bounds, language match, Penjaga Budaya cultural-rule pass rate and the
 character-consistency score. Writes docs/EVAL_REPORT.md and docs/eval.json.
 
 Runs on the built-in fake Meta API by default (no key, no cost): the scores then measure OUR pipeline code
 (schema checks, cultural review, cut-outs, consistency scoring) on the fixture scripts, not Meta model quality.
-With a real key and FAKE_META=0 the same harness scores live output (costs about $0.10-0.20 per story).
+With a real key and FAKE_META=0 the same script scores live output (costs about $0.10-0.20 per story).
 
     .venv/bin/python scripts/eval.py            # all 6, writes the report
     .venv/bin/python scripts/eval.py --only 2   # the first 2 (quick check)
-    .venv/bin/python scripts/eval.py --skip-r5  # only the golden stories (no Director/remix/vote/gamelan/robustness)
+    .venv/bin/python scripts/eval.py --skip-r5  # only the golden stories (no Director/remix/vote/gamelan/failure tests)
 
 Also checks: Dalang Director validity, gamelan rendering, Remix (language + villain), the audience vote, and
-robustness (each Meta stage failing once / always, injected with FAKE_META_FAIL) with pass rates, plus the
+failure tests (each Meta stage failing once / always, injected with FAKE_META_FAIL) with pass rates, plus the
 open-weights per-stage routing check (fake-mode plumbing numbers, clearly labelled).
 """
 from __future__ import annotations
@@ -146,7 +146,7 @@ def report(rows: list[dict[str, Any]], tot: dict[str, Any], fake: bool) -> str:
     return head + summ + table + notes
 
 
-# --------------------------------------------------------------------------- Director, gamelan, Remix, vote, robustness
+# --------------------------------------------------------------------------- Director, gamelan, Remix, vote, failure tests
 def eval_director(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """Director plan on every golden script: one valid shot per scene, enums respected, last shot fades."""
     from api import cost
@@ -350,7 +350,7 @@ def eval_open_routing() -> dict[str, Any]:
 
 def report_r5(r5: dict[str, Any]) -> str:
     d, g, rm, v, rb, ow = (r5.get(k, {}) for k in ("director", "gamelan", "remix", "vote", "robustness", "open"))
-    md = "\n## Director, gamelan, Remix, vote, robustness (added Nov 1-2)\n\n"
+    md = "\n## Director, gamelan, Remix, vote, failure tests (added Nov 1-2)\n\n"
     md += ("| Check | Result |\n|---|---|\n"
            f"| Director plans valid (one shot per scene, enums, last shot fades) | {d.get('valid', 0):.0%} of {d.get('films', 0)} films "
            f"· {d.get('cues_per_film')} gamelan cues, {d.get('moves_per_film')} entrances/exits, {d.get('sfx_per_film')} sfx per film |\n"
@@ -361,10 +361,10 @@ def report_r5(r5: dict[str, Any]) -> str:
            f"{rm.get('cost_ratio', 0):.0%} of the original film |\n"
            f"| Audience vote: {v.get('voters')} voters, tally {v.get('tally')}, winner applied | "
            f"{'yes' if v.get('applied') else 'NO'} · film {v.get('film')} |\n"
-           f"| Robustness: film completes when one Meta stage fails ONCE | {rb.get('once_completed', 0):.0%} |\n"
-           f"| Robustness: film completes when one Meta stage fails ALWAYS | {rb.get('always_completed', 0):.0%} |\n"
-           f"| Robustness: handled gracefully (completed, or a kind stop; no crash) | {rb.get('graceful', 0):.0%} |\n\n")
-    md += ("### Robustness detail\n\nInjected with `FAKE_META_FAIL=<stage>:<once|always>` (HTTP 503 from the fake API), "
+           f"| Failure test: film completes when one Meta stage fails once | {rb.get('once_completed', 0):.0%} |\n"
+           f"| Failure test: film completes when one Meta stage fails every time | {rb.get('always_completed', 0):.0%} |\n"
+           f"| Failure test: handled gracefully (completed, or a kind stop; no crash) | {rb.get('graceful', 0):.0%} |\n\n")
+    md += ("### Failure test detail\n\nInjected with `FAKE_META_FAIL=<stage>:<once|always>` (HTTP 503 from the fake API), "
            "`META_RETRIES=1`. Storyboard stages are scored at the storyboard; motion and Director at the finished film.\n\n"
            "| Stage | Fails | Outcome | Fallbacks | Retried calls | Note |\n|---|---|---|---|---|---|\n")
     for r in rb.get("rows", []):
@@ -386,7 +386,7 @@ def report_r5(r5: dict[str, Any]) -> str:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", type=int, default=0, help="run only the first N stories")
-    ap.add_argument("--skip-r5", action="store_true", help="skip the Director/gamelan/Remix/vote/robustness checks")
+    ap.add_argument("--skip-r5", action="store_true", help="skip the Director/gamelan/Remix/vote/failure checks")
     ap.add_argument("--out", default=str(ROOT / "docs" / "EVAL_REPORT.md"))
     a = ap.parse_args()
     from api.config import settings

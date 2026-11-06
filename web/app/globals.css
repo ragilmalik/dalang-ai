@@ -69,6 +69,8 @@
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    /* keep room for the scrollbar so a page that grows past one screen doesn't shift sideways (CLS) */
+    scrollbar-gutter: stable;
     text-rendering: optimizeLegibility;
   }
   @media (pointer: fine) {
@@ -298,7 +300,7 @@
     box-shadow: 0 0 0 0 #84261a;
   }
   .btn-sm {
-    @apply min-h-9 px-3.5 text-sm;
+    @apply min-h-11 px-3.5 text-sm; /* 44 px: kids and parents tap with thumbs (WCAG 2.5.5 target size) */
   }
   .btn-lg {
     @apply min-h-14 px-7 text-lg;
@@ -408,9 +410,10 @@
   .progress {
     @apply h-2 overflow-hidden rounded-full bg-fg/10;
   }
+  /* the fill grows with transform: scaleX (compositor-only), so it stays smooth while the page does other work */
   .progress > span {
-    @apply block h-full rounded-full bg-prada;
-    transition: width var(--dur-gong) var(--ease-sabet);
+    @apply block h-full w-full origin-left rounded-full bg-prada;
+    transition: transform var(--dur-gong) var(--ease-sabet);
   }
 
   /* ---------- helpers ---------- */
@@ -558,6 +561,72 @@ dialog.sheet[open] > div {
 @keyframes sheet-in {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
+}
+
+/* loading placeholders breathe (opacity only) instead of a moving shimmer: calmer, and cheap on old phones */
+.skeleton {
+  animation: skeleton-breathe 1.6s var(--ease-gong) infinite;
+}
+@keyframes skeleton-breathe {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* ============================================================================================================
+   Page transitions (View Transitions API, through React's <ViewTransition> in app/template.tsx).
+   Like a dalang changing scenes behind the gunungan: the old page leaves fast and dims, the new one rises in gently.
+   Only opacity, transform and a light blur move (compositor-only), and clicks still reach the live page.
+   ============================================================================================================ */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-old(.page-out) {
+  animation: 150ms var(--ease-sabet) both vt-fade reverse, 150ms var(--ease-sabet) both vt-sink reverse;
+}
+::view-transition-new(.page-in) {
+  animation: 240ms var(--ease-sabet) 90ms both vt-fade, 360ms var(--ease-sabet) both vt-rise;
+}
+@keyframes vt-fade {
+  from { opacity: 0; filter: blur(2px); }
+  to { opacity: 1; filter: blur(0); }
+}
+@keyframes vt-rise {
+  from { transform: translateY(12px); }
+  to { transform: none; }
+}
+@keyframes vt-sink {
+  from { transform: translateY(-6px); }
+  to { transform: none; }
+}
+/* the header is the fixed point of the stage: it never slides or fades between pages */
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+/* a poster you tap in the gallery or on the Pentas wall grows into the film player */
+::view-transition-group(.morph) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-sabet);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: vt-morph-blur;
+}
+@keyframes vt-morph-blur {
+  35% { filter: blur(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

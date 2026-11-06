@@ -1,4 +1,4 @@
-/** "Made with Meta Muse" badge: which models made this, for share cards, the watch page and the showcase wall. */
+/** "Made with Meta Muse" badge: which models made this, for share cards, the watch page and the public wall. */
 export default function MadeWithMuse({ size = "sm" }: { size?: "sm" | "lg" }) {
   return (
     <span

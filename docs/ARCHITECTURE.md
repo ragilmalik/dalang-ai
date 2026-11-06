@@ -17,6 +17,10 @@ browser ──> web/ (Next.js, port 3000) ──/api, /media──> api/ (FastAP
   (`API_ORIGIN`, default `http://127.0.0.1:8000`), so the browser sees one origin.
 * **api/** is one FastAPI process. A film is a background job on a small thread pool (`api/runner.py`); its state
   is saved to SQLite on every change and pushed to the browser over Server-Sent Events (`/api/jobs/{id}/events`).
+* **api/thumbs.py** makes an 800 px WebP of each film's poster the first time the gallery lists it
+  (`poster_card.webp` next to `poster.jpg`, atomic write, remade if the poster is newer). The grids load that and
+  keep the full poster as the large `srcset` choice. If it can't be made, the field is `null` and the page uses the
+  poster.
 * **api/meta_client.py** is the only module that sends requests to Meta. Every call goes through one `_post` with
   retries (429/5xx, timeouts, `Retry-After`), a per-model circuit breaker, a per-film and a total spend cap
   (`MAX_USD_PER_FILM`, `MAX_USD_TOTAL`), and a line in the film's agent trace.

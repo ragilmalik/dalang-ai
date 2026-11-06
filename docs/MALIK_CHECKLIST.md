@@ -11,9 +11,9 @@ models. What is still not real, and why:
 - no live link or QR yet: the app isn't deployed -> deploying, below
 - no family tests and no cultural review yet (`docs/USER_TESTING.md` says "Real sessions: 0") -> later
 
-Deployment details come first; **the list that ends this file is everything left for you.**
+Deployment details come first; **the list that ends this file is everything left for me.**
 
-## Deploying online (only after you say yes; may cost about $7/month on Render)
+## Deploying online (not done yet; may cost about $7/month on Render)
 
 The app has two parts: the **backend** (Python, makes the films) and the **website** (what people open).
 Blueprints are ready in the repo: `render.yaml` (backend) and `web/vercel.json` (website).
@@ -23,7 +23,7 @@ Blueprints are ready in the repo: `render.yaml` (backend) and `web/vercel.json` 
 2. Click **New +** (top right) → **Blueprint**.
 3. Pick the **dalang-ai** repository → Render reads `render.yaml` and shows one service, `dalang-ai-api`, with a 5 GB disk.
 4. It asks for the secret values: paste your Meta key into **META_API_KEY**; leave BASETEN_API_KEY empty unless you use open weights; leave PUBLIC_BASE_URL empty for now.
-5. Click **Apply**. The plan is **Starter** (the disk needs a paid plan, about $7 a month); confirm only if you agree to the cost.
+5. Click **Apply**. The plan is **Starter** (the disk needs a paid plan, about $7 a month); I only confirm this once I decide the cost is worth it.
 6. (Optional) The narrator is edge-tts out of the box. If you want the Kokoro English voice online too, follow
    [GO_LIVE.md, "Narrator voice when deployed"](GO_LIVE.md#narrator-voice-when-deployed-optional-kokoro) before Apply.
 7. Wait until the service shows **Live** (5-10 minutes). Copy its address, e.g. `https://dalang-ai-api.onrender.com`. Open `<address>/api/health`: you should see `"ok": true` and `"fake_meta": false`.
@@ -46,13 +46,14 @@ Free alternative (no accounts, no cost): run `start.bat` on your laptop and `clo
 
 ## The only things left for me, in order (Nov 5 night)
 
-The original form deadline was Thu Nov 5, 09:00 WIB. Everything below is about the repo and the links being right;
-check the Cerebral Valley page for what can still be changed on the submission.
+The form deadline was Thu Nov 5, 09:00 WIB. When I checked on Nov 6 the event page said "Event Finished" and
+"That's time! All submissions are due now.", and the participant guide says late submissions won't be considered. Everything
+below is about the repo and the links being right.
 
-1. [x] Demo video and screenshots re-recorded on the live models (Nov 6). Watch `docs/demo/dalang-ai-demo.mp4`
-   once yourself before you upload it.
-2. [x] Repo pushed to https://github.com/ragilmalik/dalang-ai (public, MIT, no `.env`). Open it once in a private
-   window to be sure.
+1. [x] Demo video and screenshots re-recorded on the live models (Nov 6). I still want to watch
+   `docs/demo/dalang-ai-demo.mp4` once more before I upload it.
+2. [x] Repo pushed to https://github.com/ragilmalik/dalang-ai (public, MIT, no `.env`). I still want to open it
+   once in a private window to be sure.
 3. **Upload the new demo video to YouTube as unlisted** with `docs/demo/dalang-ai-demo.srt` as captions, and check
    the link while logged out.
 4. **Only with a parent's consent: a real child's recording** (no names spoken), up to 90 seconds:

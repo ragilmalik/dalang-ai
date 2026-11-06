@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ToastProvider>
           <SiteHeader />
           <ServiceWorker />
-          <main id="isi" tabIndex={-1} className="mx-auto max-w-stage px-4 pb-20 outline-none sm:px-6">
+          <main id="isi" tabIndex={-1} className="mx-auto min-h-[calc(100svh-4rem)] max-w-stage px-4 pb-20 outline-none sm:px-6">
             {children}
           </main>
           <footer className="kawung border-t border-gold/10">
@@ -93,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
                   {FOOT.map(([href, label]) => (
                     <li key={href}>
-                      <Link href={href} className="inline-flex min-h-10 items-center text-muted hover:text-fg">
+                      <Link href={href} className="inline-flex min-h-11 items-center text-muted hover:text-fg">
                         {label}
                       </Link>
                     </li>

@@ -20,7 +20,7 @@ which uses Meta's list prices, so they are estimates rather than an invoice.
 | sam-3.1 | 1.3 s |
 
 The first attempt was 0/6 with HTTP 401. The preflight's contract guard built its own `httpx.HTTPTransport()`, which
-ignores `HTTPS_PROXY` and `SSL_CERT_FILE`, so in my sandbox, which goes out through a proxy, the request never reached Meta with the right
+ignores `HTTPS_PROXY` and `SSL_CERT_FILE`, so on my dev box, which goes out through a proxy, the request never reached Meta with the right
 setup. `meta_client.real_transport()` fixed it; the recorder uses it too.
 
 ### One check per model and feature (23:10 WIB)
@@ -70,7 +70,7 @@ Everything I spent on the live API on Nov 5, preflight, checks and films togethe
 * **Muse Spark 1.2** understands Javanese speech but writes it phonetically ("Biyan ono bucah waton" for "Biyen ana
   bocah wadon"). The script step works from the meaning, so the films are fine, but a Javanese transcript shown to
   a family would need that caveat.
-* **Rendering**: ffmpeg's MP4 trailer write failed with an Input/output error on my sandbox's network filesystem.
+* **Rendering**: ffmpeg's MP4 trailer write failed with an Input/output error on my dev box's network filesystem.
   `ENCODE_DIR` encodes on a local disk and moves the finished file.
 
 ## Media re-recorded on the live API (Nov 6, 2026)
@@ -163,7 +163,7 @@ Result: no changes needed to endpoints, model ids or fields.
 
 ## Build and demo verification, 2026-10-30 19:30 WIB (12:30 UTC)
 
-Real results from this sandbox (2 vCPU, linux-arm64), fake Meta API (`FAKE_META=1`, no key):
+Real results from this dev box (2 vCPU, linux-arm64), fake Meta API (`FAKE_META=1`, no key):
 
 | Check | Result |
 |---|---|
@@ -174,7 +174,7 @@ Real results from this sandbox (2 vCPU, linux-arm64), fake Meta API (`FAKE_META=
 | Browser for recorders | `python -m playwright install chromium` fails here (CDN returns 403 for linux-arm64). Recorders no longer hardcode a path: `scripts/browser_path.py` tries `$CHROME`, Playwright's download, then system Chrome/Chromium (found `/usr/bin/chromium` 156). Playwright's own ffmpeg (needed for video capture) installed with `playwright install ffmpeg`; the demo script now does that by itself, and with no browser at all it falls back to the HTTP API + screenshots + ffmpeg. |
 | Demo video | `docs/demo/dalang-ai-demo.mp4`: **129.8 s**, 1280x720 H.264 + AAC, 8.4 MB, English voice-over (edge-tts), burned-in captions (top-aligned while the film's own subtitles show), plus `.srt`, `voiceover.txt`, `timeline.json` (`browser_recording: true`, `recorded_in_fake_mode: true`), `thumbnail.jpg`. Recorded from a real Chromium session of the running app. Audio mean -23 dB, peak -6 dB. |
 | End-to-end demo flow | type story → 7 stages → storyboard review → approve → film → share → watch page Sembah → gallery: all passed in the recording. Stage times: listen 1.2 s, lakon 1.2 s, casting 15.0 s, scenes 7.7 s, animate 18.2 s, narrate 8.7 s, cut 273 s (with another project's renders on the same 2 cores). |
-| Final-cut speed | 16:9 + 9:16 now render in parallel threads (`RENDER_WORKERS`, default 2), and rotated puppets come from a small cache (0.2° steps; frame difference vs. before: mean < 0.1/255). Same 65 s film, 24 fps, both formats: 148.2 s (1 worker, no cache) → 112.2 s (2 workers) → **60.1 s** (2 workers + cache; 76.4 s with 1 worker). The sandbox is shared with other projects' renders, so treat these as rough. Per-frame render alone: 14.1 → 10.6 ms. |
+| Final-cut speed | 16:9 + 9:16 now render in parallel threads (`RENDER_WORKERS`, default 2), and rotated puppets come from a small cache (0.2° steps; frame difference vs. before: mean < 0.1/255). Same 65 s film, 24 fps, both formats: 148.2 s (1 worker, no cache) → 112.2 s (2 workers) → **60.1 s** (2 workers + cache; 76.4 s with 1 worker). The dev box is shared with other projects' renders, so treat these as rough. Per-frame render alone: 14.1 → 10.6 ms. |
 | Screenshots | `docs/screenshots/1-6` re-captured (new: `5-watch.png` with Sembah and "Behind the puppets", `6-gallery.png`). Fixed a repeated background band on tall pages (`globals.css`). |
 
 Still not verified: live Meta responses (needs `META_API_KEY`; run `python scripts/check_keys.py`), phone mic over https, Docker image (no docker here; CI job builds it).
@@ -209,24 +209,24 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 - Demo video 2:45 (165.5 s, ffprobe), 15 shots incl. share bar, X link-card preview (labelled illustration) and the labelled sample gallery.
 - Still placeholder/MOCK and labelled: all art (fake Meta API), sample recording, QR link (dalang-ai.example), 10 testimonials. Open weights wired and tested on the fake API only.
 
-## Re-verification 2026-11-01 05:20 WIB (scheduled session)
+## Re-verification 2026-11-01 05:20 WIB (scheduled re-run)
 - Added `tests/test_text_style.py` (no em dashes in any tracked text file) and cleaned the last four in `docs/SPEC.md`.
-- ruff 0; mypy clean (53 files); pytest 137 passed (578 s on the shared sandbox); eslint 0; tsc 0; next build exit 0.
+- ruff 0; mypy clean (53 files); pytest 137 passed (578 s on my shared dev box); eslint 0; tsc 0; next build exit 0.
 - Nothing else changed since bb7c074. Still placeholder/MOCK and labelled: art, sample recording, QR link, testimonials; live Meta keys not yet verified.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 06:10 WIB (scheduled session, recording sweep)
+## Re-verification 2026-11-01 06:10 WIB (scheduled re-run, recording sweep)
 - New: `runner.sweep_recordings` deletes any story.wav / upload.* older than `RECORDING_TTL_HOURS` (default 6) on start and on each new film, and strips the stored words of the speech turns; films still being worked on are skipped. Closes the "unapproved storyboard keeps the child's recording" known limit. 2 new tests.
-- ruff 0; mypy clean (53 files); pytest 139 passed (470 s on the shared sandbox); eslint 0; tsc 0; next build exit 0.
+- ruff 0; mypy clean (53 files); pytest 139 passed (470 s on my shared dev box); eslint 0; tsc 0; next build exit 0.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 06:30 WIB (scheduled session, doc links)
+## Re-verification 2026-11-01 06:30 WIB (scheduled re-run, doc links)
 - New `tests/test_doc_links.py`: every relative link in the tracked Markdown files must resolve to a file (all do today). facts.json test count 140.
 - ruff 0; mypy clean (53 files); pytest 140 passed (402 s). Web untouched since the last green build.
 
@@ -234,15 +234,15 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 07:00 WIB (scheduled session, API validation)
+## Re-verification 2026-11-01 07:00 WIB (scheduled re-run, API validation)
 - New `tests/test_api_validation.py` (14 cases): bad language / empty story / bad narration voice create nothing; malformed or unknown film ids are 404 on every film route; approve, choice, scene edit and share in the wrong state are 409 and change nothing; applause counts only for public finished films; feedback ratings and pages are checked; Kotak family ids and files; QR only points at our own site; /api/health leaks no secrets.
-- ruff 0; mypy clean (53 files); pytest 154 passed (635 s on the shared sandbox); eslint 0; tsc 0; next build exit 0. facts.json test count 154.
+- ruff 0; mypy clean (53 files); pytest 154 passed (635 s on my shared dev box); eslint 0; tsc 0; next build exit 0. facts.json test count 154.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 07:20 WIB (scheduled session, cost meter and storage)
+## Re-verification 2026-11-01 07:20 WIB (scheduled re-run, cost meter and storage)
 - New `tests/test_cost_storage.py` (12 cases): token pricing, unknown model ignored, budget check boundary, trace cap, labels restore after errors, per-model summary, R2 upload (stubbed boto3) and local fallback. facts.json test count 166.
 - ruff 0; mypy clean (53 files); pytest 166 passed (470 s). Web untouched since the last green build.
 
@@ -250,7 +250,7 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 07:50 WIB (scheduled session, runner failure paths)
+## Re-verification 2026-11-01 07:50 WIB (scheduled re-run, runner failure paths)
 - New `tests/test_runner_failures.py` (10 cases): a crashing stage fails the film and marks the running stage; long errors are trimmed; a blocked story is "blocked", not "failed"; the child's recording and its words are deleted on failure; cost is saved even when a stage fails; DEMO_MODE replays the prepared film (and does not when off or when no film exists); the cost meter is cleared after every run. facts.json test count 176.
 - ruff 0; mypy clean (53 files); pytest 176 passed (353 s); eslint 0; tsc 0; next build exit 0.
 
@@ -258,7 +258,7 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
 
-## Re-verification 2026-11-01 08:30 WIB (scheduled session, listen and puppet cut-out)
+## Re-verification 2026-11-01 08:30 WIB (scheduled re-run, listen and puppet cut-out)
 - New `tests/test_listen_edge.py` (10 cases): nothing to hear or type is a kind block; typed stories skip transcription; unreadable recordings are blocked and deleted; too-short stories ask again in id/jv/en; the child's voice is kept only when speech timestamps exist; recordings are trimmed to the maximum length.
 - New `tests/test_puppet_segment.py` (9 cases): SAM masks become trimmed transparent cut-outs; empty or degenerate masks give none; touching confident parts are kept, far or unsure ones dropped; background-key fallback; SAM retry with "puppet", SAM errors fall back, a budget stop is not swallowed. Raises the weakest-covered modules (puppet 69%, segment 77%). facts.json test count 195.
 - ruff 0; mypy clean (53 files); pytest 195 passed (341 s). Web untouched since the last green build.
@@ -266,18 +266,18 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: tests for `media.py` narration fallbacks (67% covered) and `meta_client` error branches (83%).
+3. Next: tests for `media.py` narration fallbacks (67% covered) and `meta_client` error branches (83%).
 
-## Re-verification 2026-11-01 09:00 WIB (scheduled session, narration fallbacks and Meta client errors)
+## Re-verification 2026-11-01 09:00 WIB (scheduled re-run, narration fallbacks and Meta client errors)
 - New `tests/test_media_meta_errors.py` (44 cases): WAV round trip, clipping and trimming; ffmpeg failure message; narration picks the language voice, slows down 8%, retries in a subprocess without proxy settings, and returns None (subtitles only) when the voice is unreachable or undecodable. Meta client: 429/5xx backoff 2s, 4s; 4xx never retried; timeouts; failed calls recorded in the agent trace; fenced or chatty JSON; open-weights and Glimmer fall back to `json_object`; open-weights calls are not billed to the Meta meter; malformed ASR turns skipped; Javanese audio part shape; edit_image caps references at 10; SAM errors and retries.
 - ruff 0; mypy clean (53 files); pytest 239 passed (506 s); line coverage of api/ 96.4% (media.py 96%, meta_client.py 98%). facts.json: 239 tests, coverage 96. Web untouched since the last green build.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: check the least-covered api modules from `make coverage` and add tests; re-run web lint/typecheck/build if web/ changes.
+3. Next: check the least-covered api modules from `make coverage` and add tests; re-run web lint/typecheck/build if web/ changes.
 
-## Re-verification 2026-11-01 09:45 WIB (scheduled session, animate, narrate, jobs, SSE, puppet box)
+## Re-verification 2026-11-01 09:45 WIB (scheduled re-run, animate, narrate, jobs, SSE, puppet box)
 - New `tests/test_animate_narrate.py` (29 cases): rule-based motion for jump, bow, fly and plain sway; first-scene entrances; tense-scene tremble; Muse Wonder plan kept, unknown puppets dropped, missing puppets given a glide-in, bad or failing model falls back; partial re-render reuses saved plans and re-encodes a missing clip; child-voice grouping, plan, ffmpeg cut and TTS fallback; narrate detail lines for TTS, subtitles only, child voice and mixed.
 - New `tests/test_jobs_qr.py` (8 cases): job cache and DB reload, `wait_change` timeout and wake-up from another thread, QR PNG and save.
 - New `tests/test_api_kotak_sse.py` (13 cases): puppet box 404, idempotent save, full box 409; SSE stream ends for a finished film, follows a running one, 404 for unknown; loopback detection.
@@ -286,9 +286,9 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: remaining gaps are fake_meta branches, garagara edge branches and main.py error paths; re-run web lint/typecheck/build if web/ changes.
+3. Next: remaining gaps are fake_meta branches, garagara edge branches and main.py error paths; re-run web lint/typecheck/build if web/ changes.
 
-## Re-verification 2026-11-01 10:00 WIB (scheduled session, fake Meta API, gara-gara units, API corners)
+## Re-verification 2026-11-01 10:00 WIB (scheduled re-run, fake Meta API, gara-gara units, API corners)
 - New `tests/test_fake_meta.py` (29 cases): the keyless demo's stand-in for Meta is itself tested. Bearer auth, unknown routes, moderation, lakon fixtures by story and language, Javanese audio, polish, motion plans, gara-gara question and rewrite, ad-hoc schemas, Glimmer and Baseten model strings, image validation and sizes, the scripted redraw loop, SAM box and mask grammar, ASR multipart and turns.
 - New `tests/test_garagara_units.py` (21 cases): who asks the question, how a spoken or typed answer is heard and deleted, rewrite validation and the single retry, Glimmer polish and its failure fallback, sample seeding thread.
 - New `tests/test_main_gaps.py` (8 cases): unknown style falls back to classic, shutdown warning, oversized or empty gara-gara answers, SSE keep-alive ping and disconnect handling.
@@ -297,37 +297,37 @@ Still not verified: live Meta responses (needs `META_API_KEY`; run `python scrip
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: api/ coverage is near complete; spend time on web e2e robustness (re-run `scripts/e2e_local.sh` when no other run is active), demo polish, and docs proofreading.
+3. Next: api/ coverage is near complete; spend time on making the web e2e run less flaky (re-run `scripts/e2e_local.sh` when no other run is active), demo polish, and docs proofreading.
 
-## Re-verification 2026-11-01 10:50 WIB (scheduled session, full browser pass)
-- Installed Chromium again (`apt-get update` first; the sandbox had lost it) and ran the browser-level checks on the current build, one at a time to avoid port and SQLite collisions.
+## Re-verification 2026-11-01 10:50 WIB (scheduled re-run, full browser pass)
+- Installed Chromium again (`apt-get update` first; my dev box had lost it) and ran the browser-level checks on the current build, one at a time to avoid port and SQLite collisions.
 - `scripts/e2e_local.sh`: 23/23 passed (film in 64.8 s, Gara-gara film in 69.8 s, share, QR, PDF, Kotak Wayang, trace).
 - `scripts/a11y_local.sh`: axe 10 page checks, 0 violations, 0 serious or critical.
-- `scripts/load_local.sh`: 6 simultaneous films all finished (wall 560 s on the shared 2 vCPU sandbox), the 7th request got a kind 429, no server log errors.
+- `scripts/load_local.sh`: 6 simultaneous films all finished (wall 560 s on my shared 2 vCPU dev box), the 7th request got a kind 429, no server log errors.
 - Fix: `scripts/a11y_audit.py` rewrote docs/ACCESSIBILITY.md without its "needs review" footnote and re-run hint; the generator now writes them, so a re-run no longer loses text.
 - ruff 0; mypy clean (53 files); tests/test_scripts.py 11 passed; eslint 0; tsc 0. Full pytest (347) unchanged since 10:00.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: docs proofreading pass (README, WRITEUP, SUBMISSION against the official form fields) and demo caption timing review; keep e2e/a11y/load runs sequential.
+3. Next: docs proofreading pass (README, WRITEUP, SUBMISSION against the official form fields) and demo caption timing review; keep e2e/a11y/load runs sequential.
 
-## Re-verification 2026-11-01 11:20 WIB (scheduled session, form-rule tests and caption timing)
+## Re-verification 2026-11-01 11:20 WIB (scheduled re-run, form-rule tests and caption timing)
 - New `tests/test_submission_rules.py` (6 cases): demo video within the 3:00 limit (now 2:45.5), every caption ordered, inside the video and under 8 s, reading speed at most 28 characters per second, tagline at most 100 characters, the 14 form fields listed in order in `docs/SUBMISSION_FORM.md`, every Meta model id the code calls named in `docs/SUBMISSION.md`.
 - Finding: the last caption ran 1.1 s past the end of the video because piece durations were nominal, not measured. `scripts/make_demo_video.py` now uses each clip's probed length for voice-over and captions (so they cannot drift), and prints where a browser recording failed. The shipped SRT and VTT were clamped to the video end; the next full render will also remove the up-to-1.5 s drift.
-- A full re-render was attempted three times and not completed: it ran while another session was rebuilding api/ and web/ and running two pytest workers on the same 2 vCPU sandbox, and the first attempts lacked sample films in the gallery (the render step timed out at "Contoh · Sample"). `work/demovideo.sh` now seeds the three sample films first (no delay), then records with FAKE_META_DELAY=1.2. Re-render once no other session is active.
+- A full re-render was attempted three times and not completed: it ran while another job was rebuilding api/ and web/ and running two pytest workers on the same 2 vCPU dev box, and the first attempts lacked sample films in the gallery (the render step timed out at "Contoh · Sample"). `work/demovideo.sh` now seeds the three sample films first (no delay), then records with FAKE_META_DELAY=1.2. Re-render once no other session is active.
 - ruff 0 and mypy clean on the touched files; tests/test_submission_rules.py and tests/test_demo_assets.py 15 passed.
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. Next session: when no other run is active, run `bash work/demovideo.sh` for a drift-free render (then `scripts/demo_storyboard.py`, kit rebuild, Drive sync); keep e2e/a11y/load runs sequential.
+3. Next: when no other run is active, run `bash work/demovideo.sh` for a drift-free render (then `scripts/demo_storyboard.py`, kit rebuild, Drive sync); keep e2e/a11y/load runs sequential.
 
 ## Verification 2026-11-01 14:25 WIB
 Features added this round (commits d885dbd..db369f3, all on the fake Meta API, placeholder art):
 - Penjaga Budaya cultural-review agent (Muse Spark + content/cultural_rules.json; fixes scenes before drawing; shown in the trace), character-consistency score from the SAM 3.1 cut-outs, Meta models receipt (calls, tokens, estimated cost) on the film page and `/api/jobs/{id}/receipt` (d885dbd).
 - Placeholder testimonials hidden on the live site by default (2f48c5e); submission texts and tagline "A child tells a story out loud. Six Meta models perform it as a Javanese shadow-puppet film." (89a09ca, 00ba9ea share card + poster).
-- Story Starters: 8 public-domain Nusantara folk tales in id/jv/en (055e807); read-along karaoke captions under the players (c349fa6); printable A5 storybook PDF (c280fa0); /judge 60-second guide and /guru teacher one-pager (70f4e62); evaluation harness `scripts/eval.py` (d4415b1, 6/6 golden stories).
+- Story Starters: 8 public-domain Nusantara folk tales in id/jv/en (055e807); read-along karaoke captions under the players (c349fa6); printable A5 storybook PDF (c280fa0); /judge 60-second guide and /guru teacher one-pager (70f4e62); evaluation script `scripts/eval.py` (d4415b1, 6/6 golden stories).
 - Demo video v2 script (5758158, db369f3) and teasers.
 
 Demo video (rendered 13:20-13:47 WIB from a fresh browser recording, `scripts/demo_local.sh`, fake Meta API):
@@ -338,18 +338,35 @@ Demo video (rendered 13:20-13:47 WIB from a fresh browser recording, `scripts/de
 Checks:
 - ruff 0; mypy clean (56 files); pytest 380 passed (660 s); eslint 0; tsc 0; next build exit 0.
 - `scripts/e2e_local.sh`: 26/26 passed (film 64.8 s and gara-gara film 69.8 s).
-- `scripts/a11y_local.sh`: axe 14 page checks, 0 violations, 0 serious/critical (needed CHROME=/tmp/bin/chromium in this sandbox).
+- `scripts/a11y_local.sh`: axe 14 page checks, 0 violations, 0 serious/critical (needed CHROME=/tmp/bin/chromium on this dev box).
 - facts.json: 380 tests, demo 173.2 s, e2e 26/26; coverage 99% is carried from the last measured run (not re-measured this round).
 
-## Verification 2026-11-03 14:15 WIB (scheduled session, full re-run on the round 6 tree)
-- pytest 511 passed in 11m44s on the shared 2 vCPU sandbox, api coverage 96% (4973 statements, 199 missed). ruff 0, mypy clean, `scripts/facts.py --check` clean, eslint 0, tsc 0.
-- No code changed this session; the tree matches commit 4e23e3b.
+## Verification 2026-11-03 14:15 WIB (scheduled re-run, full re-run on the Nov 3 tree)
+- pytest 511 passed in 11m44s on my shared 2 vCPU dev box, api coverage 96% (4973 statements, 199 missed). ruff 0, mypy clean, `scripts/facts.py --check` clean, eslint 0, tsc 0.
+- No code changed in this run; the tree matches commit 4e23e3b.
 
-## Verification 2026-11-03 15:05 WIB (scheduled session)
+## Verification 2026-11-03 15:05 WIB (scheduled re-run)
 - Added `TRUSTED_PROXY_HOPS` (default 0 keeps the old rule): with N proxies of ours in front, the hourly film limit counts the address the Nth proxy saw, so typed fake X-Forwarded-For entries share one bucket. The hourly table is pruned past 5000 addresses. New `tests/test_client_ip.py` (8 tests), `.env.example` and a GO_LIVE section.
 - pytest 519 passed in 8m58s, ruff 0, mypy clean, eslint 0, tsc 0, `scripts/facts.py --check` clean (tests 511 to 519; coverage 96% carried from the Nov 3 14:15 run).
 
 ### Next up
 1. Meta key, then `python scripts/check_keys.py`, then re-render the demo (`scripts/demo_local.sh`).
 2. Public repo, deploy, video upload, Cerebral Valley form, X post (see `docs/SUBMISSION_CHECKLIST.md`).
-3. After deploy: set `TRUSTED_PROXY_HOPS` to the real proxy count. Still open from the round 6 audit: the 725 KB home page on 3G.
+3. After deploy: set `TRUSTED_PROXY_HOPS` to the real proxy count. Still open from the Nov 3 security audit: the 725 KB home page on 3G.
+
+## 2026-11-06: smoother site
+
+What changed: page transitions (`web/app/template.tsx`), poster-to-player morph, loading skeletons for gallery and
+Pentas, recorder sound and touch cues with a 90 s ring and a double-tap guard, progress and vote bars on `scaleX`.
+How I verified it: build, e2e smoke 29/29, browser 30/30 including four new checks, axe 22/0, pytest 531, tsc,
+eslint, ruff, mypy. I looked at the recording state at 390 px by eye. No backend file changed, so no paid API call
+was made and spend stays at $2.527.
+
+## 2026-11-06: polish and wording pass
+
+What changed: 800 px WebP poster cards for the gallery and Pentas, layout-shift fixes (every page under 0.1), 44 px
+tap targets, puppet images with a size, a light browser bar in day mode, day mode in the accessibility audit, and a
+wording pass over every doc and comment with `scripts/voice_check.py` (0 hits) and `tests/test_voice_check.py`.
+How I verified it: build, e2e smoke 29/29, browser 30/30, axe 33/0, pytest 546 with 95% line coverage of `api/`,
+tsc, eslint, ruff, mypy, `scripts/facts.py --check`. No paid API call was made; spend stays at $2.527.
+The Cerebral Valley form is closed (event page: "Event Finished"), so nothing was submitted.

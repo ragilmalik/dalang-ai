@@ -22,7 +22,10 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const here = (href: string) => path === href || path.startsWith(`${href}/`);
   return (
-    <header className="sticky top-0 z-40 border-b border-gold/10 bg-bg/80 backdrop-blur-md supports-[backdrop-filter]:bg-bg/65">
+    <header
+      className="sticky top-0 z-40 border-b border-gold/10 bg-bg/80 backdrop-blur-md supports-[backdrop-filter]:bg-bg/65"
+      style={{ viewTransitionName: "site-header" }}
+    >
       <a
         href="#isi"
         className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-prada focus:px-4 focus:py-2 focus:font-semibold focus:text-on-prada"
@@ -30,7 +33,7 @@ export default function SiteHeader() {
         Lewati ke isi · Skip to content
       </a>
       <nav className="mx-auto flex h-16 max-w-stage items-center gap-3 px-4 sm:px-6" aria-label="Utama · Main">
-        <Link href="/" className="group mr-auto flex items-center gap-2.5 rounded-full py-1 pr-2" aria-label="Dalang AI, beranda · home">
+        <Link href="/" className="group mr-auto flex min-h-11 items-center gap-2.5 rounded-full py-1 pr-2" aria-label="Dalang AI, beranda · home">
           <Gunungan solid className="h-8 w-6 transition-transform duration-kenong ease-sabet group-hover:-rotate-6" />
           <span className="font-display text-xl font-semibold tracking-tight text-fg">
             Dalang <span className="text-gold">AI</span>

@@ -40,7 +40,7 @@ bawaan (mode uji), dan semua gambarnya diberi label "placeholder art". Kode perm
 yang live. Hasil pemeriksaan per model dengan API asli ada di
 [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 
-Pemeriksaan: <!-- facts:tests -->531<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
+Pemeriksaan: <!-- facts:tests -->546<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
 baris), uji e2e penuh (<!-- facts:e2e -->29/29<!-- /facts --> langkah), ruff, mypy, eslint, tsc, dan `next build`.
 Video demo: <!-- facts:demo_length -->2:57<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
 
@@ -58,7 +58,7 @@ Video demo: <!-- facts:demo_length -->2:57<!-- /facts --> ([docs/demo/dalang-ai-
   krem yang menyala, tombol utama warna prada (emas), judul memakai Fraunces dan teks memakai Plus Jakarta Sans.
   Gunungan jadi logo, animasi memuat, dan gambar halaman kosong. Semua judul dua bahasa. Ada mode siang di footer.
   Rinciannya di [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). Audit axe: 0 pelanggaran di
-  <!-- facts:a11y -->22<!-- /facts --> pemeriksaan halaman.
+  <!-- facts:a11y -->33<!-- /facts --> pemeriksaan halaman.
 * **Suara narator baru.** Saya menilai suara-suara dengan UTMOS (prediksi skor MOS otomatis) lalu mengganti bawaan:
   Bahasa Inggris Kokoro-82M `af_heart` (UTMOS 3,89 jadi 4,52), Bahasa Indonesia edge-tts Emma Multilingual (3,73 jadi
   4,32), Basa Jawa tetap Siti dengan sedikit penyesuaian kecepatan dan nada. Lihat [docs/VOICES.md](docs/VOICES.md).

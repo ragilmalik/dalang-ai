@@ -33,7 +33,7 @@ If a model has a bad day during the demo: Muse Image failures become pictures la
 finishes), a failing picture checker keeps the picture, Muse Wonder and the Director fall back to rule-based motion,
 and a model that fails four times in a row is paused for a minute (its "circuit" opens) instead of being hammered.
 `GET /api/health` shows each model's circuit state and the money spent so far. Measured on the fake API with
-injected failures: see "Robustness" in [EVAL_REPORT.md](EVAL_REPORT.md).
+injected failures: see "Failure test" in [EVAL_REPORT.md](EVAL_REPORT.md).
 
 See also: [META_MODELS.md, "Go-live safety net"](META_MODELS.md#go-live-safety-net) (contract tests,
 retries, breaker, caps, fixtures in detail) · [MALIK_CHECKLIST.md](MALIK_CHECKLIST.md) (claiming the credits, the

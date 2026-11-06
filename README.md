@@ -29,9 +29,9 @@ kids to see their own stories on the kelir.
 > http://localhost:8000/docs, and `make help` lists every command. What I checked against the real API, per model:
 > [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 >
-> Checks: <!-- facts:tests -->531<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
+> Checks: <!-- facts:tests -->546<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
 > (<!-- facts:e2e -->29/29<!-- /facts --> steps), 25 browser checks of the newest screens on a 390 px phone (`web/e2e/r5_ui.py`: Kelir Live drag/tilt/gunungan/keyboard, classroom vote, remix, stickers, /pentas, PWA offline), ruff, mypy, eslint, tsc and `next build`. `make check` runs them all
-> ([docs/TEST_REPORT.md](docs/TEST_REPORT.md)). There's also an axe-core accessibility audit (<!-- facts:a11y -->22<!-- /facts --> page checks incl. /kelir, /vote and /pentas, phone and desktop, 0 violations,
+> ([docs/TEST_REPORT.md](docs/TEST_REPORT.md)). There's also an axe-core accessibility audit (<!-- facts:a11y -->33<!-- /facts --> page checks incl. /kelir, /vote and /pentas, phone and desktop, 0 violations,
 > [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:57<!-- /facts -->.
 >
 > How the six Meta models fit together (structured output, the verify -> redraw agent loop, SAM reuse, Muse Wonder
@@ -100,7 +100,7 @@ is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds 
   narration in big type, for reading together.
 * **For teachers.** `/guru` is a 30-minute classroom wayang session: watch, meet the wayang, tell, read along, then
   print and play shadows.
-* **Evaluation harness.** `make eval` runs 6 golden stories (2 per language) and writes
+* **Evaluation script.** `make eval` runs 6 golden stories (2 per language) and writes
   [docs/EVAL_REPORT.md](docs/EVAL_REPORT.md) (scene count, narration bounds, language match, cultural-rule pass rate,
   consistency). On the fake API it tests my code, not Meta's model quality; the live per-model results are in
   [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
@@ -146,7 +146,7 @@ is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds 
   the loader and the empty-state picture. Every heading is bilingual (Bahasa Indonesia first, English after). There
   is a day theme in the footer. Tokens, components and the reasoning are in
   [docs/DESIGN_SYSTEM.md](docs/DESIGN_SYSTEM.md). The axe audit has 0 violations on all
-  <!-- facts:a11y -->22<!-- /facts --> page checks, and the home page's largest paint stays under the 1.5 s target on a
+  <!-- facts:a11y -->33<!-- /facts --> page checks, and the home page's largest paint stays under the 1.5 s target on a
   local production build (1.1 s and 0.45 s on two runs; the machine's load moves it, see
   [docs/WEB_PERF_R5.md](docs/WEB_PERF_R5.md)).
 * **New narrator voices.** I ran a listening test with an automatic MOS predictor (UTMOS) and changed the defaults:
@@ -184,6 +184,26 @@ is a synthetic voice (Kokoro-82M), and the child's voice in its first 3 seconds 
 * The gallery's empty state is bilingual like the rest of the site.
 * The demo video was re-recorded on the current site, and the demo encoder now writes to a local disk first and
   copies the finished file over, so the file can't end up half-written.
+
+## Added Nov 6: polish pass
+
+- Pages don't jump while they load any more. The film page used to push its footer down once it filled in; now
+  every page stays put (layout shift under 0.1 everywhere, from 0.78 at worst).
+- Gallery and Pentas load about half as much on a phone: the cards use small WebP posters made once per film.
+- Buttons and links a thumb needs are at least 44 px tall.
+- Day mode turns the phone's browser bar light too, and the accessibility audit now checks day mode as well.
+- Every doc and code comment reads in my own words now; `scripts/voice_check.py` flags AI-sounding wording and
+  fails the tests if it comes back.
+
+## Added Nov 6: a smoother site
+
+- Pages change like scenes behind the gunungan: the old one dims out, the new one rises in, the header stays put.
+- A poster you tap in the gallery or on the Pentas wall grows into the film player.
+- Gallery and Pentas show card-shaped placeholders while films load, instead of a blank wait.
+- The recorder answers in sound and touch, so kids who can't read yet know it's listening: a soft bonang note and a
+  short buzz on start, a lower note on stop, a gold ring that fills over the 90 seconds, and an accidental double tap
+  no longer cuts the story off.
+- Everything that moves turns off with the phone's reduced-motion setting. Details in `docs/DESIGN_SYSTEM.md`.
 
 ## Added Nov 6: final checks
 

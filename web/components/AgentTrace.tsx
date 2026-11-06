@@ -84,7 +84,7 @@ export default function AgentTrace({ job }: { job: Job }) {
         </div>
       )}
       <details>
-        <summary className="cursor-pointer text-xs font-semibold text-muted hover:text-fg">Semua langkah · Every step ({trace.length})</summary>
+        <summary className="inline-flex min-h-11 cursor-pointer items-center text-xs font-semibold text-muted hover:text-fg">Semua langkah · Every step ({trace.length})</summary>
         <ol className="mt-1 space-y-0.5 pl-4 font-mono text-xs leading-snug">
           {trace.map((e, i) =>
             e.kind === "call" ? (

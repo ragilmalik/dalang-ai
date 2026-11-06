@@ -49,7 +49,7 @@ _clients: dict[Any, httpx.Client] = {}
 
 def real_transport() -> httpx.BaseTransport:
     """Network transport for the real API. A transport built by hand ignores HTTPS_PROXY / SSL_CERT_FILE (httpx only
-    reads them when it builds its own), so read them here: behind a corporate or sandbox proxy the wrapped clients
+    reads them when it builds its own), so read them here: behind a corporate or other authenticating proxy the wrapped clients
     (recording, preflight contract guard) then reach api.meta.ai the same way curl does."""
     import ssl
 

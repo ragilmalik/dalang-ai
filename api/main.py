@@ -21,7 +21,7 @@ from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response, StreamingResponse
 from pydantic import BaseModel
 
-from . import aksara, cost, db, kotak, logs, printable, qr, resilience, runner, samples
+from . import aksara, cost, db, kotak, logs, printable, qr, resilience, runner, samples, thumbs
 from .config import settings
 from .jobs import Job
 
@@ -704,6 +704,8 @@ def applause(jid: str, request: Request) -> dict:
 def gallery() -> list[dict]:
     """Public finished films, families' own first; labelled sample films after them."""
     films = [{k: j.get(k) for k in PUBLIC_FIELDS} for j in db.gallery()]
+    for f in films:  # an 800 px WebP for the grid cards (api/thumbs.py); None means use the full poster
+        f["poster_card"] = thumbs.card_url(f.get("poster"))
     return sorted(films, key=lambda f: bool(f.get("sample")))  # stable: newest first within each group
 
 

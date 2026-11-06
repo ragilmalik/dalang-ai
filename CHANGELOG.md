@@ -3,6 +3,37 @@
 Dates are WIB (UTC+7). The project was built during the Meta Global AI Developer Hackathon, Oct 26 to Nov 4, 2026;
 Nov 5 is the go-live on the real Meta Model API.
 
+## 2026-11-06: polish pass (layout shift, page weight, tap targets, day mode, wording)
+
+* Pages no longer jump while they fill in. The footer used to slide down once a film page loaded (layout shift
+  0.78 on desktop); the main area now reserves a screen of height and the scrollbar keeps its gutter. The home
+  page film no longer moves when the font loads. Every page measures under 0.1.
+* Gallery and Pentas load about half the bytes (1.2 MB down to about 0.5 MB): the cards use an 800 px WebP made
+  once per film (`api/thumbs.py`), and the full poster stays as the big `srcset` choice.
+* Every small button and link a thumb needs is at least 44 px tall: small buttons, footer links, the logo, the judge
+  page links and "Every step".
+* Puppet pictures have a width and height, so nothing reflows when they arrive.
+* Day mode turns the phone's browser bar light too.
+* The accessibility audit now checks day mode on a phone as well (33 page checks, up from 22). `scripts/facts.py`
+  counts those rows and also reads the browser check count from the e2e log.
+* I went through the wording of every doc, comment and docstring. `scripts/voice_check.py` flags AI-sounding words
+  (the list comes from Wikipedia's "Signs of AI writing" page and a few word studies), notes that read like
+  instructions to a coding tool, and dashes. The eval report, the dated test and verification reports, the
+  deploy checklist and the demo footage notes got the most rewrites; facts and numbers stayed the same.
+  `tests/test_voice_check.py` fails if any of it comes back.
+* The recorder's double-tap check in the browser tests taps inside the page, in the first frame the ring shows.
+
+## 2026-11-06: smoother site (motion and recorder pass)
+
+* Page transitions: the old page dims out, the new one rises in; the header stays put (`app/template.tsx`).
+* A gallery or Pentas poster morphs into the film player on the watch page.
+* Gallery and Pentas show a card-shaped loading state right away instead of a blank wait.
+* Recorder: start and stop notes plus a short buzz, a ring that fills over the 90 seconds, an early double-tap on
+  Stop is ignored, and screen readers hear when recording starts and ends. A tap during the microphone prompt no
+  longer starts a second recording.
+* Progress and vote bars animate with `transform` instead of `width`, so they stay smooth on slow phones.
+* Every new motion turns off with `prefers-reduced-motion`.
+
 ## 2026-11-06: media on the live API, final checks
 
 Recorded on the live Meta Model API

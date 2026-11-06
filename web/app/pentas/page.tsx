@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import MadeWithMuse from "@/components/MadeWithMuse";
 import Sembah from "@/components/Sembah";
 import ShareCard from "@/components/ShareCard";
@@ -13,7 +14,7 @@ import { buttonClass } from "@/components/ui/Button";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Pentas · The showcase wall · Dalang AI",
+  title: "Pentas · The public wall · Dalang AI",
   description:
     "Wayang kulit films made from children's stories, shared by their families. Bow 🙏 Sembah to your favourite, then tell your own.",
   alternates: { canonical: "/pentas" },
@@ -37,6 +38,7 @@ interface Item {
   id: string;
   title: string;
   poster: string | null;
+  poster_card?: string | null; // 800 px WebP made by api/thumbs.py; absent on older APIs
   language: string;
   duration_s?: number;
   applause?: number;
@@ -47,7 +49,7 @@ interface Item {
 
 const LANG: Record<string, string> = { id: "Bahasa Indonesia", jv: "Basa Jawa", en: "English" };
 
-/** /pentas: the public showcase wall. Newest first, or most "Sembah" (the Javanese bow of thanks) first. */
+/** /pentas: the public public wall. Newest first, or most "Sembah" (the Javanese bow of thanks) first. */
 export default async function Pentas({ searchParams }: { searchParams: Promise<{ urut?: string }> }) {
   const { urut } = await searchParams;
   const top = urut === "sembah";
@@ -113,16 +115,21 @@ export default async function Pentas({ searchParams }: { searchParams: Promise<{
               <Link href={`/watch/${it.id}`} className="block focus-visible:outline-offset-[-3px]">
                 <span className="block overflow-hidden bg-bg-2">
                   {it.poster && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={it.poster}
-                      alt={`${it.title}: film poster`}
-                      width={1200}
-                      height={630}
-                      loading={i < 2 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="aspect-[40/21] w-full object-cover transition-transform duration-gong ease-sabet group-hover:scale-[1.03]"
-                    />
+                    // the poster morphs into the player on the watch page (shared view transition)
+                    <ViewTransition name={`film-${it.id}`} share="morph" default="none">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={it.poster_card || it.poster}
+                      srcSet={it.poster_card ? `${it.poster_card} 800w, ${it.poster} 1200w` : undefined}
+                      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                        alt={`${it.title}: film poster`}
+                        width={1200}
+                        height={630}
+                        loading={i < 2 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="aspect-[40/21] w-full object-cover transition-transform duration-gong ease-sabet group-hover:scale-[1.03]"
+                      />
+                    </ViewTransition>
                   )}
                 </span>
                 <span className="block px-4 pt-3 font-display text-xl font-semibold leading-tight">{it.title}</span>

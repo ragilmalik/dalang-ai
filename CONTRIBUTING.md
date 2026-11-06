@@ -20,6 +20,8 @@ Without `META_API_KEY` every Meta call is answered by `api/fake_meta.py`, so tes
   `docs/META_MODELS.md`); don't guess new ones.
 * Prompts live in `api/prompts.py`. Run `python scripts/gen_prompts_doc.py` after changing them.
 * Numbers in the docs come from `scripts/facts.py`, so don't type test counts or video lengths by hand.
+* Docs and comments should read like a person wrote them. `python scripts/voice_check.py` lists every
+  AI-sounding word, dash or note-to-a-tool it finds (with line numbers) and `tests/test_voice_check.py` fails on any.
 * Kids' safety comes first. Keep the story safety screen, the per-film budget and the abuse limits on. The app
   collects no names, schools or faces, and it should stay that way.
 * Check wayang characters, terms and Javanese text against `docs/CULTURAL_REVIEW.md`. Corrections from dalang,

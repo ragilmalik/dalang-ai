@@ -108,7 +108,7 @@ def test_demo_v2_shot_order_real_footage_and_honest_voice(monkeypatch, tmp_path)
     assert keys.index("progress") > keys.index("film2") and keys[-1] == "close"
     assert (m.W, m.H) == (1920, 1080)
     assert set(m.REAL_CLIPS.values()) <= set(keys)
-    assert all("I'm Malik" not in line and "I built" not in line for _k, line in m.SCRIPT)  # synthetic voice never claims to be him
+    assert all("I'm Malik" not in line and "I built" not in line for _k, line in m.SCRIPT)  # the synthetic voice never claims to be me
     assert "I'm Malik" in m.REAL_LINES["why"]
     assert m.real_clip("garagara") is None
     (tmp_path / "C_garagara_answer.mov").write_bytes(b"x")

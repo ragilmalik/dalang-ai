@@ -12,7 +12,7 @@ Tell a story out loud, get back an animated Javanese wayang kulit short film, na
 - Indonesian families (esp. Javanese) are losing wayang storytelling; dalang (puppet masters) are aging and performances are rare.
 - Kids create stories constantly but have no way to see them; existing AI video tools are English-first and culturally generic.
 - Dalang AI lets any child or parent turn a spoken story (Bahasa Indonesia, Javanese, or English) into a culturally authentic wayang film they can keep and share.
-- Users: kids 5–12 with a parent, teachers running storytelling class activities, cultural communities, diaspora families.
+- Users: kids 5 to 12 with a parent, teachers running storytelling class activities, cultural communities, diaspora families.
 - Must NOT be framed as an "AI education chatbot" (organizer anti-project). It is a creative, cultural storytelling and film tool. No chat interface as the core product.
 - No medical, political, or war content; add content filter (see §9).
 
@@ -21,7 +21,7 @@ Tell a story out loud, get back an animated Javanese wayang kulit short film, na
 |---|---|
 | Use Meta models (Stage 1 pass/fail) | 5+ Meta models in the core pipeline (see §5) |
 | Fits a problem statement | "Build for Your World" - cultural storytelling for Indonesian families |
-| New work only (built Oct 26 – Nov 4) | Fresh repo; commit history shows dates; README section "Built during the hackathon" |
+| New work only (built Oct 26 to Nov 4) | Fresh repo; commit history shows dates; README section "Built during the hackathon" |
 | Public GitHub repo | Public repo, MIT license |
 | 3-minute demo video showing only what was built | Script in §12 |
 | Submit on CV platform by deadline | Checklist in §14 |
@@ -32,7 +32,7 @@ Tell a story out loud, get back an animated Javanese wayang kulit short film, na
 2. Record up to 90 seconds (or upload audio). Show live waveform.
 3. Progress screen with named stages, each with a thumbnail as it completes:
    Listening → Writing the lakon (script) → Casting the puppets → Painting the scenes → Bringing them to life → Narrating → Final cut.
-4. Storyboard review (optional, 1 click to skip): 4–6 scene cards with image + narration line; user can tap "redo" on one scene or edit a line.
+4. Storyboard review (optional, 1 click to skip): 4 to 6 scene cards with image + narration line; user can tap "redo" on one scene or edit a line.
 5. Player: final MP4 (16:9 and 9:16 versions), download, share link (public watch page), "Make another".
 6. Gallery of public films (for community-vote prize and demo).
 
@@ -46,12 +46,12 @@ All calls go through one `meta_client` module. VERIFY every endpoint, model id, 
 | 3. Casting | Muse Image | character sheet: one canonical wayang puppet per character on plain background |
 | 4. Puppet cut-out | SAM 3.1 | segment each puppet from its sheet → transparent PNG reused in every scene (character consistency) |
 | 5. Scenes | Muse Image | per-scene background (kelir screen + blencong lamp glow, gunungan) + composited puppets; or image-to-image with character refs |
-| 6. Animate | Muse Wonder | each scene image + motion prompt → 4–8s clip (puppet sway, shadow flicker) |
+| 6. Animate | Muse Wonder | each scene image + motion prompt → 4 to 8 s clip (puppet sway, shadow flicker) |
 | 7. Narrate | TTS: use a Meta voice model if Model API offers one; otherwise an open-source TTS (document the choice). Narration in the story's language |
 | 8. Verify (agentic) | Muse Spark vision | checks each generated scene against the script (right characters, no text artifacts, culturally appropriate); auto-regenerates failures up to 2x |
 | 9. Final cut | ffmpeg | clips + narration + gamelan-style CC0 music + title card "Dalang AI" + subtitles |
 
-"Beyond basic integration" talking points: multi-model orchestration, SAM-based character consistency, self-verifying agent loop, bilingual/Javanese narration, open-weights option.
+"Beyond basic integration" talking points: multi-model chaining, SAM-based character consistency, self-verifying agent loop, bilingual/Javanese narration, open-weights option.
 
 ## 6. Script JSON schema (Muse Spark structured output)
 ```json
@@ -63,10 +63,10 @@ All calls go through one `meta_client` module. VERIFY every endpoint, model id, 
   "scenes": [{"n":1,"setting":"string","characters":["c1"],"action":"string","narration":"1-2 sentences in story language","image_prompt":"string","motion_prompt":"string","duration_s":6}]
 }
 ```
-4–6 scenes, total narration ≤ 90 s. Validate with pydantic; retry once on invalid JSON.
+4 to 6 scenes, total narration ≤ 90 s. Validate with pydantic; retry once on invalid JSON.
 
 ## 7. Style guide (prompt constants)
-Javanese wayang kulit: flat side-profile leather puppets, intricate perforated (tatahan) patterns, gold and deep red/indigo colors (sunggingan), long thin arms with control rods (cempurit), backlit cotton screen (kelir) with warm oil-lamp glow, gunungan (tree-of-life) used as scene transition. Negative: no 3D render, no anime, no text, no modern objects unless story requires.
+Javanese wayang kulit: flat side-profile leather puppets, finely perforated (tatahan) patterns, gold and deep red/indigo colors (sunggingan), long thin arms with control rods (cempurit), backlit cotton screen (kelir) with warm oil-lamp glow, gunungan (tree-of-life) used as scene transition. Negative: no 3D render, no anime, no text, no modern objects unless story requires.
 
 ## 8. Architecture
 - Frontend: Next.js (App Router) + Tailwind, mobile-first. Deployed on Vercel (free).
@@ -106,12 +106,12 @@ dalang-ai/
 Cut list if behind: storyboard edit, gallery, 9:16 version.
 
 ## 12. 3-minute demo video script
-0:00–0:15 Hook: a Semarang kid tells a 40-second story in Javanese/Bahasa.
-0:15–0:35 Problem: wayang is fading; kids can't see their stories.
-0:35–1:50 Live run: record → progress stages with thumbnails → final film plays (show 30 s of it).
-1:50–2:30 Under the hood: diagram of 5+ Meta models, SAM consistency before/after, verify-agent regenerating a bad scene, open-weights toggle.
-2:30–2:50 Impact: languages, families, teachers; gallery.
-2:50–3:00 Close: "Dalang AI - every child is a dalang." Repo + link.
+0:00 to 0:15 Hook: a Semarang kid tells a 40-second story in Javanese/Bahasa.
+0:15 to 0:35 Problem: wayang is fading; kids can't see their stories.
+0:35 to 1:50 Live run: record → progress stages with thumbnails → final film plays (show 30 s of it).
+1:50 to 2:30 Under the hood: diagram of 5+ Meta models, SAM consistency before/after, verify-agent regenerating a bad scene, open-weights toggle.
+2:30 to 2:50 Impact: languages, families, teachers; gallery.
+2:50 to 3:00 Close: "Dalang AI - every child is a dalang." Repo + link.
 Only show work built during the event.
 
 ## 13. Bonus prizes targeted

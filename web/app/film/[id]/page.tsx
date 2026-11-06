@@ -24,7 +24,7 @@ import Gunungan from "@/components/ui/Gunungan";
 import { useToast } from "@/components/ui/Toast";
 import { clearDraft, readDraft, readRecording } from "@/lib/draft";
 
-const ICON: Record<string, string> = { pending: "○", running: "◐", done: "✓", skipped: "–", failed: "✕" };
+const ICON: Record<string, string> = { pending: "○", running: "◐", done: "✓", skipped: "-", failed: "✕" };
 const STAGE_TONE: Record<string, string> = {
   pending: "border-gold/20 text-muted",
   running: "border-prada bg-prada/15 text-gold",
@@ -167,7 +167,7 @@ export default function FilmPage({ params }: { params: Promise<{ id: string }> }
         <h1 className="t-h1">{job.title || "Sang dalang sedang bekerja…"}</h1>
         {working && (
           <p className="text-muted">
-            <Bi id="Biasanya 2–4 menit. Halaman ini boleh ditinggal, filmnya tetap dibuat" en="Usually 2–4 minutes. You can leave this page, the film keeps being made" />
+            <Bi id="Biasanya 2 sampai 4 menit. Halaman ini boleh ditinggal, filmnya tetap dibuat" en="Usually 2 to 4 minutes. You can leave this page, the film keeps being made" />
           </p>
         )}
       </header>
@@ -321,7 +321,7 @@ function Storyboard({ job, busy, act }: { job: Job; busy: boolean; act: (fn: () 
               <figure key={c.id} className="flex items-start gap-4 rounded-lg border border-gold/15 bg-bg-2/60 p-3">
                 <span className="kelir grid h-24 w-20 shrink-0 place-items-center rounded-md" style={{ boxShadow: "none" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.cutout} alt={`Wayang puppet of ${c.name}`} className="h-20 w-16 object-contain" />
+                  <img src={c.cutout} alt={`Wayang puppet of ${c.name}`} width={64} height={80} className="h-20 w-16 object-contain" />
                 </span>
                 <figcaption className="min-w-0 text-sm">
                   <span className="font-serif text-lg font-semibold text-gold">{c.name}</span>
@@ -539,7 +539,7 @@ function Player({ job, act, busy }: { job: Job; act: (fn: () => Promise<Job>) =>
                 <figure className="flex h-full flex-col items-center gap-2 rounded-lg border border-gold/15 bg-bg-2/60 p-3 text-center">
                   <span className="kelir grid h-28 w-full place-items-center rounded-md" style={{ boxShadow: "none" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={c.cutout} alt={`Wayang puppet of ${c.name}`} className="h-24 w-20 object-contain" />
+                    <img src={c.cutout} alt={`Wayang puppet of ${c.name}`} width={80} height={96} className="h-24 w-20 object-contain" />
                   </span>
                   <figcaption className="text-sm">
                     <span className="block font-semibold">{c.name}</span>

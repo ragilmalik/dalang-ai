@@ -1,4 +1,4 @@
-/* Dalang AI service worker: the showcase wall (/pentas, /gallery) and its shell keep working offline.
+/* Dalang AI service worker: the public wall (/pentas, /gallery) and its shell keep working offline.
  * Pages: network first, the last good copy when offline. Build assets (/_next/static, hashed): cache first.
  * Posters and the hero clip: cache first, refreshed in the background. Never cached: /api (live data, votes,
  * uploads), film videos (range requests), anything that is not a GET. Any other page that cannot load while offline

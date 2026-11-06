@@ -4,10 +4,10 @@
 
 | Check | Result |
 |---|---|
-| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->531<!-- /facts --> tests pass, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` |
+| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->546<!-- /facts --> tests pass, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` |
 | Full-stack e2e (`bash scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps |
 | Browser checks of the newest screens (`web/e2e/r5_ui.py`, 390 px phone) | 25/25 |
-| axe-core audit (`bash scripts/a11y_local.sh`) | <!-- facts:a11y -->22<!-- /facts --> page checks, 0 violations ([ACCESSIBILITY.md](ACCESSIBILITY.md)) |
+| axe-core audit (`bash scripts/a11y_local.sh`) | <!-- facts:a11y -->33<!-- /facts --> page checks, 0 violations ([ACCESSIBILITY.md](ACCESSIBILITY.md)) |
 | Home page largest paint (`web/e2e/r5_perf.py`, local production build) | under the 1.5 s target: 680 ms on Nov 4 (shared machine), 452 ms on Nov 3, 1108 ms on Nov 2 ([WEB_PERF_R5.md](WEB_PERF_R5.md)) |
 | Nov 3 after-checks (headers, titles, noindex, console, mic message, offline page, odd upload, one Sembah) | 21/21 |
 | Nov 4 after-checks (judge page, API docs link, missing film, home retry, kept story, gallery empty state) | 12/12 |
@@ -32,7 +32,7 @@ Script: `work/final.sh` in my working folder outside the repo (same commands as 
 | Output file | `ffprobe` | h264 1280x720 + aac, 59.33 s |
 | Music bed + narration level (12-18 s) | `ffmpeg -af volumedetect` | mean -20.6 dB, max -4.3 dB (no clipping) |
 | Screenshots | `python scripts/screenshots.py` (Chromium 156, 390x844 @2x) | 4 screens + demo.gif + poster.jpg in `docs/screenshots/` |
-| Docker | `docker build` | **not run here**: no Docker in the sandbox. The CI `docker` job builds both images and runs the smoke test against the container on first push. |
+| Docker | `docker build` | **not run here**: no Docker on my dev box. The CI `docker` job builds both images and runs the smoke test against the container on first push. |
 
 New tests this round (`tests/test_pipeline.py`, 17 tests): safety screen blocks war, political and medical
 stories with a friendly message and never reaches the script writer; lakon retries once after invalid JSON,
@@ -52,7 +52,7 @@ the stage list.
 ---
 
 ## Earlier run: 2026-10-30, 03:20-03:40 WIB
-In a fresh Linux sandbox (Python 3.12.15, Node 22.23.3, ffmpeg 7.1.5),
+On a fresh Linux dev box (Python 3.12.15, Node 22.23.3, ffmpeg 7.1.5),
 dependencies installed from scratch with `python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt`.
 No Meta key: every Meta call was answered by the built-in fake Meta API (`api/fake_meta.py`), which runs the
 real client code (request building, retries, SSE parsing with Meta's `meta-sam-parser`, cost metering).
@@ -123,7 +123,7 @@ measuring text width), gunungan wipe between scenes, end card with the moral.
 
 * Live calls to Meta: run `python scripts/check_keys.py` with the real key (about $0.03), then make one film.
 * Phone over https: start `cloudflared tunnel --url http://localhost:3000` and open the address on a phone
-  (the sandbox cannot run a browser or expose a public URL). The layout is responsive (Tailwind, `max-w`,
+  (that box could not run a browser or expose a public URL). The layout is responsive (Tailwind, `max-w`,
   `sm:` breakpoints, viewport meta), and the microphone requires https or localhost.
 
 ## 2026-10-31 09:15 WIB
@@ -143,7 +143,7 @@ ruff 0 | mypy clean (53 files) | pytest 136 passed | coverage 93.3% of api/ | es
 - Concurrency (`bash scripts/load_local.sh`, fake Meta API, MAX_ACTIVE_JOBS=6): 6 films started at the same moment,
   6/6 done, 0 errors, every MP4 served, the 7th request answered 429 with the kind "Sang dalang sedang sibuk" message,
   nothing left active, 0 tracebacks / "database is locked" / "readonly" lines in the server log. Wall time 478.9 s with
-  the 2-worker pool (per film 136.8 to 477.9 s, i.e. queued in pairs; this sandbox, shared CPU).
+  the 2-worker pool (per film 136.8 to 477.9 s, i.e. queued in pairs; my dev box, shared CPU).
 - Accessibility (`bash scripts/a11y_local.sh`, axe-core 4.12.1, WCAG 2.0/2.1 A + AA): home, film, watch, gallery, kotak on
   phone and desktop, 10 page checks, 0 violations (critical 0, serious 0, moderate 0, minor 0). docs/ACCESSIBILITY.md.
 - CI: .github/workflows/ci.yml validated with actionlint 1.7.7 (0 findings); new `e2e` job runs scripts/e2e_local.sh.
@@ -151,7 +151,7 @@ ruff 0 | mypy clean (53 files) | pytest 136 passed | coverage 93.3% of api/ | es
 
 ## 2026-11-01 14:25 WIB
 ruff 0 | mypy clean (56 files) | pytest 380 passed | coverage 99% (last measured, not re-run) | eslint 0 | tsc 0 | next build 0 | e2e 26/26 | axe 14 page checks, 0 violations
-- New this round: Penjaga Budaya, consistency score, models receipt, Story Starters, read-along, A5 storybook, /judge, /guru, eval harness (d885dbd..db369f3).
+- New this round: Penjaga Budaya, consistency score, models receipt, Story Starters, read-along, A5 storybook, /judge, /guru, eval script (d885dbd..db369f3).
 - Demo video re-rendered: 173.2 s (2:53), 1920x1080 h264 + aac, 13 shots; teaser_60s 60.0 s (1920x1080), teaser_vertical 40.0 s (1080x1920). Placeholder art (fake Meta API), stand-in child voice labelled.
 
 ## 2026-11-02 02:30-04:00 WIB
@@ -210,7 +210,7 @@ slow 3G) and fixed what a family or a judge would hit: raw recordings could be f
 the film id, a forged `X-Forwarded-For: 127.0.0.1` skipped the hourly limit, uploads were read whole before the size
 check, there were no security headers, Sembah could be counted any number of times, the microphone stayed on after
 leaving the page, offline pages showed the browser's error, the film page polled forever, and puppet rods ran through
-the captions. After the fixes: pytest <!-- facts:tests -->531<!-- /facts --> tests (one SSE test timed out waiting
+the captions. After the fixes: pytest <!-- facts:tests -->546<!-- /facts --> tests (one SSE test timed out waiting
 for its server under parallel workers and passes alone; its wait was raised in ad37e64), coverage
 <!-- facts:coverage -->95%<!-- /facts -->, e2e 26/26, the phone browser checks 25/25, axe 0 violations on 22 page
 checks, and 21/21 after-checks for the fixes themselves. Two findings are left as they are: the hourly limit still
@@ -221,7 +221,7 @@ Later the same day the re-shot screenshots caught a film whose "Painting the sce
 and a server path. Two films with the same story were writing and reading one cached picture at the same moment, and
 one copied it half-written. Cached pictures are now written to a temp file and swapped in, one film at a time per
 cached picture, and a damaged entry is repainted. A failed film now shows a kind bilingual message and never the raw
-error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->531<!-- /facts --> tests, all
+error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->546<!-- /facts --> tests, all
 passing, coverage <!-- facts:coverage -->95%<!-- /facts -->, and every page was re-shot.
 
 ## 2026-11-04 (submission day)
@@ -237,11 +237,11 @@ After the fixes:
 
 | Check | Result |
 |---|---|
-| pytest (full suite, 2 workers) | <!-- facts:tests -->531<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
+| pytest (full suite, 2 workers) | <!-- facts:tests -->546<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
 | ruff, mypy (67 files) | 0, 0 |
 | eslint, tsc, `next build` | 0, 0, OK |
 | Full-stack e2e (`scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps (new step: the judge page's API docs link works through the website), web checks 25/25 |
-| axe-core (`scripts/a11y_local.sh`) | <!-- facts:a11y -->22<!-- /facts --> page checks, 0 violations |
+| axe-core (`scripts/a11y_local.sh`) | <!-- facts:a11y -->33<!-- /facts --> page checks, 0 violations |
 | Nov 4 fixes checked in a browser | 12/12 |
 | `go_live.py --preflight --dry-run` | 6/6 models answer on the fake API, $0 |
 | r5_perf (390 px phone, cold, median of 3) | all targets met; home LCP 680 ms, Pentas 692, most applauded 572, Kelir Live 740, Watch 948, CLS 0.000 everywhere |
@@ -284,3 +284,37 @@ the fake Meta API afterwards, with no key in the environment.
 | `next build` | the same web code built cleanly for the live run (`.next-live`); no web file changed after it |
 | `scripts/facts.py --check` | docs agree with `docs/facts.json` |
 | Demo video by eye | contact sheet every 5 s, teasers and clips every 4 s, all 28 screenshots; -16.7 LUFS, no silence over 1.5 s |
+
+## 2026-11-06: motion and recorder pass
+
+| Check | Command | Result |
+|---|---|---|
+| Build | `cd web && npx next build` | ok |
+| e2e smoke | `scripts/e2e_local.sh` | 29/29 |
+| e2e browser | `web/e2e/r5_ui.py` (inside e2e_local.sh) | 30/30 (was 26/26) |
+| Accessibility | `scripts/a11y_local.sh` | 22 page checks, 0 violations |
+| Python tests | `pytest` | 531 passed |
+| Types and lint | `tsc`, `eslint`, `ruff`, `mypy api scripts` | clean |
+
+New browser checks: the header carries `view-transition-name: site-header`; Pentas to watch runs a view transition;
+an instant second tap on the recorder doesn't stop it; a 3 s recording stops, shows the preview and tells screen
+readers. One flaky run of the double-tap check came from Playwright's `click()` waiting for the smooth scroll to end
+(1.27 s, longer than the 1.2 s guard). The check now fires the tap with `dispatch_event`, the way a finger would.
+
+## 2026-11-06: polish and wording pass
+
+| Check | Command | Result |
+|---|---|---|
+| Build | `cd web && npx next build` | ok |
+| e2e smoke | `scripts/e2e_local.sh` | 29/29 |
+| e2e browser | `web/e2e/r5_ui.py` (inside e2e_local.sh) | 30/30 |
+| Accessibility | `scripts/a11y_local.sh` | 33 page checks (phone and desktop at night, phone in day mode), 0 violations |
+| Python tests | `pytest -n 2 --cov=api` | 545 passed and 1 failed in the full run; the failure was `test_facts` reading the old a11y count (22) from `docs/facts.json`. After `scripts/facts.py` wrote 33 it passes, so 546 pass. Line coverage of `api/` 95% |
+| Wording | `scripts/voice_check.py` | 0 hits |
+| Types and lint | `tsc`, `eslint --max-warnings 0`, `ruff`, `mypy api scripts` | clean |
+
+The first two browser runs of the day failed the recorder's double-tap check: the button was back to "Ceritakan
+kisahmu" with the "very short" alert. The machine was busy (load average about 10 to 13, another project's
+Chromium and tests running), and the test waited for the ring from Python and then sent the second tap, which can
+take longer than the 1.2 s guard. The second tap is now fired inside the page in the first frame the ring shows, and
+the run passed 30/30.

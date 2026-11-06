@@ -34,7 +34,7 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [x] git repository with dated commits; public release at https://github.com/ragilmalik/dalang-ai
 - [x] GitHub Actions CI: ruff, mypy, pytest, key self-test; web eslint/tsc/build; Docker build + smoke test
 - [x] render.yaml (backend, Docker, disk, /api/health) + web/vercel.json + click-by-click guide
-- [!] Docker image built and smoke-tested locally: docker is not available in the sandbox; the CI docker job does it on first push
+- [!] Docker image built and smoke-tested locally: docker is not available on my dev box; the CI docker job does it on first push
 
 ## Publishing (my call; see MALIK_CHECKLIST.md)
 - [!] Public GitHub repo
@@ -42,7 +42,7 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [!] Re-render demo video with real art: `python scripts/go_live.py` (needs key); Cerebral Valley submission, X post
 
 ## Performance
-- [x] Final cut: 16:9 and 9:16 in parallel + rotated-puppet cache (148 s -> 60 s for a 65 s film on a shared 2 vCPU sandbox)
+- [x] Final cut: 16:9 and 9:16 in parallel + rotated-puppet cache (148 s -> 60 s for a 65 s film on a shared 2 vCPU dev box)
 
 ## Ten upgrades (2026-10-31)
 - [x] `scripts/go_live.py`: key check -> demo film -> clips -> screenshots -> demo video -> storyboard -> kit; `--dry-run` on the fake API
@@ -61,6 +61,12 @@ Status legend: [x] done · [ ] open · [!] waiting on me
 - [x] Abandoned recordings: `runner.sweep_recordings` deletes any story.wav/upload.* older than RECORDING_TTL_HOURS (6 h) on start and on each new film; a swept film falls back to the narrator voice
 - [ ] Known limit: child's-voice narration splits the child's speech turns evenly over the scenes; it does not
       align words to the rewritten narration (Muse Voice Transcribe has turn-level, not word-level, timestamps)
+
+- [x] Polish pass (Nov 6): no layout shift on any page (was 0.78 on the film page), grid posters as 800 px WebP
+      cards (gallery about 0.5 MB, was 1.2 MB), 44 px tap targets, sized puppet pictures, day-mode browser bar,
+      axe on day mode too
+- [x] Smoother site (Nov 6): page transitions, poster morph, loading skeletons, recorder sound, buzz, ring and
+      double-tap guard
 
 ## Nice to have (only if time remains)
 - [ ] Javanese narration voice choice (male dalang voice) when edge-tts adds one

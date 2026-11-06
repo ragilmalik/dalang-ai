@@ -1,6 +1,10 @@
 # Submission checklist (Meta Global AI Developer Hackathon)
 
-Deadline: **Nov 4, 21:00 ET = Nov 5, 2026, 09:00 WIB**. Status as of 2026-11-06, 03:00 WIB (media re-recorded on the live models).
+Deadline: **Nov 4, 21:00 ET = Nov 5, 2026, 09:00 WIB**. Status as of 2026-11-06, 10:00 WIB.
+
+**The form is closed and the project was not submitted.** On Nov 6 the event page showed "Event Finished" and
+"That's time! All submissions are due now.", and the participant guide says late submissions won't be considered.
+The repo, video and answers below stay ready in case the organisers accept a late entry.
 Legend: [x] ready in the repo · [!] needs me (account, key, money or a public post)
 
 ## Deliverables in the repo

@@ -30,7 +30,7 @@ Reviewer: please tick each line, or write what should change.
 - [ ] The "shadow play at home" instructions (bamboo skewer, torch, white sheet) are safe and sensible.
 - [ ] Nothing in the printouts should not be cut or played with.
 
-## E. Overall
+## E. Verdict
 - [ ] I am comfortable with Dalang AI being shown to children as an introduction to wayang kulit.
 - Changes I would like before public use: ____________________
 

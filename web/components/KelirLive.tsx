@@ -640,7 +640,7 @@ export default function KelirLive({ title, cast, scenes, gunungan, fileName }: P
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={c.cutout} alt="" className="h-9 w-9 rounded-full bg-[#F6E7C6] object-contain p-0.5" />
+            <img src={c.cutout} alt="" width={36} height={36} className="h-9 w-9 rounded-full bg-[#F6E7C6] object-contain p-0.5" />
             {c.name}
           </button>
         ))}

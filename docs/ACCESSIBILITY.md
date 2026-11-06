@@ -2,11 +2,12 @@
 
 Automated audit with **axe-core 4.12.1** (rules tagged wcag2a, wcag2aa, wcag21a, wcag21aa) in Chromium via Playwright,
 run by `bash scripts/a11y_local.sh` on the fake Meta API (placeholder art). Each page is checked on a
-phone (390x844) and a desktop (1280x800) screen; collapsible sections (the agent trace) are opened first.
+phone (390x844) and a desktop (1280x800) screen in the night theme, then on the phone again in day mode
+(its own colours); collapsible sections (the agent trace) are opened first.
 Automated rules find about a third of real accessibility problems; a manual screen-reader pass is still
 worth doing.
 
-Run: 2026-11-06 03:20 WIB
+Run: 2026-11-06 09:07 WIB
 
 | Page | Screen | Rules passed | Critical | Serious | Moderate | Minor |
 |---|---|---|---|---|---|---|
@@ -32,6 +33,17 @@ Run: 2026-11-06 03:20 WIB
 | Kelir Live (`kelir`) | desktop | 27 | 0 | 0 | 0 | 0 |
 | Vote (phone) (`vote`) | desktop | 24 | 0 | 0 | 0 | 0 |
 | Not found (`tidak-ada`) | desktop | 24 | 0 | 0 | 0 | 0 |
+| Home (`/`) | phone, day mode | 28 | 0 | 0 | 0 | 0 |
+| Film (`film`) | phone, day mode | 30 | 0 | 0 | 0 | 0 |
+| Watch (`watch`) | phone, day mode | 26 | 0 | 0 | 0 | 0 |
+| Gallery (`gallery`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
+| Kotak Wayang (`kotak`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
+| Judge mode (`judge`) | phone, day mode | 29 | 0 | 0 | 0 | 0 |
+| Teachers (`guru`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
+| Pentas (`pentas`) | phone, day mode | 25 | 0 | 0 | 0 | 0 |
+| Kelir Live (`kelir`) | phone, day mode | 27 | 0 | 0 | 0 | 0 |
+| Vote (phone) (`vote`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
+| Not found (`tidak-ada`) | phone, day mode | 24 | 0 | 0 | 0 | 0 |
 
 ## Findings
 

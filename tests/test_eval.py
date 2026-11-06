@@ -1,4 +1,4 @@
-"""Evaluation harness (scripts/eval.py): scoring functions and one golden story end to end on the fake API."""
+"""Evaluation script (scripts/eval.py): scoring functions and one golden story end to end on the fake API."""
 import importlib.util
 from pathlib import Path
 
@@ -42,7 +42,7 @@ def test_round5_gamelan_and_report_render():
                        "vote": {"voters": 7, "tally": [3, 4], "applied": True, "film": "done"}, "robustness": rb,
                        "open": {"rows": [{"setup": "x", "calls": 2, "models": ["m"], "meta_billed_usd": 0,
                                           "valid_script": True}]}})
-    assert "Robustness detail" in md and "stopped kindly" in md and "FAKE MODE" in md and "| Muse Image | always |" in md
+    assert "Failure test detail" in md and "stopped kindly" in md and "FAKE MODE" in md and "| Muse Image | always |" in md
 
 
 def test_robustness_targets_are_injectable():

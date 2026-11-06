@@ -214,8 +214,58 @@ def remix_and_share_tests(page, jid: str) -> None:
     else:
         page.wait_for_timeout(1500)
     n = page.locator("[data-testid=viral-extras]").count()
+    if n and not has_st:  # the pack may have finished between the first look and the page load: ask again
+        has_st = api.get(f"/api/jobs/{jid}/stickers").status_code == 200
     step("share bar: sticker pack + GIF " + ("shown" if has_st else "hidden (no sticker endpoint)"),
          (n > 0) == has_st)
+
+
+def motion_tests(page, jid: str) -> None:
+    """Nov 6 motion pass: page transitions, poster-to-player morph, header anchor, recorder cues and guards."""
+    page.goto(f"{BASE}/pentas", wait_until="networkidle")
+    page.evaluate("""() => {
+        window.__vt = 0;
+        const orig = document.startViewTransition && document.startViewTransition.bind(document);
+        if (orig) document.startViewTransition = (...a) => { window.__vt++; return orig(...a); };
+    }""")
+    supported = page.evaluate("typeof document.startViewTransition === 'function'")
+    header = page.evaluate("getComputedStyle(document.querySelector('header')).viewTransitionName")
+    step("header is anchored for page transitions", header == "site-header", header)
+    page.locator(f"a[href='/watch/{jid}']").first.click()
+    page.wait_for_url(f"**/watch/{jid}", timeout=20000)
+    page.wait_for_selector("video", timeout=20000)
+    n = page.evaluate("window.__vt || 0")
+    step("pentas -> watch runs a view transition (poster morphs into the player)", (n >= 1) if supported else True,
+         f"{n} transition(s), API {'on' if supported else 'missing'}")
+    # recorder: start note, ring, double-tap guard, stop, preview (Chromium's fake microphone)
+    page.goto(f"{BASE}/", wait_until="networkidle")
+    page.get_by_test_id("hero-tell").click()
+    btn = page.get_by_test_id("rec-button").first
+    btn.click()
+    # an instant second tap is a double tap: recording must go on. The second tap is fired inside the page, in the
+    # first frame the ring shows, the way a finger would. Doing it from Python (wait for the ring, then click) can take
+    # longer than the 1.2 s guard on a loaded machine, and then the test measures the machine, not the guard.
+    tapped = page.evaluate("""() => new Promise((done) => {
+      const until = performance.now() + 10000;
+      const tick = () => {
+        const ring = document.querySelector("[data-testid=rec-ring]");
+        if (ring) { document.querySelector("[data-testid=rec-button]").click(); return done(true); }
+        if (performance.now() > until) return done(false);
+        requestAnimationFrame(tick);
+      };
+      tick();
+    })""")
+    page.wait_for_timeout(300)
+    label = btn.get_attribute("aria-label") or ""
+    rings = page.locator("[data-testid=rec-ring]").count()
+    err = page.locator("[role=alert]").all_inner_texts()
+    step("recorder: ring shows, an instant second tap doesn't stop it", tapped and label == "Stop recording" and rings >= 1,
+         f"button '{label}', {rings} ring(s)" + (f", alert: {err[0][:80]}" if err else ""))
+    page.wait_for_timeout(3600)
+    btn.click()
+    page.wait_for_selector("audio[controls]", timeout=10000)
+    status = page.locator("p.sr-only[aria-live=polite]").first.inner_text()
+    step("recorder: stops after 3 s, preview ready, screen reader told", "Recording ready" in status, status)
 
 
 def pentas_tests(page) -> None:
@@ -264,8 +314,12 @@ def main() -> int:
     gid = os.environ.get("R5_GARA") or make_film(
         "Kancil bertemu buaya lagi di sungai, lalu mereka bermain bersama sampai sore hari.", gara_gara="true")["id"]
     with sync_playwright() as p:
-        browser = p.chromium.launch(**launch_kwargs())  # type: ignore[arg-type]
+        kw = launch_kwargs()
+        # a fake microphone for the recorder checks (a test tone; no real device, no permission prompt)
+        kw["args"] = [*kw["args"], "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"]
+        browser = p.chromium.launch(**kw)
         ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2, has_touch=True)
+        ctx.grant_permissions(["microphone"], origin=BASE)
         page = ctx.new_page()
         errors: list[str] = []
         page.on("pageerror", lambda e: errors.append(str(e)))
@@ -278,6 +332,7 @@ def main() -> int:
         remix_and_share_tests(page, jid)
         vote_tests(page, gid)
         pentas_tests(page)
+        motion_tests(page, jid)
         step("no uncaught page errors", not errors, "; ".join(errors[:3]))
         browser.close()
     print(f"\n{sum(ok)}/{len(ok)} web checks passed")

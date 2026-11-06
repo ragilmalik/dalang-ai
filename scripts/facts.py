@@ -1,4 +1,4 @@
-"""One source for the numbers the docs quote (test count, e2e steps, coverage, demo length, axe page checks).
+"""One source for the numbers the docs quote (test count, e2e steps, browser checks, coverage, demo length, axe page checks).
 
     python scripts/facts.py                       # measure what is cheap (tests, demo length) and rewrite the docs
     python scripts/facts.py --e2e-log e2e.log     # also take the e2e result ("N/N passed") from a smoke-test log
@@ -55,13 +55,19 @@ def a11y_checks() -> int | None:
     doc = ROOT / "docs" / "ACCESSIBILITY.md"
     if not doc.exists():
         return None
-    rows = re.findall(r"^\| [^|]+ \| (?:phone|desktop) \|", doc.read_text(), re.M)
+    rows = re.findall(r"^\| [^|]+ \| (?:phone|desktop)[^|]* \|", doc.read_text(), re.M)  # "phone, day mode" too
     return len(rows) or None
 
 
 def e2e_from_log(path: Path) -> str | None:
     """'22/22' from the last 'N/M passed' line of a smoke-test log."""
     found = re.findall(r"^(\d+)/(\d+) passed", path.read_text(errors="replace"), re.M)
+    return f"{found[-1][0]}/{found[-1][1]}" if found else None
+
+
+def e2e_ui_from_log(path: Path) -> str | None:
+    """'30/30' from the last 'N/M web checks passed' line (the browser half of scripts/e2e_local.sh)."""
+    found = re.findall(r"^(\d+)/(\d+) web checks passed", path.read_text(errors="replace"), re.M)
     return f"{found[-1][0]}/{found[-1][1]}" if found else None
 
 
@@ -115,6 +121,8 @@ def main(argv: list[str] | None = None) -> int:
                 facts[key] = v
     if a.e2e_log and (e2e := e2e_from_log(Path(a.e2e_log))):
         facts["e2e"] = e2e
+    if a.e2e_log and (ui := e2e_ui_from_log(Path(a.e2e_log))):
+        facts["e2e_ui"] = ui
     if a.coverage is not None:
         facts["coverage"] = round(a.coverage)
     FACTS.write_text(json.dumps(dict(sorted(facts.items())), indent=1) + "\n")

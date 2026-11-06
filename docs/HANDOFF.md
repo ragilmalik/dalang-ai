@@ -9,14 +9,16 @@ For whoever picks this up next (me later on, or a teammate).
 * Three sample films made with the live models ship in `content/samples/` and load on first start
   (`api/samples.import_bundled`, `BUNDLED_SAMPLES=false` to skip). `scripts/bundle_samples.py --data <data dir>`
   refreshes them from a data folder.
-* Checks: pytest (<!-- facts:tests -->531<!-- /facts --> tests, <!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e smoke test (<!-- facts:e2e -->29/29<!-- /facts --> steps), ruff, mypy, eslint, tsc, `next build` (see TEST_REPORT.md).
+* Checks: pytest (<!-- facts:tests -->546<!-- /facts --> tests, <!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e smoke test (<!-- facts:e2e -->29/29<!-- /facts --> steps), ruff, mypy, eslint, tsc, `next build` (see TEST_REPORT.md).
 * The public repo is a clean export (one commit per release, no `.env`, scanned with gitleaks before each push); the
   full dated history stays on my machine because it holds old demo cuts. CI is in `.github/workflows/ci.yml`; deploy
   blueprints are `render.yaml` (backend) and `web/vercel.json` (website).
 * Since Nov 6 everything judges see was recorded on the live API: demo video, teasers, launch clips, thumbnail and
   every screenshot (VERIFICATION_REPORT.md, "Media re-recorded on the live API"). The narrator is a synthetic voice,
   and the child's voice in the demo's first 3 s is a labelled synthetic stand-in.
-* Live spend so far: about $2.53 of the $15 credit (`MAX_USD_TOTAL` stops all Meta calls at the cap you set).
+* The Cerebral Valley form closed before I submitted (Nov 6: "Event Finished"); the answers stay ready in
+  [SUBMISSION_FORM.md](SUBMISSION_FORM.md).
+* Live spend so far: about $2.53 of the $15 credit (`MAX_USD_TOTAL` stops all Meta calls at the cap in `.env`).
 
 ## What is real and what isn't
 * Real: every Meta model call behind the sample films, the demo, the screenshots and the trace; the art (Muse Image),
@@ -54,7 +56,7 @@ For whoever picks this up next (me later on, or a teammate).
 * `meta_client.real_transport()` is the only way to build a raw transport: a hand-built `httpx.HTTPTransport()` ignores `HTTPS_PROXY` / `SSL_CERT_FILE` (that gave 401s on the first live preflight).
 * The fake Meta API scripts one checker rejection (scene 2 backdrop) so the redraw loop shows in demos and tests; images drawn from the checker's fix prompt are recognised by a tiny fingerprint and pass.
 * The phone microphone needs https (or localhost). Use a cloudflared tunnel for phone demos.
-* In a sandbox with an authenticated proxy, edge-tts can fail to parse the proxy URL; `media.narrate` retries without proxy variables. On a normal computer this never triggers.
+* Behind an authenticated proxy, edge-tts can fail to parse the proxy URL; `media.narrate` retries without proxy variables. On a normal computer this never triggers.
 * Muse Wonder can return a keyframe number just outside the stage limits (seen live: an angle past 25 degrees).
   `animate.clamp_motion` clamps instead of dropping the plan; anything structurally wrong still falls back.
 * Element screenshots of the agent trace get the sticky site header painted over them; make the header static

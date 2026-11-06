@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-/** Registers public/sw.js in production builds, so the showcase wall opens offline (PWA). */
+/** Registers public/sw.js in production builds, so the public wall opens offline (PWA). */
 export default function ServiceWorker() {
   useEffect(() => {
     if (process.env.NODE_ENV !== "production" || !("serviceWorker" in navigator)) return;

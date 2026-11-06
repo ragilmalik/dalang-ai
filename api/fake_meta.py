@@ -408,7 +408,7 @@ def _target(path: str, body: dict[str, Any]) -> list[str]:
 
 def _injected(path: str, body: dict[str, Any]) -> httpx.Response | None:
     """FAKE_META_FAIL="images:always,motion_plan:once,sam-3.1:always": answer matching calls with HTTP 503
-    (always, or only the first time). Used by the robustness eval and tests to break one Meta stage at a time."""
+    (always, or only the first time). Used by the failure-test eval and tests to break one Meta stage at a time."""
     spec = os.environ.get("FAKE_META_FAIL", "").strip()
     if not spec:
         return None

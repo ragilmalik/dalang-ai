@@ -1,4 +1,4 @@
-"""The helper scripts Malik runs himself must keep working: the key check, the deploy pre-flight and the
+"""The helper scripts I run myself must keep working: the key check, the deploy pre-flight and the
 generated prompts doc. Each runs as a real subprocess, the way he would run it, against the fake Meta API."""
 from __future__ import annotations
 

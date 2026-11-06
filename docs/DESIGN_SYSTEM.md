@@ -97,6 +97,29 @@ light. The blencong next to it flickers on an uneven cycle, like a real flame. E
 sink on press, the working troupe member sways on its rod, the gunungan sways while something loads. With
 `prefers-reduced-motion` all of it stops, the hero film loop never starts and the poster stays.
 
+### Moving between pages (added 2026-11-06)
+
+Pages change like a dalang changing scenes: the old page dims and drops out in 150 ms, the new one rises 12 px and
+fades in over 240 ms, starting 90 ms later. The header never moves; it's the fixed point of the stage. A poster you
+tap in the gallery or on the Pentas wall grows into the film player on the watch page (a shared-element morph,
+420 ms, with a light blur mid-flight to hide the stretch). This is React's `<ViewTransition>` on the browser's View
+Transitions API: `app/template.tsx` for the page fade, `name="film-<id>"` on the poster and on `FilmVideo` for the
+morph, CSS in `globals.css` under "Page transitions". Browsers without the API just swap pages. Reduced motion sets
+every transition to 0 s. Clicks pass through the transition overlay, so a fast tap is never lost.
+
+Rules I keep for anything that moves: only `opacity`, `transform` and a light `filter` (they run on the compositor,
+so a busy page doesn't stutter); never fade in the largest text or picture on load (it delays LCP); progress bars and
+vote bars grow with `scaleX`, not `width`. Loading placeholders (`.skeleton`) breathe with opacity instead of a
+moving shimmer.
+
+### The recorder speaks without words (added 2026-11-06)
+
+Most young kids can't read the button, so the recorder answers in sound and touch: a soft high bonang note (and a
+short buzz on phones) when the microphone starts, a lower note when it stops. The note plays before recording begins,
+so it isn't in the child's story. A gold ring around the button fills over the 90 seconds. A tap on Stop in the
+first 1.2 seconds is ignored, because kids double-tap big buttons (a finding from the yarn storytelling app's
+usability tests). Screen readers hear "Merekam · Recording" and "Rekaman siap · Recording ready".
+
 ## Components
 
 All in `web/components/ui/`, plus CSS classes in `globals.css` for plain links.
@@ -125,6 +148,18 @@ All in `web/components/ui/`, plus CSS classes in `globals.css` for plain links.
 - Also: `chip` (language picker, read-along toggle), `seg`, `field`, `option` (a radio or checkbox with its label as
   one big hit area), `kelir`, `frame`, `blencong`, `kawung`, `link`.
 
+### Size and stability rules (Nov 6)
+
+- Anything a thumb taps is at least 44 px tall, `btn-sm` included. Inline links inside a sentence are the only
+  exception.
+- A page never jumps while it fills in. `main` reserves a screen of height (`min-h-[calc(100svh-4rem)]`) so the
+  footer starts below the fold, and `html` keeps `scrollbar-gutter: stable` so a page that grows past one screen
+  doesn't shift sideways. Grid columns that sit next to big headlines use `minmax(0, ...)`, so a late font can't
+  change their width. Every `<img>` has `width` and `height`.
+- Grid posters use the 800 px WebP card (`poster_card` from `/api/gallery`) with the full 1200 px JPEG as the large
+  `srcset` choice.
+- `meta theme-color` follows the theme, so day mode has no dark bar on top of the page on phones.
+
 ### Empty, loading and error states
 
 Every one has a next step. Loading shows the swaying gunungan. Empty galleries and an empty Kotak Wayang show the
@@ -134,7 +169,7 @@ gunungan on it ("Lakon ini tidak dimainkan malam ini"), and `app/error.tsx` is "
 ## Checks I run after a UI change
 
 - `cd web && npm run lint && npx tsc --noEmit && npm run build`
-- `bash scripts/a11y_local.sh` (axe, phone and desktop) and `bash scripts/e2e_local.sh`
+- `bash scripts/a11y_local.sh` (axe: phone and desktop in the night theme, phone in day mode) and `bash scripts/e2e_local.sh`
 - `python web/e2e/r5_perf.py <base>`: home LCP under 1.5 s on a phone viewport, CLS under 0.02
 - `python web/e2e/ui_shots.py <base> docs/screenshots/ui/after`: phone (390) and desktop (1440) shots of every page,
   which I look through by eye (the committed ones are squeezed with `pngquant --quality 80-95` to keep the repo small)
@@ -146,4 +181,6 @@ that shaped this most: the "Shadows" exhibition for Louvre Abu Dhabi (light as t
 Teatr Lalka (puppets that move only when something happens), Duolingo (one obvious button), Headspace (calm choice
 chips, lots of room) and Linear (show the real product, keep text hierarchy to one ink colour). I took ideas, not
 code, pictures or logos. The checklists I followed are Anthropic's frontend-design skill, Vercel's Web Interface
-Guidelines and the ui-ux-pro-max skill.
+Guidelines and the ui-ux-pro-max skill. For the Nov 6 motion pass I followed the Next.js "Designing view
+transitions" guide (bundled with Next 16.4), web.dev on compositor-only animation and `prefers-reduced-motion`,
+Google's "Building for kids" guide (sound plus visual feedback for every action) and BBC GEL's voice design notes.

@@ -89,10 +89,10 @@ export default async function Judge() {
           <ModelsReceipt job={job} />
           <AgentTrace job={job} />
           <p className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-            <Link className="link" href={`/watch/${job.id}`}>Open this film&apos;s page</Link>
-            <a className="link" href={`/api/jobs/${job.id}/receipt`}>receipt JSON</a>
-            <a className="link" href={`/api/jobs/${job.id}/trace`}>trace JSON</a>
-            <a className="link" href={`/api/jobs/${job.id}/storybook.pdf`}>storybook PDF</a>
+            <Link className="link inline-flex min-h-11 items-center" href={`/watch/${job.id}`}>Open this film&apos;s page</Link>
+            <a className="link inline-flex min-h-11 items-center" href={`/api/jobs/${job.id}/receipt`}>receipt JSON</a>
+            <a className="link inline-flex min-h-11 items-center" href={`/api/jobs/${job.id}/trace`}>trace JSON</a>
+            <a className="link inline-flex min-h-11 items-center" href={`/api/jobs/${job.id}/storybook.pdf`}>storybook PDF</a>
           </p>
         </section>
       ) : (

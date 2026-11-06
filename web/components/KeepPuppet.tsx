@@ -10,7 +10,7 @@ export default function KeepPuppet({ jobId, charId, name }: { jobId: string; cha
   return (
     <button
       type="button"
-      className="btn btn-sm mt-2 !min-h-9 !text-xs"
+      className="btn btn-sm mt-2 !text-xs"
       disabled={state === "saving" || state === "saved"}
       aria-label={`Keep ${name} in Kotak Wayang`}
       onClick={async () => {

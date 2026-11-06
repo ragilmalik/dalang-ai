@@ -67,8 +67,14 @@ def audit(base: str, jid: str, axe_js: str) -> list[dict]:
     out = []
     with sync_playwright() as p:
         browser = p.chromium.launch(**launch_kwargs())  # type: ignore[arg-type]
-        for vp_name, vp in (("phone", {"width": 390, "height": 844}), ("desktop", {"width": 1280, "height": 800})):
+        # night theme (the default) at both sizes, then day mode on a phone: day mode has its own colours, so its
+        # contrast is checked too (added 2026-11-06; before that only the night theme was audited)
+        runs = (("phone", {"width": 390, "height": 844}, "dark"), ("desktop", {"width": 1280, "height": 800}, "dark"),
+                ("phone, day mode", {"width": 390, "height": 844}, "light"))
+        for vp_name, vp, theme in runs:
             ctx = browser.new_context(viewport=vp)  # type: ignore[arg-type]
+            if theme == "light":
+                ctx.add_init_script("try{localStorage.setItem('dalang-theme','light')}catch(e){}")
             page = ctx.new_page()
             for name, path, ready in pages:
                 page.goto(base + path, wait_until="networkidle")
@@ -92,7 +98,8 @@ def write_report(results: list[dict], axe_js: str, path: Path) -> None:
     lines = ["# Accessibility audit (axe-core)", "",
              f"Automated audit with **axe-core {version}** (rules tagged {', '.join(TAGS)}) in Chromium via Playwright,",
              "run by `bash scripts/a11y_local.sh` on the fake Meta API (placeholder art). Each page is checked on a",
-             "phone (390x844) and a desktop (1280x800) screen; collapsible sections (the agent trace) are opened first.",
+             "phone (390x844) and a desktop (1280x800) screen in the night theme, then on the phone again in day mode",
+             "(its own colours); collapsible sections (the agent trace) are opened first.",
              "Automated rules find about a third of real accessibility problems; a manual screen-reader pass is still",
              "worth doing.", "",
              f"Run: {time.strftime('%Y-%m-%d %H:%M %Z')}", "",

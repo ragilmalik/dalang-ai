@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ViewTransition } from "react";
 import { apiOrigin } from "@/lib/api";
 import Badge from "@/components/ui/Badge";
 import Bi from "@/components/ui/Bi";
@@ -17,6 +18,7 @@ interface Item {
   id: string;
   title: string;
   poster: string | null;
+  poster_card?: string | null; // 800 px WebP made by api/thumbs.py; absent on older APIs
   language: string;
   duration_s?: number;
   applause?: number;
@@ -59,16 +61,21 @@ export default async function Gallery() {
             >
               <span className="block overflow-hidden bg-bg-2">
                 {it.poster && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={it.poster}
-                    alt={`${it.title}: film poster`}
-                    width={1200}
-                    height={630}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[40/21] w-full object-cover transition-transform duration-gong ease-sabet group-hover:scale-[1.03]"
-                  />
+                  // the poster morphs into the player on the watch page (shared view transition)
+                  <ViewTransition name={`film-${it.id}`} share="morph" default="none">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={it.poster_card || it.poster}
+                      srcSet={it.poster_card ? `${it.poster_card} 800w, ${it.poster} 1200w` : undefined}
+                      sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                      alt={`${it.title}: film poster`}
+                      width={1200}
+                      height={630}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[40/21] w-full object-cover transition-transform duration-gong ease-sabet group-hover:scale-[1.03]"
+                    />
+                  </ViewTransition>
                 )}
               </span>
               {(it.sample || it.offline) && (
