@@ -52,7 +52,7 @@ Meta's Model API has no text-to-speech.
 All of it, starting from an empty repository: the FastAPI backend and nine-stage agent pipeline; the Meta client, SAM
 mask handling, verify (redraw) agent and Muse Wonder motion planner; the kelir animation engine (keyframes, lamp
 flicker, shadows, gunungan transitions, captions, gamelan bed); the narrator voice picker; Gara-gara branching, own-voice narration, Kotak
-Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->557<!-- /facts --> tests and CI; the
+Wayang and the printable puppets; a fake Meta API that mirrors the documented endpoints, <!-- facts:tests -->558<!-- /facts --> tests and CI; the
 Next.js app and its design system (recording, live progress as a pipeline theatre, storyboard review, player, Kelir Live, classroom vote,
 remix, share cards, stickers, /pentas, gallery, agent trace); and all the docs in English and Bahasa Indonesia. The
 git history starts Oct 29, 2026 UTC (Oct 30, 05:01 WIB). No code, art or models from before the event are in it.

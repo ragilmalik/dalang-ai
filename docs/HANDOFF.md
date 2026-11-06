@@ -9,7 +9,7 @@ For whoever picks this up next (me later on, or a teammate).
 * Three sample films made with the live models ship in `content/samples/` and load on first start
   (`api/samples.import_bundled`, `BUNDLED_SAMPLES=false` to skip). `scripts/bundle_samples.py --data <data dir>`
   refreshes them from a data folder.
-* Checks: pytest (<!-- facts:tests -->557<!-- /facts --> tests, <!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e smoke test (<!-- facts:e2e -->29/29<!-- /facts --> steps), ruff, mypy, eslint, tsc, `next build` (see TEST_REPORT.md).
+* Checks: pytest (<!-- facts:tests -->558<!-- /facts --> tests, <!-- facts:coverage -->95%<!-- /facts --> line coverage), full-stack e2e smoke test (<!-- facts:e2e -->29/29<!-- /facts --> steps), ruff, mypy, eslint, tsc, `next build` (see TEST_REPORT.md).
 * The public repo is a clean export (one commit per release, no `.env`, scanned with gitleaks before each push); the
   full dated history stays on my machine because it holds old demo cuts. CI is in `.github/workflows/ci.yml`; deploy
   blueprints are `render.yaml` (backend) and `web/vercel.json` (website).

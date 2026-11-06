@@ -4,6 +4,12 @@ What is open right now. The long product checklist (every feature, done or not) 
 
 Status legend: [x] done · [ ] open · [!] waiting on me (Malik)
 
+## Final check (2026-11-07)
+- [x] Full test suite, coverage, lint, types, e2e, browser and accessibility runs re-done on a fresh machine
+- [x] Bug hunt: sample score source, Pocket TTS requirement, credits table, engine docstring, storyboard
+- [x] Docs, facts, CHANGELOG synced
+- [ ] Push the public repo and refresh the Drive zip
+
 ## Media remake (2026-11-06, afternoon)
 - [x] Read launch-video, TTS and music-licence guides; two marketing specialties kept outside the repo
 - [x] True-to-life puppet and backdrop prompts; 3 sample films re-made on the live API and bundled

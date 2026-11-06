@@ -430,7 +430,8 @@ def _encode(kelir: Kelir, out: Path, dst: Path, fps: int, n: int, W: int, H: int
 
 
 def soundtrack(film: Film, out_wav: Path) -> Path:
-    """Narration + synthesised gamelan-style gong and bonang (made in code, so no music licence needed)."""
+    """Narration, the gong and bonang cues on the title and end cards (made in code), and the gamelan bed under the
+    scenes (music_bed: the Kraton recording, CC BY 4.0, or the code-made ensemble)."""
     sr = media.SR
     total = np.zeros(int(film.total * sr) + sr, np.float32)
     voice = np.zeros_like(total)  # narration only, used to duck the music bed

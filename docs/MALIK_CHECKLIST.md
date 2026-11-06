@@ -4,7 +4,7 @@ Status on Nov 6, 2026, 03:00 WIB. The app runs on the live Meta Model API (prefl
 `docs/VERIFICATION_REPORT.md`). The three sample films in the gallery, the home page loop, the share poster, the
 README gif, the demo video, its teasers, the launch clips, the thumbnail and every screenshot were made with the live
 models. What is still not real, and why:
-- the demo's narrator: a synthetic voice (Kokoro-82M `af_heart`), not me. My own voice-over can replace it any time
+- the demo's narrator: a synthetic voice (Pocket TTS `caro_davy`), not me. The four photo-style scenes of people in the demo are AI-generated and labelled. My own voice-over can replace it any time
   (`docs/demo/real/README.md`)
 - the story recording in the demo (`assets/sample-story/sample_story_synthetic.mp3`): a synthetic voice, labelled
   as one -> step 4 if I get a real recording with a parent's consent

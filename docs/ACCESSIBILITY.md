@@ -7,7 +7,7 @@ phone (390x844) and a desktop (1280x800) screen in the night theme, then on the 
 Automated rules find about a third of real accessibility problems; a manual screen-reader pass is still
 worth doing.
 
-Run: 2026-11-06 14:46 WIB
+Run: 2026-11-07 00:52 WIB
 
 | Page | Screen | Rules passed | Critical | Serious | Moderate | Minor |
 |---|---|---|---|---|---|---|

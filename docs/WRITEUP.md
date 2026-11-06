@@ -45,7 +45,7 @@ screen"); [docs/META_MODELS.md](META_MODELS.md) walks through the prompts, schem
 
 ## Tech stack
 Python 3.12, FastAPI, Pydantic v2, httpx, Pillow + NumPy (kelir renderer), ffmpeg (H.264/AAC, 16:9 +
-9:16), SQLite, Server-Sent Events; Next.js 16 App Router, React 19, Tailwind with my own design system (Fraunces + Plus Jakarta Sans); Kokoro-82M and edge-tts for narration
+9:16), SQLite, Server-Sent Events; Next.js 16 App Router, React 19, Tailwind with my own design system (Fraunces + Plus Jakarta Sans); Kokoro-82M and edge-tts for narration, Pocket TTS for the demo voice-over, a CC BY 4.0 Kraton gamelan recording under the films
 (Meta has no TTS model); pytest, ruff, mypy, ESLint, GitHub Actions; Docker, Render and Vercel configs.
 
 ## Challenges

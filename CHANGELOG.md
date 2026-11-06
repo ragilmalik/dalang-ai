@@ -3,6 +3,18 @@
 Dates are WIB (UTC+7). The project was built during the Meta Global AI Developer Hackathon, Oct 26 to Nov 4, 2026;
 Nov 5 is the go-live on the real Meta Model API.
 
+## 2026-11-07: final check
+
+* Re-ran everything on a fresh machine: pytest, coverage, ruff, mypy, the local end-to-end runs, the browser runs,
+  the accessibility checks, the voice and wording checks and the facts check.
+* Fixed: the Kancil and Timun Mas sample films said their music was the code-made gamelan, but they play the Kraton
+  recording. Their saved score now names and credits the recording, and a new test keeps all three samples honest.
+* Fixed: `requirements-tts.txt` didn't list Pocket TTS, the demo narrator. It does now.
+* Fixed: the credits table in the README still said all the gamelan was made in code. It now credits the Kraton
+  recording (CC BY 4.0), Pocket TTS and the labelled AI-generated scenes in the demo. Same fix in README.id,
+  WRITEUP and MALIK_CHECKLIST, and in a stale docstring in `api/pipeline/engine.py`.
+* Rebuilt the demo storyboard from the new 178.2 s video.
+
 ## 2026-11-06 (afternoon): media remake (art, music, voice, video, screenshots)
 
 * The art looks like real puppets now. The Muse Image prompts ask for a hand-carved buffalo-rawhide puppet with

@@ -29,7 +29,7 @@ kids to see their own stories on the kelir.
 > http://localhost:8000/docs, and `make help` lists every command. What I checked against the real API, per model:
 > [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 >
-> Checks: <!-- facts:tests -->557<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
+> Checks: <!-- facts:tests -->558<!-- /facts --> pytest tests (<!-- facts:coverage -->95%<!-- /facts --> line coverage), a full-stack e2e smoke test
 > (<!-- facts:e2e -->29/29<!-- /facts --> steps), 25 browser checks of the newest screens on a 390 px phone (`web/e2e/r5_ui.py`: Kelir Live drag/tilt/gunungan/keyboard, classroom vote, remix, stickers, /pentas, PWA offline), ruff, mypy, eslint, tsc and `next build`. `make check` runs them all
 > ([docs/TEST_REPORT.md](docs/TEST_REPORT.md)). There's also an axe-core accessibility audit (<!-- facts:a11y -->33<!-- /facts --> page checks incl. /kelir, /vote and /pentas, phone and desktop, 0 violations,
 > [docs/ACCESSIBILITY.md](docs/ACCESSIBILITY.md)) and a 6-films-at-once concurrency test (`scripts/load_local.sh`). Demo video: <!-- facts:demo_length -->2:58<!-- /facts -->.
@@ -389,13 +389,15 @@ Results are in [docs/TEST_REPORT.md](docs/TEST_REPORT.md), and the API verificat
 | Asset | Source | Licence |
 |---|---|---|
 | Puppets, backdrops, gunungan | Generated per film by Muse Image (in test mode, `FAKE_META=1`, labelled placeholder art drawn in code by `api/fake_meta.py` / `api/pipeline/mock.py`) | Generated at run time for the user; no third-party art in the repo |
-| Gamelan sound (gong, kempul, bonang/saron pattern, ducked bed) | Synthesised in code: `api/pipeline/media.py`, `engine.music_bed()` | Part of this repo, MIT |
-| Narration voices | Microsoft Edge neural voices via the open-source `edge-tts` client (LGPL-3.0, used as a library); optional Kokoro-82M (Apache-2.0) for English; Meta MMS-TTS only if you opt in with `TTS_ENGINE=mms` (CC-BY-NC-4.0, non-commercial) | Audio generated at run time; no weights in the repo |
+| Gamelan bed under the scenes | Recording of the court musicians of the Kraton Ngayogyakarta by RTB45 (freesound.org/people/RTB45/sounds/255544), via Wikimedia Commons, in `assets/music/` | CC BY 4.0, credited in the site footer and `assets/music/README.md` |
+| Gamelan cues (gong, kempul, bonang) and the `GAMELAN_SOURCE=procedural` bed | Synthesised in code: `api/pipeline/media.py`, `api/pipeline/gamelan.py` | Part of this repo, MIT |
+| Narration voices | Microsoft Edge neural voices via the open-source `edge-tts` client (LGPL-3.0, used as a library); optional Kokoro-82M (Apache-2.0) for English; optional Pocket TTS (Kyutai, MIT) with the CC0 `caro_davy` voice for the demo voice-over; Meta MMS-TTS only if you opt in with `TTS_ENGINE=mms` (CC-BY-NC-4.0, non-commercial) | Audio generated at run time; no weights in the repo |
 | Javanese script font | Noto Sans Javanese, bundled in `content/fonts/` | SIL Open Font License 1.1 (`content/fonts/OFL.txt`) |
 | Website fonts | Fraunces (headings) and Plus Jakarta Sans (text), Latin subsets bundled in `web/app/fonts/` | SIL Open Font License 1.1 (`web/app/fonts/OFL-*.txt`) |
 | Film fonts | System fonts (DejaVu on Linux, Segoe UI/Georgia on Windows); optional `.ttf` in `assets/fonts/` | Not redistributed in the repo |
 | Architecture diagram | Drawn in code: `docs/architecture.py` | MIT |
-| Screenshots | Captured from the app with `scripts/screenshots.py` | MIT |
+| Screenshots | Captured from the app with `scripts/screenshots.py` and `web/e2e/ui_shots.py` | MIT |
+| Demo B-roll (4 photo-style scenes) | AI-generated with a general image model, labelled "AI-generated scene" on screen; real app screenshots composited in ([docs/demo/broll/README.md](docs/demo/broll/README.md)) | Made for this project |
 
 ## Built during the hackathon
 

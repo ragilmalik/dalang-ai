@@ -186,3 +186,14 @@ def test_decode_rejects_an_empty_file(tmp_path):
     bad.write_bytes(b"")
     with pytest.raises((subprocess.CalledProcessError, ValueError)):
         gamelan._decode(str(bad))
+
+
+def test_bundled_samples_name_the_gamelan_they_play():
+    """The shipped sample films were cut with the Kraton recording, so their score must say so (and credit it)."""
+    from api import samples
+
+    states = samples.bundled()
+    assert len(states) == 3
+    for s in states:
+        assert s["score"]["procedural"] is False, s["sample_key"]
+        assert s["score"]["recording"] == gamelan.RECORDING_CREDIT

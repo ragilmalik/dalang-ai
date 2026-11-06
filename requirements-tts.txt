@@ -5,6 +5,7 @@
 # Or keep them in their own venv and point the app at it: TTS_PYTHON=/path/to/tts-venv/bin/python
 # Kokoro needs espeak-ng for words it doesn't know (apt install espeak-ng / brew install espeak-ng).
 kokoro>=0.9.4          # Kokoro-82M, Apache-2.0 (English narrator + demo voice-over)
+pocket-tts>=4.0       # Pocket TTS (Kyutai, MIT): the demo voice-over (DEMO_VOICE=pocket:caro_davy)
 soundfile>=0.12
 torch>=2.2
 transformers>=4.40     # only for TTS_ENGINE=mms (Meta MMS-TTS, CC-BY-NC-4.0: non-commercial use only)

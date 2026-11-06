@@ -1090,7 +1090,7 @@
    "happy",
    "triumphant"
   ],
-  "procedural": true,
+  "procedural": false,
   "styles": {
    "calm": {
     "scale": "slendro",
@@ -1196,7 +1196,8 @@
     "pattern": "lancaran (kendang bem, triumphant)",
     "bonang": true
    }
-  }
+  },
+  "recording": "Gamelan: court musicians of the Kraton Ngayogyakarta Hadiningrat, recorded by RTB45 (freesound.org/people/RTB45/sounds/255544), CC BY 4.0"
  },
  "motion": [
   {

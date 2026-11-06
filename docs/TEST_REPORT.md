@@ -4,9 +4,9 @@
 
 | Check | Result |
 |---|---|
-| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->557<!-- /facts --> tests pass, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` |
+| pytest (`pytest -q`, fake Meta API) | <!-- facts:tests -->558<!-- /facts --> tests pass, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` |
 | Full-stack e2e (`bash scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps |
-| Browser checks of the newest screens (`web/e2e/r5_ui.py`, 390 px phone) | 25/25 |
+| Browser checks of the newest screens (`web/e2e/r5_ui.py`, 390 px phone) | <!-- facts:e2e_ui -->30/30<!-- /facts --> |
 | axe-core audit (`bash scripts/a11y_local.sh`) | <!-- facts:a11y -->33<!-- /facts --> page checks, 0 violations ([ACCESSIBILITY.md](ACCESSIBILITY.md)) |
 | Home page largest paint (`web/e2e/r5_perf.py`, local production build) | under the 1.5 s target: 680 ms on Nov 4 (shared machine), 452 ms on Nov 3, 1108 ms on Nov 2 ([WEB_PERF_R5.md](WEB_PERF_R5.md)) |
 | Nov 3 after-checks (headers, titles, noindex, console, mic message, offline page, odd upload, one Sembah) | 21/21 |
@@ -14,6 +14,22 @@
 | Demo video | <!-- facts:demo_length -->2:58<!-- /facts -->, 1920x1080, -16.8 LUFS, re-recorded on Nov 6 (afternoon) on the live Meta Model API |
 
 The sections below are the dated runs, oldest first.
+
+## Final check: 2026-11-07, 00:35-00:55 WIB
+
+Fresh machine after a restart (Chromium re-installed), fake Meta API, no paid calls.
+
+| Check | Result |
+|---|---|
+| pytest with coverage | 558 passed, 3 warnings, 95% of `api/` (8 min 57 s) |
+| ruff / mypy | clean / no issues in 71 files |
+| `scripts/e2e_local.sh` | 29/29 steps, then 30/30 web checks |
+| `scripts/a11y_local.sh` | 33 page checks, 0 violations |
+| `voice_check.py` / `facts.py --check` | 0 hits / docs agree |
+
+Bugs found and fixed in this pass: two sample films whose saved score said "code-made gamelan" while they play the
+Kraton recording (new test `test_bundled_samples_name_the_gamelan_they_play`), Pocket TTS missing from
+`requirements-tts.txt`, the README credits table, a stale docstring, and the demo storyboard (rebuilt at 178.2 s).
 
 ## First full run: 2026-10-30, 05:31-05:35 WIB
 
@@ -210,7 +226,7 @@ slow 3G) and fixed what a family or a judge would hit: raw recordings could be f
 the film id, a forged `X-Forwarded-For: 127.0.0.1` skipped the hourly limit, uploads were read whole before the size
 check, there were no security headers, Sembah could be counted any number of times, the microphone stayed on after
 leaving the page, offline pages showed the browser's error, the film page polled forever, and puppet rods ran through
-the captions. After the fixes: pytest <!-- facts:tests -->557<!-- /facts --> tests (one SSE test timed out waiting
+the captions. After the fixes: pytest <!-- facts:tests -->558<!-- /facts --> tests (one SSE test timed out waiting
 for its server under parallel workers and passes alone; its wait was raised in ad37e64), coverage
 <!-- facts:coverage -->95%<!-- /facts -->, e2e 26/26, the phone browser checks 25/25, axe 0 violations on 22 page
 checks, and 21/21 after-checks for the fixes themselves. Two findings are left as they are: the hourly limit still
@@ -221,7 +237,7 @@ Later the same day the re-shot screenshots caught a film whose "Painting the sce
 and a server path. Two films with the same story were writing and reading one cached picture at the same moment, and
 one copied it half-written. Cached pictures are now written to a temp file and swapped in, one film at a time per
 cached picture, and a damaged entry is repainted. A failed film now shows a kind bilingual message and never the raw
-error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->557<!-- /facts --> tests, all
+error text or a path. 21 new tests cover it; the whole suite is <!-- facts:tests -->558<!-- /facts --> tests, all
 passing, coverage <!-- facts:coverage -->95%<!-- /facts -->, and every page was re-shot.
 
 ## 2026-11-04 (submission day)
@@ -237,7 +253,7 @@ After the fixes:
 
 | Check | Result |
 |---|---|
-| pytest (full suite, 2 workers) | <!-- facts:tests -->557<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
+| pytest (full suite, 2 workers) | <!-- facts:tests -->558<!-- /facts --> passed, 0 failed, <!-- facts:coverage -->95%<!-- /facts --> line coverage of `api/` (4,989 statements, 198 missed) |
 | ruff, mypy (67 files) | 0, 0 |
 | eslint, tsc, `next build` | 0, 0, OK |
 | Full-stack e2e (`scripts/e2e_local.sh`) | <!-- facts:e2e -->29/29<!-- /facts --> steps (new step: the judge page's API docs link works through the website), web checks 25/25 |

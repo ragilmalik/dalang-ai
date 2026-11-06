@@ -40,7 +40,7 @@ bawaan (mode uji), dan semua gambarnya diberi label "placeholder art". Kode perm
 yang live. Hasil pemeriksaan per model dengan API asli ada di
 [docs/VERIFICATION_REPORT.md](docs/VERIFICATION_REPORT.md).
 
-Pemeriksaan: <!-- facts:tests -->557<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
+Pemeriksaan: <!-- facts:tests -->558<!-- /facts --> tes pytest (<!-- facts:coverage -->95%<!-- /facts --> cakupan
 baris), uji e2e penuh (<!-- facts:e2e -->29/29<!-- /facts --> langkah), ruff, mypy, eslint, tsc, dan `next build`.
 Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-demo.mp4](docs/demo/dalang-ai-demo.mp4)).
 
@@ -148,7 +148,7 @@ Video demo: <!-- facts:demo_length -->2:58<!-- /facts --> ([docs/demo/dalang-ai-
 | Memilih wayang | Satu lembar wayang per tokoh, lalu dipotong menjadi PNG transparan dan dipakai di semua adegan | Muse Image + SAM 3.1 |
 | Memeriksa | Setiap gambar dicek terhadap naskah; yang salah digambar ulang (loop agen) | Muse Spark vision |
 | Menggerakkan | Rencana gerak berupa keyframe, dimainkan oleh mesin kelir buatan saya dengan nyala blencong dan bayangan | Muse Wonder |
-| Narasi dan potongan akhir | Suara narator, gamelan sintetis, subtitle, gunungan, 16:9 dan 9:16 | edge-tts Emma Multilingual (Bahasa Indonesia), edge-tts Siti (Basa Jawa), Kokoro-82M `af_heart` untuk Bahasa Inggris kalau dipasang, + ffmpeg (Meta belum punya model TTS; pilihan suaranya ada di [docs/VOICES.md](docs/VOICES.md)) |
+| Narasi dan potongan akhir | Suara narator, gamelan (rekaman asli Kraton Ngayogyakarta, CC BY 4.0), subtitle, gunungan, 16:9 dan 9:16 | edge-tts Emma Multilingual (Bahasa Indonesia), edge-tts Siti (Basa Jawa), Kokoro-82M `af_heart` untuk Bahasa Inggris kalau dipasang, + ffmpeg (Meta belum punya model TTS; pilihan suaranya ada di [docs/VOICES.md](docs/VOICES.md)) |
 
 Beberapa hal yang perlu diketahui: Muse Wonder menghasilkan teks (rencana gerak), bukan video. Meta Model API tidak
 punya model text-to-speech. Muse Spark Open dan Muse Glimmer hanya tersedia lewat penyedia hosting. Rinciannya ada di
